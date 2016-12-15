@@ -1,0 +1,1046 @@
+MDF Database:  version 1.0
+MDF_INFO | LAN_IDE_CP | XC95144XL-10-TQ144
+MACROCELL | 1 | 14 | D<13>_BUFR.MC
+ATTRIBUTES | 8520480 | 0
+OUTPUTMC | 1 | 2 | 11
+INPUTS | 17 | RESET  | RW  | AS  | A<5>  | A<1>  | A<6>  | A<3>  | A<2>  | AUTO_CONFIG_DONE<1>  | AUTO_CONFIG_DONE<2>  | autoconfig  | A<4>  | AUTO_CONFIG_DONE<0>  | D<13>  | ide/ide_CLKF  | EXP17_.EXP  | N1$BUF2.EXP
+INPUTMC | 8 | 2 | 14 | 1 | 7 | 3 | 16 | 1 | 8 | 2 | 11 | 3 | 15 | 1 | 13 | 1 | 15
+INPUTP | 9 | 160 | 93 | 90 | 54 | 63 | 57 | 58 | 60 | 56
+IMPORTS | 2 | 1 | 13 | 1 | 15
+EQ | 39 | 
+   !D<13>_BUFR.D = RESET & !D<13> & AS
+	# RESET & !D<13> & !autoconfig
+	# RESET & RW & !AS & !A<5> & A<4> & !A<6> & A<3> & 
+	A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	autoconfig
+	# RESET & RW & !AS & !A<5> & A<1> & !A<6> & !A<3> & 
+	!A<2> & AUTO_CONFIG_DONE<1> & !AUTO_CONFIG_DONE<2> & 
+	autoconfig
+;Imported pterms FB2_14
+	# RESET & !D<13> & !RW
+	# RESET & !D<13> & AUTO_CONFIG_DONE<0> & 
+	AUTO_CONFIG_DONE<1> & AUTO_CONFIG_DONE<2>
+	# RESET & RW & !AS & !A<5> & !A<4> & !A<6> & !A<3> & 
+	!AUTO_CONFIG_DONE<0> & autoconfig
+	# RESET & RW & !AS & !A<5> & !A<4> & !A<3> & !A<2> & 
+	!AUTO_CONFIG_DONE<0> & autoconfig
+	# RESET & RW & !AS & !A<5> & !A<4> & !A<3> & !A<2> & 
+	!AUTO_CONFIG_DONE<1> & autoconfig
+;Imported pterms FB2_13
+	# RESET & RW & !AS & !A<5> & A<4> & !A<1> & !A<6> & 
+	A<3> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	autoconfig
+	# RESET & RW & !AS & !A<5> & !A<4> & !A<1> & !A<6> & 
+	!A<3> & AUTO_CONFIG_DONE<1> & !AUTO_CONFIG_DONE<2> & 
+	autoconfig
+	# RESET & RW & !AS & A<5> & !A<4> & !A<1> & !A<6> & 
+	!A<3> & A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	autoconfig
+;Imported pterms FB2_16
+	# RESET & RW & !AS & !A<5> & !A<4> & !A<3> & !A<2> & 
+	!AUTO_CONFIG_DONE<2> & autoconfig
+	# RESET & RW & !AS & !A<5> & !A<4> & A<1> & !A<6> & 
+	!A<3> & !AUTO_CONFIG_DONE<1> & autoconfig
+	# RESET & RW & !AS & !A<5> & A<1> & !A<6> & !A<3> & 
+	!A<2> & !AUTO_CONFIG_DONE<0> & autoconfig
+	# RESET & RW & !AS & !A<5> & A<4> & !A<1> & !A<6> & 
+	A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	autoconfig;
+   D<13>_BUFR.CLK = ide/ide_CLKF;
+
+MACROCELL | 0 | 17 | D<12>_BUFR.MC
+ATTRIBUTES | 8520480 | 0
+OUTPUTMC | 1 | 2 | 3
+INPUTS | 17 | RESET  | RW  | AS  | A<5>  | A<4>  | A<1>  | A<3>  | A<2>  | AUTO_CONFIG_DONE<1>  | AUTO_CONFIG_DONE<2>  | autoconfig  | A<6>  | AUTO_CONFIG_DONE<0>  | AUTOBOOT_OFF  | IDE_CS_1_OBUF.EXP  | ide/ide_CLKF  | EXP14_.EXP
+INPUTMC | 7 | 2 | 14 | 1 | 7 | 3 | 16 | 1 | 8 | 0 | 0 | 3 | 15 | 0 | 16
+INPUTP | 10 | 160 | 93 | 90 | 54 | 56 | 63 | 58 | 60 | 57 | 84
+IMPORTS | 2 | 0 | 0 | 0 | 16
+EQ | 43 | 
+   !D<12>_BUFR.D = RESET & RW & !AS & !A<4> & A<1> & !A<6> & !A<3> & 
+	A<2> & !AUTO_CONFIG_DONE<0> & autoconfig
+	# RESET & RW & !AS & !A<5> & A<4> & !A<6> & A<3> & 
+	!A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	autoconfig
+	# RESET & RW & !AS & !A<5> & !A<4> & !A<1> & !A<3> & 
+	!A<2> & AUTO_CONFIG_DONE<1> & !AUTO_CONFIG_DONE<2> & 
+	autoconfig
+	# RESET & RW & !AS & !A<5> & !A<4> & !A<1> & !A<3> & 
+	!A<2> & !AUTO_CONFIG_DONE<1> & AUTOBOOT_OFF & autoconfig
+;Imported pterms FB1_1
+	# RESET & RW & !AS & !A<5> & !A<4> & A<6> & !A<3> & 
+	!A<2> & !AUTO_CONFIG_DONE<0> & autoconfig
+	# RESET & RW & !AS & !A<5> & !A<4> & A<6> & !A<3> & 
+	!A<2> & !AUTO_CONFIG_DONE<1> & autoconfig
+	# RESET & RW & !AS & !A<5> & !A<4> & A<6> & !A<3> & 
+	!A<2> & !AUTO_CONFIG_DONE<2> & autoconfig
+	# RESET & RW & !AS & !A<5> & !A<1> & !A<6> & !A<3> & 
+	A<2> & !AUTO_CONFIG_DONE<0> & autoconfig
+	# RESET & RW & !AS & A<5> & !A<4> & A<1> & !A<6> & 
+	A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	autoconfig
+;Imported pterms FB1_17
+	# RESET & !D<12> & !RW
+	# RESET & !D<12> & AS
+	# RESET & !D<12> & !autoconfig
+	# RESET & !D<12> & AUTO_CONFIG_DONE<0> & 
+	AUTO_CONFIG_DONE<1> & AUTO_CONFIG_DONE<2>
+	# RESET & RW & !AS & !A<5> & !A<4> & !A<1> & !A<3> & 
+	!A<2> & !AUTO_CONFIG_DONE<0> & autoconfig
+;Imported pterms FB1_16
+	# RESET & RW & !AS & A<5> & !A<4> & A<1> & !A<6> & 
+	!A<3> & A<2> & !AUTO_CONFIG_DONE<2> & autoconfig
+	# RESET & RW & !AS & A<5> & !A<4> & !A<6> & !A<3> & 
+	A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	autoconfig
+	# RESET & RW & !AS & !A<5> & A<4> & A<1> & !A<6> & 
+	A<3> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	autoconfig
+	# RESET & RW & !AS & !A<5> & !A<1> & !A<6> & !A<3> & 
+	A<2> & AUTO_CONFIG_DONE<1> & !AUTO_CONFIG_DONE<2> & 
+	autoconfig;
+   D<12>_BUFR.CLK = ide/ide_CLKF;
+
+MACROCELL | 1 | 0 | D<14>_BUFR.MC
+ATTRIBUTES | 8520480 | 0
+OUTPUTMC | 1 | 2 | 6
+INPUTS | 16 | RESET  | RW  | AS  | A<5>  | A<4>  | A<6>  | A<3>  | A<2>  | AUTO_CONFIG_DONE<0>  | AUTO_CONFIG_DONE<1>  | AUTO_CONFIG_DONE<2>  | autoconfig  | A<1>  | EXP15_.EXP  | ide/ide_CLKF  | EXP18_.EXP
+INPUTMC | 7 | 1 | 8 | 2 | 14 | 1 | 7 | 3 | 16 | 1 | 1 | 3 | 15 | 1 | 17
+INPUTP | 9 | 160 | 93 | 90 | 54 | 56 | 57 | 58 | 60 | 63
+IMPORTS | 2 | 1 | 1 | 1 | 17
+EQ | 40 | 
+   !D<14>_BUFR.D = RESET & RW & !AS & !A<5> & !A<4> & A<1> & !A<3> & 
+	!A<2> & !AUTO_CONFIG_DONE<1> & autoconfig
+	# RESET & RW & !AS & !A<5> & !A<4> & A<1> & !A<3> & 
+	!A<2> & !AUTO_CONFIG_DONE<2> & autoconfig
+	# RESET & RW & !AS & !A<5> & A<1> & !A<6> & !A<3> & 
+	A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	autoconfig
+	# RESET & RW & !AS & !A<5> & !A<4> & !A<6> & !A<3> & 
+	A<2> & AUTO_CONFIG_DONE<0> & AUTO_CONFIG_DONE<1> & 
+	!AUTO_CONFIG_DONE<2> & autoconfig
+;Imported pterms FB2_2
+	# RESET & RW & !AS & !A<5> & !A<4> & A<1> & !A<3> & 
+	!A<2> & !AUTO_CONFIG_DONE<0> & autoconfig
+	# RESET & RW & !AS & !A<5> & !A<4> & A<6> & !A<3> & 
+	!A<2> & !AUTO_CONFIG_DONE<0> & autoconfig
+	# RESET & RW & !AS & !A<5> & !A<4> & A<6> & !A<3> & 
+	!A<2> & !AUTO_CONFIG_DONE<1> & autoconfig
+	# RESET & RW & !AS & !A<5> & !A<4> & A<6> & !A<3> & 
+	!A<2> & !AUTO_CONFIG_DONE<2> & autoconfig
+	# RESET & RW & !AS & !A<4> & A<1> & !A<6> & !A<3> & 
+	A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	autoconfig
+;Imported pterms FB2_3
+	# RESET & RW & !AS & !A<5> & A<4> & A<1> & !A<6> & 
+	!A<3> & A<2> & !AUTO_CONFIG_DONE<0> & autoconfig
+	# RESET & RW & !AS & !A<5> & !A<4> & !A<1> & !A<6> & 
+	!A<3> & A<2> & !AUTO_CONFIG_DONE<0> & autoconfig
+	# RESET & RW & !AS & !A<5> & A<4> & !A<1> & !A<6> & 
+	A<3> & A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	autoconfig
+;Imported pterms FB2_18
+	# RESET & !D<14> & !RW
+	# RESET & !D<14> & AS
+	# RESET & !D<14> & !autoconfig
+	# RESET & !D<14> & AUTO_CONFIG_DONE<0> & 
+	AUTO_CONFIG_DONE<1> & AUTO_CONFIG_DONE<2>
+	# RESET & RW & !AS & !A<5> & A<1> & !A<6> & !A<3> & 
+	A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<2> & 
+	autoconfig;
+   D<14>_BUFR.CLK = ide/ide_CLKF;
+
+MACROCELL | 5 | 16 | D<15>_BUFR.MC
+ATTRIBUTES | 8520480 | 0
+OUTPUTMC | 1 | 2 | 9
+INPUTS | 14 | RESET  | RW  | AS  | A<5>  | A<1>  | A<6>  | A<3>  | A<2>  | AUTO_CONFIG_DONE<1>  | autoconfig  | D<15>  | EXP22_.EXP  | EXP23_.EXP  | ide/ide_CLKF
+INPUTMC | 6 | 2 | 14 | 3 | 16 | 2 | 9 | 5 | 15 | 5 | 17 | 3 | 15
+INPUTP | 8 | 160 | 93 | 90 | 54 | 63 | 57 | 58 | 60
+IMPORTS | 2 | 5 | 15 | 5 | 17
+EQ | 29 | 
+   !D<15>_BUFR.D = RESET & !D<15> & !RW
+	# RESET & !D<15> & AS
+	# RESET & !D<15> & !autoconfig
+	# RESET & RW & !AS & !A<5> & A<1> & !A<6> & !A<3> & 
+	!A<2> & !AUTO_CONFIG_DONE<1> & autoconfig
+;Imported pterms FB6_16
+	# RESET & !D<15> & AUTO_CONFIG_DONE<0> & 
+	AUTO_CONFIG_DONE<1> & AUTO_CONFIG_DONE<2>
+	# RESET & RW & !AS & !A<5> & A<1> & !A<6> & !A<3> & 
+	!AUTO_CONFIG_DONE<0> & autoconfig
+	# RESET & RW & !AS & !A<5> & !A<4> & A<6> & !A<3> & 
+	!A<2> & !AUTO_CONFIG_DONE<0> & autoconfig
+	# RESET & RW & !AS & !A<5> & !A<4> & A<6> & !A<3> & 
+	!A<2> & !AUTO_CONFIG_DONE<1> & autoconfig
+;Imported pterms FB6_18
+	# RESET & RW & !AS & !A<5> & !A<4> & A<6> & !A<3> & 
+	!A<2> & !AUTO_CONFIG_DONE<2> & autoconfig
+	# RESET & RW & !AS & !A<5> & A<1> & !A<6> & !A<3> & 
+	AUTO_CONFIG_DONE<1> & !AUTO_CONFIG_DONE<2> & autoconfig
+	# RESET & RW & !AS & !A<5> & A<4> & A<1> & !A<6> & 
+	A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	autoconfig
+	# RESET & RW & !AS & A<5> & !A<4> & !A<1> & !A<6> & 
+	!A<3> & A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	autoconfig
+	# RESET & RW & !AS & !A<5> & A<4> & !A<1> & !A<6> & 
+	A<3> & !A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	autoconfig;
+   D<15>_BUFR.CLK = ide/ide_CLKF;
+
+MACROCELL | 1 | 8 | AUTO_CONFIG_DONE<0>
+ATTRIBUTES | 8528672 | 0
+OUTPUTMC | 26 | 1 | 14 | 0 | 17 | 1 | 0 | 5 | 15 | 1 | 10 | 2 | 15 | 1 | 9 | 4 | 17 | 4 | 14 | 4 | 13 | 4 | 15 | 2 | 17 | 2 | 16 | 1 | 2 | 1 | 11 | 4 | 12 | 3 | 16 | 0 | 0 | 0 | 15 | 0 | 16 | 1 | 1 | 1 | 12 | 1 | 13 | 1 | 15 | 1 | 17 | 5 | 17
+INPUTS | 2 | AUTO_CONFIG_DONE_CYCLE<0>  | AS
+INPUTMC | 1 | 1 | 10
+INPUTP | 1 | 90
+EQ | 3 | 
+   AUTO_CONFIG_DONE<0>.D = AUTO_CONFIG_DONE_CYCLE<0>;
+   AUTO_CONFIG_DONE<0>.CLK = AS;
+   !AUTO_CONFIG_DONE<0>.AR = RESET;	// GSR
+GLOBALS | 1 | 4 | RESET
+
+MACROCELL | 2 | 14 | AUTO_CONFIG_DONE<1>
+ATTRIBUTES | 8528672 | 0
+OUTPUTMC | 27 | 1 | 14 | 0 | 17 | 1 | 0 | 5 | 16 | 2 | 15 | 1 | 9 | 4 | 17 | 4 | 14 | 4 | 13 | 4 | 15 | 2 | 17 | 2 | 16 | 1 | 10 | 1 | 11 | 4 | 12 | 3 | 16 | 0 | 0 | 0 | 15 | 0 | 16 | 1 | 1 | 1 | 2 | 1 | 12 | 1 | 13 | 1 | 15 | 1 | 17 | 5 | 15 | 5 | 17
+INPUTS | 2 | AUTO_CONFIG_DONE_CYCLE<1>  | AS
+INPUTMC | 1 | 2 | 15
+INPUTP | 1 | 90
+EQ | 3 | 
+   AUTO_CONFIG_DONE<1>.D = AUTO_CONFIG_DONE_CYCLE<1>;
+   AUTO_CONFIG_DONE<1>.CLK = AS;
+   !AUTO_CONFIG_DONE<1>.AR = RESET;	// GSR
+GLOBALS | 1 | 4 | RESET
+
+MACROCELL | 1 | 7 | AUTO_CONFIG_DONE<2>
+ATTRIBUTES | 8528672 | 0
+OUTPUTMC | 15 | 1 | 14 | 0 | 17 | 1 | 0 | 5 | 15 | 1 | 9 | 3 | 16 | 0 | 0 | 0 | 15 | 0 | 16 | 1 | 1 | 1 | 12 | 1 | 13 | 1 | 15 | 1 | 17 | 5 | 17
+INPUTS | 2 | AUTO_CONFIG_DONE_CYCLE<2>  | AS
+INPUTMC | 1 | 1 | 9
+INPUTP | 1 | 90
+EQ | 3 | 
+   AUTO_CONFIG_DONE<2>.D = AUTO_CONFIG_DONE_CYCLE<2>;
+   AUTO_CONFIG_DONE<2>.CLK = AS;
+   !AUTO_CONFIG_DONE<2>.AR = RESET;	// GSR
+GLOBALS | 1 | 4 | RESET
+
+MACROCELL | 1 | 10 | AUTO_CONFIG_DONE_CYCLE<0>
+ATTRIBUTES | 8520480 | 0
+OUTPUTMC | 3 | 1 | 8 | 1 | 10 | 1 | 11
+INPUTS | 17 | RESET  | AUTO_CONFIG_DONE_CYCLE<0>  | UDS  | RW  | AS  | A<5>  | A<4>  | A<1>  | A<6>  | A<3>  | AUTO_CONFIG_DONE<0>  | autoconfig  | ide/ide_CLKF  | A<2>  | AUTO_CONFIG_DONE<1>  | IDE_BASEADR<7>  | D<15>.PIN
+INPUTMC | 6 | 1 | 10 | 1 | 8 | 3 | 16 | 3 | 15 | 2 | 14 | 1 | 11
+INPUTP | 11 | 160 | 91 | 93 | 90 | 54 | 56 | 63 | 57 | 58 | 60 | 52
+EXPORTS | 1 | 1 | 11
+EQ | 7 | 
+   AUTO_CONFIG_DONE_CYCLE<0>.D = RESET & AUTO_CONFIG_DONE_CYCLE<0>
+	# RESET & !UDS & !RW & !AS & !A<5> & !A<4> & !A<1> & 
+	A<6> & A<3> & !AUTO_CONFIG_DONE<0> & autoconfig;
+   AUTO_CONFIG_DONE_CYCLE<0>.CLK = ide/ide_CLKF;
+    AUTO_CONFIG_DONE_CYCLE<0>.EXP  =  RESET & !UDS & !RW & !AS & !A<5> & !A<4> & !A<1> & 
+	A<6> & A<3> & !A<2> & AUTO_CONFIG_DONE<0> & 
+	!AUTO_CONFIG_DONE<1> & IDE_BASEADR<7> & autoconfig & !D<15>.PIN
+
+MACROCELL | 2 | 15 | AUTO_CONFIG_DONE_CYCLE<1>
+ATTRIBUTES | 8520480 | 0
+OUTPUTMC | 2 | 2 | 14 | 2 | 15
+INPUTS | 14 | RESET  | AUTO_CONFIG_DONE_CYCLE<1>  | UDS  | RW  | AS  | A<5>  | A<4>  | A<1>  | A<6>  | A<3>  | AUTO_CONFIG_DONE<0>  | AUTO_CONFIG_DONE<1>  | autoconfig  | ide/ide_CLKF
+INPUTMC | 5 | 2 | 15 | 1 | 8 | 2 | 14 | 3 | 16 | 3 | 15
+INPUTP | 9 | 160 | 91 | 93 | 90 | 54 | 56 | 63 | 57 | 58
+EQ | 5 | 
+   AUTO_CONFIG_DONE_CYCLE<1>.D = RESET & AUTO_CONFIG_DONE_CYCLE<1>
+	# RESET & !UDS & !RW & !AS & !A<5> & !A<4> & !A<1> & 
+	A<6> & A<3> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	autoconfig;
+   AUTO_CONFIG_DONE_CYCLE<1>.CLK = ide/ide_CLKF;
+
+MACROCELL | 1 | 9 | AUTO_CONFIG_DONE_CYCLE<2>
+ATTRIBUTES | 8520480 | 0
+OUTPUTMC | 2 | 1 | 7 | 1 | 9
+INPUTS | 15 | RESET  | AUTO_CONFIG_DONE_CYCLE<2>  | UDS  | RW  | AS  | A<5>  | A<4>  | A<1>  | A<6>  | A<3>  | AUTO_CONFIG_DONE<0>  | AUTO_CONFIG_DONE<1>  | AUTO_CONFIG_DONE<2>  | autoconfig  | ide/ide_CLKF
+INPUTMC | 6 | 1 | 9 | 1 | 8 | 2 | 14 | 1 | 7 | 3 | 16 | 3 | 15
+INPUTP | 9 | 160 | 91 | 93 | 90 | 54 | 56 | 63 | 57 | 58
+EQ | 5 | 
+   AUTO_CONFIG_DONE_CYCLE<2>.D = RESET & AUTO_CONFIG_DONE_CYCLE<2>
+	# RESET & !UDS & !RW & !AS & !A<5> & !A<4> & !A<1> & 
+	A<6> & A<3> & AUTO_CONFIG_DONE<0> & AUTO_CONFIG_DONE<1> & 
+	!AUTO_CONFIG_DONE<2> & autoconfig;
+   AUTO_CONFIG_DONE_CYCLE<2>.CLK = ide/ide_CLKF;
+
+MACROCELL | 4 | 17 | IDE_BASEADR<0>
+ATTRIBUTES | 4326176 | 0
+OUTPUTMC | 2 | 4 | 17 | 3 | 17
+INPUTS | 16 | RESET  | IDE_BASEADR<0>  | UDS  | RW  | AS  | A<5>  | A<4>  | A<1>  | A<6>  | A<3>  | A<2>  | AUTO_CONFIG_DONE<0>  | AUTO_CONFIG_DONE<1>  | autoconfig  | D<8>.PIN  | ide/ide_CLKF
+INPUTMC | 5 | 4 | 17 | 1 | 8 | 2 | 14 | 3 | 16 | 3 | 15
+INPUTP | 11 | 160 | 91 | 93 | 90 | 54 | 56 | 63 | 57 | 58 | 60 | 21
+EQ | 8 | 
+   IDE_BASEADR<0>.T = !RESET & !IDE_BASEADR<0>
+	# !UDS & !RW & !AS & !A<5> & !A<4> & !A<1> & A<6> & 
+	A<3> & !A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	!IDE_BASEADR<0> & autoconfig & D<8>.PIN
+	# RESET & !UDS & !RW & !AS & !A<5> & !A<4> & !A<1> & 
+	A<6> & A<3> & !A<2> & AUTO_CONFIG_DONE<0> & 
+	!AUTO_CONFIG_DONE<1> & IDE_BASEADR<0> & autoconfig & !D<8>.PIN;
+   IDE_BASEADR<0>.CLK = ide/ide_CLKF;
+
+MACROCELL | 4 | 14 | IDE_BASEADR<4>
+ATTRIBUTES | 4326176 | 0
+OUTPUTMC | 2 | 4 | 14 | 3 | 2
+INPUTS | 16 | RESET  | IDE_BASEADR<4>  | UDS  | RW  | AS  | A<5>  | A<4>  | A<1>  | A<6>  | A<3>  | A<2>  | AUTO_CONFIG_DONE<0>  | AUTO_CONFIG_DONE<1>  | autoconfig  | D<12>.PIN  | ide/ide_CLKF
+INPUTMC | 5 | 4 | 14 | 1 | 8 | 2 | 14 | 3 | 16 | 3 | 15
+INPUTP | 11 | 160 | 91 | 93 | 90 | 54 | 56 | 63 | 57 | 58 | 60 | 48
+EQ | 8 | 
+   IDE_BASEADR<4>.T = !RESET & !IDE_BASEADR<4>
+	# !UDS & !RW & !AS & !A<5> & !A<4> & !A<1> & A<6> & 
+	A<3> & !A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	!IDE_BASEADR<4> & autoconfig & D<12>.PIN
+	# RESET & !UDS & !RW & !AS & !A<5> & !A<4> & !A<1> & 
+	A<6> & A<3> & !A<2> & AUTO_CONFIG_DONE<0> & 
+	!AUTO_CONFIG_DONE<1> & IDE_BASEADR<4> & autoconfig & !D<12>.PIN;
+   IDE_BASEADR<4>.CLK = ide/ide_CLKF;
+
+MACROCELL | 4 | 13 | IDE_BASEADR<5>
+ATTRIBUTES | 4326176 | 0
+OUTPUTMC | 3 | 4 | 13 | 3 | 2 | 3 | 16
+INPUTS | 16 | RESET  | IDE_BASEADR<5>  | UDS  | RW  | AS  | A<5>  | A<4>  | A<1>  | A<6>  | A<3>  | A<2>  | AUTO_CONFIG_DONE<0>  | AUTO_CONFIG_DONE<1>  | autoconfig  | D<13>.PIN  | ide/ide_CLKF
+INPUTMC | 5 | 4 | 13 | 1 | 8 | 2 | 14 | 3 | 16 | 3 | 15
+INPUTP | 11 | 160 | 91 | 93 | 90 | 54 | 56 | 63 | 57 | 58 | 60 | 49
+EQ | 8 | 
+   IDE_BASEADR<5>.T = !RESET & !IDE_BASEADR<5>
+	# !UDS & !RW & !AS & !A<5> & !A<4> & !A<1> & A<6> & 
+	A<3> & !A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	!IDE_BASEADR<5> & autoconfig & D<13>.PIN
+	# RESET & !UDS & !RW & !AS & !A<5> & !A<4> & !A<1> & 
+	A<6> & A<3> & !A<2> & AUTO_CONFIG_DONE<0> & 
+	!AUTO_CONFIG_DONE<1> & IDE_BASEADR<5> & autoconfig & !D<13>.PIN;
+   IDE_BASEADR<5>.CLK = ide/ide_CLKF;
+
+MACROCELL | 0 | 9 | IDE_ENABLE
+ATTRIBUTES | 8520480 | 0
+OUTPUTMC | 3 | 0 | 9 | 0 | 13 | 0 | 14
+INPUTS | 6 | RESET  | IDE_ENABLE  | RW  | AS  | ide  | ide/ide_CLKF
+INPUTMC | 3 | 0 | 9 | 3 | 0 | 3 | 15
+INPUTP | 3 | 160 | 93 | 90
+EQ | 3 | 
+   !IDE_ENABLE.D = RESET & !IDE_ENABLE
+	# RESET & !RW & !AS & ide;
+   IDE_ENABLE.CLK = ide/ide_CLKF;
+
+MACROCELL | 4 | 15 | IDE_BASEADR<1>
+ATTRIBUTES | 4326176 | 0
+OUTPUTMC | 3 | 4 | 15 | 3 | 1 | 3 | 17
+INPUTS | 16 | RESET  | IDE_BASEADR<1>  | UDS  | RW  | AS  | A<5>  | A<4>  | A<1>  | A<6>  | A<3>  | A<2>  | AUTO_CONFIG_DONE<0>  | AUTO_CONFIG_DONE<1>  | autoconfig  | D<9>.PIN  | ide/ide_CLKF
+INPUTMC | 5 | 4 | 15 | 1 | 8 | 2 | 14 | 3 | 16 | 3 | 15
+INPUTP | 11 | 160 | 91 | 93 | 90 | 54 | 56 | 63 | 57 | 58 | 60 | 44
+EQ | 8 | 
+   IDE_BASEADR<1>.T = !RESET & !IDE_BASEADR<1>
+	# !UDS & !RW & !AS & !A<5> & !A<4> & !A<1> & A<6> & 
+	A<3> & !A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	!IDE_BASEADR<1> & autoconfig & D<9>.PIN
+	# RESET & !UDS & !RW & !AS & !A<5> & !A<4> & !A<1> & 
+	A<6> & A<3> & !A<2> & AUTO_CONFIG_DONE<0> & 
+	!AUTO_CONFIG_DONE<1> & IDE_BASEADR<1> & autoconfig & !D<9>.PIN;
+   IDE_BASEADR<1>.CLK = ide/ide_CLKF;
+
+MACROCELL | 2 | 17 | IDE_BASEADR<2>
+ATTRIBUTES | 4326176 | 0
+OUTPUTMC | 2 | 2 | 17 | 3 | 17
+INPUTS | 16 | RESET  | IDE_BASEADR<2>  | UDS  | RW  | AS  | A<5>  | A<4>  | A<1>  | A<6>  | A<3>  | A<2>  | AUTO_CONFIG_DONE<0>  | AUTO_CONFIG_DONE<1>  | autoconfig  | D<10>.PIN  | ide/ide_CLKF
+INPUTMC | 5 | 2 | 17 | 1 | 8 | 2 | 14 | 3 | 16 | 3 | 15
+INPUTP | 11 | 160 | 91 | 93 | 90 | 54 | 56 | 63 | 57 | 58 | 60 | 45
+EQ | 8 | 
+   IDE_BASEADR<2>.T = !RESET & !IDE_BASEADR<2>
+	# !UDS & !RW & !AS & !A<5> & !A<4> & !A<1> & A<6> & 
+	A<3> & !A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	!IDE_BASEADR<2> & autoconfig & D<10>.PIN
+	# RESET & !UDS & !RW & !AS & !A<5> & !A<4> & !A<1> & 
+	A<6> & A<3> & !A<2> & AUTO_CONFIG_DONE<0> & 
+	!AUTO_CONFIG_DONE<1> & IDE_BASEADR<2> & autoconfig & !D<10>.PIN;
+   IDE_BASEADR<2>.CLK = ide/ide_CLKF;
+
+MACROCELL | 2 | 16 | IDE_BASEADR<3>
+ATTRIBUTES | 4326176 | 0
+OUTPUTMC | 2 | 2 | 16 | 3 | 0
+INPUTS | 16 | RESET  | IDE_BASEADR<3>  | UDS  | RW  | AS  | A<5>  | A<4>  | A<1>  | A<6>  | A<3>  | A<2>  | AUTO_CONFIG_DONE<0>  | AUTO_CONFIG_DONE<1>  | autoconfig  | D<11>.PIN  | ide/ide_CLKF
+INPUTMC | 5 | 2 | 16 | 1 | 8 | 2 | 14 | 3 | 16 | 3 | 15
+INPUTP | 11 | 160 | 91 | 93 | 90 | 54 | 56 | 63 | 57 | 58 | 60 | 47
+EQ | 8 | 
+   IDE_BASEADR<3>.T = !RESET & !IDE_BASEADR<3>
+	# !UDS & !RW & !AS & !A<5> & !A<4> & !A<1> & A<6> & 
+	A<3> & !A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	!IDE_BASEADR<3> & autoconfig & D<11>.PIN
+	# RESET & !UDS & !RW & !AS & !A<5> & !A<4> & !A<1> & 
+	A<6> & A<3> & !A<2> & AUTO_CONFIG_DONE<0> & 
+	!AUTO_CONFIG_DONE<1> & IDE_BASEADR<3> & autoconfig & !D<11>.PIN;
+   IDE_BASEADR<3>.CLK = ide/ide_CLKF;
+
+MACROCELL | 1 | 12 | IDE_BASEADR<6>
+ATTRIBUTES | 4326176 | 0
+OUTPUTMC | 4 | 1 | 12 | 1 | 11 | 3 | 1 | 1 | 13
+INPUTS | 16 | RESET  | IDE_BASEADR<6>  | RW  | AS  | A<5>  | A<4>  | A<1>  | A<6>  | A<3>  | AUTO_CONFIG_DONE<0>  | AUTO_CONFIG_DONE<1>  | autoconfig  | AUTO_CONFIG_DONE<2>  | A<2>  | IDE_BASEADR<7>.EXP  | ide/ide_CLKF
+INPUTMC | 7 | 1 | 12 | 1 | 8 | 2 | 14 | 3 | 16 | 1 | 7 | 1 | 11 | 3 | 15
+INPUTP | 9 | 160 | 93 | 90 | 54 | 56 | 63 | 57 | 58 | 60
+EXPORTS | 1 | 1 | 13
+IMPORTS | 1 | 1 | 11
+EQ | 18 | 
+   IDE_BASEADR<6>.T = !RESET & !IDE_BASEADR<6>
+;Imported pterms FB2_12
+	# !UDS & !RW & !AS & !A<5> & !A<4> & !A<1> & A<6> & 
+	A<3> & !A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	!IDE_BASEADR<6> & autoconfig & D<14>.PIN
+	# RESET & !UDS & !RW & !AS & !A<5> & !A<4> & !A<1> & 
+	A<6> & A<3> & !A<2> & AUTO_CONFIG_DONE<0> & 
+	!AUTO_CONFIG_DONE<1> & IDE_BASEADR<6> & autoconfig & !D<14>.PIN;
+   IDE_BASEADR<6>.CLK = ide/ide_CLKF;
+    IDE_BASEADR<6>.EXP  =  RESET & RW & !AS & !A<5> & A<4> & !A<1> & !A<6> & 
+	A<3> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	autoconfig
+	# RESET & RW & !AS & !A<5> & !A<4> & !A<1> & !A<6> & 
+	!A<3> & AUTO_CONFIG_DONE<1> & !AUTO_CONFIG_DONE<2> & 
+	autoconfig
+	# RESET & RW & !AS & A<5> & !A<4> & !A<1> & !A<6> & 
+	!A<3> & A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	autoconfig
+
+MACROCELL | 1 | 11 | IDE_BASEADR<7>
+ATTRIBUTES | 4326176 | 0
+OUTPUTMC | 4 | 1 | 11 | 1 | 10 | 3 | 1 | 1 | 12
+INPUTS | 19 | RESET  | IDE_BASEADR<7>  | UDS  | RW  | AS  | A<5>  | A<4>  | A<1>  | A<6>  | A<3>  | A<2>  | AUTO_CONFIG_DONE<0>  | AUTO_CONFIG_DONE<1>  | autoconfig  | D<15>.PIN  | ide/ide_CLKF  | IDE_BASEADR<6>  | D<14>.PIN  | AUTO_CONFIG_DONE_CYCLE<0>.EXP
+INPUTMC | 7 | 1 | 11 | 1 | 8 | 2 | 14 | 3 | 16 | 3 | 15 | 1 | 12 | 1 | 10
+INPUTP | 12 | 160 | 91 | 93 | 90 | 54 | 56 | 63 | 57 | 58 | 60 | 52 | 50
+EXPORTS | 1 | 1 | 12
+IMPORTS | 1 | 1 | 10
+EQ | 15 | 
+   IDE_BASEADR<7>.T = !RESET & !IDE_BASEADR<7>
+	# !UDS & !RW & !AS & !A<5> & !A<4> & !A<1> & A<6> & 
+	A<3> & !A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	!IDE_BASEADR<7> & autoconfig & D<15>.PIN
+;Imported pterms FB2_11
+	# RESET & !UDS & !RW & !AS & !A<5> & !A<4> & !A<1> & 
+	A<6> & A<3> & !A<2> & AUTO_CONFIG_DONE<0> & 
+	!AUTO_CONFIG_DONE<1> & IDE_BASEADR<7> & autoconfig & !D<15>.PIN;
+   IDE_BASEADR<7>.CLK = ide/ide_CLKF;
+    IDE_BASEADR<7>.EXP  =  !UDS & !RW & !AS & !A<5> & !A<4> & !A<1> & A<6> & 
+	A<3> & !A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	!IDE_BASEADR<6> & autoconfig & D<14>.PIN
+	# RESET & !UDS & !RW & !AS & !A<5> & !A<4> & !A<1> & 
+	A<6> & A<3> & !A<2> & AUTO_CONFIG_DONE<0> & 
+	!AUTO_CONFIG_DONE<1> & IDE_BASEADR<6> & autoconfig & !D<14>.PIN
+
+MACROCELL | 4 | 12 | SHUT_UP<1>
+ATTRIBUTES | 8520480 | 0
+OUTPUTMC | 2 | 4 | 12 | 3 | 0
+INPUTS | 15 | RESET  | SHUT_UP<1>  | UDS  | RW  | AS  | A<5>  | A<4>  | A<1>  | A<6>  | A<3>  | A<2>  | AUTO_CONFIG_DONE<0>  | AUTO_CONFIG_DONE<1>  | autoconfig  | ide/ide_CLKF
+INPUTMC | 5 | 4 | 12 | 1 | 8 | 2 | 14 | 3 | 16 | 3 | 15
+INPUTP | 10 | 160 | 91 | 93 | 90 | 54 | 56 | 63 | 57 | 58 | 60
+EQ | 5 | 
+   !SHUT_UP<1>.D = RESET & !SHUT_UP<1>
+	# RESET & !UDS & !RW & !AS & !A<5> & !A<4> & !A<1> & 
+	A<6> & A<3> & !A<2> & AUTO_CONFIG_DONE<0> & 
+	!AUTO_CONFIG_DONE<1> & autoconfig;
+   SHUT_UP<1>.CLK = ide/ide_CLKF;
+
+MACROCELL | 3 | 16 | autoconfig
+ATTRIBUTES | 8520480 | 0
+OUTPUTMC | 28 | 1 | 14 | 0 | 17 | 1 | 0 | 5 | 16 | 1 | 10 | 2 | 15 | 1 | 9 | 4 | 17 | 4 | 14 | 4 | 13 | 4 | 15 | 2 | 17 | 2 | 16 | 1 | 2 | 1 | 11 | 4 | 12 | 0 | 6 | 0 | 0 | 0 | 15 | 0 | 16 | 1 | 1 | 1 | 12 | 1 | 13 | 1 | 15 | 1 | 17 | 5 | 15 | 5 | 17 | 3 | 17
+INPUTS | 14 | A<23>  | A<22>  | A<21>  | A<19>  | AUTO_CONFIG_DONE<0>  | BERR  | A<17>  | A<16>  | A<20>  | A<18>  | AUTO_CONFIG_DONE<1>  | AUTO_CONFIG_DONE<2>  | ide/ide_CLKF  | IDE_BASEADR<5>
+INPUTMC | 5 | 1 | 8 | 2 | 14 | 1 | 7 | 3 | 15 | 4 | 13
+INPUTP | 9 | 96 | 97 | 98 | 103 | 109 | 106 | 108 | 102 | 105
+EXPORTS | 1 | 3 | 17
+EQ | 8 | 
+   autoconfig.D = A<23> & A<22> & A<21> & A<19> & 
+	!AUTO_CONFIG_DONE<0> & BERR & !A<17> & !A<16> & !A<20> & !A<18>
+	# A<23> & A<22> & A<21> & A<19> & 
+	!AUTO_CONFIG_DONE<1> & BERR & !A<17> & !A<16> & !A<20> & !A<18>
+	# A<23> & A<22> & A<21> & A<19> & 
+	!AUTO_CONFIG_DONE<2> & BERR & !A<17> & !A<16> & !A<20> & !A<18>;
+   autoconfig.CLK = ide/ide_CLKF;
+    autoconfig.EXP  =  A<21> & !IDE_BASEADR<5>
+
+MACROCELL | 3 | 0 | ide
+ATTRIBUTES | 8520480 | 0
+OUTPUTMC | 3 | 0 | 9 | 0 | 13 | 0 | 14
+INPUTS | 7 | BERR  | SHUT_UP<1>  | A<19>  | IDE_BASEADR<3>  | EXP19_.EXP  | EXP21_.EXP  | ide/ide_CLKF
+INPUTMC | 5 | 4 | 12 | 2 | 16 | 3 | 1 | 3 | 17 | 3 | 15
+INPUTP | 2 | 109 | 103
+IMPORTS | 2 | 3 | 1 | 3 | 17
+EQ | 23 | 
+   !ide.D = SHUT_UP<1>
+	# !BERR
+	# A<19> & !IDE_BASEADR<3>
+	# !A<19> & IDE_BASEADR<3>
+;Imported pterms FB4_2
+	# A<23> & !IDE_BASEADR<7>
+	# !A<23> & IDE_BASEADR<7>
+	# A<22> & !IDE_BASEADR<6>
+	# !A<22> & IDE_BASEADR<6>
+	# IDE_BASEADR<1> & !A<17>
+;Imported pterms FB4_3
+	# !A<21> & IDE_BASEADR<5>
+	# IDE_BASEADR<4> & !A<20>
+	# !IDE_BASEADR<4> & A<20>
+;Imported pterms FB4_18
+	# IDE_BASEADR<0> & !A<16>
+	# !IDE_BASEADR<0> & A<16>
+	# !IDE_BASEADR<1> & A<17>
+	# IDE_BASEADR<2> & !A<18>
+	# !IDE_BASEADR<2> & A<18>
+;Imported pterms FB4_17
+	# A<21> & !IDE_BASEADR<5>;
+   ide.CLK = ide/ide_CLKF;
+
+MACROCELL | 0 | 6 | AUTOCONFIG_IN_PROGRESS
+ATTRIBUTES | 8520480 | 0
+OUTPUTMC | 16 | 2 | 11 | 2 | 3 | 2 | 6 | 2 | 9 | 2 | 8 | 0 | 4 | 0 | 1 | 1 | 4 | 1 | 15 | 0 | 5 | 0 | 7 | 1 | 16 | 2 | 0 | 0 | 2 | 2 | 10 | 2 | 2
+INPUTS | 3 | AS  | autoconfig  | ide/ide_CLKF
+INPUTMC | 2 | 3 | 16 | 3 | 15
+INPUTP | 1 | 90
+EQ | 2 | 
+   AUTOCONFIG_IN_PROGRESS.D = !AS & autoconfig;
+   AUTOCONFIG_IN_PROGRESS.CLK = ide/ide_CLKF;
+
+MACROCELL | 0 | 13 | IDE_R_S
+ATTRIBUTES | 8651558 | 0
+INPUTS | 6 | RESET  | RW  | AS  | IDE_ENABLE  | ide  | ide/ide_CLKF
+INPUTMC | 3 | 0 | 9 | 3 | 0 | 3 | 15
+INPUTP | 3 | 160 | 93 | 90
+EQ | 2 | 
+   !IDE_R.D = RESET & RW & !AS & !IDE_ENABLE & ide;
+   IDE_R.CLK = ide/ide_CLKF;
+
+MACROCELL | 0 | 14 | IDE_W_S
+ATTRIBUTES | 8651558 | 0
+OUTPUTMC | 1 | 0 | 15
+INPUTS | 6 | RESET  | RW  | AS  | ide  | ide/ide_CLKF  | IDE_ENABLE
+INPUTMC | 3 | 3 | 0 | 3 | 15 | 0 | 9
+INPUTP | 3 | 160 | 93 | 90
+EXPORTS | 1 | 0 | 15
+EQ | 3 | 
+   !IDE_W.D = RESET & !RW & !AS & ide;
+   IDE_W.CLK = ide/ide_CLKF;
+    IDE_W_S.EXP  =  RESET & RW & !AS & IDE_ENABLE & ide
+
+MACROCELL | 0 | 15 | ROM_OE_S
+ATTRIBUTES | 8651558 | 0
+OUTPUTMC | 1 | 0 | 16
+INPUTS | 15 | RESET  | RW  | AS  | A<5>  | A<4>  | ide/ide_CLKF  | A<1>  | A<6>  | A<3>  | A<2>  | AUTO_CONFIG_DONE<2>  | autoconfig  | AUTO_CONFIG_DONE<0>  | AUTO_CONFIG_DONE<1>  | IDE_W_S.EXP
+INPUTMC | 6 | 3 | 15 | 1 | 7 | 3 | 16 | 1 | 8 | 2 | 14 | 0 | 14
+INPUTP | 9 | 160 | 93 | 90 | 54 | 56 | 63 | 57 | 58 | 60
+EXPORTS | 1 | 0 | 16
+IMPORTS | 1 | 0 | 14
+EQ | 14 | 
+   !ROM_OE.D = ;Imported pterms FB1_15
+	  RESET & RW & !AS & IDE_ENABLE & ide;
+   ROM_OE.CLK = ide/ide_CLKF;
+    ROM_OE_S.EXP  =  RESET & RW & !AS & A<5> & !A<4> & A<1> & !A<6> & 
+	!A<3> & A<2> & !AUTO_CONFIG_DONE<2> & autoconfig
+	# RESET & RW & !AS & A<5> & !A<4> & !A<6> & !A<3> & 
+	A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	autoconfig
+	# RESET & RW & !AS & !A<5> & A<4> & A<1> & !A<6> & 
+	A<3> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	autoconfig
+	# RESET & RW & !AS & !A<5> & !A<1> & !A<6> & !A<3> & 
+	A<2> & AUTO_CONFIG_DONE<1> & !AUTO_CONFIG_DONE<2> & 
+	autoconfig
+
+MACROCELL | 2 | 8 | N1
+ATTRIBUTES | 265986 | 0
+INPUTS | 2 | RW  | AUTOCONFIG_IN_PROGRESS
+INPUTMC | 1 | 0 | 6
+INPUTP | 1 | 93
+EQ | 2 | 
+   D<9> = Vcc;
+   D<9>.OE = RW & AUTOCONFIG_IN_PROGRESS;
+
+MACROCELL | 0 | 4 | N1$BUF0
+ATTRIBUTES | 265986 | 0
+INPUTS | 2 | RW  | AUTOCONFIG_IN_PROGRESS
+INPUTMC | 1 | 0 | 6
+INPUTP | 1 | 93
+EQ | 2 | 
+   D<8> = Vcc;
+   D<8>.OE = RW & AUTOCONFIG_IN_PROGRESS;
+
+MACROCELL | 0 | 1 | N1$BUF1
+ATTRIBUTES | 265986 | 0
+OUTPUTMC | 1 | 0 | 0
+INPUTS | 3 | RW  | AUTOCONFIG_IN_PROGRESS  | A<13>
+INPUTMC | 1 | 0 | 6
+INPUTP | 2 | 93 | 72
+EXPORTS | 1 | 0 | 0
+EQ | 3 | 
+   D<7> = Vcc;
+   D<7>.OE = RW & AUTOCONFIG_IN_PROGRESS;
+    N1$BUF1.EXP  =  !A<13>
+
+MACROCELL | 1 | 4 | N1$BUF10
+ATTRIBUTES | 265986 | 0
+INPUTS | 2 | RW  | AUTOCONFIG_IN_PROGRESS
+INPUTMC | 1 | 0 | 6
+INPUTP | 1 | 93
+EQ | 2 | 
+   D<0> = Vcc;
+   D<0>.OE = RW & AUTOCONFIG_IN_PROGRESS;
+
+MACROCELL | 1 | 15 | N1$BUF2
+ATTRIBUTES | 265986 | 0
+OUTPUTMC | 1 | 1 | 14
+INPUTS | 14 | RW  | AUTOCONFIG_IN_PROGRESS  | RESET  | AS  | A<5>  | A<4>  | A<3>  | A<2>  | AUTO_CONFIG_DONE<2>  | autoconfig  | A<1>  | A<6>  | AUTO_CONFIG_DONE<1>  | AUTO_CONFIG_DONE<0>
+INPUTMC | 5 | 0 | 6 | 1 | 7 | 3 | 16 | 2 | 14 | 1 | 8
+INPUTP | 9 | 93 | 160 | 90 | 54 | 56 | 58 | 60 | 63 | 57
+EXPORTS | 1 | 1 | 14
+EQ | 11 | 
+   D<6> = Vcc;
+   D<6>.OE = RW & AUTOCONFIG_IN_PROGRESS;
+    N1$BUF2.EXP  =  RESET & RW & !AS & !A<5> & !A<4> & !A<3> & !A<2> & 
+	!AUTO_CONFIG_DONE<2> & autoconfig
+	# RESET & RW & !AS & !A<5> & !A<4> & A<1> & !A<6> & 
+	!A<3> & !AUTO_CONFIG_DONE<1> & autoconfig
+	# RESET & RW & !AS & !A<5> & A<1> & !A<6> & !A<3> & 
+	!A<2> & !AUTO_CONFIG_DONE<0> & autoconfig
+	# RESET & RW & !AS & !A<5> & A<4> & !A<1> & !A<6> & 
+	A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	autoconfig
+
+MACROCELL | 0 | 5 | N1$BUF3
+ATTRIBUTES | 265986 | 0
+INPUTS | 2 | RW  | AUTOCONFIG_IN_PROGRESS
+INPUTMC | 1 | 0 | 6
+INPUTP | 1 | 93
+EQ | 2 | 
+   D<5> = Vcc;
+   D<5>.OE = RW & AUTOCONFIG_IN_PROGRESS;
+
+MACROCELL | 0 | 7 | N1$BUF4
+ATTRIBUTES | 265986 | 0
+INPUTS | 2 | RW  | AUTOCONFIG_IN_PROGRESS
+INPUTMC | 1 | 0 | 6
+INPUTP | 1 | 93
+EQ | 2 | 
+   D<4> = Vcc;
+   D<4>.OE = RW & AUTOCONFIG_IN_PROGRESS;
+
+MACROCELL | 1 | 16 | N1$BUF5
+ATTRIBUTES | 265986 | 0
+INPUTS | 2 | RW  | AUTOCONFIG_IN_PROGRESS
+INPUTMC | 1 | 0 | 6
+INPUTP | 1 | 93
+EQ | 2 | 
+   D<3> = Vcc;
+   D<3>.OE = RW & AUTOCONFIG_IN_PROGRESS;
+
+MACROCELL | 2 | 0 | N1$BUF6
+ATTRIBUTES | 265986 | 0
+INPUTS | 2 | RW  | AUTOCONFIG_IN_PROGRESS
+INPUTMC | 1 | 0 | 6
+INPUTP | 1 | 93
+EQ | 2 | 
+   D<2> = Vcc;
+   D<2>.OE = RW & AUTOCONFIG_IN_PROGRESS;
+
+MACROCELL | 0 | 2 | N1$BUF7
+ATTRIBUTES | 265986 | 0
+INPUTS | 2 | RW  | AUTOCONFIG_IN_PROGRESS
+INPUTMC | 1 | 0 | 6
+INPUTP | 1 | 93
+EQ | 2 | 
+   D<1> = Vcc;
+   D<1>.OE = RW & AUTOCONFIG_IN_PROGRESS;
+
+MACROCELL | 2 | 10 | N1$BUF8
+ATTRIBUTES | 265986 | 0
+INPUTS | 2 | RW  | AUTOCONFIG_IN_PROGRESS
+INPUTMC | 1 | 0 | 6
+INPUTP | 1 | 93
+EQ | 2 | 
+   D<11> = Vcc;
+   D<11>.OE = RW & AUTOCONFIG_IN_PROGRESS;
+
+MACROCELL | 2 | 2 | N1$BUF9
+ATTRIBUTES | 265986 | 0
+INPUTS | 2 | RW  | AUTOCONFIG_IN_PROGRESS
+INPUTMC | 1 | 0 | 6
+INPUTP | 1 | 93
+EQ | 2 | 
+   D<10> = Vcc;
+   D<10>.OE = RW & AUTOCONFIG_IN_PROGRESS;
+
+MACROCELL | 0 | 10 | IDE_A_0_OBUF$BUF0
+ATTRIBUTES | 264962 | 0
+INPUTS | 1 | A<9>
+INPUTP | 1 | 64
+EQ | 1 | 
+   IDE_A<0> = A<9>;
+
+MACROCELL | 0 | 11 | IDE_A_1_OBUF$BUF0
+ATTRIBUTES | 264962 | 0
+INPUTS | 1 | A<10>
+INPUTP | 1 | 66
+EQ | 1 | 
+   IDE_A<1> = A<10>;
+
+MACROCELL | 0 | 3 | IDE_A_2_OBUF$BUF0
+ATTRIBUTES | 264962 | 0
+INPUTS | 1 | A<11>
+INPUTP | 1 | 68
+EQ | 1 | 
+   IDE_A<2> = A<11>;
+
+MACROCELL | 0 | 8 | IDE_CS_0_OBUF
+ATTRIBUTES | 264962 | 0
+INPUTS | 1 | A<12>
+INPUTP | 1 | 69
+EQ | 1 | 
+   IDE_CS<0> = !A<12>;
+
+MACROCELL | 0 | 0 | IDE_CS_1_OBUF
+ATTRIBUTES | 264962 | 0
+OUTPUTMC | 1 | 0 | 17
+INPUTS | 14 | RESET  | RW  | AS  | A<5>  | A<4>  | A<6>  | A<3>  | A<2>  | AUTO_CONFIG_DONE<0>  | autoconfig  | AUTO_CONFIG_DONE<1>  | AUTO_CONFIG_DONE<2>  | A<1>  | N1$BUF1.EXP
+INPUTMC | 5 | 1 | 8 | 3 | 16 | 2 | 14 | 1 | 7 | 0 | 1
+INPUTP | 9 | 160 | 93 | 90 | 54 | 56 | 57 | 58 | 60 | 63
+EXPORTS | 1 | 0 | 17
+IMPORTS | 1 | 0 | 1
+EQ | 13 | 
+   IDE_CS<1> = ;Imported pterms FB1_2
+	  !A<13>;
+    IDE_CS_1_OBUF.EXP  =  RESET & RW & !AS & !A<5> & !A<4> & A<6> & !A<3> & 
+	!A<2> & !AUTO_CONFIG_DONE<0> & autoconfig
+	# RESET & RW & !AS & !A<5> & !A<4> & A<6> & !A<3> & 
+	!A<2> & !AUTO_CONFIG_DONE<1> & autoconfig
+	# RESET & RW & !AS & !A<5> & !A<4> & A<6> & !A<3> & 
+	!A<2> & !AUTO_CONFIG_DONE<2> & autoconfig
+	# RESET & RW & !AS & !A<5> & !A<1> & !A<6> & !A<3> & 
+	A<2> & !AUTO_CONFIG_DONE<0> & autoconfig
+	# RESET & RW & !AS & A<5> & !A<4> & A<1> & !A<6> & 
+	A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	autoconfig
+
+MACROCELL | 6 | 11 | ROM_B_0_OBUF$BUF1
+ATTRIBUTES | 265986 | 0
+INPUTS | 0
+EQ | 2 | 
+   DTACK = Gnd;
+   DTACK.OE = Gnd;
+
+MACROCELL | 4 | 16 | ROM_B_0_OBUF
+ATTRIBUTES | 264962 | 0
+INPUTS | 0
+EQ | 1 | 
+   ROM_B<1> = Gnd;
+
+MACROCELL | 4 | 9 | ROM_B_0_OBUF$BUF0
+ATTRIBUTES | 264962 | 0
+INPUTS | 0
+EQ | 1 | 
+   ROM_B<0> = Gnd;
+
+MACROCELL | 3 | 15 | ide/ide_CLKF
+ATTRIBUTES | 133888 | 0
+OUTPUTMC | 23 | 1 | 14 | 0 | 17 | 1 | 0 | 5 | 16 | 1 | 10 | 2 | 15 | 1 | 9 | 4 | 17 | 4 | 14 | 4 | 13 | 0 | 9 | 4 | 15 | 2 | 17 | 2 | 16 | 1 | 12 | 1 | 11 | 4 | 12 | 3 | 16 | 3 | 0 | 0 | 6 | 0 | 13 | 0 | 14 | 0 | 15
+INPUTS | 2 | C3  | C1
+INPUTP | 2 | 114 | 115
+EQ | 2 | 
+   !ide/ide_CLKF = C3
+	$ C1;
+
+MACROCELL | 2 | 3 | _10_
+ATTRIBUTES | 397058 | 0
+OUTPUTMC | 1 | 0 | 16
+INPUTS | 3 | RW  | AUTOCONFIG_IN_PROGRESS  | D<12>_BUFR
+INPUTMC | 2 | 0 | 6 | 0 | 17
+INPUTP | 1 | 93
+EQ | 2 | 
+   D<12> = D<12>_BUFR;
+   D<12>.OE = RW & AUTOCONFIG_IN_PROGRESS;
+
+MACROCELL | 2 | 6 | _11_
+ATTRIBUTES | 397058 | 0
+OUTPUTMC | 1 | 1 | 17
+INPUTS | 3 | RW  | AUTOCONFIG_IN_PROGRESS  | D<14>_BUFR
+INPUTMC | 2 | 0 | 6 | 1 | 0
+INPUTP | 1 | 93
+EQ | 2 | 
+   D<14> = D<14>_BUFR;
+   D<14>.OE = RW & AUTOCONFIG_IN_PROGRESS;
+
+MACROCELL | 2 | 11 | _12_
+ATTRIBUTES | 397058 | 0
+OUTPUTMC | 2 | 1 | 14 | 1 | 13
+INPUTS | 3 | RW  | AUTOCONFIG_IN_PROGRESS  | D<13>_BUFR
+INPUTMC | 2 | 0 | 6 | 1 | 14
+INPUTP | 1 | 93
+EQ | 2 | 
+   D<13> = D<13>_BUFR;
+   D<13>.OE = RW & AUTOCONFIG_IN_PROGRESS;
+
+MACROCELL | 2 | 9 | _13_
+ATTRIBUTES | 397058 | 0
+OUTPUTMC | 2 | 5 | 16 | 5 | 15
+INPUTS | 3 | RW  | AUTOCONFIG_IN_PROGRESS  | D<15>_BUFR
+INPUTMC | 2 | 0 | 6 | 5 | 16
+INPUTP | 1 | 93
+EQ | 2 | 
+   D<15> = D<15>_BUFR;
+   D<15>.OE = RW & AUTOCONFIG_IN_PROGRESS;
+
+MACROCELL | 0 | 16 | EXP14_
+ATTRIBUTES | 2048 | 0
+OUTPUTMC | 1 | 0 | 17
+INPUTS | 14 | RESET  | D<12>  | RW  | AS  | autoconfig  | AUTO_CONFIG_DONE<0>  | AUTO_CONFIG_DONE<1>  | AUTO_CONFIG_DONE<2>  | A<5>  | A<4>  | A<1>  | A<3>  | A<2>  | ROM_OE_S.EXP
+INPUTMC | 6 | 2 | 3 | 3 | 16 | 1 | 8 | 2 | 14 | 1 | 7 | 0 | 15
+INPUTP | 8 | 160 | 93 | 90 | 54 | 56 | 63 | 58 | 60
+EXPORTS | 1 | 0 | 17
+IMPORTS | 1 | 0 | 15
+EQ | 19 | 
+       EXP14_.EXP  =  RESET & !D<12> & !RW
+	# RESET & !D<12> & AS
+	# RESET & !D<12> & !autoconfig
+	# RESET & !D<12> & AUTO_CONFIG_DONE<0> & 
+	AUTO_CONFIG_DONE<1> & AUTO_CONFIG_DONE<2>
+	# RESET & RW & !AS & !A<5> & !A<4> & !A<1> & !A<3> & 
+	!A<2> & !AUTO_CONFIG_DONE<0> & autoconfig
+;Imported pterms FB1_16
+	# RESET & RW & !AS & A<5> & !A<4> & A<1> & !A<6> & 
+	!A<3> & A<2> & !AUTO_CONFIG_DONE<2> & autoconfig
+	# RESET & RW & !AS & A<5> & !A<4> & !A<6> & !A<3> & 
+	A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	autoconfig
+	# RESET & RW & !AS & !A<5> & A<4> & A<1> & !A<6> & 
+	A<3> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	autoconfig
+	# RESET & RW & !AS & !A<5> & !A<1> & !A<6> & !A<3> & 
+	A<2> & AUTO_CONFIG_DONE<1> & !AUTO_CONFIG_DONE<2> & 
+	autoconfig
+
+MACROCELL | 1 | 1 | EXP15_
+ATTRIBUTES | 2048 | 0
+OUTPUTMC | 1 | 1 | 0
+INPUTS | 14 | RESET  | RW  | AS  | A<5>  | A<4>  | A<1>  | A<3>  | A<2>  | AUTO_CONFIG_DONE<0>  | autoconfig  | A<6>  | AUTO_CONFIG_DONE<1>  | AUTO_CONFIG_DONE<2>  | EXP16_.EXP
+INPUTMC | 5 | 1 | 8 | 3 | 16 | 2 | 14 | 1 | 7 | 1 | 2
+INPUTP | 9 | 160 | 93 | 90 | 54 | 56 | 63 | 58 | 60 | 57
+EXPORTS | 1 | 1 | 0
+IMPORTS | 1 | 1 | 2
+EQ | 19 | 
+       EXP15_.EXP  =  RESET & RW & !AS & !A<5> & !A<4> & A<1> & !A<3> & 
+	!A<2> & !AUTO_CONFIG_DONE<0> & autoconfig
+	# RESET & RW & !AS & !A<5> & !A<4> & A<6> & !A<3> & 
+	!A<2> & !AUTO_CONFIG_DONE<0> & autoconfig
+	# RESET & RW & !AS & !A<5> & !A<4> & A<6> & !A<3> & 
+	!A<2> & !AUTO_CONFIG_DONE<1> & autoconfig
+	# RESET & RW & !AS & !A<5> & !A<4> & A<6> & !A<3> & 
+	!A<2> & !AUTO_CONFIG_DONE<2> & autoconfig
+	# RESET & RW & !AS & !A<4> & A<1> & !A<6> & !A<3> & 
+	A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	autoconfig
+;Imported pterms FB2_3
+	# RESET & RW & !AS & !A<5> & A<4> & A<1> & !A<6> & 
+	!A<3> & A<2> & !AUTO_CONFIG_DONE<0> & autoconfig
+	# RESET & RW & !AS & !A<5> & !A<4> & !A<1> & !A<6> & 
+	!A<3> & A<2> & !AUTO_CONFIG_DONE<0> & autoconfig
+	# RESET & RW & !AS & !A<5> & A<4> & !A<1> & !A<6> & 
+	A<3> & A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	autoconfig
+
+MACROCELL | 1 | 2 | EXP16_
+ATTRIBUTES | 2048 | 0
+OUTPUTMC | 1 | 1 | 1
+INPUTS | 12 | RESET  | RW  | AS  | A<5>  | A<4>  | A<1>  | A<6>  | A<3>  | A<2>  | AUTO_CONFIG_DONE<0>  | autoconfig  | AUTO_CONFIG_DONE<1>
+INPUTMC | 3 | 1 | 8 | 3 | 16 | 2 | 14
+INPUTP | 9 | 160 | 93 | 90 | 54 | 56 | 63 | 57 | 58 | 60
+EXPORTS | 1 | 1 | 1
+EQ | 7 | 
+       EXP16_.EXP  =  RESET & RW & !AS & !A<5> & A<4> & A<1> & !A<6> & 
+	!A<3> & A<2> & !AUTO_CONFIG_DONE<0> & autoconfig
+	# RESET & RW & !AS & !A<5> & !A<4> & !A<1> & !A<6> & 
+	!A<3> & A<2> & !AUTO_CONFIG_DONE<0> & autoconfig
+	# RESET & RW & !AS & !A<5> & A<4> & !A<1> & !A<6> & 
+	A<3> & A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	autoconfig
+
+MACROCELL | 1 | 13 | EXP17_
+ATTRIBUTES | 2048 | 0
+OUTPUTMC | 1 | 1 | 14
+INPUTS | 14 | RESET  | D<13>  | RW  | AUTO_CONFIG_DONE<0>  | AUTO_CONFIG_DONE<1>  | AUTO_CONFIG_DONE<2>  | AS  | A<5>  | A<4>  | A<6>  | A<3>  | autoconfig  | A<2>  | IDE_BASEADR<6>.EXP
+INPUTMC | 6 | 2 | 11 | 1 | 8 | 2 | 14 | 1 | 7 | 3 | 16 | 1 | 12
+INPUTP | 8 | 160 | 93 | 90 | 54 | 56 | 57 | 58 | 60
+EXPORTS | 1 | 1 | 14
+IMPORTS | 1 | 1 | 12
+EQ | 19 | 
+       EXP17_.EXP  =  RESET & !D<13> & !RW
+	# RESET & !D<13> & AUTO_CONFIG_DONE<0> & 
+	AUTO_CONFIG_DONE<1> & AUTO_CONFIG_DONE<2>
+	# RESET & RW & !AS & !A<5> & !A<4> & !A<6> & !A<3> & 
+	!AUTO_CONFIG_DONE<0> & autoconfig
+	# RESET & RW & !AS & !A<5> & !A<4> & !A<3> & !A<2> & 
+	!AUTO_CONFIG_DONE<0> & autoconfig
+	# RESET & RW & !AS & !A<5> & !A<4> & !A<3> & !A<2> & 
+	!AUTO_CONFIG_DONE<1> & autoconfig
+;Imported pterms FB2_13
+	# RESET & RW & !AS & !A<5> & A<4> & !A<1> & !A<6> & 
+	A<3> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	autoconfig
+	# RESET & RW & !AS & !A<5> & !A<4> & !A<1> & !A<6> & 
+	!A<3> & AUTO_CONFIG_DONE<1> & !AUTO_CONFIG_DONE<2> & 
+	autoconfig
+	# RESET & RW & !AS & A<5> & !A<4> & !A<1> & !A<6> & 
+	!A<3> & A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	autoconfig
+
+MACROCELL | 1 | 17 | EXP18_
+ATTRIBUTES | 2048 | 0
+OUTPUTMC | 1 | 1 | 0
+INPUTS | 13 | RESET  | D<14>  | RW  | AS  | autoconfig  | AUTO_CONFIG_DONE<0>  | AUTO_CONFIG_DONE<1>  | AUTO_CONFIG_DONE<2>  | A<5>  | A<1>  | A<6>  | A<3>  | A<2>
+INPUTMC | 5 | 2 | 6 | 3 | 16 | 1 | 8 | 2 | 14 | 1 | 7
+INPUTP | 8 | 160 | 93 | 90 | 54 | 63 | 57 | 58 | 60
+EXPORTS | 1 | 1 | 0
+EQ | 8 | 
+       EXP18_.EXP  =  RESET & !D<14> & !RW
+	# RESET & !D<14> & AS
+	# RESET & !D<14> & !autoconfig
+	# RESET & !D<14> & AUTO_CONFIG_DONE<0> & 
+	AUTO_CONFIG_DONE<1> & AUTO_CONFIG_DONE<2>
+	# RESET & RW & !AS & !A<5> & A<1> & !A<6> & !A<3> & 
+	A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<2> & 
+	autoconfig
+
+MACROCELL | 3 | 1 | EXP19_
+ATTRIBUTES | 2048 | 0
+OUTPUTMC | 1 | 3 | 0
+INPUTS | 7 | A<23>  | IDE_BASEADR<7>  | A<22>  | IDE_BASEADR<6>  | IDE_BASEADR<1>  | A<17>  | EXP20_.EXP
+INPUTMC | 4 | 1 | 11 | 1 | 12 | 4 | 15 | 3 | 2
+INPUTP | 3 | 96 | 97 | 106
+EXPORTS | 1 | 3 | 0
+IMPORTS | 1 | 3 | 2
+EQ | 9 | 
+       EXP19_.EXP  =  A<23> & !IDE_BASEADR<7>
+	# !A<23> & IDE_BASEADR<7>
+	# A<22> & !IDE_BASEADR<6>
+	# !A<22> & IDE_BASEADR<6>
+	# IDE_BASEADR<1> & !A<17>
+;Imported pterms FB4_3
+	# !A<21> & IDE_BASEADR<5>
+	# IDE_BASEADR<4> & !A<20>
+	# !IDE_BASEADR<4> & A<20>
+
+MACROCELL | 3 | 2 | EXP20_
+ATTRIBUTES | 2048 | 0
+OUTPUTMC | 1 | 3 | 1
+INPUTS | 4 | A<21>  | IDE_BASEADR<5>  | IDE_BASEADR<4>  | A<20>
+INPUTMC | 2 | 4 | 13 | 4 | 14
+INPUTP | 2 | 98 | 102
+EXPORTS | 1 | 3 | 1
+EQ | 3 | 
+       EXP20_.EXP  =  !A<21> & IDE_BASEADR<5>
+	# IDE_BASEADR<4> & !A<20>
+	# !IDE_BASEADR<4> & A<20>
+
+MACROCELL | 3 | 17 | EXP21_
+ATTRIBUTES | 2048 | 0
+OUTPUTMC | 1 | 3 | 0
+INPUTS | 7 | IDE_BASEADR<0>  | A<16>  | IDE_BASEADR<1>  | A<17>  | IDE_BASEADR<2>  | A<18>  | autoconfig.EXP
+INPUTMC | 4 | 4 | 17 | 4 | 15 | 2 | 17 | 3 | 16
+INPUTP | 3 | 108 | 106 | 105
+EXPORTS | 1 | 3 | 0
+IMPORTS | 1 | 3 | 16
+EQ | 7 | 
+       EXP21_.EXP  =  IDE_BASEADR<0> & !A<16>
+	# !IDE_BASEADR<0> & A<16>
+	# !IDE_BASEADR<1> & A<17>
+	# IDE_BASEADR<2> & !A<18>
+	# !IDE_BASEADR<2> & A<18>
+;Imported pterms FB4_17
+	# A<21> & !IDE_BASEADR<5>
+
+MACROCELL | 5 | 15 | EXP22_
+ATTRIBUTES | 2048 | 0
+OUTPUTMC | 1 | 5 | 16
+INPUTS | 14 | RESET  | D<15>  | AUTO_CONFIG_DONE<0>  | AUTO_CONFIG_DONE<1>  | AUTO_CONFIG_DONE<2>  | RW  | AS  | A<5>  | A<1>  | A<6>  | A<3>  | autoconfig  | A<4>  | A<2>
+INPUTMC | 5 | 2 | 9 | 1 | 8 | 2 | 14 | 1 | 7 | 3 | 16
+INPUTP | 9 | 160 | 93 | 90 | 54 | 63 | 57 | 58 | 56 | 60
+EXPORTS | 1 | 5 | 16
+EQ | 8 | 
+       EXP22_.EXP  =  RESET & !D<15> & AUTO_CONFIG_DONE<0> & 
+	AUTO_CONFIG_DONE<1> & AUTO_CONFIG_DONE<2>
+	# RESET & RW & !AS & !A<5> & A<1> & !A<6> & !A<3> & 
+	!AUTO_CONFIG_DONE<0> & autoconfig
+	# RESET & RW & !AS & !A<5> & !A<4> & A<6> & !A<3> & 
+	!A<2> & !AUTO_CONFIG_DONE<0> & autoconfig
+	# RESET & RW & !AS & !A<5> & !A<4> & A<6> & !A<3> & 
+	!A<2> & !AUTO_CONFIG_DONE<1> & autoconfig
+
+MACROCELL | 5 | 17 | EXP23_
+ATTRIBUTES | 2048 | 0
+OUTPUTMC | 1 | 5 | 16
+INPUTS | 13 | RESET  | RW  | AS  | A<5>  | A<4>  | A<6>  | A<3>  | A<2>  | AUTO_CONFIG_DONE<2>  | autoconfig  | A<1>  | AUTO_CONFIG_DONE<1>  | AUTO_CONFIG_DONE<0>
+INPUTMC | 4 | 1 | 7 | 3 | 16 | 2 | 14 | 1 | 8
+INPUTP | 9 | 160 | 93 | 90 | 54 | 56 | 57 | 58 | 60 | 63
+EXPORTS | 1 | 5 | 16
+EQ | 13 | 
+       EXP23_.EXP  =  RESET & RW & !AS & !A<5> & !A<4> & A<6> & !A<3> & 
+	!A<2> & !AUTO_CONFIG_DONE<2> & autoconfig
+	# RESET & RW & !AS & !A<5> & A<1> & !A<6> & !A<3> & 
+	AUTO_CONFIG_DONE<1> & !AUTO_CONFIG_DONE<2> & autoconfig
+	# RESET & RW & !AS & !A<5> & A<4> & A<1> & !A<6> & 
+	A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	autoconfig
+	# RESET & RW & !AS & A<5> & !A<4> & !A<1> & !A<6> & 
+	!A<3> & A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	autoconfig
+	# RESET & RW & !AS & !A<5> & A<4> & !A<1> & !A<6> & 
+	A<3> & !A<2> & AUTO_CONFIG_DONE<0> & !AUTO_CONFIG_DONE<1> & 
+	autoconfig
+
+PIN | RESET | 65600 | 0 | N/A | 160 | 32 | 1 | 14 | 0 | 17 | 1 | 0 | 5 | 16 | 1 | 10 | 2 | 15 | 1 | 9 | 4 | 17 | 4 | 14 | 4 | 13 | 0 | 9 | 4 | 15 | 2 | 17 | 2 | 16 | 1 | 12 | 1 | 11 | 4 | 12 | 0 | 13 | 0 | 14 | 0 | 0 | 0 | 15 | 0 | 16 | 1 | 1 | 1 | 2 | 1 | 13 | 1 | 15 | 1 | 17 | 5 | 15 | 5 | 17 | 1 | 8 | 2 | 14 | 1 | 7
+PIN | RW | 64 | 0 | N/A | 93 | 44 | 1 | 14 | 0 | 17 | 1 | 0 | 5 | 16 | 1 | 10 | 2 | 15 | 1 | 9 | 4 | 17 | 4 | 14 | 4 | 13 | 0 | 9 | 4 | 15 | 2 | 17 | 2 | 16 | 1 | 2 | 1 | 11 | 4 | 12 | 0 | 13 | 0 | 14 | 0 | 0 | 2 | 8 | 0 | 4 | 0 | 1 | 1 | 4 | 1 | 15 | 0 | 5 | 0 | 7 | 1 | 16 | 2 | 0 | 0 | 2 | 2 | 10 | 2 | 2 | 2 | 3 | 2 | 6 | 2 | 11 | 2 | 9 | 0 | 15 | 0 | 16 | 1 | 1 | 1 | 12 | 1 | 13 | 1 | 17 | 5 | 15 | 5 | 17
+PIN | A<1> | 64 | 0 | N/A | 63 | 25 | 1 | 14 | 0 | 17 | 1 | 0 | 5 | 16 | 1 | 10 | 2 | 15 | 1 | 9 | 4 | 17 | 4 | 14 | 4 | 13 | 4 | 15 | 2 | 17 | 2 | 16 | 1 | 2 | 1 | 11 | 4 | 12 | 0 | 0 | 0 | 15 | 0 | 16 | 1 | 1 | 1 | 12 | 1 | 15 | 1 | 17 | 5 | 15 | 5 | 17
+PIN | A<2> | 64 | 0 | N/A | 60 | 24 | 1 | 14 | 0 | 17 | 1 | 0 | 5 | 16 | 4 | 17 | 4 | 14 | 4 | 13 | 4 | 15 | 2 | 17 | 2 | 16 | 1 | 10 | 1 | 11 | 4 | 12 | 0 | 0 | 0 | 15 | 0 | 16 | 1 | 1 | 1 | 2 | 1 | 12 | 1 | 13 | 1 | 15 | 1 | 17 | 5 | 15 | 5 | 17
+PIN | A<5> | 64 | 0 | N/A | 54 | 26 | 1 | 14 | 0 | 17 | 1 | 0 | 5 | 16 | 1 | 10 | 2 | 15 | 1 | 9 | 4 | 17 | 4 | 14 | 4 | 13 | 4 | 15 | 2 | 17 | 2 | 16 | 1 | 2 | 1 | 11 | 4 | 12 | 0 | 0 | 0 | 15 | 0 | 16 | 1 | 1 | 1 | 12 | 1 | 13 | 1 | 15 | 1 | 17 | 5 | 15 | 5 | 17
+PIN | A<6> | 64 | 0 | N/A | 57 | 25 | 1 | 14 | 0 | 17 | 1 | 0 | 5 | 16 | 1 | 10 | 2 | 15 | 1 | 9 | 4 | 17 | 4 | 14 | 4 | 13 | 4 | 15 | 2 | 17 | 2 | 16 | 1 | 2 | 1 | 11 | 4 | 12 | 0 | 0 | 0 | 15 | 1 | 1 | 1 | 12 | 1 | 13 | 1 | 15 | 1 | 17 | 5 | 15 | 5 | 17
+PIN | A<3> | 64 | 0 | N/A | 58 | 26 | 1 | 14 | 0 | 17 | 1 | 0 | 5 | 16 | 1 | 10 | 2 | 15 | 1 | 9 | 4 | 17 | 4 | 14 | 4 | 13 | 4 | 15 | 2 | 17 | 2 | 16 | 1 | 2 | 1 | 11 | 4 | 12 | 0 | 0 | 0 | 15 | 0 | 16 | 1 | 1 | 1 | 12 | 1 | 13 | 1 | 15 | 1 | 17 | 5 | 15 | 5 | 17
+PIN | AS | 64 | 0 | N/A | 90 | 33 | 1 | 14 | 0 | 17 | 1 | 0 | 5 | 16 | 1 | 8 | 2 | 14 | 1 | 7 | 1 | 10 | 2 | 15 | 1 | 9 | 4 | 17 | 4 | 14 | 4 | 13 | 0 | 9 | 4 | 15 | 2 | 17 | 2 | 16 | 1 | 2 | 1 | 11 | 4 | 12 | 0 | 6 | 0 | 13 | 0 | 14 | 0 | 0 | 0 | 15 | 0 | 16 | 1 | 1 | 1 | 12 | 1 | 13 | 1 | 15 | 1 | 17 | 5 | 15 | 5 | 17
+PIN | A<4> | 64 | 0 | N/A | 56 | 24 | 1 | 14 | 0 | 17 | 1 | 0 | 5 | 15 | 1 | 10 | 2 | 15 | 1 | 9 | 4 | 17 | 4 | 14 | 4 | 13 | 4 | 15 | 2 | 17 | 2 | 16 | 1 | 2 | 1 | 11 | 4 | 12 | 0 | 0 | 0 | 15 | 0 | 16 | 1 | 1 | 1 | 12 | 1 | 13 | 1 | 15 | 5 | 17
+PIN | AUTOBOOT_OFF | 64 | 0 | N/A | 84 | 1 | 0 | 17
+PIN | UDS | 64 | 0 | N/A | 91 | 11 | 1 | 10 | 2 | 15 | 1 | 9 | 4 | 17 | 4 | 14 | 4 | 13 | 4 | 15 | 2 | 17 | 2 | 16 | 4 | 12 | 1 | 11
+PIN | A<23> | 64 | 0 | N/A | 96 | 2 | 3 | 16 | 3 | 1
+PIN | A<22> | 64 | 0 | N/A | 97 | 2 | 3 | 16 | 3 | 1
+PIN | A<21> | 64 | 0 | N/A | 98 | 2 | 3 | 16 | 3 | 2
+PIN | A<19> | 64 | 0 | N/A | 103 | 2 | 3 | 16 | 3 | 0
+PIN | BERR | 64 | 0 | N/A | 109 | 2 | 3 | 16 | 3 | 0
+PIN | C1 | 64 | 0 | N/A | 115 | 1 | 3 | 15
+PIN | C3 | 64 | 0 | N/A | 114 | 1 | 3 | 15
+PIN | A<16> | 64 | 0 | N/A | 108 | 2 | 3 | 16 | 3 | 17
+PIN | A<20> | 64 | 0 | N/A | 102 | 2 | 3 | 16 | 3 | 2
+PIN | A<17> | 64 | 0 | N/A | 106 | 3 | 3 | 16 | 3 | 1 | 3 | 17
+PIN | A<18> | 64 | 0 | N/A | 105 | 2 | 3 | 16 | 3 | 17
+PIN | A<9> | 64 | 0 | N/A | 64 | 1 | 0 | 10
+PIN | A<10> | 64 | 0 | N/A | 66 | 1 | 0 | 11
+PIN | A<11> | 64 | 0 | N/A | 68 | 1 | 0 | 3
+PIN | A<12> | 64 | 0 | N/A | 69 | 1 | 0 | 8
+PIN | A<13> | 64 | 0 | N/A | 72 | 1 | 0 | 1
+PIN | IDE_R | 536871040 | 0 | N/A | 29
+PIN | IDE_W | 536871040 | 0 | N/A | 30
+PIN | ROM_OE | 536871040 | 0 | N/A | 39
+PIN | D<7> | 536871040 | 0 | N/A | 18
+PIN | D<0> | 536871040 | 0 | N/A | 2
+PIN | D<6> | 536871040 | 0 | N/A | 16
+PIN | D<5> | 536871040 | 0 | N/A | 22
+PIN | D<4> | 536871040 | 0 | N/A | 23
+PIN | D<3> | 536871040 | 0 | N/A | 17
+PIN | D<2> | 536871040 | 0 | N/A | 43
+PIN | D<1> | 536871040 | 0 | N/A | 19
+PIN | IDE_A<0> | 536871040 | 0 | N/A | 26
+PIN | IDE_A<1> | 536871040 | 0 | N/A | 28
+PIN | IDE_A<2> | 536871040 | 0 | N/A | 27
+PIN | IDE_CS<0> | 536871040 | 0 | N/A | 24
+PIN | IDE_CS<1> | 536871040 | 0 | N/A | 25
+PIN | DTACK | 536871040 | 0 | N/A | 95
+PIN | ROM_B<1> | 536871040 | 0 | N/A | 77
+PIN | ROM_B<0> | 536871040 | 0 | N/A | 76
+PIN | D<13> | 536870976 | 0 | N/A | 49 | 1 | 4 | 13
+PIN | D<12> | 536870976 | 0 | N/A | 48 | 1 | 4 | 14
+PIN | D<14> | 536870976 | 0 | N/A | 50 | 1 | 1 | 11
+PIN | D<15> | 536870976 | 0 | N/A | 52 | 2 | 1 | 11 | 1 | 10
+PIN | D<9> | 536870976 | 0 | N/A | 44 | 1 | 4 | 15
+PIN | D<8> | 536870976 | 0 | N/A | 21 | 1 | 4 | 17
+PIN | D<11> | 536870976 | 0 | N/A | 47 | 1 | 2 | 16
+PIN | D<10> | 536870976 | 0 | N/A | 45 | 1 | 2 | 17

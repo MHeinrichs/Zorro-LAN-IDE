@@ -1,0 +1,8 @@
+V3 3
+FL C:/Users/Matze/Amiga/Hardwarehacks/Zorro-LAN-IDE/Logic/LAN_IDE/LAN_IDE_CP.vhd 2016/12/15.19:48:14 P.68d
+EN work/LAN_IDE_CP 1481827696 \
+      FL C:/Users/Matze/Amiga/Hardwarehacks/Zorro-LAN-IDE/Logic/LAN_IDE/LAN_IDE_CP.vhd \
+      PB ieee/std_logic_1164 1370735607
+AR work/LAN_IDE_CP/Behavioral 1481827697 \
+      FL C:/Users/Matze/Amiga/Hardwarehacks/Zorro-LAN-IDE/Logic/LAN_IDE/LAN_IDE_CP.vhd \
+      EN work/LAN_IDE_CP 1481827696

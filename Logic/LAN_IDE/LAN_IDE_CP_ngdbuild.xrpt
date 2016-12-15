@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<document OS="nt64" product="ISE" version="14.6">
+
+  <!--The data in this file is primarily intended for consumption by Xilinx tools.
+    The structure and the elements are likely to change over the next few releases.
+    This means code written to parse this file will need to be revisited each subsequent release.-->
+
+  <application stringID="NgdBuild" timeStamp="Thu Dec 15 19:48:31 2016">
+    <section stringID="User_Env">
+      <table stringID="User_EnvVar">
+        <column stringID="variable"/>
+        <column stringID="value"/>
+        <row stringID="row" value="0">
+          <item stringID="variable" value="Path"/>
+          <item stringID="value" value="C:\Xilinx\14.6\ISE_DS\ISE\\lib\nt64;C:\Xilinx\14.6\ISE_DS\ISE\\bin\nt64;C:\Xilinx\14.6\ISE_DS\ISE\bin\nt64;C:\Xilinx\14.6\ISE_DS\ISE\lib\nt64;C:\Xilinx\14.6\ISE_DS\ISE\..\..\..\DocNav;C:\Xilinx\14.6\ISE_DS\PlanAhead\bin;C:\Xilinx\14.6\ISE_DS\EDK\bin\nt64;C:\Xilinx\14.6\ISE_DS\EDK\lib\nt64;C:\Xilinx\14.6\ISE_DS\EDK\gnu\microblaze\nt\bin;C:\Xilinx\14.6\ISE_DS\EDK\gnu\powerpc-eabi\nt\bin;C:\Xilinx\14.6\ISE_DS\EDK\gnuwin\bin;C:\Xilinx\14.6\ISE_DS\EDK\gnu\arm\nt\bin;C:\Xilinx\14.6\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_be\bin;C:\Xilinx\14.6\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_le\bin;C:\Xilinx\14.6\ISE_DS\common\bin\nt64;C:\Xilinx\14.6\ISE_DS\common\lib\nt64;E:\ispLEVER_Classic2_0\ispcpld\bin;E:\ispLEVER_Classic2_0\ispFPGA\bin\nt;E:\ispLEVER_Classic2_0\active-hdl\BIN;C:\ProgramData\Oracle\Java\javapath;C:\SynaptiCAD\bin\win32;C:\Program Files\Java\jre7\bin;C\Windows\System32;C:\Program Files (x86)\WinAVR\bin;C:\Program Files (x86)\WinAVR\utils\bin;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\SSH Communications Security\SSH Secure Shell;C:\Program Files (x86)\UltraEdit;c:\Xilinx\14.6\ISE_DS\ISE\bin\nt64C:\ispLever\ispcpld\bin;C:\ispLever\ispFPGA\bin\nt;C:\ispLever\active-hdl\BIN;C:\Program Files\WinRAR;C:\SynaptiCAD\bin;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;%PATH;C:\Program Files (x86)\IDM Computer Solutions\UltraEdit\;C:\Program Files (x86)\UltraEdit\;C:\Program Files\Java\jdk1.7.0_02\bin;C:\Users\Matze\AppData\Local\Microsoft\WindowsApps"/>
+        </row>
+        <row stringID="row" value="1">
+          <item stringID="variable" value="PATHEXT"/>
+          <item stringID="value" value=".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY"/>
+        </row>
+        <row stringID="row" value="2">
+          <item stringID="variable" value="XILINX"/>
+          <item stringID="value" value="C:\Xilinx\14.6\ISE_DS\ISE\"/>
+        </row>
+        <row stringID="row" value="3">
+          <item stringID="variable" value="XILINX_DSP"/>
+          <item stringID="value" value="C:\Xilinx\14.6\ISE_DS\ISE"/>
+        </row>
+        <row stringID="row" value="4">
+          <item stringID="variable" value="XILINX_EDK"/>
+          <item stringID="value" value="C:\Xilinx\14.6\ISE_DS\EDK"/>
+        </row>
+        <row stringID="row" value="5">
+          <item stringID="variable" value="XILINX_PLANAHEAD"/>
+          <item stringID="value" value="C:\Xilinx\14.6\ISE_DS\PlanAhead"/>
+        </row>
+      </table>
+      <item stringID="User_EnvOs" value="OS Information">
+        <item stringID="User_EnvOsname" value="Microsoft , 64-bit"/>
+        <item stringID="User_EnvOsrelease" value="major release  (build 9200)"/>
+      </item>
+      <item stringID="User_EnvHost" value="DeepThought"/>
+      <table stringID="User_EnvCpu">
+        <column stringID="arch"/>
+        <column stringID="speed"/>
+        <row stringID="row" value="0">
+          <item stringID="arch" value="AMD Phenom(tm) II X6 1090T Processor"/>
+          <item stringID="speed" value="3200 MHz"/>
+        </row>
+        <row stringID="row" value="1">
+          <item stringID="arch" value="AMD Phenom(tm) II X6 1090T Processor"/>
+          <item stringID="speed" value="3200 MHz"/>
+        </row>
+      </table>
+    </section>
+    <task stringID="NGDBUILD_OPTION_SUMMARY">
+      <section stringID="NGDBUILD_OPTION_SUMMARY">
+        <item DEFAULT="None" label="-intstyle" stringID="NGDBUILD_intstyle" value="ise"/>
+        <item DEFAULT="None" label="-dd" stringID="NGDBUILD_output_dir" value="_ngo"/>
+        <item DEFAULT="None" label="-p" stringID="NGDBUILD_partname" value="xc95144xl-TQ144-10"/>
+        <item DEFAULT="None" label="-uc" stringID="NGDBUILD_ucf_file" value="pinlist.ucf"/>
+      </section>
+    </task>
+    <task stringID="NGDBUILD_REPORT">
+      <section stringID="NGDBUILD_DESIGN_SUMMARY">
+        <item dataType="int" stringID="NGDBUILD_NUM_ERRORS" value="0"/>
+        <item dataType="int" stringID="NGDBUILD_FILTERED_WARNINGS" value="0"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_WARNINGS" value="20"/>
+        <item dataType="int" stringID="NGDBUILD_FILTERED_INFOS" value="0"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_INFOS" value="0"/>
+      </section>
+      <section stringID="NGDBUILD_PRE_UNISIM_SUMMARY">
+        <item dataType="int" stringID="NGDBUILD_NUM_AND2" value="75"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_AND3" value="16"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_AND4" value="5"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_AND5" value="1"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_FD" value="6"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_FDC" value="3"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_FDCE" value="17"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_GND" value="1"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_IBUF" value="27"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_INV" value="138"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_OBUF" value="10"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_OR2" value="63"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_OR3" value="13"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_OR4" value="2"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_OR5" value="1"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_VCC" value="1"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_XOR2" value="6"/>
+      </section>
+      <section stringID="NGDBUILD_POST_UNISIM_SUMMARY">
+        <item dataType="int" stringID="NGDBUILD_NUM_AND2" value="75"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_AND3" value="16"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_AND4" value="5"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_AND5" value="1"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_GND" value="10"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_IBUF" value="66"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_INV" value="138"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_OBUF" value="41"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_OR2" value="63"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_OR3" value="13"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_OR4" value="2"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_OR5" value="1"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_VCC" value="1"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_XOR2" value="6"/>
+      </section>
+      <section stringID="NGDBUILD_CORE_GENERATION_SUMMARY">
+        <section stringID="NGDBUILD_CORE_INSTANCES"/>
+      </section>
+    </task>
+  </application>
+
+</document>
