@@ -371,11 +371,14 @@ FDCPE_Dout10: FDCPE port map (Dout1(0),Dout1_D(0),lan/lan_CLKF,'0','0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dout1_D(0) <= ((NOT RW AND RESET AND NOT Dout1(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (AS AND RESET AND NOT Dout1(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RESET AND NOT Dout1(0) AND NOT autoconfig)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND NOT A(2) AND NOT A(1) AND NOT A(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	RESET AND NOT AUTO_CONFIG_DONE(0) AND autoconfig)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RW AND NOT AS AND NOT A(5) AND A(2) AND NOT A(1) AND NOT A(3) AND NOT A(6) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	RESET AND AUTO_CONFIG_DONE(1) AND NOT AUTO_CONFIG_DONE(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	autoconfig)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (D_2_IOBUFE.EXP)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RESET AND AUTO_CONFIG_DONE(0) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	AUTO_CONFIG_DONE(1) AND AUTO_CONFIG_DONE(2) AND NOT Dout1(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND NOT A(1) AND NOT A(3) AND NOT A(6) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	RESET AND NOT AUTO_CONFIG_DONE(0) AND autoconfig)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (D_2_IOBUFE.EXP)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND NOT A(2) AND NOT A(3) AND A(6) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	RESET AND NOT AUTO_CONFIG_DONE(0) AND autoconfig)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND NOT A(2) AND NOT A(3) AND A(6) AND 
@@ -384,20 +387,16 @@ FDCPE_Dout10: FDCPE port map (Dout1(0),Dout1_D(0),lan/lan_CLKF,'0','0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	RESET AND NOT AUTO_CONFIG_DONE(2) AND autoconfig)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RW AND NOT AS AND NOT A(5) AND A(2) AND NOT A(1) AND NOT A(3) AND NOT A(6) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	RESET AND NOT AUTO_CONFIG_DONE(0) AND autoconfig)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RW AND NOT AS AND NOT A(5) AND A(4) AND A(1) AND A(3) AND NOT A(6) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	RESET AND AUTO_CONFIG_DONE(0) AND NOT AUTO_CONFIG_DONE(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	autoconfig)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RW AND NOT AS AND NOT A(4) AND A(2) AND A(1) AND NOT A(3) AND NOT A(6) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	RESET AND NOT AUTO_CONFIG_DONE(0) AND autoconfig)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RW AND NOT AS AND NOT A(5) AND A(4) AND NOT A(2) AND A(3) AND NOT A(6) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	RESET AND AUTO_CONFIG_DONE(0) AND NOT AUTO_CONFIG_DONE(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	autoconfig)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND NOT A(1) AND NOT A(3) AND NOT A(6) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND NOT A(2) AND NOT A(1) AND NOT A(3) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	RESET AND AUTO_CONFIG_DONE(1) AND NOT AUTO_CONFIG_DONE(2) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	autoconfig)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RW AND NOT AS AND NOT A(5) AND A(2) AND NOT A(1) AND NOT A(3) AND NOT A(6) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	RESET AND AUTO_CONFIG_DONE(1) AND NOT AUTO_CONFIG_DONE(2) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	autoconfig));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND NOT A(2) AND NOT A(1) AND NOT A(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	RESET AND NOT AUTO_CONFIG_DONE(1) AND AUTOBOOT_OFF AND autoconfig));
 </td></tr><tr><td>
 FDCPE_Dout11: FDCPE port map (Dout1(1),Dout1_D(1),lan/lan_CLKF,'0','0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dout1_D(1) <= ((SLAVE_OBUF.EXP)
@@ -433,12 +432,10 @@ FDCPE_Dout12: FDCPE port map (Dout1(2),Dout1_D(2),lan/lan_CLKF,'0','0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT RW AND RESET AND NOT Dout1(2))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (AS AND RESET AND NOT Dout1(2))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RESET AND NOT Dout1(2) AND NOT autoconfig)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RW AND NOT AS AND NOT A(5) AND A(2) AND A(1) AND NOT A(3) AND NOT A(6) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	RESET AND AUTO_CONFIG_DONE(0) AND NOT AUTO_CONFIG_DONE(2) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	autoconfig)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND A(2) AND NOT A(3) AND NOT A(6) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	RESET AND AUTO_CONFIG_DONE(0) AND AUTO_CONFIG_DONE(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT AUTO_CONFIG_DONE(2) AND autoconfig)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND NOT A(2) AND A(1) AND NOT A(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	RESET AND NOT AUTO_CONFIG_DONE(2) AND autoconfig)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RW AND NOT AS AND NOT A(5) AND A(4) AND A(2) AND A(1) AND NOT A(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(6) AND RESET AND NOT AUTO_CONFIG_DONE(2) AND autoconfig)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RESET AND AUTO_CONFIG_DONE(0) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	AUTO_CONFIG_DONE(1) AND AUTO_CONFIG_DONE(2) AND NOT Dout1(2))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND NOT A(2) AND A(1) AND NOT A(3) AND 
@@ -447,17 +444,17 @@ FDCPE_Dout12: FDCPE port map (Dout1(2),Dout1_D(2),lan/lan_CLKF,'0','0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	RESET AND NOT AUTO_CONFIG_DONE(0) AND autoconfig)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND NOT A(2) AND NOT A(3) AND A(6) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	RESET AND NOT AUTO_CONFIG_DONE(1) AND autoconfig)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND NOT A(2) AND NOT A(3) AND A(6) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	RESET AND NOT AUTO_CONFIG_DONE(2) AND autoconfig)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RW AND NOT AS AND NOT A(5) AND A(4) AND A(2) AND A(1) AND NOT A(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(6) AND RESET AND NOT AUTO_CONFIG_DONE(0) AND autoconfig)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND NOT A(2) AND A(1) AND NOT A(3) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	RESET AND NOT AUTO_CONFIG_DONE(1) AND autoconfig)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND NOT A(2) AND A(1) AND NOT A(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND NOT A(2) AND NOT A(3) AND A(6) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	RESET AND NOT AUTO_CONFIG_DONE(2) AND autoconfig)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND A(2) AND NOT A(1) AND NOT A(3) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(6) AND RESET AND NOT AUTO_CONFIG_DONE(0) AND autoconfig)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RW AND NOT AS AND NOT A(5) AND A(2) AND A(1) AND NOT A(3) AND NOT A(6) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	RESET AND AUTO_CONFIG_DONE(0) AND NOT AUTO_CONFIG_DONE(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	autoconfig));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RW AND NOT AS AND NOT A(5) AND A(4) AND A(2) AND A(1) AND NOT A(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(6) AND RESET AND NOT AUTO_CONFIG_DONE(1) AND autoconfig)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND A(2) AND NOT A(3) AND NOT A(6) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	RESET AND AUTO_CONFIG_DONE(0) AND AUTO_CONFIG_DONE(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT AUTO_CONFIG_DONE(2) AND autoconfig));
 </td></tr><tr><td>
 FDCPE_Dout13: FDCPE port map (Dout1(3),Dout1_D(3),lan/lan_CLKF,'0','0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dout1_D(3) <= ((RESET AND AUTO_CONFIG_DONE(0) AND 
@@ -611,7 +608,7 @@ FDCPE_IDE_W: FDCPE port map (IDE_W,IDE_W_D,lan/lan_CLKF,'0','0');
 </td></tr><tr><td>
 INT_OUT_I <= '0';
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INT_OUT <= INT_OUT_I when INT_OUT_OE = '1' else 'Z';
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INT_OUT_OE <= '0';
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INT_OUT_OE <= NOT LAN_INT;
 </td></tr><tr><td>
 FTCPE_LAN_BASEADR0: FTCPE port map (LAN_BASEADR(0),LAN_BASEADR_T(0),lan/lan_CLKF,'0','0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LAN_BASEADR_T(0) <= ((NOT RESET AND NOT LAN_BASEADR(0))

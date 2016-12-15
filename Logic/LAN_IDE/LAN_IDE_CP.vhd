@@ -326,13 +326,14 @@ begin
 		end if;
 	end process autoconfig_proc; --- that's all
 
-	LAN_WRL	<= not LDS when RW='0' and AS='0' and lan='1' else '0';
-	LAN_WRH	<= not UDS when RW='0' and AS='0' and lan='1' else '0';
+	LAN_WRL	<= '1' when AS='0' and RW='0' and lan='1' and LDS = '0' else '0';
+	LAN_WRH	<= '1' when AS='0' and RW='0' and lan='1' and UDS = '0' else '0';
 	LAN_CS	<= '1';-- when AS='0' and lan='1' else '0';
-	LAN_RD	<= '1' when AS='0' and lan='1' and RW='1' else '0';
-	CP_WE	<= '0' when RW='0' and AS='0' and cp='1' and (UDS='0' or LDS='0') else '1';
-	CP_RD	<= '0' when AS='0' and cp='1' and RW='1' else '1';
-	CP_CS	<= AS  when cp='1' else '1';
+	LAN_RD	<= '1' when AS='0' and RW='1' and lan='1' else '0';
+	
+	CP_WE		<= '0' when AS='0' and RW='0' and cp='1' and (UDS='0' or LDS='0') else '1';
+	CP_RD		<= '0' when AS='0' and RW='1' and cp='1' else '1';
+	CP_CS		<= '0' when AS='0' and cp='1' else '1';
 
 	A_LAN <= A(14 downto 1);
 	--signal assignment
@@ -355,8 +356,8 @@ begin
 	ROM_B	<= "00";
 	ROM_OE	<= ROM_OE_S;				
 
-	INT_OUT <= 'Z';
-	--INT_OUT <= '0' when LAN_INT ='1' else 'Z';
+	--INT_OUT <= 'Z';
+	INT_OUT <= '0' when LAN_INT ='0' else 'Z';
 	
 	OWN 	<= '0' when AS='0' and (autoconfig  = '1' or ide = '1' or lan = '1' or cp = '1') else 'Z';
 	SLAVE <= '0' when AS='0' and (autoconfig  = '1' or ide = '1' or lan = '1' or cp = '1') else '1';

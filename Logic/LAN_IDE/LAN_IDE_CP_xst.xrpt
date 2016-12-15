@@ -5,7 +5,7 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="Xst" timeStamp="Thu Dec 15 22:05:25 2016">
+  <application stringID="Xst" timeStamp="Thu Dec 15 22:33:02 2016">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
@@ -111,12 +111,12 @@
         <item stringID="XST_IOS" value="116"/>
       </section>
       <section stringID="XST_CELL_USAGE">
-        <item dataType="int" stringID="XST_BELS" value="481">
+        <item dataType="int" stringID="XST_BELS" value="482">
           <item dataType="int" stringID="XST_AND2" value="104"/>
           <item dataType="int" stringID="XST_AND3" value="22"/>
           <item dataType="int" stringID="XST_AND4" value="12"/>
           <item dataType="int" stringID="XST_GND" value="1"/>
-          <item dataType="int" stringID="XST_INV" value="212"/>
+          <item dataType="int" stringID="XST_INV" value="213"/>
           <item dataType="int" stringID="XST_OR2" value="90"/>
           <item dataType="int" stringID="XST_VCC" value="1"/>
           <item dataType="int" stringID="XST_XOR2" value="16"/>
@@ -126,15 +126,15 @@
           <item dataType="int" stringID="XST_FDC" value="3"/>
           <item dataType="int" stringID="XST_FDCE" value="35"/>
         </item>
-        <item dataType="int" stringID="XST_IO_BUFFERS" value="100">
-          <item dataType="int" stringID="XST_IBUF" value="32"/>
+        <item dataType="int" stringID="XST_IO_BUFFERS" value="101">
+          <item dataType="int" stringID="XST_IBUF" value="33"/>
           <item dataType="int" stringID="XST_OBUF" value="33"/>
         </item>
       </section>
     </section>
     <section stringID="XST_ERRORS_STATISTICS">
       <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_ERRORS" value="0"/>
-      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_WARNINGS" value="15"/>
+      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_WARNINGS" value="14"/>
       <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_INFOS" value="0"/>
     </section>
   </application>

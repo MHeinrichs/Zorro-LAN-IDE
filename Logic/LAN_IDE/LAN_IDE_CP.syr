@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.11 secs
+Total CPU time to Xst completion: 0.12 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.11 secs
+Total CPU time to Xst completion: 0.12 secs
  
 --> Reading design: LAN_IDE_CP.prj
 
@@ -106,7 +106,6 @@ WARNING:Xst:647 - Input <DS1> is never used. This port will be preserved and lef
 WARNING:Xst:647 - Input <FCS> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:1306 - Output <LAN_CFG> is never assigned.
 WARNING:Xst:1306 - Output <MTACK> is never assigned.
-WARNING:Xst:647 - Input <LAN_INT> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:2565 - Inout <A<15>> is never assigned.
 WARNING:Xst:647 - Input <CP_IRQ> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <Z3> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -220,13 +219,13 @@ Design Statistics
 # IOs                              : 116
 
 Cell Usage :
-# BELS                             : 481
+# BELS                             : 482
 #      AND2                        : 104
 #      AND3                        : 22
 #      AND4                        : 12
 #      AND5                        : 2
 #      GND                         : 1
-#      INV                         : 212
+#      INV                         : 213
 #      OR2                         : 90
 #      OR3                         : 15
 #      OR4                         : 3
@@ -237,22 +236,22 @@ Cell Usage :
 #      FD                          : 7
 #      FDC                         : 3
 #      FDCE                        : 35
-# IO Buffers                       : 100
-#      IBUF                        : 32
+# IO Buffers                       : 101
+#      IBUF                        : 33
 #      IOBUFE                      : 32
 #      OBUF                        : 33
 #      OBUFE                       : 3
 =========================================================================
 
 
-Total REAL time to Xst completion: 7.00 secs
-Total CPU time to Xst completion: 7.78 secs
+Total REAL time to Xst completion: 8.00 secs
+Total CPU time to Xst completion: 8.18 secs
  
 --> 
 
-Total memory usage is 290056 kilobytes
+Total memory usage is 290052 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   15 (   0 filtered)
+Number of warnings :   14 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 

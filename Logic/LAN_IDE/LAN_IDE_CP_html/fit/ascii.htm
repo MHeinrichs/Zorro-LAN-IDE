@@ -3,7 +3,7 @@
  
 cpldfit:  version P.68d                             Xilinx Inc.
                                   Fitter Report
-Design Name: LAN_IDE_CP                          Date: 12-15-2016, 10:05PM
+Design Name: LAN_IDE_CP                          Date: 12-15-2016, 10:33PM
 Device Used: XC95144XL-10-TQ144
 Fitting Status: Successful
 
@@ -11,7 +11,7 @@ Fitting Status: Successful
 
 Macrocells     Product Terms    Function Block   Registers      Pins           
 Used/Tot       Used/Tot         Inps Used/Tot    Used/Tot       Used/Tot       
-114/144 ( 79%) 390 /720  ( 54%) 268/432 ( 62%)   45 /144 ( 31%) 100/117 ( 85%)
+114/144 ( 79%) 391 /720  ( 54%) 269/432 ( 62%)   45 /144 ( 31%) 101/117 ( 86%)
 
 ** Function Block Resources **
 
@@ -19,14 +19,14 @@ Function    Mcells      FB Inps     Pterms      IO
 Block       Used/Tot    Used/Tot    Used/Tot    Used/Tot    
 FB1          18/18*      38/54       45/90      13/15
 FB2          18/18*      34/54       42/90      13/15
-FB3          13/18       30/54       77/90      13/15
+FB3          13/18       31/54       78/90      13/15
 FB4          18/18*      32/54       35/90      14/15
 FB5          18/18*      39/54       54/90      14/14*
-FB6          17/18       34/54       66/90      11/13
+FB6          17/18       34/54       66/90      12/13
 FB7           8/18       37/54       46/90      11/15
 FB8           4/18       24/54       25/90      11/15
              -----       -----       -----      -----    
-            114/144     268/432     390/720    100/117
+            114/144     269/432     391/720    101/117
 
 * - Resource is exhausted
 
@@ -40,14 +40,14 @@ Signal 'RESET' mapped onto global set/reset net GSR.
 
 Signal Type    Required     Mapped  |  Pin Type            Used    Total 
 ------------------------------------|------------------------------------
-Input         :   31          31    |  I/O              :    94     109
+Input         :   32          32    |  I/O              :    95     109
 Output        :   36          36    |  GCK/IO           :     1       3
 Bidirectional :   32          32    |  GTS/IO           :     4       4
 GCK           :    0           0    |  GSR/IO           :     1       1
 GTS           :    0           0    |
 GSR           :    1           1    |
                  ----        ----
-        Total    100         100
+        Total    101         101
 
 ** Power Data **
 
@@ -89,8 +89,6 @@ WARNING:Cpld:1007 - Removing unused input(s) 'FCS'.  The input(s) are unused
    after optimization. Please verify functionality via simulation.
 WARNING:Cpld:1007 - Removing unused input(s) 'IDE_WAIT'.  The input(s) are
    unused after optimization. Please verify functionality via simulation.
-WARNING:Cpld:1007 - Removing unused input(s) 'LAN_INT'.  The input(s) are unused
-   after optimization. Please verify functionality via simulation.
 WARNING:Cpld:1007 - Removing unused input(s) 'MTCR'.  The input(s) are unused
    after optimization. Please verify functionality via simulation.
 WARNING:Cpld:1007 - Removing unused input(s) 'Z3'.  The input(s) are unused
@@ -127,7 +125,7 @@ A_LAN<6>                   1     1     FB2_14  11   I/O     O       STD  FAST
 D<6>                       3     6     FB2_16  14   I/O     I/O     STD  FAST 
 D<3>                       3     6     FB2_17  15   I/O     I/O     STD  FAST 
 D<2>                       3     6     FB3_1   39   I/O     I/O     STD  FAST 
-INT_OUT                    0     0     FB3_2   32   GCK/I/O O       STD  FAST 
+INT_OUT                    1     1     FB3_2   32   GCK/I/O O       STD  FAST 
 D<10>                      3     6     FB3_3   41   I/O     I/O     STD  FAST 
 D<12>                      6     7     FB3_4   44   I/O     I/O     STD  FAST 
 CP_CS                      1     2     FB3_6   34   I/O     O       STD  FAST 
@@ -227,7 +225,7 @@ cp                         19    19    FB7_18  STD  RESET
 autoconfig                 4     14    FB8_15  STD  RESET
 lan                        19    19    FB8_18  STD  RESET
 
-** 32 Inputs **
+** 33 Inputs **
 
 Signal                     Loc     Pin  Pin     Pin     
 Name                               No.  Type    Use     
@@ -246,6 +244,7 @@ A<9>                       FB5_11  58   I/O     I
 A<11>                      FB5_12  60   I/O     I
 A<12>                      FB5_14  61   I/O     I
 A<13>                      FB5_15  64   I/O     I
+LAN_INT                    FB6_4   111  I/O     I
 AUTOBOOT_OFF               FB7_3   75   I/O     I
 AS                         FB7_9   80   I/O     I
 LDS                        FB7_11  82   I/O     I
@@ -401,12 +400,12 @@ CP_BASEADR<4>        .XXXXXXXXXX...X...X........XXXX..X...... 17
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *********************************** FB3  ***********************************
-Number of function block inputs used/remaining:               30/24
-Number of signals used by logic mapping into function block:  30
+Number of function block inputs used/remaining:               31/23
+Number of signals used by logic mapping into function block:  31
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
 D<2>                  3       2<- /\4   0     FB3_1   39    I/O     I/O
-INT_OUT               0       0   /\2   3     FB3_2   32    GCK/I/O O
+INT_OUT               1       0   /\2   2     FB3_2   32    GCK/I/O O
 D<10>                 3       0   \/1   1     FB3_3   41    I/O     I/O
 D<12>                 6       1<-   0   0     FB3_4   44    I/O     I/O
 $OpTx$INV$116__$INT   3       0     0   2     FB3_5   33    I/O     (b)
@@ -425,32 +424,33 @@ Dout1<0>             19      14<-   0   0     FB3_17  51    I/O     I
 (unused)              0       0   /\5   0     FB3_18        (b)     (b)
 
 Signals Used by Logic in Function Block
-  1: $OpTx$INV$116__$INT  11: A<5>              21: DQ<12>.PIN 
-  2: AS                   12: A<6>              22: DQ<11>.PIN 
-  3: AUTOBOOT_OFF         13: Dout1<0>          23: DQ<10>.PIN 
-  4: AUTO_CONFIG_DONE<0>  14: Dout1<1>          24: DQ<9>.PIN 
-  5: AUTO_CONFIG_DONE<1>  15: Dout1<2>          25: RESET 
-  6: AUTO_CONFIG_DONE<2>  16: Dout1<3>          26: RW 
-  7: A<1>                 17: DQ<15>.PIN        27: autoconfig 
-  8: A<2>                 18: DQ<14>.PIN        28: cp 
-  9: A<3>                 19: DQ<2>.PIN         29: lan 
- 10: A<4>                 20: DQ<13>.PIN        30: lan/lan_CLKF 
+  1: $OpTx$INV$116__$INT  12: A<6>              22: DQ<12>.PIN 
+  2: AS                   13: Dout1<0>          23: DQ<11>.PIN 
+  3: AUTOBOOT_OFF         14: Dout1<1>          24: DQ<10>.PIN 
+  4: AUTO_CONFIG_DONE<0>  15: Dout1<2>          25: DQ<9>.PIN 
+  5: AUTO_CONFIG_DONE<1>  16: Dout1<3>          26: RESET 
+  6: AUTO_CONFIG_DONE<2>  17: LAN_INT           27: RW 
+  7: A<1>                 18: DQ<15>.PIN        28: autoconfig 
+  8: A<2>                 19: DQ<14>.PIN        29: cp 
+  9: A<3>                 20: DQ<2>.PIN         30: lan 
+ 10: A<4>                 21: DQ<13>.PIN        31: lan/lan_CLKF 
+ 11: A<5>                
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
-D<2>                 XX................X......X.XX........... 6
-INT_OUT              ........................................ 0
-D<10>                XX....................X..X.XX........... 6
-D<12>                XX..........X.......X....X.XX........... 7
-$OpTx$INV$116__$INT  .X.......................XXXX........... 5
-CP_CS                .X.........................X............ 2
-D<14>                XX............X..X.......X.XX........... 7
-D<9>                 XX.....................X.X.XX........... 6
-D<15>                XX.............XX........X.XX........... 7
-D<11>                XX...................X...X.XX........... 6
-D<13>                XX...........X.....X.....X.XX........... 7
-Dout1<2>             .X.XXXXXXXXX..X.........XXX..X.......... 15
-Dout1<0>             .XXXXXXXXXXXX...........XXX..X.......... 16
+D<2>                 XX.................X......X.XX.......... 6
+INT_OUT              ................X....................... 1
+D<10>                XX.....................X..X.XX.......... 6
+D<12>                XX..........X........X....X.XX.......... 7
+$OpTx$INV$116__$INT  .X........................XXXX.......... 5
+CP_CS                .X..........................X........... 2
+D<14>                XX............X...X.......X.XX.......... 7
+D<9>                 XX......................X.X.XX.......... 6
+D<15>                XX.............X.X........X.XX.......... 7
+D<11>                XX....................X...X.XX.......... 6
+D<13>                XX...........X......X.....X.XX.......... 7
+Dout1<2>             .X.XXXXXXXXX..X..........XXX..X......... 15
+Dout1<0>             .XXXXXXXXXXXX............XXX..X......... 16
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *********************************** FB4  ***********************************
@@ -587,7 +587,7 @@ Name                Pt      Pt    Pt  Pt               #    Type    Use
 (unused)              0       0   /\5   0     FB6_1         (b)     (b)
 SLAVE                 2       0   /\3   0     FB6_2   106   I/O     O
 SHUT_UP<2>            3       0   \/2   0     FB6_3         (b)     (b)
-SLAVE_OBUF__$INT      2       2<- \/5   0     FB6_4   111   I/O     (b)
+SLAVE_OBUF__$INT      2       2<- \/5   0     FB6_4   111   I/O     I
 Dout1<3>             14       9<-   0   0     FB6_5   110   I/O     (b)
 DQ<15>                2       1<- /\4   0     FB6_6   112   I/O     I/O
 IDE_BASEADR<7>        4       0   /\1   0     FB6_7         (b)     (b)
@@ -1101,11 +1101,14 @@ FDCPE_Dout10: FDCPE port map (Dout1(0),Dout1_D(0),lan/lan_CLKF,'0','0');
 Dout1_D(0) <= ((NOT RW AND RESET AND NOT Dout1(0))
 	OR (AS AND RESET AND NOT Dout1(0))
 	OR (RESET AND NOT Dout1(0) AND NOT autoconfig)
+	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND NOT A(2) AND NOT A(1) AND NOT A(3) AND 
+	RESET AND NOT AUTO_CONFIG_DONE(0) AND autoconfig)
+	OR (RW AND NOT AS AND NOT A(5) AND A(2) AND NOT A(1) AND NOT A(3) AND NOT A(6) AND 
+	RESET AND AUTO_CONFIG_DONE(1) AND NOT AUTO_CONFIG_DONE(2) AND 
+	autoconfig)
+	OR (D_2_IOBUFE.EXP)
 	OR (RESET AND AUTO_CONFIG_DONE(0) AND 
 	AUTO_CONFIG_DONE(1) AND AUTO_CONFIG_DONE(2) AND NOT Dout1(0))
-	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND NOT A(1) AND NOT A(3) AND NOT A(6) AND 
-	RESET AND NOT AUTO_CONFIG_DONE(0) AND autoconfig)
-	OR (D_2_IOBUFE.EXP)
 	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND NOT A(2) AND NOT A(3) AND A(6) AND 
 	RESET AND NOT AUTO_CONFIG_DONE(0) AND autoconfig)
 	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND NOT A(2) AND NOT A(3) AND A(6) AND 
@@ -1114,20 +1117,16 @@ Dout1_D(0) <= ((NOT RW AND RESET AND NOT Dout1(0))
 	RESET AND NOT AUTO_CONFIG_DONE(2) AND autoconfig)
 	OR (RW AND NOT AS AND NOT A(5) AND A(2) AND NOT A(1) AND NOT A(3) AND NOT A(6) AND 
 	RESET AND NOT AUTO_CONFIG_DONE(0) AND autoconfig)
-	OR (RW AND NOT AS AND NOT A(5) AND A(4) AND A(1) AND A(3) AND NOT A(6) AND 
-	RESET AND AUTO_CONFIG_DONE(0) AND NOT AUTO_CONFIG_DONE(1) AND 
-	autoconfig)
 	OR (RW AND NOT AS AND NOT A(4) AND A(2) AND A(1) AND NOT A(3) AND NOT A(6) AND 
 	RESET AND NOT AUTO_CONFIG_DONE(0) AND autoconfig)
 	OR (RW AND NOT AS AND NOT A(5) AND A(4) AND NOT A(2) AND A(3) AND NOT A(6) AND 
 	RESET AND AUTO_CONFIG_DONE(0) AND NOT AUTO_CONFIG_DONE(1) AND 
 	autoconfig)
-	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND NOT A(1) AND NOT A(3) AND NOT A(6) AND 
+	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND NOT A(2) AND NOT A(1) AND NOT A(3) AND 
 	RESET AND AUTO_CONFIG_DONE(1) AND NOT AUTO_CONFIG_DONE(2) AND 
 	autoconfig)
-	OR (RW AND NOT AS AND NOT A(5) AND A(2) AND NOT A(1) AND NOT A(3) AND NOT A(6) AND 
-	RESET AND AUTO_CONFIG_DONE(1) AND NOT AUTO_CONFIG_DONE(2) AND 
-	autoconfig));
+	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND NOT A(2) AND NOT A(1) AND NOT A(3) AND 
+	RESET AND NOT AUTO_CONFIG_DONE(1) AND AUTOBOOT_OFF AND autoconfig));
 
 FDCPE_Dout11: FDCPE port map (Dout1(1),Dout1_D(1),lan/lan_CLKF,'0','0');
 Dout1_D(1) <= ((SLAVE_OBUF.EXP)
@@ -1163,12 +1162,10 @@ Dout1_D(2) <= ((D_13_IOBUFE.EXP)
 	OR (NOT RW AND RESET AND NOT Dout1(2))
 	OR (AS AND RESET AND NOT Dout1(2))
 	OR (RESET AND NOT Dout1(2) AND NOT autoconfig)
-	OR (RW AND NOT AS AND NOT A(5) AND A(2) AND A(1) AND NOT A(3) AND NOT A(6) AND 
-	RESET AND AUTO_CONFIG_DONE(0) AND NOT AUTO_CONFIG_DONE(2) AND 
-	autoconfig)
-	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND A(2) AND NOT A(3) AND NOT A(6) AND 
-	RESET AND AUTO_CONFIG_DONE(0) AND AUTO_CONFIG_DONE(1) AND 
-	NOT AUTO_CONFIG_DONE(2) AND autoconfig)
+	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND NOT A(2) AND A(1) AND NOT A(3) AND 
+	RESET AND NOT AUTO_CONFIG_DONE(2) AND autoconfig)
+	OR (RW AND NOT AS AND NOT A(5) AND A(4) AND A(2) AND A(1) AND NOT A(3) AND 
+	NOT A(6) AND RESET AND NOT AUTO_CONFIG_DONE(2) AND autoconfig)
 	OR (RESET AND AUTO_CONFIG_DONE(0) AND 
 	AUTO_CONFIG_DONE(1) AND AUTO_CONFIG_DONE(2) AND NOT Dout1(2))
 	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND NOT A(2) AND A(1) AND NOT A(3) AND 
@@ -1177,17 +1174,17 @@ Dout1_D(2) <= ((D_13_IOBUFE.EXP)
 	RESET AND NOT AUTO_CONFIG_DONE(0) AND autoconfig)
 	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND NOT A(2) AND NOT A(3) AND A(6) AND 
 	RESET AND NOT AUTO_CONFIG_DONE(1) AND autoconfig)
-	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND NOT A(2) AND NOT A(3) AND A(6) AND 
-	RESET AND NOT AUTO_CONFIG_DONE(2) AND autoconfig)
+	OR (RW AND NOT AS AND NOT A(5) AND A(4) AND A(2) AND A(1) AND NOT A(3) AND 
+	NOT A(6) AND RESET AND NOT AUTO_CONFIG_DONE(0) AND autoconfig)
 	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND NOT A(2) AND A(1) AND NOT A(3) AND 
 	RESET AND NOT AUTO_CONFIG_DONE(1) AND autoconfig)
-	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND NOT A(2) AND A(1) AND NOT A(3) AND 
+	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND NOT A(2) AND NOT A(3) AND A(6) AND 
 	RESET AND NOT AUTO_CONFIG_DONE(2) AND autoconfig)
-	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND A(2) AND NOT A(1) AND NOT A(3) AND 
-	NOT A(6) AND RESET AND NOT AUTO_CONFIG_DONE(0) AND autoconfig)
-	OR (RW AND NOT AS AND NOT A(5) AND A(2) AND A(1) AND NOT A(3) AND NOT A(6) AND 
-	RESET AND AUTO_CONFIG_DONE(0) AND NOT AUTO_CONFIG_DONE(1) AND 
-	autoconfig));
+	OR (RW AND NOT AS AND NOT A(5) AND A(4) AND A(2) AND A(1) AND NOT A(3) AND 
+	NOT A(6) AND RESET AND NOT AUTO_CONFIG_DONE(1) AND autoconfig)
+	OR (RW AND NOT AS AND NOT A(5) AND NOT A(4) AND A(2) AND NOT A(3) AND NOT A(6) AND 
+	RESET AND AUTO_CONFIG_DONE(0) AND AUTO_CONFIG_DONE(1) AND 
+	NOT AUTO_CONFIG_DONE(2) AND autoconfig));
 
 FDCPE_Dout13: FDCPE port map (Dout1(3),Dout1_D(3),lan/lan_CLKF,'0','0');
 Dout1_D(3) <= ((RESET AND AUTO_CONFIG_DONE(0) AND 
@@ -1341,7 +1338,7 @@ IDE_W_D <= (NOT RW AND NOT AS AND RESET AND ide);
 
 INT_OUT_I <= '0';
 INT_OUT <= INT_OUT_I when INT_OUT_OE = '1' else 'Z';
-INT_OUT_OE <= '0';
+INT_OUT_OE <= NOT LAN_INT;
 
 FTCPE_LAN_BASEADR0: FTCPE port map (LAN_BASEADR(0),LAN_BASEADR_T(0),lan/lan_CLKF,'0','0');
 LAN_BASEADR_T(0) <= ((NOT RESET AND NOT LAN_BASEADR(0))
@@ -1581,7 +1578,7 @@ No. Name                           No. Name
  36 GND                             108 GND                           
  37 VCC                             109 VCC                           
  38 KPR                             110 KPR                           
- 39 D<2>                            111 KPR                           
+ 39 D<2>                            111 LAN_INT                       
  40 D<9>                            112 DQ<15>                        
  41 D<10>                           113 DQ<13>                        
  42 VCC                             114 GND                           

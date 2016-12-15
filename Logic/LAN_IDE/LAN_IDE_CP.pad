@@ -1,7 +1,7 @@
 Release 8.1i - Fit P.68d
 Copyright(c) 1995-2003 Xilinx Inc. All rights reserved
 
-12-15-2016 10:05PM
+12-15-2016 10:33PM
 
 NOTE: This file is designed to be imported into a spreadsheet program
 such as Microsoft Excel for viewing, printing and sorting. The pipe '|'
@@ -128,7 +128,7 @@ P107|OWN|O|I/O|OUTPUT|||||||||
 P108|GND||GND||||||||||
 P109|VCC||VCCIO||||||||||
 P110|TIE||I/O||||||||||
-P111|TIE||I/O||||||||||
+P111|LAN_INT|I|I/O|INPUT|||||||||
 P112|DQ<15>|I/O|I/O|BIDIR|||||||||
 P113|DQ<13>|I/O|I/O|BIDIR|||||||||
 P114|GND||GND||||||||||
