@@ -53,34 +53,35 @@ entity LAN_IDE_CP is
            Z3 : in  STD_LOGIC;
            DS1 : in  STD_LOGIC;
            FCS : in  STD_LOGIC;
-           LAN_EN : out  STD_LOGIC;
+           RESET : in  STD_LOGIC;
+           INT_OUT : out  STD_LOGIC;
            AUTOBOOT_OFF : in  STD_LOGIC;
-           CP_RD : out  STD_LOGIC;
-           CP_WE : out  STD_LOGIC;
            ROM_B : out  STD_LOGIC_VECTOR (1 downto 0);
            ROM_OE : out  STD_LOGIC;
-           CP_CS : out  STD_LOGIC;
            IDE_WAIT : in  STD_LOGIC;
-           INT_OUT : out  STD_LOGIC;
-           CP_IRQ : in  STD_LOGIC;
            CLK_EXT : in  STD_LOGIC;
            IDE_W : out  STD_LOGIC;
            IDE_R : out  STD_LOGIC;
            IDE_A : out  STD_LOGIC_VECTOR (2 downto 0);
            IDE_CS : out  STD_LOGIC_VECTOR (1 downto 0);
            LAN_CFG : out  STD_LOGIC_VECTOR (4 downto 1);
-           RESET : in  STD_LOGIC;
            LAN_RD : out  STD_LOGIC;
            LAN_CS : out  STD_LOGIC;
            LAN_WRH : out  STD_LOGIC;
-           LAN_INT : in  STD_LOGIC);
+           LAN_WRL : out  STD_LOGIC;
+           LAN_INT : in  STD_LOGIC;
+           CP_RD : out  STD_LOGIC;
+           CP_WE : out  STD_LOGIC;
+           CP_CS : out  STD_LOGIC;
+           CP_IRQ : in  STD_LOGIC);
 end LAN_IDE_CP;
 
 architecture Behavioral of LAN_IDE_CP is
 
 	SIGNAL ide: STD_LOGIC:= '0';
 	SIGNAL autoconfig: STD_LOGIC:= '0';
-	SIGNAL AUTOCONFIG_IN_PROGRESS: STD_LOGIC:= '0';
+	SIGNAL lan: STD_LOGIC:= '0';
+	SIGNAL cp: STD_LOGIC:= '0';
 	signal Dout1:STD_LOGIC_VECTOR(3 downto 0);
 	signal AUTO_CONFIG_DONE:STD_LOGIC_VECTOR(2 downto 0);
 	signal AUTO_CONFIG_DONE_CYCLE:STD_LOGIC_VECTOR(2 downto 0);
@@ -109,28 +110,37 @@ begin
 	
 	ADDRESS_DECODE: process(AMIGA_CLK)
 	begin
-		if(rising_edge(AMIGA_CLK))then
-			if(AS='0')then
-				AUTOCONFIG_IN_PROGRESS<= autoconfig;
-			else
-				AUTOCONFIG_IN_PROGRESS<= '0';
-			end if;
-				
+		if(rising_edge(AMIGA_CLK))then				
 			if(BERR='1') then
-				if(A(23 downto 16) = x"E8" and not(AUTO_CONFIG_DONE ="111"))then
+				if(A(23 downto 16) = x"E8" and not(AUTO_CONFIG_DONE ="111") and CFIN='0')then
 					autoconfig <='1';
 				else
 					autoconfig <='0';
 				end if;
+
+
+				if(A(23 downto 16) = LAN_BASEADR and SHUT_UP(0) = '0')then					
+					lan <='1';					
+				else
+					lan <='0';
+				end if;				
 
 				if(A(23 downto 16) = IDE_BASEADR and SHUT_UP(1) = '0')then					
 					ide <='1';					
 				else
 					ide <='0';
 				end if;				
+
+				if(A(23 downto 16) = CP_BASEADR and SHUT_UP(2) = '0')then					
+					cp <='1';					
+				else
+					cp <='0';
+				end if;				
 			else
 				autoconfig <='0';
 				ide <='0';
+				lan <='0';
+				cp  <='0';
 			end if;					
 		end if;				
 	end process ADDRESS_DECODE;
@@ -280,7 +290,6 @@ begin
 							when "100001"	=> Dout1 <=	"0000" ; --Interrupt config: all zero
 							when others	=> Dout1 <=	"1111" ;
 						end case;	
-					elsif(AUTO_CONFIG_DONE(1)='0')then
 					end if;
 				else --write
 					if( UDS='0' )then
@@ -317,15 +326,24 @@ begin
 		end if;
 	end process autoconfig_proc; --- that's all
 
+	LAN_WRL	<= not LDS when RW='0' and AS='0' and lan='1' else '0';
+	LAN_WRH	<= not UDS when RW='0' and AS='0' and lan='1' else '0';
+	LAN_CS	<= '1';-- when AS='0' and lan='1' else '0';
+	LAN_RD	<= '1' when AS='0' and lan='1' and RW='1' else '0';
+	CP_WE	<= '0' when RW='0' and AS='0' and cp='1' and (UDS='0' or LDS='0') else '1';
+	CP_RD	<= '0' when AS='0' and cp='1' and RW='1' else '1';
+	CP_CS	<= AS  when cp='1' else '1';
 
-
+	A_LAN <= A(14 downto 1);
 	--signal assignment
 	D	<=	--RAM_D 						when RW='1' and TRANSFER_IN_PROGRES ='1' else
-			Dout1	& "111111111111" 	when RW='1' and AUTOCONFIG_IN_PROGRESS ='1' else
+			DQ								when RW='1' and (lan ='1' or cp = '1') and AS='0' else
+			Dout1	& x"FFF" 			when RW='1' and autoconfig ='1' and AS='0' else
 			"ZZZZZZZZZZZZZZZZ";
---
---	DRAM <= 	D when RW='0' and AS ='0' else
---				"ZZZZZZZZZZZZZZZZ";
+
+	DQ <= 	D 	when RW='0' and (UDS ='0' or LDS='0')
+							and (lan ='1' or cp = '1') 
+					else "ZZZZZZZZZZZZZZZZ";
 								
 	IDE_W <=	IDE_W_S;
 	IDE_R <=	IDE_R_S;
@@ -337,6 +355,12 @@ begin
 	ROM_B	<= "00";
 	ROM_OE	<= ROM_OE_S;				
 
+	INT_OUT <= 'Z';
+	--INT_OUT <= '0' when LAN_INT ='1' else 'Z';
+	
+	OWN 	<= '0' when AS='0' and (autoconfig  = '1' or ide = '1' or lan = '1' or cp = '1') else 'Z';
+	SLAVE <= '0' when AS='0' and (autoconfig  = '1' or ide = '1' or lan = '1' or cp = '1') else '1';
+	CFOUT <= '0' when AUTO_CONFIG_DONE="111" else '1';
 	
 --	DTACK <= DTACK_S when --TRANSFER_IN_PROGRES ='1' or 
 --								AUTOCONFIG_IN_PROGRES ='1' 

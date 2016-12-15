@@ -100,78 +100,49 @@ Performing bidirectional port resolution...
 
 Synthesizing Unit <LAN_IDE_CP>.
     Related source file is "C:/Users/Matze/Amiga/Hardwarehacks/Zorro-LAN-IDE/Logic/LAN_IDE/LAN_IDE_CP.vhd".
-WARNING:Xst:2565 - Inout <DQ<0>> is never assigned.
-WARNING:Xst:1306 - Output <SLAVE> is never assigned.
 WARNING:Xst:647 - Input <IDE_WAIT> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:2565 - Inout <DQ<1>> is never assigned.
-WARNING:Xst:647 - Input <LDS> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:1306 - Output <LAN_CS> is never assigned.
-WARNING:Xst:2565 - Inout <DQ<2>> is never assigned.
-WARNING:Xst:1306 - Output <LAN_EN> is never assigned.
-WARNING:Xst:2565 - Inout <DQ<3>> is never assigned.
-WARNING:Xst:2565 - Inout <DQ<4>> is never assigned.
-WARNING:Xst:2565 - Inout <DQ<10>> is never assigned.
-WARNING:Xst:2565 - Inout <DQ<5>> is never assigned.
-WARNING:Xst:2565 - Inout <DQ<11>> is never assigned.
-WARNING:Xst:2565 - Inout <DQ<6>> is never assigned.
-WARNING:Xst:2565 - Inout <DQ<12>> is never assigned.
-WARNING:Xst:1306 - Output <CFOUT> is never assigned.
-WARNING:Xst:2565 - Inout <DQ<7>> is never assigned.
-WARNING:Xst:2565 - Inout <DQ<13>> is never assigned.
-WARNING:Xst:1306 - Output <LAN_WRH> is never assigned.
 WARNING:Xst:647 - Input <DS0> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <DS1> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:2565 - Inout <DQ<8>> is never assigned.
-WARNING:Xst:2565 - Inout <DQ<14>> is never assigned.
 WARNING:Xst:647 - Input <FCS> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:2565 - Inout <DQ<9>> is never assigned.
-WARNING:Xst:2565 - Inout <DQ<15>> is never assigned.
-WARNING:Xst:1306 - Output <CP_CS> is never assigned.
 WARNING:Xst:1306 - Output <LAN_CFG> is never assigned.
 WARNING:Xst:1306 - Output <MTACK> is never assigned.
 WARNING:Xst:647 - Input <LAN_INT> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:1306 - Output <INT_OUT> is never assigned.
-WARNING:Xst:1306 - Output <LAN_RD> is never assigned.
-WARNING:Xst:2565 - Inout <A<14>> is never assigned.
 WARNING:Xst:2565 - Inout <A<15>> is never assigned.
 WARNING:Xst:647 - Input <CP_IRQ> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:1306 - Output <CP_RD> is never assigned.
 WARNING:Xst:647 - Input <Z3> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:2565 - Inout <A<7>> is never assigned.
-WARNING:Xst:2565 - Inout <A<8>> is never assigned.
-WARNING:Xst:1306 - Output <CP_WE> is never assigned.
-WARNING:Xst:647 - Input <CFIN> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <CLK_EXT> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:1306 - Output <OVR> is never assigned.
-WARNING:Xst:1306 - Output <OWN> is never assigned.
 WARNING:Xst:647 - Input <MTCR> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:1306 - Output <A_LAN> is never assigned.
-WARNING:Xst:646 - Signal <SHUT_UP<2>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <SHUT_UP<0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <LAN_BASEADR> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <DTACK_S> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <CP_BASEADR> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <AS_D> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+    Found 16-bit tristate buffer for signal <D>.
+    Found 16-bit tristate buffer for signal <DQ>.
+    Found 1-bit tristate buffer for signal <OWN>.
     Found 1-bit tristate buffer for signal <DTACK>.
-    Found 16-bit tristate buffer for signal <$mux0000>.
-    Found 1-bit xor2 for signal <AMIGA_CLK$xor0000> created at line 108.
+    Found 1-bit tristate buffer for signal <INT_OUT>.
+    Found 1-bit xor2 for signal <AMIGA_CLK$xor0000> created at line 109.
     Found 3-bit register for signal <AUTO_CONFIG_DONE>.
     Found 3-bit register for signal <AUTO_CONFIG_DONE_CYCLE>.
     Found 1-bit register for signal <autoconfig>.
-    Found 1-bit register for signal <AUTOCONFIG_IN_PROGRESS>.
+    Found 1-bit register for signal <cp>.
+    Found 8-bit comparator not equal for signal <cp$cmp_ne0000> created at line 134.
+    Found 8-bit register for signal <CP_BASEADR>.
     Found 4-bit register for signal <Dout1>.
     Found 1-bit register for signal <ide>.
-    Found 8-bit comparator not equal for signal <ide$cmp_ne0000> created at line 126.
+    Found 8-bit comparator not equal for signal <ide$cmp_ne0000> created at line 128.
     Found 8-bit register for signal <IDE_BASEADR>.
     Found 1-bit register for signal <IDE_ENABLE>.
     Found 1-bit register for signal <IDE_R_S>.
     Found 1-bit register for signal <IDE_W_S>.
+    Found 1-bit register for signal <lan>.
+    Found 8-bit comparator not equal for signal <lan$cmp_ne0000> created at line 122.
+    Found 8-bit register for signal <LAN_BASEADR>.
     Found 1-bit register for signal <ROM_OE_S>.
-    Found 1-bit register for signal <SHUT_UP<1>>.
+    Found 3-bit register for signal <SHUT_UP>.
     Summary:
-	inferred   1 Comparator(s).
+	inferred   3 Comparator(s).
 	inferred   1 Xor(s).
-	inferred  17 Tristate(s).
+	inferred  35 Tristate(s).
 Unit <LAN_IDE_CP> synthesized.
 
 
@@ -179,16 +150,16 @@ Unit <LAN_IDE_CP> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
-# Registers                                            : 14
- 1-bit register                                        : 11
+# Registers                                            : 19
+ 1-bit register                                        : 14
  3-bit register                                        : 1
  4-bit register                                        : 1
- 8-bit register                                        : 1
-# Comparators                                          : 1
- 8-bit comparator not equal                            : 1
-# Tristates                                            : 2
- 1-bit tristate buffer                                 : 1
- 16-bit tristate buffer                                : 1
+ 8-bit register                                        : 3
+# Comparators                                          : 3
+ 8-bit comparator not equal                            : 3
+# Tristates                                            : 5
+ 1-bit tristate buffer                                 : 3
+ 16-bit tristate buffer                                : 2
 # Xors                                                 : 1
  1-bit xor2                                            : 1
 
@@ -215,8 +186,9 @@ Optimizing unit <LAN_IDE_CP> ...
   implementation constraint: INIT=r	 : autoconfig
   implementation constraint: INIT=s	 : IDE_R_S
   implementation constraint: INIT=s	 : IDE_W_S
+  implementation constraint: INIT=r	 : cp
   implementation constraint: INIT=s	 : ROM_OE_S
-  implementation constraint: INIT=r	 : AUTOCONFIG_IN_PROGRESS
+  implementation constraint: INIT=r	 : lan
 
 =========================================================================
 *                           Partition Report                            *
@@ -248,39 +220,39 @@ Design Statistics
 # IOs                              : 116
 
 Cell Usage :
-# BELS                             : 322
-#      AND2                        : 75
-#      AND3                        : 16
-#      AND4                        : 5
-#      AND5                        : 1
+# BELS                             : 481
+#      AND2                        : 104
+#      AND3                        : 22
+#      AND4                        : 12
+#      AND5                        : 2
 #      GND                         : 1
-#      INV                         : 138
-#      OR2                         : 63
-#      OR3                         : 13
-#      OR4                         : 2
-#      OR5                         : 1
+#      INV                         : 212
+#      OR2                         : 90
+#      OR3                         : 15
+#      OR4                         : 3
+#      OR5                         : 3
 #      VCC                         : 1
-#      XOR2                        : 6
-# FlipFlops/Latches                : 26
-#      FD                          : 6
+#      XOR2                        : 16
+# FlipFlops/Latches                : 45
+#      FD                          : 7
 #      FDC                         : 3
-#      FDCE                        : 17
-# IO Buffers                       : 54
-#      IBUF                        : 27
-#      IOBUFE                      : 8
-#      OBUF                        : 10
-#      OBUFE                       : 9
+#      FDCE                        : 35
+# IO Buffers                       : 100
+#      IBUF                        : 32
+#      IOBUFE                      : 32
+#      OBUF                        : 33
+#      OBUFE                       : 3
 =========================================================================
 
 
 Total REAL time to Xst completion: 7.00 secs
-Total CPU time to Xst completion: 7.69 secs
+Total CPU time to Xst completion: 7.78 secs
  
 --> 
 
-Total memory usage is 290044 kilobytes
+Total memory usage is 290056 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   52 (   0 filtered)
+Number of warnings :   15 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 
