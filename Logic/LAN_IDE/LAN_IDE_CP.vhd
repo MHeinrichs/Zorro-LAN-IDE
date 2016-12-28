@@ -217,98 +217,93 @@ begin
 				LAN_BASEADR<=x"FF";
 				CP_BASEADR<=x"FF";
 			elsif(autoconfig= '1' and AS='0') then
-				if(RW='1')then
-				case A(6 downto 1) is
-					when "000000"	=> 
+				if(RW='1') then
+					case A(6 downto 1) is
+						when "000000"	=> 
+							if(AUTO_CONFIG_DONE(0)='0' or AUTO_CONFIG_DONE(1)='0')then
+								Dout1 <= 	"1100" ; --ZII, No-System-Memory, no ROM
+							elsif(AUTO_CONFIG_DONE(2)='0')then
+								Dout1 <= 	"110"&not(AUTOBOOT_OFF) ; --ZII, no System-Memory, (perhaps)ROM
+							end if;
+						when "000001"	=> Dout1 <=	"0001" ; --one Card, 64KB =001
+						when "000010"	=> 
+							if(AUTO_CONFIG_DONE(0)='0' or AUTO_CONFIG_DONE(1)='0')then
+								Dout1 <=	"1000" ; --ProductID high nibble : E->0001
+							elsif(AUTO_CONFIG_DONE(2)='0')then
+								Dout1 <=	"1111" ; --ProductID high nibble : F->0000=0
+							end if;
+						when "000011"	=> 
+							if(AUTO_CONFIG_DONE(0)='0')then
+								Dout1 <=	"0100" ; --ProductID low nibble: F->0000
+							elsif(AUTO_CONFIG_DONE(1)='0')then
+								Dout1 <=	"0011" ; --ProductID low nibble: F->0000
+							elsif(AUTO_CONFIG_DONE(2)='0')then
+								Dout1 <=	"1001" ; --ProductID low nibble: 9->0110=6
+							end if;						
+						when "001000"	=> Dout1 <=	"1111" ; --Ventor ID 0
+						when "001001"	=> Dout1 <=	"0101" ; --Ventor ID 1
+							if(AUTO_CONFIG_DONE(0)='0' or AUTO_CONFIG_DONE(1)='0')then
+								Dout1 <=	"0101" ; --Ventor ID 1
+							elsif(AUTO_CONFIG_DONE(2)='0')then
+								Dout1 <=	"0111" ; --Ventor ID 1
+							end if;						
+						when "001010"	=> 
+							if(AUTO_CONFIG_DONE(0)='0' or AUTO_CONFIG_DONE(1)='0')then
+								Dout1 <=	"1110" ; --Ventor ID 2
+							elsif(AUTO_CONFIG_DONE(2)='0')then
+								Dout1 <=	"1101" ; --Ventor ID 2
+							end if;												
+						when "001011"	=> 
+							if(AUTO_CONFIG_DONE(0)='0' or AUTO_CONFIG_DONE(1)='0')then
+								Dout1 <=	"0011" ; --Ventor ID 3 : $0A1C: A1K.org
+							elsif(AUTO_CONFIG_DONE(2)='0')then
+								Dout1 <=	"0011" ; --Ventor ID 3 : $082C: BSC
+							end if;						
+						when "001100"	=> Dout1 <=	"0100" ; --Serial byte 0 (msb) high nibble
+						when "001101"	=> Dout1 <=	"1110" ; --Serial byte 0 (msb) low  nibble
+						when "001110"	=> Dout1 <=	"1001" ; --Serial byte 1       high nibble
+						when "001111"	=> Dout1 <=	"0100" ; --Serial byte 1       low  nibble
+						when "010000"	=> Dout1 <=	"1111" ; --Serial byte 2       high nibble
+						when "010001"	=> Dout1 <=	"1111" ; --Serial byte 2       low  nibble
+						when "010010"	=> Dout1 <=	"0100" ; --Serial byte 3 (lsb) high nibble
+						when "010011"	=> Dout1 <=	"1010" ; --Serial byte 3 (lsb) low  nibble: B16B00B5
+						--when "010100"	=> Dout1 <=	"1111" ; --Rom vector high byte high nibble 
+						--when "010101"	=> Dout1 <=	"1111" ; --Rom vector high byte low  nibble 
+						--when "010110"	=> Dout1 <=	"1111" ; --Rom vector low byte high nibble
+						when "010111"	=> 
 						if(AUTO_CONFIG_DONE(0)='0' or AUTO_CONFIG_DONE(1)='0')then
-							Dout1 <= 	"1100" ; --ZII, No-System-Memory, no ROM
-						elsif(AUTO_CONFIG_DONE(2)='0')then
-							Dout1 <= 	"110"&not(AUTOBOOT_OFF) ; --ZII, no System-Memory, (perhaps)ROM
-						end if;
-					when "000001"	=> Dout1 <=	"0001" ; --one Card, 64KB =001
-					when "000010"	=> 
-						if(AUTO_CONFIG_DONE(0)='0' or AUTO_CONFIG_DONE(1)='0')then
-							Dout1 <=	"1000" ; --ProductID high nibble : E->0001
-						elsif(AUTO_CONFIG_DONE(2)='0')then
-							Dout1 <=	"1111" ; --ProductID high nibble : F->0000=0
-						end if;
-					when "000011"	=> 
-						if(AUTO_CONFIG_DONE(0)='0')then
-							Dout1 <=	"0100" ; --ProductID low nibble: F->0000
-						elsif(AUTO_CONFIG_DONE(1)='0')then
-							Dout1 <=	"0011" ; --ProductID low nibble: F->0000
-						elsif(AUTO_CONFIG_DONE(2)='0')then
-							Dout1 <=	"1001" ; --ProductID low nibble: 9->0110=6
-						end if;						
-					when "001000"	=> Dout1 <=	"1111" ; --Ventor ID 0
-					when "001001"	=> Dout1 <=	"0101" ; --Ventor ID 1
-						if(AUTO_CONFIG_DONE(0)='0' or AUTO_CONFIG_DONE(1)='0')then
-							Dout1 <=	"0101" ; --Ventor ID 1
-						elsif(AUTO_CONFIG_DONE(2)='0')then
-							Dout1 <=	"0111" ; --Ventor ID 1
-						end if;						
-					when "001010"	=> 
-						if(AUTO_CONFIG_DONE(0)='0' or AUTO_CONFIG_DONE(1)='0')then
-							Dout1 <=	"1110" ; --Ventor ID 2
-						elsif(AUTO_CONFIG_DONE(2)='0')then
-							Dout1 <=	"1101" ; --Ventor ID 2
-						end if;												
-					when "001011"	=> 
-						if(AUTO_CONFIG_DONE(0)='0' or AUTO_CONFIG_DONE(1)='0')then
-							Dout1 <=	"0011" ; --Ventor ID 3 : $0A1C: A1K.org
-						elsif(AUTO_CONFIG_DONE(2)='0')then
-							Dout1 <=	"0011" ; --Ventor ID 3 : $082C: BSC
-						end if;						
-					when "001100"	=> Dout1 <=	"0100" ; --Serial byte 0 (msb) high nibble
-					when "001101"	=> Dout1 <=	"1110" ; --Serial byte 0 (msb) low  nibble
-					when "001110"	=> Dout1 <=	"1001" ; --Serial byte 1       high nibble
-					when "001111"	=> Dout1 <=	"0100" ; --Serial byte 1       low  nibble
-					when "010000"	=> Dout1 <=	"1111" ; --Serial byte 2       high nibble
-					when "010001"	=> Dout1 <=	"1111" ; --Serial byte 2       low  nibble
-					when "010010"	=> Dout1 <=	"0100" ; --Serial byte 3 (lsb) high nibble
-					when "010011"	=> Dout1 <=	"1010" ; --Serial byte 3 (lsb) low  nibble: B16B00B5
-					--when "010100"	=> Dout1 <=	"1111" ; --Rom vector high byte high nibble 
-					--when "010101"	=> Dout1 <=	"1111" ; --Rom vector high byte low  nibble 
-					--when "010110"	=> Dout1 <=	"1111" ; --Rom vector low byte high nibble
-					when "010111"	=> 
-					if(AUTO_CONFIG_DONE(0)='0' or AUTO_CONFIG_DONE(1)='0')then
-							Dout1 <=	"1111" ; --Rom vector low byte low  nibble						
-						elsif(AUTO_CONFIG_DONE(2)='0')then
-							Dout1 <=	"1110" ; --Rom vector low byte low  nibble						
-						end if;
-					when "100000"	=> Dout1 <=	"0000" ; --Interrupt config: all zero
-					when "100001"	=> Dout1 <=	"0000" ; --Interrupt config: all zero
-					when others	=> Dout1 <=	"1111" ;
-				end case;	
-				end if;
-				if(RW='0' and UDS='0') then--write
-					if(AUTO_CONFIG_DONE(0)='0')then
+								Dout1 <=	"1111" ; --Rom vector low byte low  nibble						
+							elsif(AUTO_CONFIG_DONE(2)='0')then
+								Dout1 <=	"1110" ; --Rom vector low byte low  nibble						
+							end if;
+						when "100000"	=> Dout1 <=	"0000" ; --Interrupt config: all zero
+						when "100001"	=> Dout1 <=	"0000" ; --Interrupt config: all zero
+						when others	=> Dout1 <=	"1111" ;
+					end case;	
+				else --write
+					if( UDS='0' )then
 						if(A (6 downto 1)="100100")then								
-							LAN_BASEADR(7 downto 0)	<= D(15 downto 8); --Base adress
-							AUTO_CONFIG_DONE_CYCLE(0)	<='1'; --done here
-							SHUT_UP(0)				<='0'; --enable board
+							if(AUTO_CONFIG_DONE(0)='0')then
+								LAN_BASEADR(7 downto 0)	<= D(15 downto 8); --Base adress
+								SHUT_UP(0)				<='0'; --enable board
+								AUTO_CONFIG_DONE_CYCLE(0)	<='1'; --done here
+							elsif(AUTO_CONFIG_DONE(1)='0')then									
+								CP_BASEADR(7 downto 0)	<= D(15 downto 8); --Base adress
+								SHUT_UP(1) <= '0'; --enable board
+								AUTO_CONFIG_DONE_CYCLE(1)	<='1'; --done here
+							elsif(AUTO_CONFIG_DONE(2)='0')then
+								IDE_BASEADR(7 downto 0)	<= D(15 downto 8); --Base adress
+								SHUT_UP(2) <= '0'; --enable board
+								AUTO_CONFIG_DONE_CYCLE(2)	<='1'; --done here
+							end if;
 						elsif(A (6 downto 1)="100110")then
-							AUTO_CONFIG_DONE_CYCLE(0)	<='1'; --done here
-						end if;
-					end if;
---					elsif(AUTO_CONFIG_DONE(1)='0')then
-					if(AUTO_CONFIG_DONE(0)='1')then
-						if(A (6 downto 1)="100100")then
-							--CP_BASEADR(7 downto 0)	<= D(15 downto 8); --Base adress
-							--SHUT_UP(1) <= '0'; --enable board
-							AUTO_CONFIG_DONE_CYCLE(1)	<='1'; --done here
-						elsif(A (6 downto 1)="100110")then
-							AUTO_CONFIG_DONE_CYCLE(1)	<='1'; --done here
-						end if;
-					end if;
---					elsif(AUTO_CONFIG_DONE(2)='0')then
-					if(AUTO_CONFIG_DONE(1)='1')then
-						if(A (6 downto 1)="100100")then
-							IDE_BASEADR(7 downto 0)	<= D(15 downto 8); --Base adress
-							SHUT_UP(2) <= '0'; --enable board
-							AUTO_CONFIG_DONE_CYCLE(2)	<='1'; --done here
-						elsif(A (6 downto 1)="100110")then
-							AUTO_CONFIG_DONE_CYCLE(2)	<='1'; --done here
+							if(AUTO_CONFIG_DONE(0)='0')then
+								AUTO_CONFIG_DONE_CYCLE(0)	<='1'; --done here
+							elsif(AUTO_CONFIG_DONE(1)='0')then									
+								AUTO_CONFIG_DONE_CYCLE(1)	<='1'; --done here
+							elsif(AUTO_CONFIG_DONE(2)='0')then
+								AUTO_CONFIG_DONE_CYCLE(2)	<='1'; --done here
+							end if;
 						end if;
 					end if;
 				end if;

@@ -89,8 +89,6 @@ Analyzing hierarchy for entity <LAN_IDE_CP> in library <work> (architecture <beh
 *                            HDL Analysis                               *
 =========================================================================
 Analyzing Entity <LAN_IDE_CP> in library <work> (Architecture <behavioral>).
-INFO:Xst:2679 - Register <CP_BASEADR> in unit <LAN_IDE_CP> has a constant value of 11111111 during circuit operation. The register is replaced by logic.
-INFO:Xst:2679 - Register <SHUT_UP<1>> in unit <LAN_IDE_CP> has a constant value of 1 during circuit operation. The register is replaced by logic.
 Entity <LAN_IDE_CP> analyzed. Unit <LAN_IDE_CP> generated.
 
 
@@ -99,7 +97,6 @@ Entity <LAN_IDE_CP> analyzed. Unit <LAN_IDE_CP> generated.
 =========================================================================
 
 Performing bidirectional port resolution...
-INFO:Xst:2679 - Register <cp> in unit <LAN_IDE_CP> has a constant value of 0 during circuit operation. The register is replaced by logic.
 
 Synthesizing Unit <LAN_IDE_CP>.
     Related source file is "C:/Users/Matze/Amiga/Hardwarehacks/Zorro-LAN-IDE/Logic/LAN_IDE/LAN_IDE_CP.vhd".
@@ -125,6 +122,9 @@ WARNING:Xst:1780 - Signal <AS_D> is never used or assigned. This unconnected sig
     Found 3-bit register for signal <AUTO_CONFIG_DONE>.
     Found 3-bit register for signal <AUTO_CONFIG_DONE_CYCLE>.
     Found 1-bit register for signal <autoconfig>.
+    Found 1-bit register for signal <cp>.
+    Found 8-bit comparator equal for signal <cp$cmp_eq0000> created at line 135.
+    Found 8-bit register for signal <CP_BASEADR>.
     Found 4-bit register for signal <Dout1>.
     Found 1-bit register for signal <ide>.
     Found 8-bit comparator equal for signal <ide$cmp_eq0000> created at line 141.
@@ -136,11 +136,10 @@ WARNING:Xst:1780 - Signal <AS_D> is never used or assigned. This unconnected sig
     Found 8-bit comparator equal for signal <lan$cmp_eq0000> created at line 129.
     Found 8-bit register for signal <LAN_BASEADR>.
     Found 1-bit register for signal <ROM_OE_S>.
-    Found 1-bit register for signal <SHUT_UP<2>>.
-    Found 1-bit register for signal <SHUT_UP<0>>.
+    Found 3-bit register for signal <SHUT_UP>.
     Summary:
-	inferred   3 D-type flip-flop(s).
-	inferred   2 Comparator(s).
+	inferred   4 D-type flip-flop(s).
+	inferred   3 Comparator(s).
 	inferred   1 Xor(s).
 	inferred  35 Tristate(s).
 Unit <LAN_IDE_CP> synthesized.
@@ -150,13 +149,13 @@ Unit <LAN_IDE_CP> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
-# Registers                                            : 16
- 1-bit register                                        : 12
+# Registers                                            : 19
+ 1-bit register                                        : 14
  3-bit register                                        : 1
  4-bit register                                        : 1
- 8-bit register                                        : 2
-# Comparators                                          : 2
- 8-bit comparator equal                                : 2
+ 8-bit register                                        : 3
+# Comparators                                          : 3
+ 8-bit comparator equal                                : 3
 # Tristates                                            : 5
  1-bit tristate buffer                                 : 3
  16-bit tristate buffer                                : 2
@@ -174,10 +173,10 @@ Macro Statistics
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# Registers                                            : 3
- Flip-Flops                                            : 3
-# Comparators                                          : 2
- 8-bit comparator equal                                : 2
+# Registers                                            : 4
+ Flip-Flops                                            : 4
+# Comparators                                          : 3
+ 8-bit comparator equal                                : 3
 
 =========================================================================
 
@@ -217,21 +216,20 @@ Design Statistics
 # IOs                              : 116
 
 Cell Usage :
-# BELS                             : 379
-#      AND2                        : 99
-#      AND3                        : 22
-#      AND4                        : 1
+# BELS                             : 420
+#      AND2                        : 107
+#      AND3                        : 28
 #      GND                         : 1
-#      INV                         : 147
+#      INV                         : 167
 #      OR2                         : 83
-#      OR3                         : 7
-#      OR4                         : 1
+#      OR3                         : 6
+#      OR4                         : 2
 #      VCC                         : 1
-#      XOR2                        : 17
-# FlipFlops/Latches                : 35
+#      XOR2                        : 25
+# FlipFlops/Latches                : 45
 #      FD                          : 3
-#      FDC                         : 6
-#      FDCE                        : 26
+#      FDC                         : 7
+#      FDCE                        : 35
 # IO Buffers                       : 105
 #      IBUF                        : 33
 #      IOBUFE                      : 32
@@ -241,13 +239,13 @@ Cell Usage :
 
 
 Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 7.72 secs
+Total CPU time to Xst completion: 7.85 secs
  
 --> 
 
-Total memory usage is 290008 kilobytes
+Total memory usage is 290056 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :   13 (   0 filtered)
-Number of infos    :    3 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
 
