@@ -78,10 +78,10 @@ end LAN_IDE_CP;
 
 architecture Behavioral of LAN_IDE_CP is
 
-	SIGNAL ide: STD_LOGIC:= '0';
-	SIGNAL autoconfig: STD_LOGIC:= '0';
-	SIGNAL lan: STD_LOGIC:= '0';
-	SIGNAL cp: STD_LOGIC:= '0';
+	SIGNAL ide: STD_LOGIC;
+	SIGNAL autoconfig: STD_LOGIC;
+	SIGNAL lan: STD_LOGIC;
+	SIGNAL cp: STD_LOGIC;
 	signal Dout1:STD_LOGIC_VECTOR(3 downto 0);
 	signal AUTO_CONFIG_DONE:STD_LOGIC_VECTOR(2 downto 0);
 	signal AUTO_CONFIG_DONE_CYCLE:STD_LOGIC_VECTOR(2 downto 0);
@@ -89,14 +89,15 @@ architecture Behavioral of LAN_IDE_CP is
 	signal IDE_BASEADR:STD_LOGIC_VECTOR(7 downto 0);
 	signal LAN_BASEADR:STD_LOGIC_VECTOR(7 downto 0);
 	signal CP_BASEADR:STD_LOGIC_VECTOR(7 downto 0);
-	signal IDE_ENABLE:STD_LOGIC:= '0';
-	signal ROM_OE_S:STD_LOGIC:= '1';
-	signal IDE_R_S:STD_LOGIC:= '1';
-	signal IDE_W_S:STD_LOGIC:= '1';
-	signal DTACK_S:STD_LOGIC:= '1';
-   signal AS_D: std_logic:= '1';
-	signal AMIGA_CLK: std_logic:= '1';
-	signal LAN_INT_ENABLE: std_logic:= '1';
+	signal IDE_ENABLE:STD_LOGIC;
+	signal ROM_OE_S:STD_LOGIC;
+	signal IDE_R_S:STD_LOGIC;
+	signal IDE_W_S:STD_LOGIC;
+	signal DTACK_S:STD_LOGIC;
+   signal AS_D: std_logic;
+	signal AMIGA_CLK: std_logic;
+	signal LAN_INT_ENABLE: std_logic;
+	signal DECODE_RESET: std_logic;
 
    Function to_std_logic(X: in Boolean) return Std_Logic is
    variable ret : std_logic;
@@ -108,56 +109,50 @@ architecture Behavioral of LAN_IDE_CP is
 begin
 	
 	AMIGA_CLK <= not (C1 xor C3);
+	DECODE_RESET <= BERR and reset;
 	
-	ADDRESS_DECODE: process(AMIGA_CLK)
+	ADDRESS_DECODE: process(DECODE_RESET,AMIGA_CLK)
 	begin
-		if(falling_edge(AS))then				
-			if(BERR='1') then
-				if(A(23 downto 16) = x"E8" and not(AUTO_CONFIG_DONE ="111") and CFIN='0')then
-					autoconfig <='1';
-				else
-					autoconfig <='0';
-				end if;
-
-
-				if(A(23 downto 16) = LAN_BASEADR and SHUT_UP(0) = '0')then					
-					lan <='1';					
-				else
-					lan <='0';
-				end if;				
-
-				if(A(23 downto 16) = IDE_BASEADR and SHUT_UP(1) = '0')then					
-					ide <='1';					
-				else
-					ide <='0';
-				end if;				
-
-				if(A(23 downto 16) = CP_BASEADR and SHUT_UP(2) = '0')then					
-					cp <='1';					
-				else
-					cp <='0';
-				end if;				
+		if(DECODE_RESET ='0')then
+			autoconfig <='0';
+			ide <='0';
+			lan <='0';
+			cp  <='0';
+		elsif(falling_edge(AMIGA_CLK))then				
+			if(A(23 downto 16) = x"E8" and not(AUTO_CONFIG_DONE ="111") and CFIN='0')then
+				autoconfig <='1';
 			else
 				autoconfig <='0';
-				ide <='0';
+			end if;
+
+
+			if(A(23 downto 16) = LAN_BASEADR and SHUT_UP(0) = '0')then					
+				lan <='1';					
+			else
 				lan <='0';
-				cp  <='0';
-			end if;					
+			end if;				
+
+			if(A(23 downto 16) = IDE_BASEADR and SHUT_UP(1) = '0')then					
+				ide <='1';					
+			else
+				ide <='0';
+			end if;				
+
+			if(A(23 downto 16) = CP_BASEADR and SHUT_UP(2) = '0')then					
+				cp <='1';					
+			else
+				cp <='0';
+			end if;				
 		end if;				
 	end process ADDRESS_DECODE;
 	
 	--LAN interrupt enable
-	lan_int_proc: process (AMIGA_CLK)
+	lan_int_proc: process (LAN_INT,reset)
 	begin
-		if rising_edge(AMIGA_CLK) then
-			if(reset ='0') then
+		if(reset ='0') then
 				LAN_INT_ENABLE <='0';
-			elsif(lan='1' and AS='0' and RW='0')then
-				if(A(15 downto 8) = x"8")then
-					LAN_INT_ENABLE <=D(15);
-				end if;
-			end if;
-			
+		elsif rising_edge(LAN_INT) then
+				LAN_INT_ENABLE <='1';
 		end if;
 	end process lan_int_proc;
 	
@@ -317,8 +312,9 @@ begin
 							elsif(A (6 downto 1)="100110")then
 								AUTO_CONFIG_DONE_CYCLE(0)	<='1'; --done here
 							end if;
-						elsif(AUTO_CONFIG_DONE(1)='0')then
-	--						if(AUTO_CONFIG_DONE(1)='0')then
+						end if;
+--						elsif(AUTO_CONFIG_DONE(1)='0')then
+						if(AUTO_CONFIG_DONE(0)='1')then
 							if(A (6 downto 1)="100100")then
 								IDE_BASEADR(7 downto 0)	<= D(15 downto 8); --Base adress
 								SHUT_UP(1) <= '0'; --enable board
@@ -326,8 +322,9 @@ begin
 							elsif(A (6 downto 1)="100110")then
 								AUTO_CONFIG_DONE_CYCLE(1)	<='1'; --done here
 							end if;
-						elsif(AUTO_CONFIG_DONE(2)='0')then
-	--						if(AUTO_CONFIG_DONE(1)='0')then
+						end if;
+--						elsif(AUTO_CONFIG_DONE(2)='0')then
+						if(AUTO_CONFIG_DONE(1)='1')then
 							if(A (6 downto 1)="100100")then
 								CP_BASEADR(7 downto 0)	<= D(15 downto 8); --Base adress
 								SHUT_UP(2) <= '0'; --enable board
@@ -344,15 +341,15 @@ begin
 
 	LAN_WRL	<= '1' when AS='0' and RW='0' and lan='1' and LDS = '0' else '0';
 	LAN_WRH	<= '1' when AS='0' and RW='0' and lan='1' and UDS = '0' else '0';
-	LAN_CS	<= '1';-- when AS='0' and lan='1' else '0';
+	LAN_CS	<= '1';
 	LAN_RD	<= '1' when AS='0' and RW='1' and lan='1' else '0';
 	LAN_CFG	<= "0010";
 	
 	CP_WE		<= '0' when AS='0' and RW='0' and cp='1' and (UDS='0' or LDS='0') else '1';
 	CP_RD		<= '0' when AS='0' and RW='1' and cp='1' else '1';
-	CP_CS		<= '0' when AS='0' and cp='1' else '1';
+	CP_CS		<= cp;
 
-	A_LAN <= A(14 downto 1) when lan='1' else A(13 downto 1) &'0';
+	A_LAN <= A(14 downto 1);-- when lan='1' else A(13 downto 1) &'0';
 	--signal assignment
 	D	<=	--RAM_D 						when RW='1' and TRANSFER_IN_PROGRES ='1' else
 			DQ								when RW='1' and (lan ='1' or cp = '1') and AS='0' else

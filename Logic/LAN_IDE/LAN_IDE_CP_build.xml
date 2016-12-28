@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8' ?>
-<!DOCTYPE document SYSTEM 'file:///c:/Xilinx/14.6/ISE_DS/ISE/chipviewer/data/xsl/buildXML.dtd'>
+<!DOCTYPE document SYSTEM 'file:///C:/Xilinx/14.6/ISE_DS/ISE/chipviewer/data/xsl/buildXML.dtd'>
 
 <document>
 <design name='LAN_IDE_CP'/>
 <rptdir name='LAN_IDE_CP'/>
-<xilinx path='c:/Xilinx/14.6/ISE_DS/ISE;'/>
+<xilinx path='C:/Xilinx/14.6/ISE_DS/ISE;'/>
 <projDir path='C:\Users\Matze\Amiga\Hardwarehacks\Zorro-LAN-IDE\Logic\LAN_IDE'/>
 <xslDir path='chipviewer/data/xsl'/>
 <fileDir path='/chipviewer/data/html'/>
@@ -13,9 +13,6 @@
 <dataFile file='genmsg.htm'/>
 <dataFile file='eqns.js'/>
 <dataFile file='maplogic.js'/>
-<dataFile file='fbs.js'/>
-<dataFile file='pins.js'/>
-<dataFile file='tooltips.js'/>
 <dataFile file='errors.js'/>
 <dataFile file='leftnav.js'/>
 <dataFile file='paths.js'/>
@@ -69,7 +66,7 @@
     <output file='topnav.htm'/>
   </xslFile>
   <xslFile file='leftnav.xsl'>
-    <param name='result' value='1'/>
+    <param name='result' value='10'/>
     <output file='leftnav.htm'/>
   </xslFile>
   <xslFile file='print.xsl'>
@@ -106,120 +103,14 @@
   <xslFile file='inputleft.xsl'>
     <output file='inputleft.htm'/>
   </xslFile>
-  <xslFile file='printPins.xsl'>
-    <param name='appletOn' value='0'/>
-    <output file='pins.htm'/>
-  </xslFile>
   <xslFile file='wait.xsl'>
     <output file='wait.htm'/>
   </xslFile>
-  <xslDebug file='printErrors.xsl'>
-    <output file='errors.htm'/>
-  </xslDebug>
-  <xslDebug file='printPins.xsl'>
-    <output file='pinout.htm'/>
-  </xslDebug>
   <xslDebug file='printEqns.xsl'>
     <output file='eqnout.htm'/>
   </xslDebug>
-  <xslFile file='maplogic.xsl'>
-    <param name='sortType' value='0'/>
-    <param name='mapLog' value='1'/>
-    <param name='mapIn' value='0'/>
-    <param name='unmapLog' value='0'/>
-    <param name='unmapIn' value='0'/>
-    <param name='legendOn' value='1'/>
-    <param name='appletOn' value='0'/>
-    <output file='maplogic_00.htm'/>
-    <param name='sortType' value='1'/>
-    <param name='mapLog' value='1'/>
-    <param name='mapIn' value='0'/>
-    <param name='unmapLog' value='0'/>
-    <param name='unmapIn' value='0'/>
-    <param name='legendOn' value='1'/>
-    <param name='appletOn' value='0'/>
-    <output file='maplogic_01.htm'/>
-    <param name='sortType' value='2'/>
-    <param name='mapLog' value='1'/>
-    <param name='mapIn' value='0'/>
-    <param name='unmapLog' value='0'/>
-    <param name='unmapIn' value='0'/>
-    <param name='legendOn' value='1'/>
-    <param name='appletOn' value='0'/>
-    <output file='maplogic_02.htm'/>
-    <param name='sortType' value='0'/>
-    <param name='mapLog' value='0'/>
-    <param name='mapIn' value='1'/>
-    <param name='unmapLog' value='0'/>
-    <param name='unmapIn' value='0'/>
-    <param name='legendOn' value='1'/>
-    <param name='appletOn' value='0'/>
-    <output file='mapinput_00.htm'/>
-    <param name='sortType' value='1'/>
-    <param name='mapLog' value='0'/>
-    <param name='mapIn' value='1'/>
-    <param name='unmapLog' value='0'/>
-    <param name='unmapIn' value='0'/>
-    <param name='legendOn' value='1'/>
-    <param name='appletOn' value='0'/>
-    <output file='mapinput_01.htm'/>
-    <param name='sortType' value='2'/>
-    <param name='mapLog' value='0'/>
-    <param name='mapIn' value='1'/>
-    <param name='unmapLog' value='0'/>
-    <param name='unmapIn' value='0'/>
-    <param name='legendOn' value='1'/>
-    <param name='appletOn' value='0'/>
-    <output file='mapinput_02.htm'/>
-  </xslFile>
-  <xslFile file='fbsum.xsl'>
-    <param name='legendOn' value='0'/>
-    <output file='fbs.htm'/>
-  </xslFile>
-  <xslFile file='fbs.xsl'>
-    <param name='fb' value='FB1'/>
-    <param name='type' value='1'/>
-    <param name='legendOn' value='1'/>
-    <param name='appletOn' value='0'/>
-    <output file='fbs_FB1.htm'/>
-    <param name='fb' value='FB2'/>
-    <param name='type' value='3'/>
-    <param name='legendOn' value='1'/>
-    <param name='appletOn' value='0'/>
-    <output file='fbs_FB2.htm'/>
-    <param name='fb' value='FB3'/>
-    <param name='type' value='3'/>
-    <param name='legendOn' value='1'/>
-    <param name='appletOn' value='0'/>
-    <output file='fbs_FB3.htm'/>
-    <param name='fb' value='FB4'/>
-    <param name='type' value='3'/>
-    <param name='legendOn' value='1'/>
-    <param name='appletOn' value='0'/>
-    <output file='fbs_FB4.htm'/>
-    <param name='fb' value='FB5'/>
-    <param name='type' value='3'/>
-    <param name='legendOn' value='1'/>
-    <param name='appletOn' value='0'/>
-    <output file='fbs_FB5.htm'/>
-    <param name='fb' value='FB6'/>
-    <param name='type' value='3'/>
-    <param name='legendOn' value='1'/>
-    <param name='appletOn' value='0'/>
-    <output file='fbs_FB6.htm'/>
-    <param name='fb' value='FB7'/>
-    <param name='type' value='3'/>
-    <param name='legendOn' value='1'/>
-    <param name='appletOn' value='0'/>
-    <output file='fbs_FB7.htm'/>
-    <param name='fb' value='FB8'/>
-    <param name='type' value='2'/>
-    <param name='legendOn' value='1'/>
-    <param name='appletOn' value='0'/>
-    <output file='fbs_FB8.htm'/>
-  </xslFile>
 </xmlFile>
-<xmlFile file='c:/Xilinx/14.6/ISE_DS/ISE/chipviewer/data/xsl/pinlegend.xml'>
+<xmlFile file='C:/Xilinx/14.6/ISE_DS/ISE/chipviewer/data/xsl/pinlegend.xml'>
   <xslFile file='legend.xsl'>
     <param name='device' value='XC95144XL-10-TQ144'/>
     <param name='verOn' value='0'/>
@@ -231,7 +122,7 @@
     <output file='pinlegendV.htm'/>
   </xslFile>
 </xmlFile>
-<xmlFile file='c:/Xilinx/14.6/ISE_DS/ISE/chipviewer/data/xsl/logiclegend.xml'>
+<xmlFile file='C:/Xilinx/14.6/ISE_DS/ISE/chipviewer/data/xsl/logiclegend.xml'>
   <xslFile file='legend.xsl'>
     <param name='device' value='XC95144XL-10-TQ144'/>
     <param name='verOn' value='0'/>

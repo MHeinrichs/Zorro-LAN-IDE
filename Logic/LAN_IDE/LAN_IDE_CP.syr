@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.12 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.12 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> Reading design: LAN_IDE_CP.prj
 
@@ -44,7 +44,7 @@ Target Device                      : XC9500XL CPLDs
 Top Module Name                    : LAN_IDE_CP
 Automatic FSM Extraction           : YES
 FSM Encoding Algorithm             : Auto
-Safe Implementation                : No
+Safe Implementation                : Yes
 Mux Extraction                     : Yes
 Resource Sharing                   : YES
 
@@ -55,8 +55,8 @@ XOR Preserve                       : YES
 Equivalent register Removal        : YES
 
 ---- General Options
-Optimization Goal                  : Speed
-Optimization Effort                : 1
+Optimization Goal                  : Area
+Optimization Effort                : 2
 Keep Hierarchy                     : Yes
 Netlist Hierarchy                  : As_Optimized
 RTL Output                         : Yes
@@ -76,22 +76,19 @@ wysiwyg                            : NO
 *                          HDL Compilation                              *
 =========================================================================
 Compiling vhdl file "C:/Users/Matze/Amiga/Hardwarehacks/Zorro-LAN-IDE/Logic/LAN_IDE/LAN_IDE_CP.vhd" in Library work.
-Entity <LAN_IDE_CP> compiled.
-Entity <LAN_IDE_CP> (Architecture <Behavioral>) compiled.
+Entity <lan_ide_cp> compiled.
+Entity <lan_ide_cp> (Architecture <behavioral>) compiled.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
 =========================================================================
-Analyzing hierarchy for entity <LAN_IDE_CP> in library <work> (architecture <Behavioral>).
+Analyzing hierarchy for entity <LAN_IDE_CP> in library <work> (architecture <behavioral>).
 
 
 =========================================================================
 *                            HDL Analysis                               *
 =========================================================================
-Analyzing Entity <LAN_IDE_CP> in library <work> (Architecture <Behavioral>).
-WARNING:Xst:819 - "C:/Users/Matze/Amiga/Hardwarehacks/Zorro-LAN-IDE/Logic/LAN_IDE/LAN_IDE_CP.vhd" line 114: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
-   <AS>
-WARNING:Xst:795 - "C:/Users/Matze/Amiga/Hardwarehacks/Zorro-LAN-IDE/Logic/LAN_IDE/LAN_IDE_CP.vhd" line 156: Size of operands are different : result is <false>.
+Analyzing Entity <LAN_IDE_CP> in library <work> (Architecture <behavioral>).
 Entity <LAN_IDE_CP> analyzed. Unit <LAN_IDE_CP> generated.
 
 
@@ -120,28 +117,28 @@ WARNING:Xst:1780 - Signal <AS_D> is never used or assigned. This unconnected sig
     Found 1-bit tristate buffer for signal <OWN>.
     Found 1-bit tristate buffer for signal <DTACK>.
     Found 1-bit tristate buffer for signal <INT_OUT>.
-    Found 1-bit xor2 for signal <AMIGA_CLK$xor0000> created at line 110.
+    Found 1-bit xor2 for signal <AMIGA_CLK$xor0000> created at line 111.
     Found 3-bit register for signal <AUTO_CONFIG_DONE>.
     Found 3-bit register for signal <AUTO_CONFIG_DONE_CYCLE>.
     Found 1-bit register for signal <autoconfig>.
     Found 1-bit register for signal <cp>.
-    Found 8-bit comparator not equal for signal <cp$cmp_ne0000> created at line 135.
+    Found 8-bit comparator equal for signal <cp$cmp_eq0000> created at line 141.
     Found 8-bit register for signal <CP_BASEADR>.
     Found 4-bit register for signal <Dout1>.
     Found 1-bit register for signal <ide>.
-    Found 8-bit comparator not equal for signal <ide$cmp_ne0000> created at line 129.
+    Found 8-bit comparator equal for signal <ide$cmp_eq0000> created at line 135.
     Found 8-bit register for signal <IDE_BASEADR>.
     Found 1-bit register for signal <IDE_ENABLE>.
     Found 1-bit register for signal <IDE_R_S>.
     Found 1-bit register for signal <IDE_W_S>.
     Found 1-bit register for signal <lan>.
-    Found 8-bit comparator not equal for signal <lan$cmp_ne0000> created at line 123.
+    Found 8-bit comparator equal for signal <lan$cmp_eq0000> created at line 129.
     Found 8-bit register for signal <LAN_BASEADR>.
     Found 1-bit register for signal <LAN_INT_ENABLE>.
     Found 1-bit register for signal <ROM_OE_S>.
     Found 3-bit register for signal <SHUT_UP>.
     Summary:
-	inferred   1 D-type flip-flop(s).
+	inferred   5 D-type flip-flop(s).
 	inferred   3 Comparator(s).
 	inferred   1 Xor(s).
 	inferred  35 Tristate(s).
@@ -158,7 +155,7 @@ Macro Statistics
  4-bit register                                        : 1
  8-bit register                                        : 3
 # Comparators                                          : 3
- 8-bit comparator not equal                            : 3
+ 8-bit comparator equal                                : 3
 # Tristates                                            : 5
  1-bit tristate buffer                                 : 3
  16-bit tristate buffer                                : 2
@@ -171,34 +168,23 @@ Macro Statistics
 *                       Advanced HDL Synthesis                          *
 =========================================================================
 
-WARNING:Xst:1426 - The value init of the FF/Latch 0 hinder the constant cleaning in the block LAN_INT_ENABLE.
-   You should achieve better results by setting this init to 0.
 
 =========================================================================
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# Registers                                            : 1
- Flip-Flops                                            : 1
+# Registers                                            : 5
+ Flip-Flops                                            : 5
+# Comparators                                          : 3
+ 8-bit comparator equal                                : 3
 
 =========================================================================
 
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
-WARNING:Xst:1426 - The value init of the FF/Latch LAN_INT_ENABLE hinder the constant cleaning in the block LAN_IDE_CP.
-   You should achieve better results by setting this init to 0.
 
 Optimizing unit <LAN_IDE_CP> ...
-  implementation constraint: INIT=r	 : IDE_ENABLE
-  implementation constraint: INIT=r	 : ide
-  implementation constraint: INIT=r	 : autoconfig
-  implementation constraint: INIT=s	 : IDE_R_S
-  implementation constraint: INIT=s	 : IDE_W_S
-  implementation constraint: INIT=r	 : cp
-  implementation constraint: INIT=s	 : ROM_OE_S
-  implementation constraint: INIT=r	 : lan
-  implementation constraint: INIT=s	 : LAN_INT_ENABLE
 
 =========================================================================
 *                           Partition Report                            *
@@ -218,7 +204,7 @@ Final Results
 RTL Top Level Output File Name     : LAN_IDE_CP.ngr
 Top Level Output File Name         : LAN_IDE_CP
 Output Format                      : NGC
-Optimization Goal                  : Speed
+Optimization Goal                  : Area
 Keep Hierarchy                     : Yes
 Target Technology                  : XC9500XL CPLDs
 Macro Preserve                     : YES
@@ -230,23 +216,20 @@ Design Statistics
 # IOs                              : 116
 
 Cell Usage :
-# BELS                             : 537
-#      AND2                        : 132
-#      AND3                        : 22
-#      AND4                        : 11
-#      AND5                        : 2
+# BELS                             : 373
+#      AND2                        : 83
+#      AND3                        : 23
 #      GND                         : 1
-#      INV                         : 225
-#      OR2                         : 106
-#      OR3                         : 15
+#      INV                         : 148
+#      OR2                         : 87
+#      OR3                         : 2
 #      OR4                         : 3
-#      OR5                         : 3
 #      VCC                         : 1
-#      XOR2                        : 16
+#      XOR2                        : 25
 # FlipFlops/Latches                : 46
-#      FD                          : 7
-#      FDC                         : 3
-#      FDCE                        : 36
+#      FD                          : 3
+#      FDC                         : 8
+#      FDCE                        : 35
 # IO Buffers                       : 106
 #      IBUF                        : 34
 #      IOBUFE                      : 32
@@ -256,13 +239,13 @@ Cell Usage :
 
 
 Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 8.15 secs
+Total CPU time to Xst completion: 8.07 secs
  
 --> 
 
-Total memory usage is 290008 kilobytes
+Total memory usage is 290060 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   16 (   0 filtered)
+Number of warnings :   12 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 

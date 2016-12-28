@@ -41,5 +41,11 @@
 <msg type="warning" file="Cpld" num="1007" delta="old" >Removing unused input(s) &apos;<arg fmt="%s" index="1">Z3</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
 </msg>
 
+<msg type="error" file="Cpld" num="837" delta="old" >Insufficient number of macrocells. The design needs at least <arg fmt="%d" index="1">157</arg> but only <arg fmt="%d" index="2">144</arg> left after allocating other resources.
+</msg>
+
+<msg type="error" file="Cpld" num="868" delta="old" >Cannot fit the design into any of the specified devices with the selected implementation options.
+</msg>
+
 </messages>
 

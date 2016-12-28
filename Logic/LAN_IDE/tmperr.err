@@ -1,0 +1,31 @@
+WARNING:Cpld - Unable to retrieve the path to the iSE Project Repository. Will
+   use the default filename of 'LAN_IDE_CP.ise'.
+INFO:Cpld - Inferring BUFG constraint for signal 'CLK_EXT' based upon the LOC
+   constraint 'P30'. It is recommended that you declare this BUFG explicitedly
+   in your design. Note that for certain device families the output of a BUFG
+   constraint can not drive a gated clock, and the BUFG constraint will be
+   ignored.
+WARNING:Cpld:936 - The output buffer 'OVR_OBUF' is missing an input and will be
+   deleted.
+WARNING:Cpld:936 - The output buffer 'MTACK_OBUF' is missing an input and will
+   be deleted.
+WARNING:Cpld:1007 - Removing unused input(s) 'A<15>'.  The input(s) are unused
+   after optimization. Please verify functionality via simulation.
+WARNING:Cpld:1007 - Removing unused input(s) 'CLK_EXT'.  The input(s) are unused
+   after optimization. Please verify functionality via simulation.
+WARNING:Cpld:1007 - Removing unused input(s) 'DS0'.  The input(s) are unused
+   after optimization. Please verify functionality via simulation.
+WARNING:Cpld:1007 - Removing unused input(s) 'DS1'.  The input(s) are unused
+   after optimization. Please verify functionality via simulation.
+WARNING:Cpld:1007 - Removing unused input(s) 'FCS'.  The input(s) are unused
+   after optimization. Please verify functionality via simulation.
+WARNING:Cpld:1007 - Removing unused input(s) 'IDE_WAIT'.  The input(s) are
+   unused after optimization. Please verify functionality via simulation.
+WARNING:Cpld:1007 - Removing unused input(s) 'MTCR'.  The input(s) are unused
+   after optimization. Please verify functionality via simulation.
+WARNING:Cpld:1007 - Removing unused input(s) 'Z3'.  The input(s) are unused
+   after optimization. Please verify functionality via simulation.
+ERROR:Cpld:837 - Insufficient number of macrocells. The design needs at least
+   157 but only 144 left after allocating other resources.
+ERROR:Cpld:868 - Cannot fit the design into any of the specified devices with
+   the selected implementation options.
