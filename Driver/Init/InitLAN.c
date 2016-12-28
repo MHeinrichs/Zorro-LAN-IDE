@@ -35,8 +35,8 @@ int SoftReset(APTR *BaseAddress){
         WORD wTestWriteData, wTestReadData;
         // Perform a reset via the PSP interface
 				//set the clock to 33mhz: COCON[3..0] = "0001"
-        //CLRREG(BaseAddress,ECON2, (ECON2_COCON3|ECON2_COCON2|ECON2_COCON1));
-        //SETREG(BaseAddress,ECON2, ECON2_COCON0);
+        CLRREG(BaseAddress,ECON2, (ECON2_COCON3|ECON2_COCON2|ECON2_COCON1));
+        SETREG(BaseAddress,ECON2, ECON2_COCON0);
 				
 
         do
