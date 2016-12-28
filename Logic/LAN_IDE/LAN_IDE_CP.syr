@@ -76,19 +76,22 @@ wysiwyg                            : NO
 *                          HDL Compilation                              *
 =========================================================================
 Compiling vhdl file "C:/Users/Matze/Amiga/Hardwarehacks/Zorro-LAN-IDE/Logic/LAN_IDE/LAN_IDE_CP.vhd" in Library work.
-Entity <lan_ide_cp> compiled.
-Entity <lan_ide_cp> (Architecture <behavioral>) compiled.
+Entity <LAN_IDE_CP> compiled.
+Entity <LAN_IDE_CP> (Architecture <Behavioral>) compiled.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
 =========================================================================
-Analyzing hierarchy for entity <LAN_IDE_CP> in library <work> (architecture <behavioral>).
+Analyzing hierarchy for entity <LAN_IDE_CP> in library <work> (architecture <Behavioral>).
 
 
 =========================================================================
 *                            HDL Analysis                               *
 =========================================================================
-Analyzing Entity <LAN_IDE_CP> in library <work> (Architecture <behavioral>).
+Analyzing Entity <LAN_IDE_CP> in library <work> (Architecture <Behavioral>).
+WARNING:Xst:819 - "C:/Users/Matze/Amiga/Hardwarehacks/Zorro-LAN-IDE/Logic/LAN_IDE/LAN_IDE_CP.vhd" line 114: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+   <AS>
+WARNING:Xst:795 - "C:/Users/Matze/Amiga/Hardwarehacks/Zorro-LAN-IDE/Logic/LAN_IDE/LAN_IDE_CP.vhd" line 156: Size of operands are different : result is <false>.
 Entity <LAN_IDE_CP> analyzed. Unit <LAN_IDE_CP> generated.
 
 
@@ -104,10 +107,8 @@ WARNING:Xst:647 - Input <IDE_WAIT> is never used. This port will be preserved an
 WARNING:Xst:647 - Input <DS0> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <DS1> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <FCS> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:1306 - Output <LAN_CFG> is never assigned.
 WARNING:Xst:1306 - Output <MTACK> is never assigned.
 WARNING:Xst:2565 - Inout <A<15>> is never assigned.
-WARNING:Xst:647 - Input <CP_IRQ> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <Z3> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <CLK_EXT> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:1306 - Output <OVR> is never assigned.
@@ -119,26 +120,28 @@ WARNING:Xst:1780 - Signal <AS_D> is never used or assigned. This unconnected sig
     Found 1-bit tristate buffer for signal <OWN>.
     Found 1-bit tristate buffer for signal <DTACK>.
     Found 1-bit tristate buffer for signal <INT_OUT>.
-    Found 1-bit xor2 for signal <AMIGA_CLK$xor0000> created at line 109.
+    Found 1-bit xor2 for signal <AMIGA_CLK$xor0000> created at line 110.
     Found 3-bit register for signal <AUTO_CONFIG_DONE>.
     Found 3-bit register for signal <AUTO_CONFIG_DONE_CYCLE>.
     Found 1-bit register for signal <autoconfig>.
     Found 1-bit register for signal <cp>.
-    Found 8-bit comparator not equal for signal <cp$cmp_ne0000> created at line 134.
+    Found 8-bit comparator not equal for signal <cp$cmp_ne0000> created at line 135.
     Found 8-bit register for signal <CP_BASEADR>.
     Found 4-bit register for signal <Dout1>.
     Found 1-bit register for signal <ide>.
-    Found 8-bit comparator not equal for signal <ide$cmp_ne0000> created at line 128.
+    Found 8-bit comparator not equal for signal <ide$cmp_ne0000> created at line 129.
     Found 8-bit register for signal <IDE_BASEADR>.
     Found 1-bit register for signal <IDE_ENABLE>.
     Found 1-bit register for signal <IDE_R_S>.
     Found 1-bit register for signal <IDE_W_S>.
     Found 1-bit register for signal <lan>.
-    Found 8-bit comparator not equal for signal <lan$cmp_ne0000> created at line 122.
+    Found 8-bit comparator not equal for signal <lan$cmp_ne0000> created at line 123.
     Found 8-bit register for signal <LAN_BASEADR>.
+    Found 1-bit register for signal <LAN_INT_ENABLE>.
     Found 1-bit register for signal <ROM_OE_S>.
     Found 3-bit register for signal <SHUT_UP>.
     Summary:
+	inferred   1 D-type flip-flop(s).
 	inferred   3 Comparator(s).
 	inferred   1 Xor(s).
 	inferred  35 Tristate(s).
@@ -149,8 +152,8 @@ Unit <LAN_IDE_CP> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
-# Registers                                            : 19
- 1-bit register                                        : 14
+# Registers                                            : 20
+ 1-bit register                                        : 15
  3-bit register                                        : 1
  4-bit register                                        : 1
  8-bit register                                        : 3
@@ -168,16 +171,23 @@ Macro Statistics
 *                       Advanced HDL Synthesis                          *
 =========================================================================
 
+WARNING:Xst:1426 - The value init of the FF/Latch 0 hinder the constant cleaning in the block LAN_INT_ENABLE.
+   You should achieve better results by setting this init to 0.
 
 =========================================================================
 Advanced HDL Synthesis Report
 
-Found no macro
+Macro Statistics
+# Registers                                            : 1
+ Flip-Flops                                            : 1
+
 =========================================================================
 
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
+WARNING:Xst:1426 - The value init of the FF/Latch LAN_INT_ENABLE hinder the constant cleaning in the block LAN_IDE_CP.
+   You should achieve better results by setting this init to 0.
 
 Optimizing unit <LAN_IDE_CP> ...
   implementation constraint: INIT=r	 : IDE_ENABLE
@@ -188,6 +198,7 @@ Optimizing unit <LAN_IDE_CP> ...
   implementation constraint: INIT=r	 : cp
   implementation constraint: INIT=s	 : ROM_OE_S
   implementation constraint: INIT=r	 : lan
+  implementation constraint: INIT=s	 : LAN_INT_ENABLE
 
 =========================================================================
 *                           Partition Report                            *
@@ -219,39 +230,39 @@ Design Statistics
 # IOs                              : 116
 
 Cell Usage :
-# BELS                             : 482
-#      AND2                        : 104
+# BELS                             : 537
+#      AND2                        : 132
 #      AND3                        : 22
-#      AND4                        : 12
+#      AND4                        : 11
 #      AND5                        : 2
 #      GND                         : 1
-#      INV                         : 213
-#      OR2                         : 90
+#      INV                         : 225
+#      OR2                         : 106
 #      OR3                         : 15
 #      OR4                         : 3
 #      OR5                         : 3
 #      VCC                         : 1
 #      XOR2                        : 16
-# FlipFlops/Latches                : 45
+# FlipFlops/Latches                : 46
 #      FD                          : 7
 #      FDC                         : 3
-#      FDCE                        : 35
-# IO Buffers                       : 101
-#      IBUF                        : 33
+#      FDCE                        : 36
+# IO Buffers                       : 106
+#      IBUF                        : 34
 #      IOBUFE                      : 32
-#      OBUF                        : 33
+#      OBUF                        : 37
 #      OBUFE                       : 3
 =========================================================================
 
 
 Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 8.18 secs
+Total CPU time to Xst completion: 8.15 secs
  
 --> 
 
-Total memory usage is 290052 kilobytes
+Total memory usage is 290008 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   14 (   0 filtered)
+Number of warnings :   16 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 

@@ -96,6 +96,7 @@ architecture Behavioral of LAN_IDE_CP is
 	signal DTACK_S:STD_LOGIC:= '1';
    signal AS_D: std_logic:= '1';
 	signal AMIGA_CLK: std_logic:= '1';
+	signal LAN_INT_ENABLE: std_logic:= '1';
 
    Function to_std_logic(X: in Boolean) return Std_Logic is
    variable ret : std_logic;
@@ -110,7 +111,7 @@ begin
 	
 	ADDRESS_DECODE: process(AMIGA_CLK)
 	begin
-		if(rising_edge(AMIGA_CLK))then				
+		if(falling_edge(AS))then				
 			if(BERR='1') then
 				if(A(23 downto 16) = x"E8" and not(AUTO_CONFIG_DONE ="111") and CFIN='0')then
 					autoconfig <='1';
@@ -144,6 +145,21 @@ begin
 			end if;					
 		end if;				
 	end process ADDRESS_DECODE;
+	
+	--LAN interrupt enable
+	lan_int_proc: process (AMIGA_CLK)
+	begin
+		if rising_edge(AMIGA_CLK) then
+			if(reset ='0') then
+				LAN_INT_ENABLE <='0';
+			elsif(lan='1' and AS='0' and RW='0')then
+				if(A(15 downto 8) = x"8")then
+					LAN_INT_ENABLE <=D(15);
+				end if;
+			end if;
+			
+		end if;
+	end process lan_int_proc;
 	
 	--ide
 		-- this is the clocked process
@@ -330,20 +346,22 @@ begin
 	LAN_WRH	<= '1' when AS='0' and RW='0' and lan='1' and UDS = '0' else '0';
 	LAN_CS	<= '1';-- when AS='0' and lan='1' else '0';
 	LAN_RD	<= '1' when AS='0' and RW='1' and lan='1' else '0';
+	LAN_CFG	<= "0010";
 	
 	CP_WE		<= '0' when AS='0' and RW='0' and cp='1' and (UDS='0' or LDS='0') else '1';
 	CP_RD		<= '0' when AS='0' and RW='1' and cp='1' else '1';
 	CP_CS		<= '0' when AS='0' and cp='1' else '1';
 
-	A_LAN <= A(14 downto 1);
+	A_LAN <= A(14 downto 1) when lan='1' else A(13 downto 1) &'0';
 	--signal assignment
 	D	<=	--RAM_D 						when RW='1' and TRANSFER_IN_PROGRES ='1' else
 			DQ								when RW='1' and (lan ='1' or cp = '1') and AS='0' else
 			Dout1	& x"FFF" 			when RW='1' and autoconfig ='1' and AS='0' else
 			"ZZZZZZZZZZZZZZZZ";
 
-	DQ <= 	D 	when RW='0' and (UDS ='0' or LDS='0')
-							and (lan ='1' or cp = '1') 
+	DQ <= 	D 	when RW='0' and AS='0'
+							--and (UDS ='0' or LDS='0')
+							--and (lan ='1' or cp = '1') 
 					else "ZZZZZZZZZZZZZZZZ";
 								
 	IDE_W <=	IDE_W_S;
@@ -357,7 +375,9 @@ begin
 	ROM_OE	<= ROM_OE_S;				
 
 	--INT_OUT <= 'Z';
-	INT_OUT <= '0' when LAN_INT ='0' else 'Z';
+	INT_OUT <= '0' when 
+							(LAN_INT = '0' and LAN_INT_ENABLE ='1') or 
+							CP_IRQ = '0' else 'Z';
 	
 	OWN 	<= '0' when AS='0' and (autoconfig  = '1' or ide = '1' or lan = '1' or cp = '1') else 'Z';
 	SLAVE <= '0' when AS='0' and (autoconfig  = '1' or ide = '1' or lan = '1' or cp = '1') else '1';

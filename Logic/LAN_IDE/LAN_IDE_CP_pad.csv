@@ -1,7 +1,7 @@
 Release 8.1i - Fit P.68d
 Copyright(c) 1995-2003 Xilinx Inc. All rights reserved
 
-12-15-2016 10:33PM
+12-28-2016  0:50AM
 
 NOTE: This file is designed to be imported into a spreadsheet program
 such as Microsoft Excel for viewing, printing and sorting. The comma ','
@@ -29,8 +29,8 @@ P8,VCC,,VCCINT,,,,,,,,,,
 P9,A_LAN<4>,O,I/O,OUTPUT,,,,,,,,,
 P10,A_LAN<7>,O,I/O,OUTPUT,,,,,,,,,
 P11,A_LAN<6>,O,I/O,OUTPUT,,,,,,,,,
-P12,TIE,,I/O,,,,,,,,,,
-P13,TIE,,I/O,,,,,,,,,,
+P12,LAN_CFG<1>,O,I/O,OUTPUT,,,,,,,,,
+P13,LAN_CFG<3>,O,I/O,OUTPUT,,,,,,,,,
 P14,D<6>,I/O,I/O,BIDIR,,,,,,,,,
 P15,D<3>,I/O,I/O,BIDIR,,,,,,,,,
 P16,D<7>,I/O,I/O,BIDIR,,,,,,,,,
@@ -48,7 +48,7 @@ P27,IDE_R,O,I/O,OUTPUT,,,,,,,,,
 P28,IDE_W,O,I/O,OUTPUT,,,,,,,,,
 P29,GND,,GND,,,,,,,,,,
 P30,TIE,,I/O/GCK1,,,,,,,,,,
-P31,TIE,,I/O,,,,,,,,,,
+P31,CP_IRQ,I,I/O,INPUT,,,,,,,,,
 P32,INT_OUT,O,I/O/GCK2,OUTPUT,,,,,,,,,
 P33,TIE,,I/O,,,,,,,,,,
 P34,CP_CS,O,I/O,OUTPUT,,,,,,,,,
@@ -127,7 +127,7 @@ P106,SLAVE,O,I/O,OUTPUT,,,,,,,,,
 P107,OWN,O,I/O,OUTPUT,,,,,,,,,
 P108,GND,,GND,,,,,,,,,,
 P109,VCC,,VCCIO,,,,,,,,,,
-P110,TIE,,I/O,,,,,,,,,,
+P110,LAN_CFG<4>,O,I/O,OUTPUT,,,,,,,,,
 P111,LAN_INT,I,I/O,INPUT,,,,,,,,,
 P112,DQ<15>,I/O,I/O,BIDIR,,,,,,,,,
 P113,DQ<13>,I/O,I/O,BIDIR,,,,,,,,,
@@ -152,7 +152,7 @@ P131,DQ<14>,I/O,I/O,BIDIR,,,,,,,,,
 P132,LAN_WRH,O,I/O,OUTPUT,,,,,,,,,
 P133,LAN_CS,O,I/O,OUTPUT,,,,,,,,,
 P134,LAN_RD,O,I/O,OUTPUT,,,,,,,,,
-P135,TIE,,I/O,,,,,,,,,,
+P135,LAN_CFG<2>,O,I/O,OUTPUT,,,,,,,,,
 P136,A_LAN<13>,O,I/O,OUTPUT,,,,,,,,,
 P137,A_LAN<12>,O,I/O,OUTPUT,,,,,,,,,
 P138,A_LAN<10>,O,I/O,OUTPUT,,,,,,,,,
