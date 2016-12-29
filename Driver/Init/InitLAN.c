@@ -48,22 +48,23 @@ int SoftReset(APTR *BaseAddress){
                 // initialized correctly, I/O pins aren't connected or are
                 // shorted to something, power isn't available, etc.)
            		w= 0x1234;
-                //do
-                //{
+                do
+                {
                         WRITEREG(BaseAddress,EUDAST, w);
                         v=READREG(BaseAddress, EUDAST);
                         printf("Read 0x%x at register 0x%x (should be 0x%x)\n",v,EUDAST,w);
-                //} while(v != w);
+                } while(v != w);
 
                 // Issue a reset and wait for it to complete
                 SETREG(BaseAddress,ECON2, ECON2_ETHRST);
+                w = (WORD)(ESTAT_CLKRDY | ESTAT_RSTDONE | ESTAT_PHYRDY);
                 do{
              
 	                delayCIA();
   	                v = READREG(BaseAddress,ESTAT);
                     printf("Read 0x%x at register 0x%x\n",v,ESTAT);
                 	
-                }while((v & (ESTAT_CLKRDY | ESTAT_RSTDONE | ESTAT_PHYRDY)) != (ESTAT_CLKRDY | ESTAT_RSTDONE | ESTAT_PHYRDY));
+                }while((v & w) != w);
 
                 // Check to see if the reset operation was successful by
                 // checking if EUDAST went back to its reset default.  This test
@@ -106,7 +107,7 @@ int SoftReset(APTR *BaseAddress){
                 // it means you have a hardware failure.  Check all of your PSP
                 // address and data lines.
                 if(wTestWriteData != wTestReadData)
-                	printf("Error checking memory at adress %lx! Expected $x - got %x\n",(BaseAddress+w),wTestWriteData,wTestReadData);
+                	printf("Error checking memory at adress %lx! Expected %x - got %x\n",(BaseAddress+w),wTestWriteData,wTestReadData);
 
         }
         return v;

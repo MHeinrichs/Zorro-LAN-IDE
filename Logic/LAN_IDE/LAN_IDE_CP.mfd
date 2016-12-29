@@ -1305,7 +1305,7 @@ OUTPUTMC | 42 | 4 | 0 | 0 | 17 | 2 | 17 | 2 | 15 | 6 | 2 | 4 | 14 | 6 | 0 | 0 | 
 INPUTS | 2 | C1  | C3
 INPUTP | 2 | 115 | 114
 EQ | 2 | 
-   lan/lan_CLKF = C1
+   !lan/lan_CLKF = C1
 	$ C3;
 
 MACROCELL | 7 | 3 | autoconfig/autoconfig_RSTF

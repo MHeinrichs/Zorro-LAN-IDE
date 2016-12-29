@@ -118,7 +118,7 @@ begin
 			ide <='0';
 			lan <='0';
 			cp  <='0';
-		elsif(falling_edge(AMIGA_CLK))then				
+		elsif(rising_edge(AMIGA_CLK))then				
 			if(A(23 downto 16) = x"E8" and not(AUTO_CONFIG_DONE ="111") and CFIN='0')then
 				autoconfig <='1';
 			else
@@ -151,8 +151,8 @@ begin
 	begin
 		if(reset ='0') then
 				LAN_INT_ENABLE <='0';
-		elsif rising_edge(AMIGA_CLK) then
-			if(LAN_INT = '1') then --enable if high for the first time!
+		elsif falling_edge(AMIGA_CLK) then
+			if(LAN_INT = '1' and AUTO_CONFIG_DONE ="111") then --enable if high and ac completed!
 				LAN_INT_ENABLE <= '1';
 			end if;
 		end if;
@@ -163,7 +163,7 @@ begin
 	ide_rw_gen: process (AMIGA_CLK)
 	begin
 	
-		if rising_edge(AMIGA_CLK) then
+		if falling_edge(AMIGA_CLK) then
 			if	(reset = '0') then
 				IDE_R_S		<= '1';
 				IDE_W_S		<= '1';
@@ -206,7 +206,7 @@ begin
 
 	autoconfig_proc: process (reset, AMIGA_CLK)
 	begin
-		if rising_edge(AMIGA_CLK) then -- no reset, so wait for rising edge of the clock		
+		if falling_edge(AMIGA_CLK) then -- no reset, so wait for rising edge of the clock		
 			if	reset = '0' then
 				-- reset active ...
 				AUTO_CONFIG_DONE_CYCLE	<="000";

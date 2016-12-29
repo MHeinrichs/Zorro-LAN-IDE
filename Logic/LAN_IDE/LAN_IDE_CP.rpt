@@ -1,7 +1,7 @@
  
 cpldfit:  version P.68d                             Xilinx Inc.
                                   Fitter Report
-Design Name: LAN_IDE_CP                          Date: 12-28-2016, 11:59PM
+Design Name: LAN_IDE_CP                          Date: 12-29-2016,  3:04PM
 Device Used: XC95144XL-10-TQ144
 Fitting Status: Successful
 
@@ -1457,9 +1457,9 @@ lan_D <= ((SHUT_UP(0))
 	OR (NOT LAN_BASEADR(4) AND A(20)));
 
 
-lan/lan_CLKF <= C1
+lan/lan_CLKF <= NOT (C1
 	 XOR 
-lan/lan_CLKF <= C3;
+lan/lan_CLKF <= NOT (C3);
 
 Register Legend:
  FDCPE (Q,D,C,CLR,PRE,CE); 
@@ -1474,12 +1474,12 @@ Device : XC95144XL-10-TQ144
 Pin Signal                         Pin Signal                        
 No. Name                           No. Name                          
   1 VCC                              73 VCC                           
-  2 D<0>                             74 TIE                           
+  2 D<0>                             74 KPR                           
   3 A_LAN<1>                         75 AUTOBOOT_OFF                  
   4 A_LAN<0>                         76 LAN_WRL                       
-  5 A_LAN<3>                         77 TIE                           
-  6 A_LAN<2>                         78 TIE                           
-  7 A_LAN<5>                         79 TIE                           
+  5 A_LAN<3>                         77 KPR                           
+  6 A_LAN<2>                         78 KPR                           
+  7 A_LAN<5>                         79 KPR                           
   8 VCC                              80 AS                            
   9 A_LAN<4>                         81 UDS                           
  10 A_LAN<7>                         82 LDS                           
@@ -1493,25 +1493,25 @@ No. Name                           No. Name
  18 GND                              90 GND                           
  19 D<8>                             91 A<20>                         
  20 D<5>                             92 A<19>                         
- 21 D<4>                             93 TIE                           
+ 21 D<4>                             93 KPR                           
  22 IDE_CS<0>                        94 A<18>                         
  23 IDE_CS<1>                        95 A<17>                         
- 24 IDE_A<0>                         96 TIE                           
+ 24 IDE_A<0>                         96 KPR                           
  25 IDE_A<2>                         97 A<16>                         
  26 IDE_A<1>                         98 BERR                          
  27 IDE_R                            99 GND                           
- 28 IDE_W                           100 TIE                           
- 29 GND                             101 TIE                           
- 30 TIE                             102 C3                            
+ 28 IDE_W                           100 KPR                           
+ 29 GND                             101 KPR                           
+ 30 KPR                             102 C3                            
  31 CP_IRQ                          103 C1                            
  32 INT_OUT                         104 CFIN                          
- 33 TIE                             105 CFOUT                         
+ 33 KPR                             105 CFOUT                         
  34 CP_CS                           106 SLAVE                         
  35 ROM_OE                          107 OWN                           
  36 GND                             108 GND                           
  37 VCC                             109 VCC                           
- 38 TIE                             110 LAN_CFG<4>                    
- 39 D<2>                            111 TIE                           
+ 38 KPR                             110 LAN_CFG<4>                    
+ 39 D<2>                            111 KPR                           
  40 D<9>                            112 DQ<15>                        
  41 D<10>                           113 DQ<13>                        
  42 VCC                             114 GND                           
@@ -1574,7 +1574,7 @@ Keep Unused Inputs                          : OFF
 Slew Rate                                   : FAST
 Power Mode                                  : STD
 Ground on Unused IOs                        : OFF
-Set I/O Pin Termination                     : FLOAT
+Set I/O Pin Termination                     : KEEPER
 Global Clock Optimization                   : ON
 Global Set/Reset Optimization               : ON
 Global Ouput Enable Optimization            : ON
