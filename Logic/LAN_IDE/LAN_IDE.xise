@@ -50,7 +50,7 @@
     <property xil_pn:name="Create Programmable GND Pins on Unused I/O" xil_pn:value="false" xil_pn:valueState="default"/>
     <property xil_pn:name="Default Powerup Value of Registers" xil_pn:value="Low" xil_pn:valueState="default"/>
     <property xil_pn:name="Delay Values To Be Read from SDF" xil_pn:value="Setup Time" xil_pn:valueState="default"/>
-    <property xil_pn:name="Device" xil_pn:value="xc95144xl" xil_pn:valueState="non-default"/>
+    <property xil_pn:name="Device" xil_pn:value="xc95288xl" xil_pn:valueState="non-default"/>
     <property xil_pn:name="Device Family" xil_pn:value="XC9500XL CPLDs" xil_pn:valueState="non-default"/>
     <property xil_pn:name="Device Speed Grade/Select ABS Minimum" xil_pn:value="-10" xil_pn:valueState="default"/>
     <property xil_pn:name="Do Not Escape Signal and Instance Names in Netlist" xil_pn:value="false" xil_pn:valueState="default"/>
@@ -127,7 +127,7 @@
     <property xil_pn:name="Output File Name" xil_pn:value="LAN_IDE_CP" xil_pn:valueState="default"/>
     <property xil_pn:name="Output Slew Rate" xil_pn:value="Fast" xil_pn:valueState="default"/>
     <property xil_pn:name="Overwrite Compiled Libraries" xil_pn:value="false" xil_pn:valueState="default"/>
-    <property xil_pn:name="Package" xil_pn:value="TQ144" xil_pn:valueState="non-default"/>
+    <property xil_pn:name="Package" xil_pn:value="TQ144" xil_pn:valueState="default"/>
     <property xil_pn:name="Port to be used" xil_pn:value="Auto - default" xil_pn:valueState="default"/>
     <property xil_pn:name="Post Map Simulation Model Name" xil_pn:value="LAN_IDE_CP_map.vhd" xil_pn:valueState="default"/>
     <property xil_pn:name="Post Place &amp; Route Simulation Model Name" xil_pn:value="LAN_IDE_CP_timesim.vhd" xil_pn:valueState="default"/>

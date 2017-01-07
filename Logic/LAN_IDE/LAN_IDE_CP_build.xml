@@ -213,19 +213,59 @@
     <param name='appletOn' value='0'/>
     <output file='fbs_FB7.htm'/>
     <param name='fb' value='FB8'/>
-    <param name='type' value='2'/>
+    <param name='type' value='3'/>
     <param name='legendOn' value='1'/>
     <param name='appletOn' value='0'/>
     <output file='fbs_FB8.htm'/>
+    <param name='fb' value='FB9'/>
+    <param name='type' value='3'/>
+    <param name='legendOn' value='1'/>
+    <param name='appletOn' value='0'/>
+    <output file='fbs_FB9.htm'/>
+    <param name='fb' value='FB10'/>
+    <param name='type' value='3'/>
+    <param name='legendOn' value='1'/>
+    <param name='appletOn' value='0'/>
+    <output file='fbs_FB10.htm'/>
+    <param name='fb' value='FB11'/>
+    <param name='type' value='3'/>
+    <param name='legendOn' value='1'/>
+    <param name='appletOn' value='0'/>
+    <output file='fbs_FB11.htm'/>
+    <param name='fb' value='FB12'/>
+    <param name='type' value='3'/>
+    <param name='legendOn' value='1'/>
+    <param name='appletOn' value='0'/>
+    <output file='fbs_FB12.htm'/>
+    <param name='fb' value='FB13'/>
+    <param name='type' value='3'/>
+    <param name='legendOn' value='1'/>
+    <param name='appletOn' value='0'/>
+    <output file='fbs_FB13.htm'/>
+    <param name='fb' value='FB14'/>
+    <param name='type' value='3'/>
+    <param name='legendOn' value='1'/>
+    <param name='appletOn' value='0'/>
+    <output file='fbs_FB14.htm'/>
+    <param name='fb' value='FB15'/>
+    <param name='type' value='3'/>
+    <param name='legendOn' value='1'/>
+    <param name='appletOn' value='0'/>
+    <output file='fbs_FB15.htm'/>
+    <param name='fb' value='FB16'/>
+    <param name='type' value='2'/>
+    <param name='legendOn' value='1'/>
+    <param name='appletOn' value='0'/>
+    <output file='fbs_FB16.htm'/>
   </xslFile>
 </xmlFile>
 <xmlFile file='C:/Xilinx/14.6/ISE_DS/ISE/chipviewer/data/xsl/pinlegend.xml'>
   <xslFile file='legend.xsl'>
-    <param name='device' value='XC95144XL-10-TQ144'/>
+    <param name='device' value='XC95288XL-10-TQ144'/>
     <param name='verOn' value='0'/>
     <param name='linkName' value='pinlegendV.htm'/>
     <output file='pinlegend.htm'/>
-    <param name='device' value='XC95144XL-10-TQ144'/>
+    <param name='device' value='XC95288XL-10-TQ144'/>
     <param name='verOn' value='1'/>
     <param name='linkName' value='pinlegend.htm'/>
     <output file='pinlegendV.htm'/>
@@ -233,11 +273,11 @@
 </xmlFile>
 <xmlFile file='C:/Xilinx/14.6/ISE_DS/ISE/chipviewer/data/xsl/logiclegend.xml'>
   <xslFile file='legend.xsl'>
-    <param name='device' value='XC95144XL-10-TQ144'/>
+    <param name='device' value='XC95288XL-10-TQ144'/>
     <param name='verOn' value='0'/>
     <param name='linkName' value='logiclegendV.htm'/>
     <output file='logiclegend.htm'/>
-    <param name='device' value='XC95144XL-10-TQ144'/>
+    <param name='device' value='XC95288XL-10-TQ144'/>
     <param name='verOn' value='1'/>
     <param name='linkName' value='logiclegend.htm'/>
     <output file='logiclegendV.htm'/>

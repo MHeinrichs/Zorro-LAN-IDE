@@ -9,10 +9,10 @@
 <grid distance="25" unitdist="mil" unit="mil" style="lines" multiple="1" display="no" altdistance="3.125" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
-<layer number="2" name="Route2" color="1" fill="3" visible="yes" active="yes"/>
+<layer number="2" name="Route2" color="1" fill="3" visible="no" active="yes"/>
 <layer number="3" name="Route3" color="4" fill="3" visible="no" active="no"/>
 <layer number="14" name="Route14" color="1" fill="6" visible="no" active="no"/>
-<layer number="15" name="Route15" color="4" fill="6" visible="yes" active="yes"/>
+<layer number="15" name="Route15" color="4" fill="6" visible="no" active="yes"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
@@ -2871,7 +2871,7 @@ Sollten andere Lagen belegt und relevant sein, so teilen Sie uns dies bitte expl
 <contactref element="SV2" pad="4"/>
 <contactref element="SV2" pad="6"/>
 <contactref element="SV2" pad="8"/>
-<polygon width="0.254" layer="2" isolate="0.254">
+<polygon width="0.254" layer="2">
 <vertex x="0" y="0"/>
 <vertex x="130.175" y="0"/>
 <vertex x="130.175" y="90.17"/>
@@ -4081,7 +4081,7 @@ Sollten andere Lagen belegt und relevant sein, so teilen Sie uns dies bitte expl
 <via x="31.75" y="33.655" extent="1-16" drill="0.3"/>
 <wire x1="34.43" y1="33.065" x2="33.75" y2="32.385" width="0.254" layer="1"/>
 <wire x1="33.75" y1="32.385" x2="31.355" y2="32.385" width="0.254" layer="1"/>
-<polygon width="0.254" layer="15" isolate="0.254">
+<polygon width="0.254" layer="15">
 <vertex x="27.94" y="31.75"/>
 <vertex x="103.505" y="31.75"/>
 <vertex x="103.505" y="67.945"/>
@@ -4497,7 +4497,7 @@ Sollten andere Lagen belegt und relevant sein, so teilen Sie uns dies bitte expl
 <via x="122.2375" y="11.7475" extent="1-16" drill="0.7"/>
 <wire x1="122.2375" y1="11.7475" x2="122.301" y2="11.684" width="1.27" layer="1"/>
 <wire x1="122.301" y1="11.684" x2="122.301" y2="5.08" width="1.27" layer="1"/>
-<polygon width="0.254" layer="15" isolate="0.254" rank="2">
+<polygon width="0.254" layer="15" rank="2">
 <vertex x="0" y="89.535"/>
 <vertex x="130.175" y="89.535"/>
 <vertex x="130.175" y="-0.635"/>

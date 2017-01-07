@@ -26,12 +26,14 @@
     <file xil_pn:fileType="FILE_CMD_LOG" xil_pn:name="LAN_IDE_CP.cmd_log"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_GYD" xil_pn:name="LAN_IDE_CP.gyd"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_JEDEC" xil_pn:name="LAN_IDE_CP.jed"/>
+    <file xil_pn:fileType="FILE_LFP" xil_pn:name="LAN_IDE_CP.lfp"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_LSO" xil_pn:name="LAN_IDE_CP.lso"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_MFD" xil_pn:name="LAN_IDE_CP.mfd"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGA" xil_pn:name="LAN_IDE_CP.nga"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGC" xil_pn:name="LAN_IDE_CP.ngc"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGD" xil_pn:name="LAN_IDE_CP.ngd"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGR" xil_pn:name="LAN_IDE_CP.ngr"/>
+    <file xil_pn:fileType="FILE_PAD_MISC" xil_pn:name="LAN_IDE_CP.pad"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_PNX" xil_pn:name="LAN_IDE_CP.pnx"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="LAN_IDE_CP.prj"/>
     <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="LAN_IDE_CP.rpt"/>
@@ -40,10 +42,13 @@
     <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="LAN_IDE_CP.tim"/>
     <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="LAN_IDE_CP.tspec"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_VM6" xil_pn:name="LAN_IDE_CP.vm6"/>
+    <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="LAN_IDE_CP.xml"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST" xil_pn:name="LAN_IDE_CP.xst"/>
+    <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="LAN_IDE_CP_build.xml"/>
     <file xil_pn:fileType="FILE_HTML" xil_pn:name="LAN_IDE_CP_envsettings.html"/>
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="LAN_IDE_CP_html"/>
     <file xil_pn:fileType="FILE_XRPT" xil_pn:name="LAN_IDE_CP_ngdbuild.xrpt"/>
+    <file xil_pn:fileType="FILE_PAD_EXCEL_REPORT" xil_pn:name="LAN_IDE_CP_pad.csv"/>
     <file xil_pn:fileType="FILE_HTML" xil_pn:name="LAN_IDE_CP_summary.html"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="LAN_IDE_CP_vhdl.prj"/>
     <file xil_pn:fileType="FILE_XRPT" xil_pn:name="LAN_IDE_CP_xst.xrpt"/>
@@ -56,15 +61,21 @@
   </files>
 
   <transforms xmlns="http://www.xilinx.com/XMLSchema">
-    <transform xil_pn:end_ts="1483019733" xil_pn:in_ck="-2520376148396271922" xil_pn:name="TRANEXT_xstsynthesize_xc9500xl" xil_pn:prop_ck="573096660806012042" xil_pn:start_ts="1483019723">
+    <transform xil_pn:end_ts="1483021338" xil_pn:name="TRAN_copyInitialToXSTAbstractSynthesis" xil_pn:start_ts="1483021338">
       <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="WarningsGenerated"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1483021338" xil_pn:name="TRAN_schematicsToHdl" xil_pn:prop_ck="5081391373936803697" xil_pn:start_ts="1483021338">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1483824697" xil_pn:in_ck="-2520376148396271922" xil_pn:name="TRANEXT_xstsynthesize_xc9500xl" xil_pn:prop_ck="-1178050918941528397" xil_pn:start_ts="1483824694">
+      <status xil_pn:value="FailedRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="LAN_IDE_CP.lso"/>
       <outfile xil_pn:name="LAN_IDE_CP.ngc"/>
       <outfile xil_pn:name="LAN_IDE_CP.ngr"/>
       <outfile xil_pn:name="LAN_IDE_CP.prj"/>
-      <outfile xil_pn:name="LAN_IDE_CP.stx"/>
       <outfile xil_pn:name="LAN_IDE_CP.syr"/>
       <outfile xil_pn:name="LAN_IDE_CP.xst"/>
       <outfile xil_pn:name="LAN_IDE_CP_vhdl.prj"/>
@@ -73,37 +84,44 @@
       <outfile xil_pn:name="webtalk_pn.xml"/>
       <outfile xil_pn:name="xst"/>
     </transform>
-    <transform xil_pn:end_ts="1482962985" xil_pn:in_ck="176569500195729039" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="-8537920303570934858" xil_pn:start_ts="1482962985">
+    <transform xil_pn:end_ts="1483818883" xil_pn:in_ck="176569500195729039" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="-8537920303570934858" xil_pn:start_ts="1483818883">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1483019741" xil_pn:in_ck="-8547647177936735053" xil_pn:name="TRAN_ngdbuild" xil_pn:prop_ck="-1996509353111835880" xil_pn:start_ts="1483019733">
+    <transform xil_pn:end_ts="1483824235" xil_pn:in_ck="-8547647177936735053" xil_pn:name="TRAN_ngdbuild" xil_pn:prop_ck="6932115226421322529" xil_pn:start_ts="1483824227">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="LAN_IDE_CP.bld"/>
       <outfile xil_pn:name="LAN_IDE_CP.ngd"/>
       <outfile xil_pn:name="LAN_IDE_CP_ngdbuild.xrpt"/>
       <outfile xil_pn:name="_ngo"/>
       <outfile xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
     </transform>
-    <transform xil_pn:end_ts="1483020229" xil_pn:in_ck="-2520376148396280667" xil_pn:name="TRANEXT_vm6File_xc9500xl" xil_pn:prop_ck="-7077186529500791345" xil_pn:start_ts="1483020213">
-      <status xil_pn:value="FailedRun"/>
+    <transform xil_pn:end_ts="1483824252" xil_pn:in_ck="-2520376148396280667" xil_pn:name="TRANEXT_vm6File_xc9500xl" xil_pn:prop_ck="6756696256645823699" xil_pn:start_ts="1483824235">
+      <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <outfile xil_pn:name="LAN_IDE_CP.gyd"/>
+      <outfile xil_pn:name="LAN_IDE_CP.mfd"/>
+      <outfile xil_pn:name="LAN_IDE_CP.nga"/>
+      <outfile xil_pn:name="LAN_IDE_CP.pad"/>
+      <outfile xil_pn:name="LAN_IDE_CP.pnx"/>
       <outfile xil_pn:name="LAN_IDE_CP.rpt"/>
       <outfile xil_pn:name="LAN_IDE_CP.tim"/>
       <outfile xil_pn:name="LAN_IDE_CP.tspec"/>
+      <outfile xil_pn:name="LAN_IDE_CP.vm6"/>
+      <outfile xil_pn:name="LAN_IDE_CP.xml"/>
+      <outfile xil_pn:name="LAN_IDE_CP_build.xml"/>
       <outfile xil_pn:name="LAN_IDE_CP_html"/>
+      <outfile xil_pn:name="LAN_IDE_CP_pad.csv"/>
     </transform>
-    <transform xil_pn:end_ts="1482965860" xil_pn:in_ck="-2520376148396271803" xil_pn:name="TRANEXT_crtProg_xc9500" xil_pn:prop_ck="-6294026017969277533" xil_pn:start_ts="1482965858">
+    <transform xil_pn:end_ts="1483824254" xil_pn:in_ck="-2520376148396271803" xil_pn:name="TRANEXT_crtProg_xc9500" xil_pn:prop_ck="-6294026017969277533" xil_pn:start_ts="1483824252">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputChanged"/>
-      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="LAN_IDE_CP.jed"/>
     </transform>
     <transform xil_pn:end_ts="1482963012" xil_pn:in_ck="-2520376148396271803" xil_pn:name="TRAN_timRpt" xil_pn:prop_ck="111903974446" xil_pn:start_ts="1482963010">

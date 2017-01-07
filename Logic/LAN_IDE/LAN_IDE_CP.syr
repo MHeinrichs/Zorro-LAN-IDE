@@ -100,48 +100,59 @@ Performing bidirectional port resolution...
 
 Synthesizing Unit <LAN_IDE_CP>.
     Related source file is "C:/Users/Matze/Amiga/Hardwarehacks/Zorro-LAN-IDE/Logic/LAN_IDE/LAN_IDE_CP.vhd".
-WARNING:Xst:647 - Input <IDE_WAIT> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <DS0> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <DS1> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <FCS> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:1306 - Output <MTACK> is never assigned.
+WARNING:Xst:647 - Input <LAN_INT> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:2565 - Inout <A<15>> is never assigned.
 WARNING:Xst:647 - Input <Z3> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <CLK_EXT> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:1306 - Output <OVR> is never assigned.
 WARNING:Xst:647 - Input <MTCR> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:646 - Signal <LAN_INT_ENABLE> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <LAN_INT_ENABLE> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <LAN_INT_D0> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <DTACK_S> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <AS_D> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
     Found 16-bit tristate buffer for signal <D>.
     Found 16-bit tristate buffer for signal <DQ>.
     Found 1-bit tristate buffer for signal <OWN>.
+    Found 1-bit tristate buffer for signal <OVR>.
     Found 1-bit tristate buffer for signal <DTACK>.
     Found 1-bit tristate buffer for signal <INT_OUT>.
-    Found 1-bit xor2 for signal <AMIGA_CLK$xor0000> created at line 111.
-    Found 3-bit register for signal <AUTO_CONFIG_DONE>.
-    Found 3-bit register for signal <AUTO_CONFIG_DONE_CYCLE>.
+    Found 4-bit tristate buffer for signal <LAN_CFG>.
+    Found 1-bit xor2 for signal <AMIGA_CLK$xor0000> created at line 120.
+    Found 2-bit register for signal <AUTO_CONFIG_DONE>.
+    Found 2-bit register for signal <AUTO_CONFIG_DONE_CYCLE>.
+    Found 2-bit adder for signal <AUTO_CONFIG_DONE_CYCLE$share0000> created at line 254.
     Found 1-bit register for signal <autoconfig>.
+    Found 2-bit comparator less for signal <autoconfig$cmp_lt0000> created at line 133.
     Found 1-bit register for signal <cp>.
-    Found 8-bit comparator equal for signal <cp$cmp_eq0000> created at line 135.
+    Found 8-bit comparator equal for signal <cp$cmp_eq0000> created at line 146.
     Found 8-bit register for signal <CP_BASEADR>.
+    Found 1-bit register for signal <CP_RD_S>.
+    Found 1-bit register for signal <CP_WE_S>.
     Found 4-bit register for signal <Dout1>.
+    Found 2-bit comparator less for signal <Dout1$cmp_lt0000> created at line 256.
     Found 1-bit register for signal <ide>.
-    Found 8-bit comparator equal for signal <ide$cmp_eq0000> created at line 141.
+    Found 8-bit comparator equal for signal <ide$cmp_eq0000> created at line 152.
     Found 8-bit register for signal <IDE_BASEADR>.
     Found 1-bit register for signal <IDE_ENABLE>.
     Found 1-bit register for signal <IDE_R_S>.
     Found 1-bit register for signal <IDE_W_S>.
     Found 1-bit register for signal <lan>.
-    Found 8-bit comparator equal for signal <lan$cmp_eq0000> created at line 129.
+    Found 8-bit comparator equal for signal <lan$cmp_eq0000> created at line 140.
     Found 8-bit register for signal <LAN_BASEADR>.
+    Found 1-bit register for signal <LAN_RD_S>.
+    Found 1-bit register for signal <LAN_WRH_S>.
+    Found 1-bit register for signal <LAN_WRL_S>.
     Found 1-bit register for signal <ROM_OE_S>.
     Found 3-bit register for signal <SHUT_UP>.
     Summary:
 	inferred   4 D-type flip-flop(s).
-	inferred   3 Comparator(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred   5 Comparator(s).
 	inferred   1 Xor(s).
-	inferred  35 Tristate(s).
+	inferred  40 Tristate(s).
 Unit <LAN_IDE_CP> synthesized.
 
 
@@ -149,15 +160,18 @@ Unit <LAN_IDE_CP> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
-# Registers                                            : 19
- 1-bit register                                        : 14
- 3-bit register                                        : 1
+# Adders/Subtractors                                   : 1
+ 2-bit adder                                           : 1
+# Registers                                            : 22
+ 1-bit register                                        : 16
+ 2-bit register                                        : 2
  4-bit register                                        : 1
  8-bit register                                        : 3
-# Comparators                                          : 3
+# Comparators                                          : 5
+ 2-bit comparator less                                 : 2
  8-bit comparator equal                                : 3
-# Tristates                                            : 5
- 1-bit tristate buffer                                 : 3
+# Tristates                                            : 10
+ 1-bit tristate buffer                                 : 8
  16-bit tristate buffer                                : 2
 # Xors                                                 : 1
  1-bit xor2                                            : 1
@@ -173,6 +187,8 @@ Macro Statistics
 Advanced HDL Synthesis Report
 
 Macro Statistics
+# Adders/Subtractors                                   : 1
+ 2-bit adder                                           : 1
 # Registers                                            : 4
  Flip-Flops                                            : 4
 # Comparators                                          : 3
@@ -216,34 +232,35 @@ Design Statistics
 # IOs                              : 116
 
 Cell Usage :
-# BELS                             : 420
-#      AND2                        : 107
-#      AND3                        : 28
+# BELS                             : 408
+#      AND2                        : 90
+#      AND3                        : 32
+#      AND4                        : 1
 #      GND                         : 1
-#      INV                         : 167
-#      OR2                         : 83
-#      OR3                         : 6
+#      INV                         : 169
+#      OR2                         : 82
+#      OR3                         : 4
 #      OR4                         : 2
 #      VCC                         : 1
-#      XOR2                        : 25
-# FlipFlops/Latches                : 45
-#      FD                          : 3
-#      FDC                         : 7
-#      FDCE                        : 35
-# IO Buffers                       : 105
-#      IBUF                        : 33
+#      XOR2                        : 26
+# FlipFlops/Latches                : 48
+#      FD                          : 8
+#      FDC                         : 4
+#      FDCE                        : 36
+# IO Buffers                       : 107
+#      IBUF                        : 34
 #      IOBUFE                      : 32
-#      OBUF                        : 37
-#      OBUFE                       : 3
+#      OBUF                        : 33
+#      OBUFE                       : 8
 =========================================================================
 
 
 Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 8.22 secs
+Total CPU time to Xst completion: 8.35 secs
  
 --> 
 
-Total memory usage is 290020 kilobytes
+Total memory usage is 290084 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :   13 (   0 filtered)

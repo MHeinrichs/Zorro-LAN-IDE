@@ -1,1727 +1,1782 @@
 MDF Database:  version 1.0
-MDF_INFO | LAN_IDE_CP | XC95144XL-10-TQ144
-MACROCELL | 4 | 0 | CP_CS_BUFR.MC
-ATTRIBUTES | 8520496 | 0
-OUTPUTMC | 22 | 1 | 4 | 2 | 2 | 2 | 10 | 2 | 3 | 2 | 11 | 2 | 6 | 2 | 9 | 0 | 2 | 2 | 0 | 1 | 16 | 0 | 7 | 0 | 5 | 1 | 15 | 0 | 1 | 0 | 4 | 2 | 8 | 4 | 11 | 4 | 12 | 5 | 1 | 2 | 12 | 2 | 5 | 6 | 2
-INPUTS | 7 | SHUT_UP<1>  | CP_BASEADR<4>  | A<20>  | EXP11_.EXP  | EXP14_.EXP  | lan/lan_CLKF  | autoconfig/autoconfig_RSTF
-INPUTMC | 6 | 4 | 10 | 6 | 14 | 4 | 1 | 4 | 17 | 7 | 7 | 7 | 3
-INPUTP | 1 | 102
-IMPORTS | 2 | 4 | 1 | 4 | 17
-EQ | 22 | 
-   !CP_CS_BUFR.D = SHUT_UP<1>
-	# CP_BASEADR<4> & !A<20>
-	# !CP_BASEADR<4> & A<20>
-;Imported pterms FB5_2
-	# CP_BASEADR<0> & !A<16>
-	# !CP_BASEADR<0> & A<16>
-	# !CP_BASEADR<6> & A<22>
-	# CP_BASEADR<7> & !A<23>
-	# !CP_BASEADR<7> & A<23>
-;Imported pterms FB5_18
-	# CP_BASEADR<3> & !A<19>
-	# !CP_BASEADR<3> & A<19>
-	# CP_BASEADR<5> & !A<21>
-	# !CP_BASEADR<5> & A<21>
-	# CP_BASEADR<6> & !A<22>
-;Imported pterms FB5_17
-	# CP_BASEADR<1> & !A<17>
-	# !CP_BASEADR<1> & A<17>
-	# CP_BASEADR<2> & !A<18>
-	# !CP_BASEADR<2> & A<18>;
-   CP_CS_BUFR.CLK = lan/lan_CLKF;
-   CP_CS_BUFR.AR = !autoconfig/autoconfig_RSTF;
+MDF_INFO | LAN_IDE_CP | XC95288XL-10-TQ144
+MACROCELL | 7 | 7 | lan
+ATTRIBUTES | 8782642 | 0
+OUTPUTMC | 5 | 1 | 6 | 1 | 3 | 1 | 0 | 13 | 13 | 1 | 17
+INPUTS | 7 | SHUT_UP<0>  | LAN_BASEADR<4>  | A<20>  | EXP25_.EXP  | EXP26_.EXP  | SHUT_UP<2>/SHUT_UP<2>_CLKF  | lan/lan_RSTF
+INPUTMC | 6 | 14 | 12 | 12 | 9 | 7 | 6 | 7 | 8 | 10 | 15 | 5 | 11
+INPUTP | 1 | 167
+IMPORTS | 2 | 7 | 6 | 7 | 8
+EQ | 23 | 
+   !LAN_CS.D = SHUT_UP<0>
+	# LAN_BASEADR<4> & !A<20>
+	# !LAN_BASEADR<4> & A<20>
+;Imported pterms FB8_7
+	# LAN_BASEADR<3> & !A<19>
+	# !LAN_BASEADR<3> & A<19>
+	# LAN_BASEADR<5> & !A<21>
+	# !LAN_BASEADR<5> & A<21>
+	# LAN_BASEADR<7> & !A<23>
+;Imported pterms FB8_6
+	# LAN_BASEADR<1> & !A<17>
+	# !LAN_BASEADR<1> & A<17>
+;Imported pterms FB8_9
+	# LAN_BASEADR<0> & !A<16>
+	# !LAN_BASEADR<0> & A<16>
+	# LAN_BASEADR<6> & !A<22>
+	# !LAN_BASEADR<6> & A<22>
+	# !LAN_BASEADR<7> & A<23>
+;Imported pterms FB8_10
+	# LAN_BASEADR<2> & !A<18>
+	# !LAN_BASEADR<2> & A<18>;
+   LAN_CS.CLK = !SHUT_UP<2>/SHUT_UP<2>_CLKF;
+   LAN_CS.AR = !lan/lan_RSTF;
 
-MACROCELL | 1 | 4 | D_0_IOBUFE
+MACROCELL | 3 | 1 | D_0_IOBUFE
 ATTRIBUTES | 265986 | 0
-INPUTS | 6 | AS  | RW  | CP_CS_BUFR  | DQ<0>.PIN  | lan  | D_9_IOBUFE/D_9_IOBUFE_TRST
-INPUTMC | 3 | 4 | 0 | 6 | 0 | 2 | 12
-INPUTP | 3 | 90 | 93 | 133
+OUTPUTMC | 1 | 3 | 0
+INPUTS | 12 | DQ<0>.PIN  | $OpTx$INV$5  | D_8_IOBUFE/D_8_IOBUFE_TRST  | RESET  | AUTO_CONFIG_DONE<0>  | A<6>  | A<5>  | A<3>  | A<4>  | A<1>  | AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2  | A<2>
+INPUTMC | 4 | 1 | 17 | 1 | 10 | 0 | 17 | 11 | 17
+INPUTP | 8 | 217 | 263 | 98 | 91 | 99 | 97 | 107 | 101
+EXPORTS | 1 | 3 | 0
+EQ | 11 | 
+   !D<0> = !DQ<0>.PIN & $OpTx$INV$5;
+   D<0>.OE = D_8_IOBUFE/D_8_IOBUFE_TRST;
+    D_0_IOBUFE.EXP  =  RESET & AUTO_CONFIG_DONE<0> & !A<6> & !A<5> & 
+	!A<3> & !A<4> & A<1> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+	# RESET & !A<6> & A<5> & !A<3> & !A<4> & A<1> & 
+	A<2> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+	# RESET & !A<6> & !A<5> & !A<3> & A<4> & A<1> & 
+	A<2> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+
+MACROCELL | 4 | 13 | D_10_IOBUFE
+ATTRIBUTES | 265986 | 0
+INPUTS | 3 | DQ<10>.PIN  | $OpTx$INV$5  | D_8_IOBUFE/D_8_IOBUFE_TRST
+INPUTMC | 2 | 1 | 17 | 1 | 10
+INPUTP | 1 | 234
+EQ | 2 | 
+   !D<10> = !DQ<10>.PIN & $OpTx$INV$5;
+   D<10>.OE = D_8_IOBUFE/D_8_IOBUFE_TRST;
+
+MACROCELL | 4 | 14 | D_11_IOBUFE
+ATTRIBUTES | 265986 | 0
+INPUTS | 3 | DQ<11>.PIN  | $OpTx$INV$5  | D_8_IOBUFE/D_8_IOBUFE_TRST
+INPUTMC | 2 | 1 | 17 | 1 | 10
+INPUTP | 1 | 207
+EQ | 2 | 
+   !D<11> = !DQ<11>.PIN & $OpTx$INV$5;
+   D<11>.OE = D_8_IOBUFE/D_8_IOBUFE_TRST;
+
+MACROCELL | 4 | 16 | D_12_IOBUFE
+ATTRIBUTES | 265986 | 0
+INPUTS | 4 | DQ<12>.PIN  | $OpTx$INV$5  | Dout1<0>  | D_8_IOBUFE/D_8_IOBUFE_TRST
+INPUTMC | 3 | 1 | 17 | 2 | 16 | 1 | 10
+INPUTP | 1 | 235
 EQ | 3 | 
-   !D<0> = !AS & RW & CP_CS_BUFR & !DQ<0>.PIN
-	# !AS & RW & !DQ<0>.PIN & lan;
-   D<0>.OE = D_9_IOBUFE/D_9_IOBUFE_TRST;
+   D<12> = Dout1<0> & !$OpTx$INV$5
+	# DQ<12>.PIN & $OpTx$INV$5;
+   D<12>.OE = D_8_IOBUFE/D_8_IOBUFE_TRST;
 
-MACROCELL | 2 | 2 | D_10_IOBUFE
+MACROCELL | 6 | 2 | D_13_IOBUFE
 ATTRIBUTES | 265986 | 0
-OUTPUTMC | 1 | 2 | 3
-INPUTS | 7 | AS  | RW  | CP_CS_BUFR  | DQ<10>.PIN  | lan  | D_9_IOBUFE/D_9_IOBUFE_TRST  | DQ<12>.PIN
-INPUTMC | 3 | 4 | 0 | 6 | 0 | 2 | 12
-INPUTP | 4 | 90 | 93 | 144 | 145
-EXPORTS | 1 | 2 | 3
-EQ | 4 | 
-   !D<10> = !AS & RW & CP_CS_BUFR & !DQ<10>.PIN
-	# !AS & RW & !DQ<10>.PIN & lan;
-   D<10>.OE = D_9_IOBUFE/D_9_IOBUFE_TRST;
-    D_10_IOBUFE.EXP  =  !AS & RW & lan & DQ<12>.PIN
-
-MACROCELL | 2 | 10 | D_11_IOBUFE
-ATTRIBUTES | 265986 | 0
-OUTPUTMC | 1 | 2 | 11
-INPUTS | 7 | AS  | RW  | CP_CS_BUFR  | DQ<11>.PIN  | lan  | D_9_IOBUFE/D_9_IOBUFE_TRST  | DQ<13>.PIN
-INPUTMC | 3 | 4 | 0 | 6 | 0 | 2 | 12
-INPUTP | 4 | 90 | 93 | 129 | 127
-EXPORTS | 1 | 2 | 11
-EQ | 4 | 
-   !D<11> = !AS & RW & CP_CS_BUFR & !DQ<11>.PIN
-	# !AS & RW & !DQ<11>.PIN & lan;
-   D<11>.OE = D_9_IOBUFE/D_9_IOBUFE_TRST;
-    D_11_IOBUFE.EXP  =  !AS & RW & lan & DQ<13>.PIN
-
-MACROCELL | 2 | 3 | D_12_IOBUFE
-ATTRIBUTES | 265986 | 0
-INPUTS | 8 | AS  | Dout1<0>  | RW  | CP_CS_BUFR  | lan  | DQ<12>.PIN  | D_9_IOBUFE/D_9_IOBUFE_TRST  | D_10_IOBUFE.EXP
-INPUTMC | 5 | 2 | 17 | 4 | 0 | 6 | 0 | 2 | 12 | 2 | 2
-INPUTP | 3 | 90 | 93 | 145
-IMPORTS | 1 | 2 | 2
-EQ | 7 | 
-   D<12> = AS & Dout1<0>
-	# !RW & Dout1<0>
-	# !CP_CS_BUFR & Dout1<0> & !lan
-	# !AS & RW & CP_CS_BUFR & DQ<12>.PIN
-;Imported pterms FB3_3
-	# !AS & RW & lan & DQ<12>.PIN;
-   D<12>.OE = D_9_IOBUFE/D_9_IOBUFE_TRST;
-
-MACROCELL | 2 | 11 | D_13_IOBUFE
-ATTRIBUTES | 265986 | 0
-INPUTS | 8 | AS  | Dout1<1>  | RW  | CP_CS_BUFR  | lan  | DQ<13>.PIN  | D_9_IOBUFE/D_9_IOBUFE_TRST  | D_11_IOBUFE.EXP
-INPUTMC | 5 | 0 | 12 | 4 | 0 | 6 | 0 | 2 | 12 | 2 | 10
-INPUTP | 3 | 90 | 93 | 127
-IMPORTS | 1 | 2 | 10
-EQ | 7 | 
-   D<13> = AS & Dout1<1>
-	# !RW & Dout1<1>
-	# !CP_CS_BUFR & !lan & Dout1<1>
-	# !AS & RW & CP_CS_BUFR & DQ<13>.PIN
-;Imported pterms FB3_11
-	# !AS & RW & lan & DQ<13>.PIN;
-   D<13>.OE = D_9_IOBUFE/D_9_IOBUFE_TRST;
-
-MACROCELL | 2 | 6 | D_14_IOBUFE
-ATTRIBUTES | 265986 | 0
-INPUTS | 8 | AS  | Dout1<2>  | RW  | CP_CS_BUFR  | lan  | DQ<14>.PIN  | D_9_IOBUFE/D_9_IOBUFE_TRST  | _10_.EXP
-INPUTMC | 5 | 0 | 17 | 4 | 0 | 6 | 0 | 2 | 12 | 2 | 5
-INPUTP | 3 | 90 | 93 | 146
-IMPORTS | 1 | 2 | 5
-EQ | 7 | 
-   D<14> = AS & Dout1<2>
-	# !RW & Dout1<2>
-	# !CP_CS_BUFR & Dout1<2> & !lan
-	# !AS & RW & CP_CS_BUFR & DQ<14>.PIN
-;Imported pterms FB3_6
-	# !AS & RW & lan & DQ<14>.PIN;
-   D<14>.OE = D_9_IOBUFE/D_9_IOBUFE_TRST;
-
-MACROCELL | 2 | 9 | D_15_IOBUFE
-ATTRIBUTES | 265986 | 0
-INPUTS | 8 | AS  | Dout1<3>  | RW  | CP_CS_BUFR  | lan  | DQ<15>.PIN  | D_9_IOBUFE/D_9_IOBUFE_TRST  | D_9_IOBUFE.EXP
-INPUTMC | 5 | 2 | 15 | 4 | 0 | 6 | 0 | 2 | 12 | 2 | 8
-INPUTP | 3 | 90 | 93 | 125
-IMPORTS | 1 | 2 | 8
-EQ | 7 | 
-   D<15> = AS & Dout1<3>
-	# !RW & Dout1<3>
-	# !CP_CS_BUFR & Dout1<3> & !lan
-	# !AS & RW & CP_CS_BUFR & DQ<15>.PIN
-;Imported pterms FB3_9
-	# !AS & RW & lan & DQ<15>.PIN;
-   D<15>.OE = D_9_IOBUFE/D_9_IOBUFE_TRST;
-
-MACROCELL | 0 | 2 | D_1_IOBUFE
-ATTRIBUTES | 265986 | 0
-INPUTS | 6 | AS  | RW  | CP_CS_BUFR  | DQ<1>.PIN  | lan  | D_9_IOBUFE/D_9_IOBUFE_TRST
-INPUTMC | 3 | 4 | 0 | 6 | 0 | 2 | 12
-INPUTP | 3 | 90 | 93 | 132
+INPUTS | 4 | DQ<13>.PIN  | $OpTx$INV$5  | Dout1<1>  | D_8_IOBUFE/D_8_IOBUFE_TRST
+INPUTMC | 3 | 1 | 17 | 3 | 17 | 1 | 10
+INPUTP | 1 | 204
 EQ | 3 | 
-   !D<1> = !AS & RW & CP_CS_BUFR & !DQ<1>.PIN
-	# !AS & RW & !DQ<1>.PIN & lan;
-   D<1>.OE = D_9_IOBUFE/D_9_IOBUFE_TRST;
+   D<13> = Dout1<1> & !$OpTx$INV$5
+	# DQ<13>.PIN & $OpTx$INV$5;
+   D<13>.OE = D_8_IOBUFE/D_8_IOBUFE_TRST;
 
-MACROCELL | 2 | 0 | D_2_IOBUFE
+MACROCELL | 6 | 4 | D_14_IOBUFE
 ATTRIBUTES | 265986 | 0
-OUTPUTMC | 1 | 2 | 17
-INPUTS | 13 | AS  | RW  | CP_CS_BUFR  | DQ<2>.PIN  | lan  | D_9_IOBUFE/D_9_IOBUFE_TRST  | autoconfig  | A<3>  | A<4>  | A<1>  | CFOUT  | A<6>  | $OpTx$FX_DC$50
-INPUTMC | 6 | 4 | 0 | 6 | 0 | 2 | 12 | 6 | 2 | 7 | 16 | 7 | 11
-INPUTP | 7 | 90 | 93 | 135 | 58 | 56 | 63 | 57
-EXPORTS | 1 | 2 | 17
-EQ | 7 | 
-   !D<2> = !AS & RW & CP_CS_BUFR & !DQ<2>.PIN
-	# !AS & RW & !DQ<2>.PIN & lan;
-   D<2>.OE = D_9_IOBUFE/D_9_IOBUFE_TRST;
-    D_2_IOBUFE.EXP  =  !AS & RW & autoconfig & !A<3> & A<4> & A<1> & 
-	CFOUT
-	# !AS & RW & autoconfig & !A<3> & A<1> & !A<6> & 
-	$OpTx$FX_DC$50
-
-MACROCELL | 1 | 16 | D_3_IOBUFE
-ATTRIBUTES | 265986 | 0
-INPUTS | 6 | AS  | RW  | CP_CS_BUFR  | DQ<3>.PIN  | lan  | D_9_IOBUFE/D_9_IOBUFE_TRST
-INPUTMC | 3 | 4 | 0 | 6 | 0 | 2 | 12
-INPUTP | 3 | 90 | 93 | 134
+INPUTS | 4 | DQ<14>.PIN  | $OpTx$INV$5  | Dout1<2>  | D_8_IOBUFE/D_8_IOBUFE_TRST
+INPUTMC | 3 | 1 | 17 | 3 | 0 | 1 | 10
+INPUTP | 1 | 236
 EQ | 3 | 
-   !D<3> = !AS & RW & CP_CS_BUFR & !DQ<3>.PIN
-	# !AS & RW & !DQ<3>.PIN & lan;
-   D<3>.OE = D_9_IOBUFE/D_9_IOBUFE_TRST;
+   D<14> = Dout1<2> & !$OpTx$INV$5
+	# DQ<14>.PIN & $OpTx$INV$5;
+   D<14>.OE = D_8_IOBUFE/D_8_IOBUFE_TRST;
 
-MACROCELL | 0 | 7 | D_4_IOBUFE
+MACROCELL | 6 | 11 | D_15_IOBUFE
 ATTRIBUTES | 265986 | 0
-INPUTS | 6 | AS  | RW  | CP_CS_BUFR  | DQ<4>.PIN  | lan  | D_9_IOBUFE/D_9_IOBUFE_TRST
-INPUTMC | 3 | 4 | 0 | 6 | 0 | 2 | 12
-INPUTP | 3 | 90 | 93 | 139
+INPUTS | 4 | DQ<15>.PIN  | $OpTx$INV$5  | Dout1<3>  | D_8_IOBUFE/D_8_IOBUFE_TRST
+INPUTMC | 3 | 1 | 17 | 3 | 15 | 1 | 10
+INPUTP | 1 | 202
 EQ | 3 | 
-   !D<4> = !AS & RW & CP_CS_BUFR & !DQ<4>.PIN
-	# !AS & RW & !DQ<4>.PIN & lan;
-   D<4>.OE = D_9_IOBUFE/D_9_IOBUFE_TRST;
+   D<15> = Dout1<3> & !$OpTx$INV$5
+	# DQ<15>.PIN & $OpTx$INV$5;
+   D<15>.OE = D_8_IOBUFE/D_8_IOBUFE_TRST;
 
-MACROCELL | 0 | 5 | D_5_IOBUFE
+MACROCELL | 1 | 14 | D_1_IOBUFE
 ATTRIBUTES | 265986 | 0
-INPUTS | 6 | AS  | RW  | CP_CS_BUFR  | DQ<5>.PIN  | lan  | D_9_IOBUFE/D_9_IOBUFE_TRST
-INPUTMC | 3 | 4 | 0 | 6 | 0 | 2 | 12
-INPUTP | 3 | 90 | 93 | 136
-EQ | 3 | 
-   !D<5> = !AS & RW & CP_CS_BUFR & !DQ<5>.PIN
-	# !AS & RW & !DQ<5>.PIN & lan;
-   D<5>.OE = D_9_IOBUFE/D_9_IOBUFE_TRST;
+INPUTS | 3 | DQ<1>.PIN  | $OpTx$INV$5  | D_8_IOBUFE/D_8_IOBUFE_TRST
+INPUTMC | 2 | 1 | 17 | 1 | 10
+INPUTP | 1 | 216
+EQ | 2 | 
+   !D<1> = !DQ<1>.PIN & $OpTx$INV$5;
+   D<1>.OE = D_8_IOBUFE/D_8_IOBUFE_TRST;
 
-MACROCELL | 1 | 15 | D_6_IOBUFE
+MACROCELL | 4 | 9 | D_2_IOBUFE
 ATTRIBUTES | 265986 | 0
-INPUTS | 6 | AS  | RW  | CP_CS_BUFR  | DQ<6>.PIN  | lan  | D_9_IOBUFE/D_9_IOBUFE_TRST
-INPUTMC | 3 | 4 | 0 | 6 | 0 | 2 | 12
-INPUTP | 3 | 90 | 93 | 141
-EQ | 3 | 
-   !D<6> = !AS & RW & CP_CS_BUFR & !DQ<6>.PIN
-	# !AS & RW & !DQ<6>.PIN & lan;
-   D<6>.OE = D_9_IOBUFE/D_9_IOBUFE_TRST;
+INPUTS | 3 | DQ<2>.PIN  | $OpTx$INV$5  | D_8_IOBUFE/D_8_IOBUFE_TRST
+INPUTMC | 2 | 1 | 17 | 1 | 10
+INPUTP | 1 | 127
+EQ | 2 | 
+   !D<2> = !DQ<2>.PIN & $OpTx$INV$5;
+   D<2>.OE = D_8_IOBUFE/D_8_IOBUFE_TRST;
 
-MACROCELL | 0 | 1 | D_7_IOBUFE
+MACROCELL | 1 | 11 | D_3_IOBUFE
 ATTRIBUTES | 265986 | 0
-OUTPUTMC | 1 | 0 | 0
-INPUTS | 7 | AS  | RW  | CP_CS_BUFR  | DQ<7>.PIN  | lan  | D_9_IOBUFE/D_9_IOBUFE_TRST  | A<13>
-INPUTMC | 3 | 4 | 0 | 6 | 0 | 2 | 12
-INPUTP | 4 | 90 | 93 | 140 | 72
-EXPORTS | 1 | 0 | 0
-EQ | 4 | 
-   !D<7> = !AS & RW & CP_CS_BUFR & !DQ<7>.PIN
-	# !AS & RW & !DQ<7>.PIN & lan;
-   D<7>.OE = D_9_IOBUFE/D_9_IOBUFE_TRST;
-    D_7_IOBUFE.EXP  =  !A<13>
+INPUTS | 3 | DQ<3>.PIN  | $OpTx$INV$5  | D_8_IOBUFE/D_8_IOBUFE_TRST
+INPUTMC | 2 | 1 | 17 | 1 | 10
+INPUTP | 1 | 219
+EQ | 2 | 
+   !D<3> = !DQ<3>.PIN & $OpTx$INV$5;
+   D<3>.OE = D_8_IOBUFE/D_8_IOBUFE_TRST;
 
-MACROCELL | 0 | 4 | D_8_IOBUFE
+MACROCELL | 0 | 5 | D_4_IOBUFE
 ATTRIBUTES | 265986 | 0
-INPUTS | 6 | AS  | RW  | CP_CS_BUFR  | DQ<8>.PIN  | lan  | D_9_IOBUFE/D_9_IOBUFE_TRST
-INPUTMC | 3 | 4 | 0 | 6 | 0 | 2 | 12
-INPUTP | 3 | 90 | 93 | 143
-EQ | 3 | 
-   !D<8> = !AS & RW & CP_CS_BUFR & !DQ<8>.PIN
-	# !AS & RW & !DQ<8>.PIN & lan;
-   D<8>.OE = D_9_IOBUFE/D_9_IOBUFE_TRST;
+INPUTS | 3 | DQ<4>.PIN  | $OpTx$INV$5  | D_8_IOBUFE/D_8_IOBUFE_TRST
+INPUTMC | 2 | 1 | 17 | 1 | 10
+INPUTP | 1 | 225
+EQ | 2 | 
+   !D<4> = !DQ<4>.PIN & $OpTx$INV$5;
+   D<4>.OE = D_8_IOBUFE/D_8_IOBUFE_TRST;
 
-MACROCELL | 2 | 8 | D_9_IOBUFE
+MACROCELL | 0 | 4 | D_5_IOBUFE
 ATTRIBUTES | 265986 | 0
-OUTPUTMC | 1 | 2 | 9
-INPUTS | 7 | AS  | RW  | CP_CS_BUFR  | DQ<9>.PIN  | lan  | D_9_IOBUFE/D_9_IOBUFE_TRST  | DQ<15>.PIN
-INPUTMC | 3 | 4 | 0 | 6 | 0 | 2 | 12
-INPUTP | 4 | 90 | 93 | 130 | 125
-EXPORTS | 1 | 2 | 9
-EQ | 4 | 
-   !D<9> = !AS & RW & CP_CS_BUFR & !DQ<9>.PIN
-	# !AS & RW & !DQ<9>.PIN & lan;
+INPUTS | 3 | DQ<5>.PIN  | $OpTx$INV$5  | D_8_IOBUFE/D_8_IOBUFE_TRST
+INPUTMC | 2 | 1 | 17 | 1 | 10
+INPUTP | 1 | 69
+EQ | 2 | 
+   !D<5> = !DQ<5>.PIN & $OpTx$INV$5;
+   D<5>.OE = D_8_IOBUFE/D_8_IOBUFE_TRST;
+
+MACROCELL | 1 | 9 | D_6_IOBUFE
+ATTRIBUTES | 265986 | 0
+INPUTS | 3 | DQ<6>.PIN  | $OpTx$INV$5  | D_8_IOBUFE/D_8_IOBUFE_TRST
+INPUTMC | 2 | 1 | 17 | 1 | 10
+INPUTP | 1 | 227
+EQ | 2 | 
+   !D<6> = !DQ<6>.PIN & $OpTx$INV$5;
+   D<6>.OE = D_8_IOBUFE/D_8_IOBUFE_TRST;
+
+MACROCELL | 1 | 13 | D_7_IOBUFE
+ATTRIBUTES | 265986 | 0
+INPUTS | 3 | DQ<7>.PIN  | $OpTx$INV$5  | D_8_IOBUFE/D_8_IOBUFE_TRST
+INPUTMC | 2 | 1 | 17 | 1 | 10
+INPUTP | 1 | 226
+EQ | 2 | 
+   !D<7> = !DQ<7>.PIN & $OpTx$INV$5;
+   D<7>.OE = D_8_IOBUFE/D_8_IOBUFE_TRST;
+
+MACROCELL | 1 | 16 | D_8_IOBUFE
+ATTRIBUTES | 265986 | 0
+INPUTS | 3 | DQ<8>.PIN  | $OpTx$INV$5  | D_8_IOBUFE/D_8_IOBUFE_TRST
+INPUTMC | 2 | 1 | 17 | 1 | 10
+INPUTP | 1 | 231
+EQ | 2 | 
+   !D<8> = !DQ<8>.PIN & $OpTx$INV$5;
+   D<8>.OE = D_8_IOBUFE/D_8_IOBUFE_TRST;
+
+MACROCELL | 4 | 11 | D_9_IOBUFE
+ATTRIBUTES | 265986 | 0
+INPUTS | 3 | DQ<9>.PIN  | $OpTx$INV$5  | D_9_IOBUFE/D_9_IOBUFE_TRST
+INPUTMC | 2 | 1 | 17 | 1 | 8
+INPUTP | 1 | 209
+EQ | 2 | 
+   !D<9> = !DQ<9>.PIN & $OpTx$INV$5;
    D<9>.OE = D_9_IOBUFE/D_9_IOBUFE_TRST;
-    D_9_IOBUFE.EXP  =  !AS & RW & lan & DQ<15>.PIN
 
-MACROCELL | 4 | 6 | AUTO_CONFIG_DONE<2>
-ATTRIBUTES | 8528672 | 0
-OUTPUTMC | 2 | 7 | 16 | 3 | 3
-INPUTS | 2 | AUTO_CONFIG_DONE_CYCLE<2>  | AS
-INPUTMC | 1 | 2 | 13
-INPUTP | 1 | 90
-EQ | 3 | 
-   AUTO_CONFIG_DONE<2>.D = AUTO_CONFIG_DONE_CYCLE<2>;
-   AUTO_CONFIG_DONE<2>.CLK = AS;
-   !AUTO_CONFIG_DONE<2>.AR = RESET;	// GSR
-GLOBALS | 1 | 4 | RESET
-
-MACROCELL | 4 | 8 | AUTO_CONFIG_DONE<0>
-ATTRIBUTES | 8528672 | 0
-OUTPUTMC | 17 | 0 | 13 | 0 | 0 | 5 | 2 | 5 | 0 | 1 | 17 | 1 | 6 | 1 | 2 | 1 | 1 | 5 | 17 | 5 | 12 | 5 | 6 | 5 | 3 | 7 | 5 | 7 | 11 | 3 | 6 | 3 | 3 | 2 | 16
-INPUTS | 2 | AUTO_CONFIG_DONE_CYCLE<0>  | AS
-INPUTMC | 1 | 5 | 2
-INPUTP | 1 | 90
-EQ | 3 | 
-   AUTO_CONFIG_DONE<0>.D = AUTO_CONFIG_DONE_CYCLE<0>;
-   AUTO_CONFIG_DONE<0>.CLK = AS;
-   !AUTO_CONFIG_DONE<0>.AR = RESET;	// GSR
-GLOBALS | 1 | 4 | RESET
-
-MACROCELL | 4 | 7 | AUTO_CONFIG_DONE<1>
-ATTRIBUTES | 8528672 | 0
-OUTPUTMC | 13 | 3 | 3 | 5 | 0 | 1 | 17 | 1 | 6 | 1 | 2 | 1 | 1 | 5 | 17 | 5 | 12 | 5 | 6 | 5 | 3 | 7 | 5 | 3 | 6 | 0 | 13
-INPUTS | 2 | AUTO_CONFIG_DONE_CYCLE<1>  | AS
-INPUTMC | 1 | 5 | 0
-INPUTP | 1 | 90
-EQ | 3 | 
-   AUTO_CONFIG_DONE<1>.D = AUTO_CONFIG_DONE_CYCLE<1>;
-   AUTO_CONFIG_DONE<1>.CLK = AS;
-   !AUTO_CONFIG_DONE<1>.AR = RESET;	// GSR
-GLOBALS | 1 | 4 | RESET
-
-MACROCELL | 0 | 17 | Dout1<2>
+MACROCELL | 6 | 17 | AUTO_CONFIG_DONE<1>
 ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 3 | 2 | 6 | 0 | 17 | 2 | 4
-INPUTS | 9 | $OpTx$FX_DC$33  | RESET  | Dout1<2>  | $OpTx$FX_DC$37  | A<3>  | A<5>  | IDE_CS_1_OBUF.EXP  | $OpTx$FX_DC$33.EXP  | lan/lan_CLKF
-INPUTMC | 6 | 0 | 16 | 0 | 17 | 2 | 7 | 0 | 0 | 0 | 16 | 7 | 7
-INPUTP | 3 | 160 | 58 | 54
-IMPORTS | 2 | 0 | 0 | 0 | 16
-EQ | 18 | 
-   Dout1<2>.D = !RESET
-	# $OpTx$FX_DC$33
-	# Dout1<2> & $OpTx$FX_DC$37
-	# Dout1<2> & A<3> & A<5>
-;Imported pterms FB1_1
-	# !AS & RW & autoconfig & A<3> & A<5> & CFOUT
-	# !AS & RW & autoconfig & A<3> & !A<5> & A<1>
-	# !AS & RW & !AUTO_CONFIG_DONE<0> & autoconfig & 
-	A<2> & A<1> & $OpTx$FX_DC$11
-	# !AS & RW & autoconfig & !A<3> & A<4> & !A<1> & 
-	CFOUT
-	# !AS & RW & autoconfig & !A<2> & !A<1> & !A<6> & 
-	CFOUT
-;Imported pterms FB1_17
-	# !A<4> & !A<1> & !A<6> & $OpTx$FX_DC$51
-	# !AS & RW & autoconfig & A<5> & !A<1>
-	# !AS & RW & autoconfig & !A<2> & !$OpTx$FX_DC$11;
-   Dout1<2>.CLK = !lan/lan_CLKF;
+OUTPUTMC | 11 | 6 | 17 | 0 | 6 | 3 | 16 | 3 | 0 | 3 | 14 | 10 | 17 | 0 | 3 | 11 | 15 | 11 | 16 | 2 | 17 | 3 | 17
+INPUTS | 5 | AS  | RESET  | AUTO_CONFIG_DONE_CYCLE<1>  | AUTO_CONFIG_DONE<1>  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 6 | 15 | 6 | 17 | 10 | 15
+INPUTP | 2 | 152 | 263
+EQ | 3 | 
+   AUTO_CONFIG_DONE<1>.D = AS & RESET & AUTO_CONFIG_DONE_CYCLE<1>
+	# !AS & RESET & AUTO_CONFIG_DONE<1>;
+   AUTO_CONFIG_DONE<1>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
 
-MACROCELL | 2 | 17 | Dout1<0>
+MACROCELL | 0 | 17 | AUTO_CONFIG_DONE<0>
 ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 3 | 2 | 3 | 2 | 17 | 2 | 16
-INPUTS | 9 | $OpTx$FX_DC$44  | $OpTx$FX_DC$41  | Dout1<0>  | $OpTx$FX_DC$35  | CFOUT  | $OpTx$FX_DC$53  | D_2_IOBUFE.EXP  | $OpTx$FX_DC$21.EXP  | lan/lan_CLKF
-INPUTMC | 9 | 3 | 17 | 0 | 9 | 2 | 17 | 4 | 5 | 7 | 16 | 7 | 9 | 2 | 0 | 2 | 16 | 7 | 7
-IMPORTS | 2 | 2 | 0 | 2 | 16
-EQ | 17 | 
-   Dout1<0>.D = $OpTx$FX_DC$44
-	# $OpTx$FX_DC$41
-	# Dout1<0> & !$OpTx$FX_DC$35
-	# Dout1<0> & !CFOUT & $OpTx$FX_DC$53
-;Imported pterms FB3_1
-	# !AS & RW & autoconfig & !A<3> & A<4> & A<1> & 
-	CFOUT
-	# !AS & RW & autoconfig & !A<3> & A<1> & !A<6> & 
-	$OpTx$FX_DC$50
-;Imported pterms FB3_17
-	# Dout1<0> & !A<3> & !A<5> & A<2> & $OpTx$FX_DC$26
-	# !AS & RW & autoconfig & A<3> & A<5> & 
-	!$OpTx$FX_DC$26
-	# !AS & RW & autoconfig & !A<3> & A<4> & !A<2>
-	# !AS & RW & autoconfig & !A<3> & CFOUT & 
-	$OpTx$FX_DC$26 & $OpTx$FX_DC$52;
-   Dout1<0>.CLK = !lan/lan_CLKF;
+OUTPUTMC | 9 | 0 | 17 | 0 | 6 | 3 | 16 | 2 | 17 | 10 | 17 | 0 | 3 | 11 | 15 | 11 | 16 | 3 | 1
+INPUTS | 5 | AS  | RESET  | AUTO_CONFIG_DONE_CYCLE<0>  | AUTO_CONFIG_DONE<0>  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 6 | 16 | 0 | 17 | 10 | 15
+INPUTP | 2 | 152 | 263
+EQ | 3 | 
+   AUTO_CONFIG_DONE<0>.D = AS & RESET & AUTO_CONFIG_DONE_CYCLE<0>
+	# !AS & RESET & AUTO_CONFIG_DONE<0>;
+   AUTO_CONFIG_DONE<0>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
 
-MACROCELL | 2 | 15 | Dout1<3>
-ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 3 | 2 | 9 | 2 | 15 | 2 | 14
-INPUTS | 7 | $OpTx$FX_DC$49  | $OpTx$FX_DC$41  | $OpTx$FX_DC$44  | Dout1<3>  | $OpTx$FX_DC$37  | $OpTx$FX_DC$49.EXP  | lan/lan_CLKF
-INPUTMC | 7 | 2 | 14 | 0 | 9 | 3 | 17 | 2 | 15 | 2 | 7 | 2 | 14 | 7 | 7
-IMPORTS | 1 | 2 | 14
-EQ | 13 | 
-   Dout1<3>.D = $OpTx$FX_DC$44
-	# $OpTx$FX_DC$41
-	# $OpTx$FX_DC$49
-	# Dout1<3> & $OpTx$FX_DC$37
-;Imported pterms FB3_15
-	# Dout1<3> & A<5> & A<1>
-	# Dout1<3> & !A<1> & !A<6> & $OpTx$FX_DC$11
-	# !AS & RW & autoconfig & A<5> & A<1> & CFOUT
-	# !AS & RW & autoconfig & A<2> & CFOUT & 
-	$OpTx$FX_DC$26 & $OpTx$FX_DC$11
-	# !AS & RW & autoconfig & !A<3> & !A<5> & !A<1> & 
-	!A<6> & CFOUT;
-   Dout1<3>.CLK = !lan/lan_CLKF;
-
-MACROCELL | 6 | 2 | autoconfig
-ATTRIBUTES | 8520496 | 0
-OUTPUTMC | 28 | 0 | 15 | 0 | 13 | 2 | 14 | 0 | 11 | 5 | 2 | 5 | 0 | 2 | 0 | 1 | 17 | 1 | 6 | 1 | 2 | 1 | 1 | 5 | 17 | 5 | 12 | 5 | 6 | 5 | 3 | 5 | 1 | 2 | 12 | 4 | 5 | 0 | 16 | 2 | 4 | 3 | 17 | 0 | 9 | 2 | 13 | 3 | 6 | 3 | 3 | 2 | 16 | 0 | 0 | 6 | 1
-INPUTS | 15 | CFIN  | A<17>  | A<16>  | A<18>  | A<19>  | A<20>  | A<21>  | A<22>  | A<23>  | CFOUT  | lan/lan_CLKF  | autoconfig/autoconfig_RSTF  | AS  | RW  | CP_CS_BUFR
-INPUTMC | 4 | 7 | 16 | 7 | 7 | 7 | 3 | 4 | 0
-INPUTP | 11 | 116 | 106 | 108 | 105 | 103 | 102 | 98 | 97 | 96 | 90 | 93
-EXPORTS | 1 | 6 | 1
+MACROCELL | 6 | 16 | AUTO_CONFIG_DONE_CYCLE<0>
+ATTRIBUTES | 4326176 | 0
+OUTPUTMC | 3 | 0 | 17 | 6 | 16 | 6 | 15
+INPUTS | 5 | RESET  | AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2  | N32/N32_D2  | AUTO_CONFIG_DONE_CYCLE<0>  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 4 | 11 | 17 | 10 | 17 | 6 | 16 | 10 | 15
+INPUTP | 1 | 263
 EQ | 5 | 
-   autoconfig.D = !CFIN & !A<17> & !A<16> & !A<18> & A<19> & !A<20> & 
-	A<21> & A<22> & A<23> & CFOUT;
-   autoconfig.CLK = lan/lan_CLKF;
-   autoconfig.AR = !autoconfig/autoconfig_RSTF;
-    autoconfig.EXP  =  !AS & RW & CP_CS_BUFR
+   AUTO_CONFIG_DONE_CYCLE<0>.T = RESET & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2 & N32/N32_D2
+	# !RESET & AUTO_CONFIG_DONE_CYCLE<0> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2;
+   AUTO_CONFIG_DONE_CYCLE<0>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
 
-MACROCELL | 4 | 14 | ide
+MACROCELL | 8 | 16 | ide
 ATTRIBUTES | 8520496 | 0
-OUTPUTMC | 5 | 0 | 6 | 0 | 13 | 0 | 14 | 0 | 15 | 5 | 1
-INPUTS | 7 | SHUT_UP<2>  | IDE_BASEADR<4>  | A<20>  | EXP12_.EXP  | EXP13_.EXP  | lan/lan_CLKF  | autoconfig/autoconfig_RSTF
-INPUTMC | 6 | 7 | 12 | 5 | 17 | 4 | 13 | 4 | 15 | 7 | 7 | 7 | 3
-INPUTP | 1 | 102
-IMPORTS | 2 | 4 | 13 | 4 | 15
+OUTPUTMC | 7 | 0 | 15 | 0 | 12 | 0 | 10 | 0 | 8 | 13 | 2 | 14 | 11 | 13 | 13
+INPUTS | 7 | SHUT_UP<2>  | IDE_BASEADR<4>  | A<20>  | EXP28_.EXP  | EXP29_.EXP  | SHUT_UP<2>/SHUT_UP<2>_CLKF  | lan/lan_RSTF
+INPUTMC | 6 | 13 | 17 | 12 | 14 | 8 | 15 | 8 | 17 | 10 | 15 | 5 | 11
+INPUTP | 1 | 167
+IMPORTS | 2 | 8 | 15 | 8 | 17
 EQ | 22 | 
    !ide.D = SHUT_UP<2>
 	# IDE_BASEADR<4> & !A<20>
 	# !IDE_BASEADR<4> & A<20>
-;Imported pterms FB5_14
+;Imported pterms FB9_16
 	# IDE_BASEADR<3> & !A<19>
 	# !IDE_BASEADR<3> & A<19>
 	# IDE_BASEADR<5> & !A<21>
 	# !IDE_BASEADR<5> & A<21>
 	# IDE_BASEADR<6> & !A<22>
-;Imported pterms FB5_13
+;Imported pterms FB9_15
 	# IDE_BASEADR<1> & !A<17>
 	# !IDE_BASEADR<1> & A<17>
 	# IDE_BASEADR<2> & !A<18>
 	# !IDE_BASEADR<2> & A<18>
-;Imported pterms FB5_16
+;Imported pterms FB9_18
 	# IDE_BASEADR<0> & !A<16>
 	# !IDE_BASEADR<0> & A<16>
 	# !IDE_BASEADR<6> & A<22>
 	# IDE_BASEADR<7> & !A<23>
 	# !IDE_BASEADR<7> & A<23>;
-   ide.CLK = lan/lan_CLKF;
-   ide.AR = !autoconfig/autoconfig_RSTF;
+   ide.CLK = !SHUT_UP<2>/SHUT_UP<2>_CLKF;
+   ide.AR = !lan/lan_RSTF;
 
-MACROCELL | 6 | 0 | lan
-ATTRIBUTES | 8520496 | 0
-OUTPUTMC | 22 | 1 | 4 | 2 | 2 | 2 | 10 | 2 | 3 | 2 | 11 | 2 | 6 | 2 | 9 | 0 | 2 | 2 | 0 | 1 | 16 | 0 | 7 | 0 | 5 | 1 | 15 | 0 | 1 | 0 | 4 | 2 | 8 | 3 | 11 | 3 | 10 | 6 | 5 | 5 | 1 | 2 | 12 | 2 | 5
-INPUTS | 7 | SHUT_UP<0>  | LAN_BASEADR<4>  | A<20>  | CP_RD_OBUF.EXP  | EXP15_.EXP  | lan/lan_CLKF  | autoconfig/autoconfig_RSTF
-INPUTMC | 6 | 6 | 3 | 6 | 8 | 6 | 1 | 6 | 17 | 7 | 7 | 7 | 3
-INPUTP | 1 | 102
-IMPORTS | 2 | 6 | 1 | 6 | 17
-EQ | 22 | 
-   !lan.D = SHUT_UP<0>
-	# LAN_BASEADR<4> & !A<20>
-	# !LAN_BASEADR<4> & A<20>
-;Imported pterms FB7_2
-	# LAN_BASEADR<0> & !A<16>
-	# !LAN_BASEADR<0> & A<16>
-	# !LAN_BASEADR<6> & A<22>
-	# LAN_BASEADR<7> & !A<23>
-	# !LAN_BASEADR<7> & A<23>
-;Imported pterms FB7_18
-	# LAN_BASEADR<3> & !A<19>
-	# !LAN_BASEADR<3> & A<19>
-	# LAN_BASEADR<5> & !A<21>
-	# !LAN_BASEADR<5> & A<21>
-	# LAN_BASEADR<6> & !A<22>
-;Imported pterms FB7_17
-	# LAN_BASEADR<1> & !A<17>
-	# !LAN_BASEADR<1> & A<17>
-	# LAN_BASEADR<2> & !A<18>
-	# !LAN_BASEADR<2> & A<18>;
-   lan.CLK = lan/lan_CLKF;
-   lan.AR = !autoconfig/autoconfig_RSTF;
-
-MACROCELL | 0 | 12 | Dout1<1>
-ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 3 | 2 | 11 | 0 | 12 | 0 | 11
-INPUTS | 8 | $OpTx$FX_DC$49  | $OpTx$FX_DC$41  | $OpTx$FX_DC$33  | Dout1<1>  | $OpTx$FX_DC$35  | A_LAN_9_OBUF$BUF0.EXP  | IDE_R_S.EXP  | lan/lan_CLKF
-INPUTMC | 8 | 2 | 14 | 0 | 9 | 0 | 16 | 0 | 12 | 4 | 5 | 0 | 11 | 0 | 13 | 7 | 7
-IMPORTS | 2 | 0 | 11 | 0 | 13
-EQ | 19 | 
-   Dout1<1>.D = $OpTx$FX_DC$33
-	# $OpTx$FX_DC$41
-	# $OpTx$FX_DC$49
-	# Dout1<1> & !$OpTx$FX_DC$35
-;Imported pterms FB1_12
-	# Dout1<1> & A<3> & A<5>
-	# Dout1<1> & !A<3> & $OpTx$FX_DC$54
-	# !AS & RW & autoconfig & A<3> & A<5> & 
-	!$OpTx$FX_DC$43
-	# !AS & RW & autoconfig & !A<3> & A<4> & A<2> & 
-	!$OpTx$FX_DC$26
-;Imported pterms FB1_14
-	# !AS & RW & AUTO_CONFIG_DONE<0> & 
-	!AUTO_CONFIG_DONE<1> & autoconfig & !A<3> & A<2> & A<1>
-	# !AS & RW & autoconfig & !A<3> & A<4> & A<1> & 
-	CFOUT & $OpTx$FX_DC$26
-	# !AS & RW & autoconfig & !A<5> & !A<4> & A<2> & 
-	!A<1> & CFOUT & $OpTx$FX_DC$26;
-   Dout1<1>.CLK = !lan/lan_CLKF;
-
-MACROCELL | 5 | 2 | AUTO_CONFIG_DONE_CYCLE<0>
-ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 2 | 4 | 8 | 5 | 2
-INPUTS | 12 | RESET  | AUTO_CONFIG_DONE_CYCLE<0>  | AS  | RW  | AUTO_CONFIG_DONE<0>  | autoconfig  | A<3>  | A<1>  | A<6>  | UDS  | $OpTx$FX_DC$11  | lan/lan_CLKF
-INPUTMC | 5 | 5 | 2 | 4 | 8 | 6 | 2 | 7 | 6 | 7 | 7
-INPUTP | 7 | 160 | 90 | 93 | 58 | 63 | 57 | 91
-EQ | 4 | 
-   AUTO_CONFIG_DONE_CYCLE<0>.D = RESET & AUTO_CONFIG_DONE_CYCLE<0>
-	# !AS & !RW & RESET & !AUTO_CONFIG_DONE<0> & 
-	autoconfig & A<3> & !A<1> & A<6> & !UDS & $OpTx$FX_DC$11;
-   AUTO_CONFIG_DONE_CYCLE<0>.CLK = !lan/lan_CLKF;
-
-MACROCELL | 5 | 0 | AUTO_CONFIG_DONE_CYCLE<1>
-ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 2 | 4 | 7 | 5 | 0
-INPUTS | 13 | RESET  | AUTO_CONFIG_DONE_CYCLE<1>  | AS  | RW  | AUTO_CONFIG_DONE<0>  | AUTO_CONFIG_DONE<1>  | autoconfig  | A<3>  | A<1>  | A<6>  | UDS  | $OpTx$FX_DC$11  | lan/lan_CLKF
-INPUTMC | 6 | 5 | 0 | 4 | 8 | 4 | 7 | 6 | 2 | 7 | 6 | 7 | 7
-INPUTP | 7 | 160 | 90 | 93 | 58 | 63 | 57 | 91
+MACROCELL | 6 | 15 | AUTO_CONFIG_DONE_CYCLE<1>
+ATTRIBUTES | 4326176 | 0
+OUTPUTMC | 2 | 6 | 17 | 6 | 15
+INPUTS | 6 | RESET  | AUTO_CONFIG_DONE_CYCLE<0>  | AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2  | N32/N32_D2  | AUTO_CONFIG_DONE_CYCLE<1>  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 5 | 6 | 16 | 11 | 17 | 10 | 17 | 6 | 15 | 10 | 15
+INPUTP | 1 | 263
 EQ | 5 | 
-   AUTO_CONFIG_DONE_CYCLE<1>.D = RESET & AUTO_CONFIG_DONE_CYCLE<1>
-	# !AS & !RW & RESET & AUTO_CONFIG_DONE<0> & 
-	!AUTO_CONFIG_DONE<1> & autoconfig & A<3> & !A<1> & A<6> & !UDS & 
-	$OpTx$FX_DC$11;
-   AUTO_CONFIG_DONE_CYCLE<1>.CLK = !lan/lan_CLKF;
+   AUTO_CONFIG_DONE_CYCLE<1>.T = !RESET & AUTO_CONFIG_DONE_CYCLE<1> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+	# RESET & AUTO_CONFIG_DONE_CYCLE<0> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2 & N32/N32_D2;
+   AUTO_CONFIG_DONE_CYCLE<1>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
 
-MACROCELL | 2 | 13 | AUTO_CONFIG_DONE_CYCLE<2>
+MACROCELL | 14 | 12 | SHUT_UP<0>
 ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 3 | 4 | 6 | 2 | 13 | 2 | 14
-INPUTS | 12 | RESET  | AUTO_CONFIG_DONE_CYCLE<2>  | AS  | RW  | autoconfig  | A<3>  | A<2>  | A<1>  | A<5>  | A<4>  | D_9_IOBUFE/D_9_IOBUFE_TRST.EXP  | lan/lan_CLKF
-INPUTMC | 4 | 2 | 13 | 6 | 2 | 2 | 12 | 7 | 7
-INPUTP | 8 | 160 | 90 | 93 | 58 | 60 | 63 | 54 | 56
-EXPORTS | 1 | 2 | 14
-IMPORTS | 1 | 2 | 12
-EQ | 9 | 
-   AUTO_CONFIG_DONE_CYCLE<2>.D = RESET & AUTO_CONFIG_DONE_CYCLE<2>
-;Imported pterms FB3_13
-	# !AS & !RW & RESET & autoconfig & A<3> & !A<1> & 
-	A<6> & !UDS & CFOUT & $OpTx$FX_DC$26 & $OpTx$FX_DC$11;
-   AUTO_CONFIG_DONE_CYCLE<2>.CLK = !lan/lan_CLKF;
-    AUTO_CONFIG_DONE_CYCLE<2>.EXP  =  !AS & RW & autoconfig & A<3> & !A<2> & A<1>
-	# !AS & RW & autoconfig & !A<3> & A<5> & A<1>
-	# !AS & RW & autoconfig & !A<3> & A<4> & !A<2> & 
-	!A<1>
+OUTPUTMC | 4 | 7 | 7 | 14 | 12 | 10 | 17 | 11 | 15
+INPUTS | 4 | RESET  | SHUT_UP<0>  | LAN_BASEADR_0__or0001/LAN_BASEADR_0__or0001_D2  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 14 | 12 | 11 | 15 | 10 | 15
+INPUTP | 1 | 263
+EQ | 4 | 
+   SHUT_UP<0>.D = !RESET
+	# SHUT_UP<0> & 
+	!LAN_BASEADR_0__or0001/LAN_BASEADR_0__or0001_D2;
+   SHUT_UP<0>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
 
-MACROCELL | 0 | 6 | IDE_ENABLE
+MACROCELL | 14 | 10 | SHUT_UP<1>
 ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 3 | 0 | 6 | 0 | 13 | 0 | 15
-INPUTS | 6 | RESET  | IDE_ENABLE  | AS  | RW  | ide  | lan/lan_CLKF
-INPUTMC | 3 | 0 | 6 | 4 | 14 | 7 | 7
-INPUTP | 3 | 160 | 90 | 93
+OUTPUTMC | 4 | 14 | 10 | 4 | 1 | 10 | 17 | 11 | 16
+INPUTS | 4 | RESET  | SHUT_UP<1>  | CP_BASEADR_0__or0001/CP_BASEADR_0__or0001_D2  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 14 | 10 | 11 | 16 | 10 | 15
+INPUTP | 1 | 263
+EQ | 4 | 
+   SHUT_UP<1>.D = !RESET
+	# SHUT_UP<1> & 
+	!CP_BASEADR_0__or0001/CP_BASEADR_0__or0001_D2;
+   SHUT_UP<1>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
+
+MACROCELL | 13 | 17 | SHUT_UP<2>
+ATTRIBUTES | 8520480 | 0
+OUTPUTMC | 4 | 8 | 16 | 13 | 17 | 10 | 17 | 13 | 16
+INPUTS | 4 | RESET  | SHUT_UP<2>  | IDE_BASEADR_0__or0001/IDE_BASEADR_0__or0001_D2  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 13 | 17 | 13 | 16 | 10 | 15
+INPUTP | 1 | 263
+EQ | 4 | 
+   SHUT_UP<2>.D = !RESET
+	# SHUT_UP<2> & 
+	!IDE_BASEADR_0__or0001/IDE_BASEADR_0__or0001_D2;
+   SHUT_UP<2>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
+
+MACROCELL | 15 | 16 | autoconfig
+ATTRIBUTES | 8520496 | 0
+OUTPUTMC | 7 | 13 | 13 | 1 | 10 | 1 | 8 | 11 | 17 | 11 | 15 | 11 | 16 | 13 | 16
+INPUTS | 12 | A<18>  | A<17>  | A<16>  | A<19>  | CFIN  | A<20>  | A<23>  | A<22>  | A<21>  | $OpTx$FX_DC$8  | SHUT_UP<2>/SHUT_UP<2>_CLKF  | lan/lan_RSTF
+INPUTMC | 3 | 0 | 3 | 10 | 15 | 5 | 11
+INPUTP | 9 | 171 | 172 | 175 | 169 | 190 | 167 | 161 | 162 | 163
+EQ | 4 | 
+   autoconfig.D = !A<18> & !A<17> & !A<16> & A<19> & !CFIN & !A<20> & 
+	A<23> & A<22> & A<21> & !$OpTx$FX_DC$8;
+   autoconfig.CLK = !SHUT_UP<2>/SHUT_UP<2>_CLKF;
+   autoconfig.AR = !lan/lan_RSTF;
+
+MACROCELL | 0 | 15 | IDE_ENABLE
+ATTRIBUTES | 8520480 | 0
+OUTPUTMC | 3 | 0 | 15 | 0 | 12 | 0 | 8
+INPUTS | 6 | RESET  | IDE_ENABLE  | AS  | RW  | ide  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 0 | 15 | 8 | 16 | 10 | 15
+INPUTP | 3 | 263 | 152 | 158
 EQ | 3 | 
    !IDE_ENABLE.D = RESET & !IDE_ENABLE
 	# !AS & !RW & RESET & ide;
-   IDE_ENABLE.CLK = !lan/lan_CLKF;
+   IDE_ENABLE.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
 
-MACROCELL | 4 | 2 | CP_BASEADR<0>
+MACROCELL | 9 | 17 | CP_BASEADR<0>
 ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 2 | 4 | 2 | 4 | 1
-INPUTS | 5 | RESET  | D<8>.PIN  | $OpTx$FX_DC$23  | CP_BASEADR<0>  | lan/lan_CLKF
-INPUTMC | 3 | 3 | 6 | 4 | 2 | 7 | 7
-INPUTP | 2 | 160 | 21
-EQ | 3 | 
-   !CP_BASEADR<0>.D = RESET & !CP_BASEADR<0> & !$OpTx$FX_DC$23
-	# RESET & !D<8>.PIN & $OpTx$FX_DC$23;
-   CP_BASEADR<0>.CLK = !lan/lan_CLKF;
-
-MACROCELL | 4 | 11 | CP_BASEADR<1>
-ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 3 | 4 | 11 | 4 | 16 | 4 | 12
-INPUTS | 9 | RESET  | D<9>.PIN  | $OpTx$FX_DC$23  | CP_BASEADR<1>  | lan/lan_CLKF  | AS  | RW  | CP_CS_BUFR  | LDS
-INPUTMC | 4 | 3 | 6 | 4 | 11 | 7 | 7 | 4 | 0
-INPUTP | 5 | 160 | 44 | 90 | 93 | 92
-EXPORTS | 1 | 4 | 12
-EQ | 4 | 
-   !CP_BASEADR<1>.D = RESET & !CP_BASEADR<1> & !$OpTx$FX_DC$23
-	# RESET & !D<9>.PIN & $OpTx$FX_DC$23;
-   CP_BASEADR<1>.CLK = !lan/lan_CLKF;
-    CP_BASEADR<1>.EXP  =  !AS & !RW & CP_CS_BUFR & !LDS
-
-MACROCELL | 6 | 16 | CP_BASEADR<2>
-ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 3 | 6 | 15 | 4 | 16 | 6 | 17
-INPUTS | 6 | LAN_BASEADR<1>  | A<17>  | LAN_BASEADR<2>  | A<18>  | lan/lan_CLKF  | CP_BASEADR<3>.EXP
-INPUTMC | 4 | 6 | 12 | 6 | 10 | 7 | 7 | 6 | 15
-INPUTP | 2 | 106 | 105
-EXPORTS | 1 | 6 | 17
-IMPORTS | 1 | 6 | 15
-EQ | 8 | 
-   !CP_BASEADR<2>.D = ;Imported pterms FB7_16
-	  RESET & !CP_BASEADR<2> & !$OpTx$FX_DC$23
-	# RESET & !D<10>.PIN & $OpTx$FX_DC$23;
-   CP_BASEADR<2>.CLK = !lan/lan_CLKF;
-    CP_BASEADR<2>.EXP  =  LAN_BASEADR<1> & !A<17>
-	# !LAN_BASEADR<1> & A<17>
-	# LAN_BASEADR<2> & !A<18>
-	# !LAN_BASEADR<2> & A<18>
-
-MACROCELL | 6 | 15 | CP_BASEADR<3>
-ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 3 | 6 | 15 | 4 | 17 | 6 | 16
-INPUTS | 7 | RESET  | D<11>.PIN  | $OpTx$FX_DC$23  | CP_BASEADR<3>  | lan/lan_CLKF  | CP_BASEADR<2>  | D<10>.PIN
-INPUTMC | 4 | 3 | 6 | 6 | 15 | 7 | 7 | 6 | 16
-INPUTP | 3 | 160 | 47 | 45
-EXPORTS | 1 | 6 | 16
+OUTPUTMC | 2 | 9 | 17 | 4 | 2
+INPUTS | 5 | RESET  | D<8>.PIN  | CP_BASEADR_0__or0001/CP_BASEADR_0__or0001_D2  | CP_BASEADR<0>  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 11 | 16 | 9 | 17 | 10 | 15
+INPUTP | 2 | 263 | 32
 EQ | 5 | 
-   !CP_BASEADR<3>.D = RESET & !CP_BASEADR<3> & !$OpTx$FX_DC$23
-	# RESET & !D<11>.PIN & $OpTx$FX_DC$23;
-   CP_BASEADR<3>.CLK = !lan/lan_CLKF;
-    CP_BASEADR<3>.EXP  =  RESET & !CP_BASEADR<2> & !$OpTx$FX_DC$23
-	# RESET & !D<10>.PIN & $OpTx$FX_DC$23
+   !CP_BASEADR<0>.D = RESET & !CP_BASEADR<0> & 
+	!CP_BASEADR_0__or0001/CP_BASEADR_0__or0001_D2
+	# RESET & !D<8>.PIN & 
+	CP_BASEADR_0__or0001/CP_BASEADR_0__or0001_D2;
+   CP_BASEADR<0>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
+
+MACROCELL | 9 | 15 | CP_BASEADR<1>
+ATTRIBUTES | 8520480 | 0
+OUTPUTMC | 2 | 9 | 15 | 4 | 3
+INPUTS | 5 | RESET  | D<9>.PIN  | CP_BASEADR_0__or0001/CP_BASEADR_0__or0001_D2  | CP_BASEADR<1>  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 11 | 16 | 9 | 15 | 10 | 15
+INPUTP | 2 | 263 | 73
+EQ | 5 | 
+   !CP_BASEADR<1>.D = RESET & !CP_BASEADR<1> & 
+	!CP_BASEADR_0__or0001/CP_BASEADR_0__or0001_D2
+	# RESET & !D<9>.PIN & 
+	CP_BASEADR_0__or0001/CP_BASEADR_0__or0001_D2;
+   CP_BASEADR<1>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
+
+MACROCELL | 9 | 14 | CP_BASEADR<2>
+ATTRIBUTES | 8520480 | 0
+OUTPUTMC | 2 | 9 | 14 | 4 | 3
+INPUTS | 5 | RESET  | D<10>.PIN  | CP_BASEADR_0__or0001/CP_BASEADR_0__or0001_D2  | CP_BASEADR<2>  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 11 | 16 | 9 | 14 | 10 | 15
+INPUTP | 2 | 263 | 74
+EQ | 5 | 
+   !CP_BASEADR<2>.D = RESET & !CP_BASEADR<2> & 
+	!CP_BASEADR_0__or0001/CP_BASEADR_0__or0001_D2
+	# RESET & !D<10>.PIN & 
+	CP_BASEADR_0__or0001/CP_BASEADR_0__or0001_D2;
+   CP_BASEADR<2>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
+
+MACROCELL | 9 | 12 | CP_BASEADR<3>
+ATTRIBUTES | 8520480 | 0
+OUTPUTMC | 2 | 9 | 12 | 4 | 0
+INPUTS | 5 | RESET  | D<11>.PIN  | CP_BASEADR_0__or0001/CP_BASEADR_0__or0001_D2  | CP_BASEADR<3>  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 11 | 16 | 9 | 12 | 10 | 15
+INPUTP | 2 | 263 | 77
+EQ | 5 | 
+   !CP_BASEADR<3>.D = RESET & !CP_BASEADR<3> & 
+	!CP_BASEADR_0__or0001/CP_BASEADR_0__or0001_D2
+	# RESET & !D<11>.PIN & 
+	CP_BASEADR_0__or0001/CP_BASEADR_0__or0001_D2;
+   CP_BASEADR<3>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
 
 MACROCELL | 6 | 14 | CP_BASEADR<4>
 ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 2 | 4 | 0 | 6 | 14
-INPUTS | 5 | RESET  | D<12>.PIN  | $OpTx$FX_DC$23  | CP_BASEADR<4>  | lan/lan_CLKF
-INPUTMC | 3 | 3 | 6 | 6 | 14 | 7 | 7
-INPUTP | 2 | 160 | 48
-EQ | 3 | 
-   !CP_BASEADR<4>.D = RESET & !CP_BASEADR<4> & !$OpTx$FX_DC$23
-	# RESET & !D<12>.PIN & $OpTx$FX_DC$23;
-   CP_BASEADR<4>.CLK = !lan/lan_CLKF;
+OUTPUTMC | 2 | 6 | 14 | 4 | 1
+INPUTS | 5 | RESET  | D<12>.PIN  | CP_BASEADR_0__or0001/CP_BASEADR_0__or0001_D2  | CP_BASEADR<4>  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 11 | 16 | 6 | 14 | 10 | 15
+INPUTP | 2 | 263 | 78
+EQ | 5 | 
+   !CP_BASEADR<4>.D = RESET & !CP_BASEADR<4> & 
+	!CP_BASEADR_0__or0001/CP_BASEADR_0__or0001_D2
+	# RESET & !D<12>.PIN & 
+	CP_BASEADR_0__or0001/CP_BASEADR_0__or0001_D2;
+   CP_BASEADR<4>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
 
-MACROCELL | 7 | 17 | CP_BASEADR<5>
+MACROCELL | 5 | 17 | CP_BASEADR<5>
 ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 2 | 7 | 17 | 4 | 17
-INPUTS | 5 | RESET  | D<13>.PIN  | $OpTx$FX_DC$23  | CP_BASEADR<5>  | lan/lan_CLKF
-INPUTMC | 3 | 3 | 6 | 7 | 17 | 7 | 7
-INPUTP | 2 | 160 | 49
-EQ | 3 | 
-   !CP_BASEADR<5>.D = RESET & !CP_BASEADR<5> & !$OpTx$FX_DC$23
-	# RESET & !D<13>.PIN & $OpTx$FX_DC$23;
-   CP_BASEADR<5>.CLK = !lan/lan_CLKF;
+OUTPUTMC | 2 | 5 | 17 | 4 | 0
+INPUTS | 5 | RESET  | D<13>.PIN  | CP_BASEADR_0__or0001/CP_BASEADR_0__or0001_D2  | CP_BASEADR<5>  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 11 | 16 | 5 | 17 | 10 | 15
+INPUTP | 2 | 263 | 80
+EQ | 5 | 
+   !CP_BASEADR<5>.D = RESET & !CP_BASEADR<5> & 
+	!CP_BASEADR_0__or0001/CP_BASEADR_0__or0001_D2
+	# RESET & !D<13>.PIN & 
+	CP_BASEADR_0__or0001/CP_BASEADR_0__or0001_D2;
+   CP_BASEADR<5>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
 
-MACROCELL | 7 | 14 | CP_BASEADR<6>
+MACROCELL | 5 | 16 | CP_BASEADR<6>
 ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 3 | 7 | 14 | 4 | 1 | 4 | 17
-INPUTS | 5 | RESET  | D<14>.PIN  | $OpTx$FX_DC$23  | CP_BASEADR<6>  | lan/lan_CLKF
-INPUTMC | 3 | 3 | 6 | 7 | 14 | 7 | 7
-INPUTP | 2 | 160 | 50
-EQ | 3 | 
-   !CP_BASEADR<6>.D = RESET & !CP_BASEADR<6> & !$OpTx$FX_DC$23
-	# RESET & !D<14>.PIN & $OpTx$FX_DC$23;
-   CP_BASEADR<6>.CLK = !lan/lan_CLKF;
+OUTPUTMC | 3 | 5 | 16 | 4 | 0 | 4 | 2
+INPUTS | 5 | RESET  | D<14>.PIN  | CP_BASEADR_0__or0001/CP_BASEADR_0__or0001_D2  | CP_BASEADR<6>  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 11 | 16 | 5 | 16 | 10 | 15
+INPUTP | 2 | 263 | 81
+EQ | 5 | 
+   !CP_BASEADR<6>.D = RESET & !CP_BASEADR<6> & 
+	!CP_BASEADR_0__or0001/CP_BASEADR_0__or0001_D2
+	# RESET & !D<14>.PIN & 
+	CP_BASEADR_0__or0001/CP_BASEADR_0__or0001_D2;
+   CP_BASEADR<6>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
 
-MACROCELL | 7 | 13 | CP_BASEADR<7>
+MACROCELL | 5 | 15 | CP_BASEADR<7>
 ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 2 | 7 | 13 | 4 | 1
-INPUTS | 5 | RESET  | D<15>.PIN  | $OpTx$FX_DC$23  | CP_BASEADR<7>  | lan/lan_CLKF
-INPUTMC | 3 | 3 | 6 | 7 | 13 | 7 | 7
-INPUTP | 2 | 160 | 52
-EQ | 3 | 
-   !CP_BASEADR<7>.D = RESET & !CP_BASEADR<7> & !$OpTx$FX_DC$23
-	# RESET & !D<15>.PIN & $OpTx$FX_DC$23;
-   CP_BASEADR<7>.CLK = !lan/lan_CLKF;
+OUTPUTMC | 2 | 5 | 15 | 4 | 2
+INPUTS | 5 | RESET  | D<15>.PIN  | CP_BASEADR_0__or0001/CP_BASEADR_0__or0001_D2  | CP_BASEADR<7>  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 11 | 16 | 5 | 15 | 10 | 15
+INPUTP | 2 | 263 | 89
+EQ | 5 | 
+   !CP_BASEADR<7>.D = RESET & !CP_BASEADR<7> & 
+	!CP_BASEADR_0__or0001/CP_BASEADR_0__or0001_D2
+	# RESET & !D<15>.PIN & 
+	CP_BASEADR_0__or0001/CP_BASEADR_0__or0001_D2;
+   CP_BASEADR<7>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
 
-MACROCELL | 1 | 17 | IDE_BASEADR<0>
+MACROCELL | 2 | 16 | Dout1<0>
 ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 2 | 1 | 17 | 4 | 15
-INPUTS | 17 | RESET  | IDE_BASEADR<0>  | $OpTx$FX_DC$27  | AS  | RW  | AUTO_CONFIG_DONE<0>  | AUTO_CONFIG_DONE<1>  | autoconfig  | A<3>  | A<2>  | A<1>  | A<6>  | D<8>.PIN  | UDS  | CFOUT  | $OpTx$FX_DC$11  | lan/lan_CLKF
-INPUTMC | 8 | 1 | 17 | 3 | 3 | 4 | 8 | 4 | 7 | 6 | 2 | 7 | 16 | 7 | 6 | 7 | 7
-INPUTP | 9 | 160 | 90 | 93 | 58 | 60 | 63 | 57 | 21 | 91
-EQ | 6 | 
-   IDE_BASEADR<0>.D = !RESET
-	# IDE_BASEADR<0> & !$OpTx$FX_DC$27
-	# !AS & !RW & AUTO_CONFIG_DONE<0> & 
-	AUTO_CONFIG_DONE<1> & autoconfig & A<3> & !A<2> & !A<1> & A<6> & 
-	D<8>.PIN & !UDS & CFOUT & $OpTx$FX_DC$11;
-   IDE_BASEADR<0>.CLK = !lan/lan_CLKF;
+OUTPUTMC | 2 | 4 | 16 | 2 | 16
+INPUTS | 9 | AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2  | $OpTx$FX_DC$19  | Dout1<0>  | A<3>  | $OpTx$FX_DC$33  | A<4>  | EXP18_.EXP  | EXP19_.EXP  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 7 | 11 | 17 | 3 | 12 | 2 | 16 | 3 | 10 | 2 | 15 | 2 | 17 | 10 | 15
+INPUTP | 2 | 99 | 97
+IMPORTS | 2 | 2 | 15 | 2 | 17
+EQ | 25 | 
+   Dout1<0>.D = Dout1<0> & 
+	!AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+	# 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2 & !$OpTx$FX_DC$19
+	# A<3> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2 & $OpTx$FX_DC$33
+	# !A<3> & A<4> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2 & !$OpTx$FX_DC$33
+;Imported pterms FB3_16
+	# !A<5> & A<3> & !A<4> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+;Imported pterms FB3_18
+	# A<3> & !A<4> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2 & !$OpTx$FX_DC$28
+	# AUTO_CONFIG_DONE<1> & !A<5> & !A<3> & A<2> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+	# !A<6> & !A<3> & A<1> & !A<2> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+	# AUTO_CONFIG_DONE<1> & !A<6> & !A<3> & !A<2> & 
+	!AUTOBOOT_OFF & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+	# AUTO_CONFIG_DONE<0> & !A<6> & !A<5> & !A<3> & 
+	A<1> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2;
+   Dout1<0>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
 
-MACROCELL | 1 | 6 | IDE_BASEADR<1>
+MACROCELL | 3 | 17 | Dout1<1>
 ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 2 | 4 | 12 | 1 | 6
-INPUTS | 17 | RESET  | IDE_BASEADR<1>  | $OpTx$FX_DC$27  | AS  | RW  | AUTO_CONFIG_DONE<0>  | AUTO_CONFIG_DONE<1>  | autoconfig  | A<3>  | A<2>  | A<1>  | A<6>  | D<9>.PIN  | UDS  | CFOUT  | $OpTx$FX_DC$11  | lan/lan_CLKF
-INPUTMC | 8 | 1 | 6 | 3 | 3 | 4 | 8 | 4 | 7 | 6 | 2 | 7 | 16 | 7 | 6 | 7 | 7
-INPUTP | 9 | 160 | 90 | 93 | 58 | 60 | 63 | 57 | 44 | 91
-EQ | 6 | 
-   IDE_BASEADR<1>.D = !RESET
-	# IDE_BASEADR<1> & !$OpTx$FX_DC$27
-	# !AS & !RW & AUTO_CONFIG_DONE<0> & 
-	AUTO_CONFIG_DONE<1> & autoconfig & A<3> & !A<2> & !A<1> & A<6> & 
-	D<9>.PIN & !UDS & CFOUT & $OpTx$FX_DC$11;
-   IDE_BASEADR<1>.CLK = !lan/lan_CLKF;
+OUTPUTMC | 3 | 6 | 2 | 3 | 17 | 3 | 0
+INPUTS | 13 | $OpTx$FX_DC$36  | Dout1<1>  | AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2  | RESET  | A<5>  | A<3>  | A<4>  | A<1>  | A<2>  | AUTO_CONFIG_DONE<1>  | SHUT_UP<2>/SHUT_UP<2>_CLKF  | A<6>  | EXP20_.EXP
+INPUTMC | 6 | 3 | 14 | 3 | 17 | 11 | 17 | 6 | 17 | 10 | 15 | 3 | 16
+INPUTP | 7 | 263 | 91 | 99 | 97 | 107 | 101 | 98
+EXPORTS | 1 | 3 | 0
+IMPORTS | 1 | 3 | 16
+EQ | 22 | 
+   Dout1<1>.D = $OpTx$FX_DC$36
+	# Dout1<1> & 
+	!AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+;Imported pterms FB4_17
+	# AUTO_CONFIG_DONE<1> & !A<3> & A<4> & A<1> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+	# !AUTO_CONFIG_DONE<1> & !A<3> & A<4> & A<2> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+	# !A<3> & A<4> & !A<1> & !A<2> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+	# AUTO_CONFIG_DONE<1> & !A<5> & !A<4> & !A<1> & 
+	A<2> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+	# !AUTO_CONFIG_DONE<1> & AUTO_CONFIG_DONE<0> & !A<4> & 
+	A<1> & A<2> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2;
+   Dout1<1>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
+    Dout1<1>.EXP  =  RESET & !A<5> & !A<3> & !A<4> & A<1> & !A<2> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+	# RESET & AUTO_CONFIG_DONE<1> & !A<6> & !A<5> & 
+	!A<3> & !A<4> & A<1> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
 
-MACROCELL | 1 | 2 | IDE_BASEADR<2>
+MACROCELL | 3 | 0 | Dout1<2>
 ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 2 | 4 | 12 | 1 | 2
-INPUTS | 17 | RESET  | IDE_BASEADR<2>  | $OpTx$FX_DC$27  | AS  | RW  | AUTO_CONFIG_DONE<0>  | AUTO_CONFIG_DONE<1>  | autoconfig  | A<3>  | A<2>  | A<1>  | A<6>  | D<10>.PIN  | UDS  | CFOUT  | $OpTx$FX_DC$11  | lan/lan_CLKF
-INPUTMC | 8 | 1 | 2 | 3 | 3 | 4 | 8 | 4 | 7 | 6 | 2 | 7 | 16 | 7 | 6 | 7 | 7
-INPUTP | 9 | 160 | 90 | 93 | 58 | 60 | 63 | 57 | 45 | 91
-EQ | 6 | 
-   IDE_BASEADR<2>.D = !RESET
-	# IDE_BASEADR<2> & !$OpTx$FX_DC$27
-	# !AS & !RW & AUTO_CONFIG_DONE<0> & 
-	AUTO_CONFIG_DONE<1> & autoconfig & A<3> & !A<2> & !A<1> & A<6> & 
-	D<10>.PIN & !UDS & CFOUT & $OpTx$FX_DC$11;
-   IDE_BASEADR<2>.CLK = !lan/lan_CLKF;
+OUTPUTMC | 2 | 6 | 4 | 3 | 0
+INPUTS | 13 | Dout1<2>  | AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2  | RESET  | AUTO_CONFIG_DONE<1>  | A<6>  | A<5>  | A<3>  | A<4>  | A<1>  | A<2>  | D_0_IOBUFE.EXP  | SHUT_UP<2>/SHUT_UP<2>_CLKF  | Dout1<1>.EXP
+INPUTMC | 6 | 3 | 0 | 11 | 17 | 6 | 17 | 3 | 1 | 10 | 15 | 3 | 17
+INPUTP | 7 | 263 | 98 | 91 | 99 | 97 | 107 | 101
+IMPORTS | 2 | 3 | 1 | 3 | 17
+EQ | 27 | 
+   !Dout1<2>.D = !Dout1<2> & 
+	!AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+	# RESET & A<6> & !A<5> & !A<3> & !A<4> & !A<2> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+	# RESET & !A<6> & !A<5> & A<3> & A<4> & !A<1> & 
+	A<2> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+	# RESET & !AUTO_CONFIG_DONE<1> & !A<6> & !A<5> & 
+	!A<3> & !A<4> & !A<1> & A<2> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+;Imported pterms FB4_2
+	# RESET & AUTO_CONFIG_DONE<0> & !A<6> & !A<5> & 
+	!A<3> & !A<4> & A<1> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+	# RESET & !A<6> & A<5> & !A<3> & !A<4> & A<1> & 
+	A<2> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+	# RESET & !A<6> & !A<5> & !A<3> & A<4> & A<1> & 
+	A<2> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+;Imported pterms FB4_18
+	# RESET & !A<5> & !A<3> & !A<4> & A<1> & !A<2> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+	# RESET & AUTO_CONFIG_DONE<1> & !A<6> & !A<5> & 
+	!A<3> & !A<4> & A<1> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2;
+   Dout1<2>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
 
-MACROCELL | 1 | 1 | IDE_BASEADR<3>
+MACROCELL | 3 | 15 | Dout1<3>
 ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 2 | 4 | 13 | 1 | 1
-INPUTS | 17 | RESET  | IDE_BASEADR<3>  | $OpTx$FX_DC$27  | AS  | RW  | AUTO_CONFIG_DONE<0>  | AUTO_CONFIG_DONE<1>  | autoconfig  | A<3>  | A<2>  | A<1>  | A<6>  | D<11>.PIN  | UDS  | CFOUT  | $OpTx$FX_DC$11  | lan/lan_CLKF
-INPUTMC | 8 | 1 | 1 | 3 | 3 | 4 | 8 | 4 | 7 | 6 | 2 | 7 | 16 | 7 | 6 | 7 | 7
-INPUTP | 9 | 160 | 90 | 93 | 58 | 60 | 63 | 57 | 47 | 91
-EQ | 6 | 
-   IDE_BASEADR<3>.D = !RESET
-	# IDE_BASEADR<3> & !$OpTx$FX_DC$27
-	# !AS & !RW & AUTO_CONFIG_DONE<0> & 
-	AUTO_CONFIG_DONE<1> & autoconfig & A<3> & !A<2> & !A<1> & A<6> & 
-	D<11>.PIN & !UDS & CFOUT & $OpTx$FX_DC$11;
-   IDE_BASEADR<3>.CLK = !lan/lan_CLKF;
+OUTPUTMC | 2 | 6 | 11 | 3 | 15
+INPUTS | 10 | $OpTx$FX_DC$36  | Dout1<3>  | AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2  | A<5>  | A<1>  | A<2>  | A<6>  | A<3>  | $OpTx$FX_DC$36.EXP  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 5 | 3 | 14 | 3 | 15 | 11 | 17 | 3 | 14 | 10 | 15
+INPUTP | 5 | 91 | 107 | 101 | 98 | 99
+IMPORTS | 1 | 3 | 14
+EQ | 11 | 
+   Dout1<3>.D = $OpTx$FX_DC$36
+	# Dout1<3> & 
+	!AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+	# !A<5> & !A<1> & A<2> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+	# !A<6> & !A<5> & !A<3> & !A<1> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+;Imported pterms FB4_15
+	# AUTO_CONFIG_DONE<1> & !A<5> & !A<4> & A<2> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2;
+   Dout1<3>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
 
-MACROCELL | 5 | 17 | IDE_BASEADR<4>
+MACROCELL | 15 | 17 | IDE_BASEADR<0>
 ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 2 | 4 | 14 | 5 | 17
-INPUTS | 17 | RESET  | IDE_BASEADR<4>  | $OpTx$FX_DC$27  | AS  | RW  | AUTO_CONFIG_DONE<0>  | AUTO_CONFIG_DONE<1>  | autoconfig  | A<3>  | A<2>  | A<1>  | A<6>  | D<12>.PIN  | UDS  | CFOUT  | $OpTx$FX_DC$11  | lan/lan_CLKF
-INPUTMC | 8 | 5 | 17 | 3 | 3 | 4 | 8 | 4 | 7 | 6 | 2 | 7 | 16 | 7 | 6 | 7 | 7
-INPUTP | 9 | 160 | 90 | 93 | 58 | 60 | 63 | 57 | 48 | 91
-EQ | 6 | 
-   IDE_BASEADR<4>.D = !RESET
-	# IDE_BASEADR<4> & !$OpTx$FX_DC$27
-	# !AS & !RW & AUTO_CONFIG_DONE<0> & 
-	AUTO_CONFIG_DONE<1> & autoconfig & A<3> & !A<2> & !A<1> & A<6> & 
-	D<12>.PIN & !UDS & CFOUT & $OpTx$FX_DC$11;
-   IDE_BASEADR<4>.CLK = !lan/lan_CLKF;
+OUTPUTMC | 2 | 15 | 17 | 8 | 17
+INPUTS | 5 | RESET  | D<8>.PIN  | IDE_BASEADR_0__or0001/IDE_BASEADR_0__or0001_D2  | IDE_BASEADR<0>  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 13 | 16 | 15 | 17 | 10 | 15
+INPUTP | 2 | 263 | 32
+EQ | 5 | 
+   !IDE_BASEADR<0>.D = RESET & !IDE_BASEADR<0> & 
+	!IDE_BASEADR_0__or0001/IDE_BASEADR_0__or0001_D2
+	# RESET & !D<8>.PIN & 
+	IDE_BASEADR_0__or0001/IDE_BASEADR_0__or0001_D2;
+   IDE_BASEADR<0>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
 
-MACROCELL | 5 | 12 | IDE_BASEADR<5>
+MACROCELL | 12 | 17 | IDE_BASEADR<1>
 ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 2 | 4 | 13 | 5 | 12
-INPUTS | 17 | RESET  | IDE_BASEADR<5>  | $OpTx$FX_DC$27  | AS  | RW  | AUTO_CONFIG_DONE<0>  | AUTO_CONFIG_DONE<1>  | autoconfig  | A<3>  | A<2>  | A<1>  | A<6>  | D<13>.PIN  | UDS  | CFOUT  | $OpTx$FX_DC$11  | lan/lan_CLKF
-INPUTMC | 8 | 5 | 12 | 3 | 3 | 4 | 8 | 4 | 7 | 6 | 2 | 7 | 16 | 7 | 6 | 7 | 7
-INPUTP | 9 | 160 | 90 | 93 | 58 | 60 | 63 | 57 | 49 | 91
-EQ | 6 | 
-   IDE_BASEADR<5>.D = !RESET
-	# IDE_BASEADR<5> & !$OpTx$FX_DC$27
-	# !AS & !RW & AUTO_CONFIG_DONE<0> & 
-	AUTO_CONFIG_DONE<1> & autoconfig & A<3> & !A<2> & !A<1> & A<6> & 
-	D<13>.PIN & !UDS & CFOUT & $OpTx$FX_DC$11;
-   IDE_BASEADR<5>.CLK = !lan/lan_CLKF;
+OUTPUTMC | 2 | 8 | 14 | 12 | 17
+INPUTS | 5 | RESET  | D<9>.PIN  | IDE_BASEADR_0__or0001/IDE_BASEADR_0__or0001_D2  | IDE_BASEADR<1>  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 13 | 16 | 12 | 17 | 10 | 15
+INPUTP | 2 | 263 | 73
+EQ | 5 | 
+   !IDE_BASEADR<1>.D = RESET & !IDE_BASEADR<1> & 
+	!IDE_BASEADR_0__or0001/IDE_BASEADR_0__or0001_D2
+	# RESET & !D<9>.PIN & 
+	IDE_BASEADR_0__or0001/IDE_BASEADR_0__or0001_D2;
+   IDE_BASEADR<1>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
 
-MACROCELL | 5 | 6 | IDE_BASEADR<6>
+MACROCELL | 12 | 16 | IDE_BASEADR<2>
 ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 3 | 4 | 13 | 5 | 6 | 4 | 15
-INPUTS | 17 | RESET  | IDE_BASEADR<6>  | $OpTx$FX_DC$27  | AS  | RW  | AUTO_CONFIG_DONE<0>  | AUTO_CONFIG_DONE<1>  | autoconfig  | A<3>  | A<2>  | A<1>  | A<6>  | D<14>.PIN  | UDS  | CFOUT  | $OpTx$FX_DC$11  | lan/lan_CLKF
-INPUTMC | 8 | 5 | 6 | 3 | 3 | 4 | 8 | 4 | 7 | 6 | 2 | 7 | 16 | 7 | 6 | 7 | 7
-INPUTP | 9 | 160 | 90 | 93 | 58 | 60 | 63 | 57 | 50 | 91
-EQ | 6 | 
-   IDE_BASEADR<6>.D = !RESET
-	# IDE_BASEADR<6> & !$OpTx$FX_DC$27
-	# !AS & !RW & AUTO_CONFIG_DONE<0> & 
-	AUTO_CONFIG_DONE<1> & autoconfig & A<3> & !A<2> & !A<1> & A<6> & 
-	D<14>.PIN & !UDS & CFOUT & $OpTx$FX_DC$11;
-   IDE_BASEADR<6>.CLK = !lan/lan_CLKF;
+OUTPUTMC | 2 | 8 | 14 | 12 | 16
+INPUTS | 5 | RESET  | D<10>.PIN  | IDE_BASEADR_0__or0001/IDE_BASEADR_0__or0001_D2  | IDE_BASEADR<2>  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 13 | 16 | 12 | 16 | 10 | 15
+INPUTP | 2 | 263 | 74
+EQ | 5 | 
+   !IDE_BASEADR<2>.D = RESET & !IDE_BASEADR<2> & 
+	!IDE_BASEADR_0__or0001/IDE_BASEADR_0__or0001_D2
+	# RESET & !D<10>.PIN & 
+	IDE_BASEADR_0__or0001/IDE_BASEADR_0__or0001_D2;
+   IDE_BASEADR<2>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
 
-MACROCELL | 5 | 3 | IDE_BASEADR<7>
+MACROCELL | 12 | 15 | IDE_BASEADR<3>
 ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 2 | 5 | 3 | 4 | 15
-INPUTS | 17 | RESET  | IDE_BASEADR<7>  | $OpTx$FX_DC$27  | AS  | RW  | AUTO_CONFIG_DONE<0>  | AUTO_CONFIG_DONE<1>  | autoconfig  | A<3>  | A<2>  | A<1>  | A<6>  | D<15>.PIN  | UDS  | CFOUT  | $OpTx$FX_DC$11  | lan/lan_CLKF
-INPUTMC | 8 | 5 | 3 | 3 | 3 | 4 | 8 | 4 | 7 | 6 | 2 | 7 | 16 | 7 | 6 | 7 | 7
-INPUTP | 9 | 160 | 90 | 93 | 58 | 60 | 63 | 57 | 52 | 91
-EQ | 6 | 
-   IDE_BASEADR<7>.D = !RESET
-	# IDE_BASEADR<7> & !$OpTx$FX_DC$27
-	# !AS & !RW & AUTO_CONFIG_DONE<0> & 
-	AUTO_CONFIG_DONE<1> & autoconfig & A<3> & !A<2> & !A<1> & A<6> & 
-	D<15>.PIN & !UDS & CFOUT & $OpTx$FX_DC$11;
-   IDE_BASEADR<7>.CLK = !lan/lan_CLKF;
+OUTPUTMC | 2 | 8 | 15 | 12 | 15
+INPUTS | 5 | RESET  | D<11>.PIN  | IDE_BASEADR_0__or0001/IDE_BASEADR_0__or0001_D2  | IDE_BASEADR<3>  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 13 | 16 | 12 | 15 | 10 | 15
+INPUTP | 2 | 263 | 77
+EQ | 5 | 
+   !IDE_BASEADR<3>.D = RESET & !IDE_BASEADR<3> & 
+	!IDE_BASEADR_0__or0001/IDE_BASEADR_0__or0001_D2
+	# RESET & !D<11>.PIN & 
+	IDE_BASEADR_0__or0001/IDE_BASEADR_0__or0001_D2;
+   IDE_BASEADR<3>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
 
-MACROCELL | 6 | 13 | LAN_BASEADR<0>
+MACROCELL | 12 | 14 | IDE_BASEADR<4>
 ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 2 | 6 | 13 | 6 | 1
-INPUTS | 5 | RESET  | D<8>.PIN  | $OpTx$FX_DC$21  | LAN_BASEADR<0>  | lan/lan_CLKF
-INPUTMC | 3 | 2 | 16 | 6 | 13 | 7 | 7
-INPUTP | 2 | 160 | 21
-EQ | 3 | 
-   !LAN_BASEADR<0>.D = RESET & !LAN_BASEADR<0> & !$OpTx$FX_DC$21
-	# RESET & !D<8>.PIN & $OpTx$FX_DC$21;
-   LAN_BASEADR<0>.CLK = !lan/lan_CLKF;
+OUTPUTMC | 2 | 8 | 16 | 12 | 14
+INPUTS | 5 | RESET  | D<12>.PIN  | IDE_BASEADR_0__or0001/IDE_BASEADR_0__or0001_D2  | IDE_BASEADR<4>  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 13 | 16 | 12 | 14 | 10 | 15
+INPUTP | 2 | 263 | 78
+EQ | 5 | 
+   !IDE_BASEADR<4>.D = RESET & !IDE_BASEADR<4> & 
+	!IDE_BASEADR_0__or0001/IDE_BASEADR_0__or0001_D2
+	# RESET & !D<12>.PIN & 
+	IDE_BASEADR_0__or0001/IDE_BASEADR_0__or0001_D2;
+   IDE_BASEADR<4>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
 
-MACROCELL | 6 | 12 | LAN_BASEADR<1>
+MACROCELL | 5 | 14 | IDE_BASEADR<5>
 ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 2 | 6 | 12 | 6 | 16
-INPUTS | 5 | RESET  | D<9>.PIN  | $OpTx$FX_DC$21  | LAN_BASEADR<1>  | lan/lan_CLKF
-INPUTMC | 3 | 2 | 16 | 6 | 12 | 7 | 7
-INPUTP | 2 | 160 | 44
-EQ | 3 | 
-   !LAN_BASEADR<1>.D = RESET & !LAN_BASEADR<1> & !$OpTx$FX_DC$21
-	# RESET & !D<9>.PIN & $OpTx$FX_DC$21;
-   LAN_BASEADR<1>.CLK = !lan/lan_CLKF;
+OUTPUTMC | 2 | 8 | 15 | 5 | 14
+INPUTS | 5 | RESET  | D<13>.PIN  | IDE_BASEADR_0__or0001/IDE_BASEADR_0__or0001_D2  | IDE_BASEADR<5>  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 13 | 16 | 5 | 14 | 10 | 15
+INPUTP | 2 | 263 | 80
+EQ | 5 | 
+   !IDE_BASEADR<5>.D = RESET & !IDE_BASEADR<5> & 
+	!IDE_BASEADR_0__or0001/IDE_BASEADR_0__or0001_D2
+	# RESET & !D<13>.PIN & 
+	IDE_BASEADR_0__or0001/IDE_BASEADR_0__or0001_D2;
+   IDE_BASEADR<5>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
 
-MACROCELL | 6 | 10 | LAN_BASEADR<2>
+MACROCELL | 5 | 12 | IDE_BASEADR<6>
 ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 2 | 6 | 10 | 6 | 16
-INPUTS | 5 | RESET  | D<10>.PIN  | $OpTx$FX_DC$21  | LAN_BASEADR<2>  | lan/lan_CLKF
-INPUTMC | 3 | 2 | 16 | 6 | 10 | 7 | 7
-INPUTP | 2 | 160 | 45
-EQ | 3 | 
-   !LAN_BASEADR<2>.D = RESET & !LAN_BASEADR<2> & !$OpTx$FX_DC$21
-	# RESET & !D<10>.PIN & $OpTx$FX_DC$21;
-   LAN_BASEADR<2>.CLK = !lan/lan_CLKF;
+OUTPUTMC | 3 | 8 | 15 | 5 | 12 | 8 | 17
+INPUTS | 5 | RESET  | D<14>.PIN  | IDE_BASEADR_0__or0001/IDE_BASEADR_0__or0001_D2  | IDE_BASEADR<6>  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 13 | 16 | 5 | 12 | 10 | 15
+INPUTP | 2 | 263 | 81
+EQ | 5 | 
+   !IDE_BASEADR<6>.D = RESET & !IDE_BASEADR<6> & 
+	!IDE_BASEADR_0__or0001/IDE_BASEADR_0__or0001_D2
+	# RESET & !D<14>.PIN & 
+	IDE_BASEADR_0__or0001/IDE_BASEADR_0__or0001_D2;
+   IDE_BASEADR<6>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
 
-MACROCELL | 6 | 9 | LAN_BASEADR<3>
+MACROCELL | 14 | 17 | IDE_BASEADR<7>
 ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 2 | 6 | 9 | 6 | 17
-INPUTS | 5 | RESET  | D<11>.PIN  | $OpTx$FX_DC$21  | LAN_BASEADR<3>  | lan/lan_CLKF
-INPUTMC | 3 | 2 | 16 | 6 | 9 | 7 | 7
-INPUTP | 2 | 160 | 47
-EQ | 3 | 
-   !LAN_BASEADR<3>.D = RESET & !LAN_BASEADR<3> & !$OpTx$FX_DC$21
-	# RESET & !D<11>.PIN & $OpTx$FX_DC$21;
-   LAN_BASEADR<3>.CLK = !lan/lan_CLKF;
+OUTPUTMC | 2 | 14 | 17 | 8 | 17
+INPUTS | 5 | RESET  | D<15>.PIN  | IDE_BASEADR_0__or0001/IDE_BASEADR_0__or0001_D2  | IDE_BASEADR<7>  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 13 | 16 | 14 | 17 | 10 | 15
+INPUTP | 2 | 263 | 89
+EQ | 5 | 
+   !IDE_BASEADR<7>.D = RESET & !IDE_BASEADR<7> & 
+	!IDE_BASEADR_0__or0001/IDE_BASEADR_0__or0001_D2
+	# RESET & !D<15>.PIN & 
+	IDE_BASEADR_0__or0001/IDE_BASEADR_0__or0001_D2;
+   IDE_BASEADR<7>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
 
-MACROCELL | 6 | 8 | LAN_BASEADR<4>
+MACROCELL | 14 | 16 | LAN_BASEADR<0>
 ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 2 | 6 | 0 | 6 | 8
-INPUTS | 5 | RESET  | D<12>.PIN  | $OpTx$FX_DC$21  | LAN_BASEADR<4>  | lan/lan_CLKF
-INPUTMC | 3 | 2 | 16 | 6 | 8 | 7 | 7
-INPUTP | 2 | 160 | 48
-EQ | 3 | 
-   !LAN_BASEADR<4>.D = RESET & !LAN_BASEADR<4> & !$OpTx$FX_DC$21
-	# RESET & !D<12>.PIN & $OpTx$FX_DC$21;
-   LAN_BASEADR<4>.CLK = !lan/lan_CLKF;
+OUTPUTMC | 2 | 14 | 16 | 7 | 8
+INPUTS | 5 | RESET  | D<8>.PIN  | LAN_BASEADR_0__or0001/LAN_BASEADR_0__or0001_D2  | LAN_BASEADR<0>  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 11 | 15 | 14 | 16 | 10 | 15
+INPUTP | 2 | 263 | 32
+EQ | 5 | 
+   !LAN_BASEADR<0>.D = RESET & !LAN_BASEADR<0> & 
+	!LAN_BASEADR_0__or0001/LAN_BASEADR_0__or0001_D2
+	# RESET & !D<8>.PIN & 
+	LAN_BASEADR_0__or0001/LAN_BASEADR_0__or0001_D2;
+   LAN_BASEADR<0>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
 
-MACROCELL | 6 | 7 | LAN_BASEADR<5>
+MACROCELL | 12 | 12 | LAN_BASEADR<1>
 ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 2 | 6 | 7 | 6 | 17
-INPUTS | 5 | RESET  | D<13>.PIN  | $OpTx$FX_DC$21  | LAN_BASEADR<5>  | lan/lan_CLKF
-INPUTMC | 3 | 2 | 16 | 6 | 7 | 7 | 7
-INPUTP | 2 | 160 | 49
-EQ | 3 | 
-   !LAN_BASEADR<5>.D = RESET & !LAN_BASEADR<5> & !$OpTx$FX_DC$21
-	# RESET & !D<13>.PIN & $OpTx$FX_DC$21;
-   LAN_BASEADR<5>.CLK = !lan/lan_CLKF;
+OUTPUTMC | 2 | 7 | 5 | 12 | 12
+INPUTS | 5 | RESET  | D<9>.PIN  | LAN_BASEADR_0__or0001/LAN_BASEADR_0__or0001_D2  | LAN_BASEADR<1>  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 11 | 15 | 12 | 12 | 10 | 15
+INPUTP | 2 | 263 | 73
+EQ | 5 | 
+   !LAN_BASEADR<1>.D = RESET & !LAN_BASEADR<1> & 
+	!LAN_BASEADR_0__or0001/LAN_BASEADR_0__or0001_D2
+	# RESET & !D<9>.PIN & 
+	LAN_BASEADR_0__or0001/LAN_BASEADR_0__or0001_D2;
+   LAN_BASEADR<1>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
 
-MACROCELL | 6 | 6 | LAN_BASEADR<6>
+MACROCELL | 12 | 11 | LAN_BASEADR<2>
 ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 3 | 6 | 6 | 6 | 1 | 6 | 17
-INPUTS | 5 | RESET  | D<14>.PIN  | $OpTx$FX_DC$21  | LAN_BASEADR<6>  | lan/lan_CLKF
-INPUTMC | 3 | 2 | 16 | 6 | 6 | 7 | 7
-INPUTP | 2 | 160 | 50
-EQ | 3 | 
-   !LAN_BASEADR<6>.D = RESET & !LAN_BASEADR<6> & !$OpTx$FX_DC$21
-	# RESET & !D<14>.PIN & $OpTx$FX_DC$21;
-   LAN_BASEADR<6>.CLK = !lan/lan_CLKF;
+OUTPUTMC | 2 | 12 | 11 | 7 | 9
+INPUTS | 5 | RESET  | D<10>.PIN  | LAN_BASEADR_0__or0001/LAN_BASEADR_0__or0001_D2  | LAN_BASEADR<2>  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 11 | 15 | 12 | 11 | 10 | 15
+INPUTP | 2 | 263 | 74
+EQ | 5 | 
+   !LAN_BASEADR<2>.D = RESET & !LAN_BASEADR<2> & 
+	!LAN_BASEADR_0__or0001/LAN_BASEADR_0__or0001_D2
+	# RESET & !D<10>.PIN & 
+	LAN_BASEADR_0__or0001/LAN_BASEADR_0__or0001_D2;
+   LAN_BASEADR<2>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
 
-MACROCELL | 6 | 4 | LAN_BASEADR<7>
+MACROCELL | 12 | 10 | LAN_BASEADR<3>
 ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 2 | 6 | 4 | 6 | 1
-INPUTS | 5 | RESET  | D<15>.PIN  | $OpTx$FX_DC$21  | LAN_BASEADR<7>  | lan/lan_CLKF
-INPUTMC | 3 | 2 | 16 | 6 | 4 | 7 | 7
-INPUTP | 2 | 160 | 52
-EQ | 3 | 
-   !LAN_BASEADR<7>.D = RESET & !LAN_BASEADR<7> & !$OpTx$FX_DC$21
-	# RESET & !D<15>.PIN & $OpTx$FX_DC$21;
-   LAN_BASEADR<7>.CLK = !lan/lan_CLKF;
+OUTPUTMC | 2 | 7 | 6 | 12 | 10
+INPUTS | 5 | RESET  | D<11>.PIN  | LAN_BASEADR_0__or0001/LAN_BASEADR_0__or0001_D2  | LAN_BASEADR<3>  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 11 | 15 | 12 | 10 | 10 | 15
+INPUTP | 2 | 263 | 77
+EQ | 5 | 
+   !LAN_BASEADR<3>.D = RESET & !LAN_BASEADR<3> & 
+	!LAN_BASEADR_0__or0001/LAN_BASEADR_0__or0001_D2
+	# RESET & !D<11>.PIN & 
+	LAN_BASEADR_0__or0001/LAN_BASEADR_0__or0001_D2;
+   LAN_BASEADR<3>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
 
-MACROCELL | 6 | 3 | SHUT_UP<0>
+MACROCELL | 12 | 9 | LAN_BASEADR<4>
 ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 2 | 6 | 0 | 6 | 3
-INPUTS | 4 | RESET  | SHUT_UP<0>  | $OpTx$FX_DC$21  | lan/lan_CLKF
-INPUTMC | 3 | 6 | 3 | 2 | 16 | 7 | 7
-INPUTP | 1 | 160
-EQ | 3 | 
-   SHUT_UP<0>.D = !RESET
-	# SHUT_UP<0> & !$OpTx$FX_DC$21;
-   SHUT_UP<0>.CLK = !lan/lan_CLKF;
+OUTPUTMC | 2 | 7 | 7 | 12 | 9
+INPUTS | 5 | RESET  | D<12>.PIN  | LAN_BASEADR_0__or0001/LAN_BASEADR_0__or0001_D2  | LAN_BASEADR<4>  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 11 | 15 | 12 | 9 | 10 | 15
+INPUTP | 2 | 263 | 78
+EQ | 5 | 
+   !LAN_BASEADR<4>.D = RESET & !LAN_BASEADR<4> & 
+	!LAN_BASEADR_0__or0001/LAN_BASEADR_0__or0001_D2
+	# RESET & !D<12>.PIN & 
+	LAN_BASEADR_0__or0001/LAN_BASEADR_0__or0001_D2;
+   LAN_BASEADR<4>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
 
-MACROCELL | 4 | 10 | SHUT_UP<1>
+MACROCELL | 14 | 15 | LAN_BASEADR<5>
 ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 2 | 4 | 0 | 4 | 10
-INPUTS | 4 | RESET  | SHUT_UP<1>  | $OpTx$FX_DC$23  | lan/lan_CLKF
-INPUTMC | 3 | 4 | 10 | 3 | 6 | 7 | 7
-INPUTP | 1 | 160
-EQ | 3 | 
-   SHUT_UP<1>.D = !RESET
-	# SHUT_UP<1> & !$OpTx$FX_DC$23;
-   SHUT_UP<1>.CLK = !lan/lan_CLKF;
+OUTPUTMC | 2 | 7 | 6 | 14 | 15
+INPUTS | 5 | RESET  | D<13>.PIN  | LAN_BASEADR_0__or0001/LAN_BASEADR_0__or0001_D2  | LAN_BASEADR<5>  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 11 | 15 | 14 | 15 | 10 | 15
+INPUTP | 2 | 263 | 80
+EQ | 5 | 
+   !LAN_BASEADR<5>.D = RESET & !LAN_BASEADR<5> & 
+	!LAN_BASEADR_0__or0001/LAN_BASEADR_0__or0001_D2
+	# RESET & !D<13>.PIN & 
+	LAN_BASEADR_0__or0001/LAN_BASEADR_0__or0001_D2;
+   LAN_BASEADR<5>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
 
-MACROCELL | 7 | 12 | SHUT_UP<2>
+MACROCELL | 14 | 14 | LAN_BASEADR<6>
 ATTRIBUTES | 8520480 | 0
-OUTPUTMC | 2 | 4 | 14 | 7 | 12
-INPUTS | 4 | RESET  | SHUT_UP<2>  | $OpTx$FX_DC$27  | lan/lan_CLKF
-INPUTMC | 3 | 7 | 12 | 3 | 3 | 7 | 7
-INPUTP | 1 | 160
-EQ | 3 | 
-   SHUT_UP<2>.D = !RESET
-	# SHUT_UP<2> & !$OpTx$FX_DC$27;
-   SHUT_UP<2>.CLK = !lan/lan_CLKF;
+OUTPUTMC | 2 | 14 | 14 | 7 | 8
+INPUTS | 5 | RESET  | D<14>.PIN  | LAN_BASEADR_0__or0001/LAN_BASEADR_0__or0001_D2  | LAN_BASEADR<6>  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 11 | 15 | 14 | 14 | 10 | 15
+INPUTP | 2 | 263 | 81
+EQ | 5 | 
+   !LAN_BASEADR<6>.D = RESET & !LAN_BASEADR<6> & 
+	!LAN_BASEADR_0__or0001/LAN_BASEADR_0__or0001_D2
+	# RESET & !D<14>.PIN & 
+	LAN_BASEADR_0__or0001/LAN_BASEADR_0__or0001_D2;
+   LAN_BASEADR<6>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
 
-MACROCELL | 3 | 0 | DQ_0_IOBUFE$BUF0
+MACROCELL | 14 | 13 | LAN_BASEADR<7>
+ATTRIBUTES | 8520480 | 0
+OUTPUTMC | 3 | 7 | 6 | 14 | 13 | 7 | 8
+INPUTS | 5 | RESET  | D<15>.PIN  | LAN_BASEADR_0__or0001/LAN_BASEADR_0__or0001_D2  | LAN_BASEADR<7>  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 11 | 15 | 14 | 13 | 10 | 15
+INPUTP | 2 | 263 | 89
+EQ | 5 | 
+   !LAN_BASEADR<7>.D = RESET & !LAN_BASEADR<7> & 
+	!LAN_BASEADR_0__or0001/LAN_BASEADR_0__or0001_D2
+	# RESET & !D<15>.PIN & 
+	LAN_BASEADR_0__or0001/LAN_BASEADR_0__or0001_D2;
+   LAN_BASEADR<7>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
+
+MACROCELL | 9 | 2 | DQ_0_IOBUFE$BUF0
 ATTRIBUTES | 265986 | 0
-INPUTS | 3 | D<0>.PIN  | AS  | RW
-INPUTP | 3 | 2 | 90 | 93
+INPUTS | 3 | D<0>.PIN  | RW  | $OpTx$FX_DC$6
+INPUTMC | 1 | 15 | 15
+INPUTP | 2 | 4 | 158
 EQ | 2 | 
    DQ<0> = D<0>.PIN;
-   DQ<0>.OE = !AS & !RW;
+   DQ<0>.OE = !RW & !$OpTx$FX_DC$6;
 
-MACROCELL | 3 | 5 | DQ_10_IOBUFE$BUF0
+MACROCELL | 9 | 16 | DQ_10_IOBUFE$BUF0
 ATTRIBUTES | 265986 | 0
-INPUTS | 3 | D<10>.PIN  | AS  | RW
-INPUTP | 3 | 45 | 90 | 93
+INPUTS | 3 | D<10>.PIN  | RW  | $OpTx$FX_DC$6
+INPUTMC | 1 | 15 | 15
+INPUTP | 2 | 74 | 158
 EQ | 2 | 
    DQ<10> = D<10>.PIN;
-   DQ<10>.OE = !AS & !RW;
+   DQ<10>.OE = !RW & !$OpTx$FX_DC$6;
 
-MACROCELL | 5 | 9 | DQ_11_IOBUFE$BUF0
+MACROCELL | 11 | 9 | DQ_11_IOBUFE$BUF0
 ATTRIBUTES | 265986 | 0
-INPUTS | 3 | D<11>.PIN  | AS  | RW
-INPUTP | 3 | 47 | 90 | 93
+INPUTS | 3 | D<11>.PIN  | RW  | $OpTx$FX_DC$6
+INPUTMC | 1 | 15 | 15
+INPUTP | 2 | 77 | 158
 EQ | 2 | 
    DQ<11> = D<11>.PIN;
-   DQ<11>.OE = !AS & !RW;
+   DQ<11>.OE = !RW & !$OpTx$FX_DC$6;
 
-MACROCELL | 3 | 7 | DQ_12_IOBUFE$BUF0
+MACROCELL | 7 | 1 | DQ_12_IOBUFE$BUF0
 ATTRIBUTES | 265986 | 0
-INPUTS | 3 | D<12>.PIN  | AS  | RW
-INPUTP | 3 | 48 | 90 | 93
+INPUTS | 3 | D<12>.PIN  | RW  | $OpTx$FX_DC$6
+INPUTMC | 1 | 15 | 15
+INPUTP | 2 | 78 | 158
 EQ | 2 | 
    DQ<12> = D<12>.PIN;
-   DQ<12>.OE = !AS & !RW;
+   DQ<12>.OE = !RW & !$OpTx$FX_DC$6;
 
-MACROCELL | 5 | 7 | DQ_13_IOBUFE$BUF0
+MACROCELL | 11 | 7 | DQ_13_IOBUFE$BUF0
 ATTRIBUTES | 265986 | 0
-INPUTS | 3 | D<13>.PIN  | AS  | RW
-INPUTP | 3 | 49 | 90 | 93
+INPUTS | 3 | D<13>.PIN  | RW  | $OpTx$FX_DC$6
+INPUTMC | 1 | 15 | 15
+INPUTP | 2 | 80 | 158
 EQ | 2 | 
    DQ<13> = D<13>.PIN;
-   DQ<13>.OE = !AS & !RW;
+   DQ<13>.OE = !RW & !$OpTx$FX_DC$6;
 
-MACROCELL | 3 | 8 | DQ_14_IOBUFE$BUF0
+MACROCELL | 7 | 2 | DQ_14_IOBUFE$BUF0
 ATTRIBUTES | 265986 | 0
-INPUTS | 3 | D<14>.PIN  | AS  | RW
-INPUTP | 3 | 50 | 90 | 93
+INPUTS | 3 | D<14>.PIN  | RW  | $OpTx$FX_DC$6
+INPUTMC | 1 | 15 | 15
+INPUTP | 2 | 81 | 158
 EQ | 2 | 
    DQ<14> = D<14>.PIN;
-   DQ<14>.OE = !AS & !RW;
+   DQ<14>.OE = !RW & !$OpTx$FX_DC$6;
 
-MACROCELL | 5 | 5 | DQ_15_IOBUFE$BUF0
+MACROCELL | 11 | 4 | DQ_15_IOBUFE$BUF0
 ATTRIBUTES | 265986 | 0
-INPUTS | 3 | D<15>.PIN  | AS  | RW
-INPUTP | 3 | 52 | 90 | 93
+INPUTS | 3 | D<15>.PIN  | RW  | $OpTx$FX_DC$6
+INPUTMC | 1 | 15 | 15
+INPUTP | 2 | 89 | 158
 EQ | 2 | 
    DQ<15> = D<15>.PIN;
-   DQ<15>.OE = !AS & !RW;
+   DQ<15>.OE = !RW & !$OpTx$FX_DC$6;
 
-MACROCELL | 5 | 15 | DQ_1_IOBUFE$BUF0
+MACROCELL | 9 | 1 | DQ_1_IOBUFE$BUF0
 ATTRIBUTES | 265986 | 0
-INPUTS | 3 | D<1>.PIN  | AS  | RW
-INPUTP | 3 | 19 | 90 | 93
+INPUTS | 3 | D<1>.PIN  | RW  | $OpTx$FX_DC$6
+INPUTMC | 1 | 15 | 15
+INPUTP | 2 | 30 | 158
 EQ | 2 | 
    DQ<1> = D<1>.PIN;
-   DQ<1>.OE = !AS & !RW;
+   DQ<1>.OE = !RW & !$OpTx$FX_DC$6;
 
-MACROCELL | 5 | 11 | DQ_2_IOBUFE$BUF0
+MACROCELL | 10 | 11 | DQ_2_IOBUFE$BUF0
 ATTRIBUTES | 265986 | 0
-INPUTS | 3 | D<2>.PIN  | AS  | RW
-INPUTP | 3 | 43 | 90 | 93
+INPUTS | 3 | D<2>.PIN  | RW  | $OpTx$FX_DC$6
+INPUTMC | 1 | 15 | 15
+INPUTP | 2 | 71 | 158
 EQ | 2 | 
    DQ<2> = D<2>.PIN;
-   DQ<2>.OE = !AS & !RW;
+   DQ<2>.OE = !RW & !$OpTx$FX_DC$6;
 
-MACROCELL | 5 | 10 | DQ_3_IOBUFE$BUF0
+MACROCELL | 9 | 4 | DQ_3_IOBUFE$BUF0
 ATTRIBUTES | 265986 | 0
-INPUTS | 3 | D<3>.PIN  | AS  | RW
-INPUTP | 3 | 17 | 90 | 93
+INPUTS | 3 | D<3>.PIN  | RW  | $OpTx$FX_DC$6
+INPUTMC | 1 | 15 | 15
+INPUTP | 2 | 28 | 158
 EQ | 2 | 
    DQ<3> = D<3>.PIN;
-   DQ<3>.OE = !AS & !RW;
+   DQ<3>.OE = !RW & !$OpTx$FX_DC$6;
 
-MACROCELL | 5 | 14 | DQ_4_IOBUFE$BUF0
+MACROCELL | 9 | 9 | DQ_4_IOBUFE$BUF0
 ATTRIBUTES | 265986 | 0
-INPUTS | 3 | D<4>.PIN  | AS  | RW
-INPUTP | 3 | 23 | 90 | 93
+INPUTS | 3 | D<4>.PIN  | RW  | $OpTx$FX_DC$6
+INPUTMC | 1 | 15 | 15
+INPUTP | 2 | 38 | 158
 EQ | 2 | 
    DQ<4> = D<4>.PIN;
-   DQ<4>.OE = !AS & !RW;
+   DQ<4>.OE = !RW & !$OpTx$FX_DC$6;
 
-MACROCELL | 5 | 13 | DQ_5_IOBUFE$BUF0
+MACROCELL | 4 | 7 | DQ_5_IOBUFE$BUF0
 ATTRIBUTES | 265986 | 0
-INPUTS | 3 | D<5>.PIN  | AS  | RW
-INPUTP | 3 | 22 | 90 | 93
+INPUTS | 3 | D<5>.PIN  | RW  | $OpTx$FX_DC$6
+INPUTMC | 1 | 15 | 15
+INPUTP | 2 | 37 | 158
 EQ | 2 | 
    DQ<5> = D<5>.PIN;
-   DQ<5>.OE = !AS & !RW;
+   DQ<5>.OE = !RW & !$OpTx$FX_DC$6;
 
-MACROCELL | 3 | 1 | DQ_6_IOBUFE$BUF0
+MACROCELL | 9 | 11 | DQ_6_IOBUFE$BUF0
 ATTRIBUTES | 265986 | 0
-INPUTS | 3 | D<6>.PIN  | AS  | RW
-INPUTP | 3 | 16 | 90 | 93
+INPUTS | 3 | D<6>.PIN  | RW  | $OpTx$FX_DC$6
+INPUTMC | 1 | 15 | 15
+INPUTP | 2 | 26 | 158
 EQ | 2 | 
    DQ<6> = D<6>.PIN;
-   DQ<6>.OE = !AS & !RW;
+   DQ<6>.OE = !RW & !$OpTx$FX_DC$6;
 
-MACROCELL | 5 | 16 | DQ_7_IOBUFE$BUF0
+MACROCELL | 9 | 10 | DQ_7_IOBUFE$BUF0
 ATTRIBUTES | 265986 | 0
-INPUTS | 3 | D<7>.PIN  | AS  | RW
-INPUTP | 3 | 18 | 90 | 93
+INPUTS | 3 | D<7>.PIN  | RW  | $OpTx$FX_DC$6
+INPUTMC | 1 | 15 | 15
+INPUTP | 2 | 29 | 158
 EQ | 2 | 
    DQ<7> = D<7>.PIN;
-   DQ<7>.OE = !AS & !RW;
+   DQ<7>.OE = !RW & !$OpTx$FX_DC$6;
 
-MACROCELL | 3 | 4 | DQ_8_IOBUFE$BUF0
+MACROCELL | 9 | 13 | DQ_8_IOBUFE$BUF0
 ATTRIBUTES | 265986 | 0
-INPUTS | 3 | D<8>.PIN  | AS  | RW
-INPUTP | 3 | 21 | 90 | 93
+INPUTS | 3 | D<8>.PIN  | RW  | $OpTx$FX_DC$6
+INPUTMC | 1 | 15 | 15
+INPUTP | 2 | 32 | 158
 EQ | 2 | 
    DQ<8> = D<8>.PIN;
-   DQ<8>.OE = !AS & !RW;
+   DQ<8>.OE = !RW & !$OpTx$FX_DC$6;
 
-MACROCELL | 5 | 8 | DQ_9_IOBUFE$BUF0
+MACROCELL | 11 | 11 | DQ_9_IOBUFE$BUF0
 ATTRIBUTES | 265986 | 0
-INPUTS | 3 | D<9>.PIN  | AS  | RW
-INPUTP | 3 | 44 | 90 | 93
+INPUTS | 3 | D<9>.PIN  | RW  | $OpTx$FX_DC$6
+INPUTMC | 1 | 15 | 15
+INPUTP | 2 | 73 | 158
 EQ | 2 | 
    DQ<9> = D<9>.PIN;
-   DQ<9>.OE = !AS & !RW;
+   DQ<9>.OE = !RW & !$OpTx$FX_DC$6;
 
-MACROCELL | 0 | 13 | IDE_R_S
-ATTRIBUTES | 8651554 | 0
-OUTPUTMC | 1 | 0 | 12
-INPUTS | 16 | AS  | RW  | RESET  | ide  | IDE_ENABLE  | lan/lan_CLKF  | AUTO_CONFIG_DONE<0>  | AUTO_CONFIG_DONE<1>  | autoconfig  | A<3>  | A<2>  | A<1>  | A<4>  | CFOUT  | $OpTx$FX_DC$26  | A<5>
-INPUTMC | 8 | 4 | 14 | 0 | 6 | 7 | 7 | 4 | 8 | 4 | 7 | 6 | 2 | 7 | 16 | 7 | 5
-INPUTP | 8 | 90 | 93 | 160 | 58 | 60 | 63 | 56 | 54
-EXPORTS | 1 | 0 | 12
-EQ | 8 | 
-   !IDE_R.D = !AS & RW & RESET & ide & !IDE_ENABLE;
-   IDE_R.CLK = !lan/lan_CLKF;
-    IDE_R_S.EXP  =  !AS & RW & AUTO_CONFIG_DONE<0> & 
-	!AUTO_CONFIG_DONE<1> & autoconfig & !A<3> & A<2> & A<1>
-	# !AS & RW & autoconfig & !A<3> & A<4> & A<1> & 
-	CFOUT & $OpTx$FX_DC$26
-	# !AS & RW & autoconfig & !A<5> & !A<4> & A<2> & 
-	!A<1> & CFOUT & $OpTx$FX_DC$26
-
-MACROCELL | 0 | 14 | IDE_W_S
-ATTRIBUTES | 8651554 | 0
-INPUTS | 5 | AS  | RW  | RESET  | ide  | lan/lan_CLKF
-INPUTMC | 2 | 4 | 14 | 7 | 7
-INPUTP | 3 | 90 | 93 | 160
+MACROCELL | 1 | 15 | CP_RD_S
+ATTRIBUTES | 8520480 | 0
+OUTPUTMC | 1 | 12 | 1
+INPUTS | 5 | RW  | RESET  | CP_CS  | $OpTx$FX_DC$6  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 4 | 1 | 15 | 15 | 10 | 15
+INPUTP | 2 | 158 | 263
 EQ | 2 | 
-   !IDE_W.D = !AS & !RW & RESET & ide;
-   IDE_W.CLK = !lan/lan_CLKF;
+   !CP_RD_S.D = RW & RESET & !CP_CS & !$OpTx$FX_DC$6;
+   CP_RD_S.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
 
-MACROCELL | 0 | 15 | ROM_OE_S
-ATTRIBUTES | 8651554 | 0
+MACROCELL | 1 | 12 | CP_WE_S
+ATTRIBUTES | 8520480 | 0
+OUTPUTMC | 1 | 10 | 16
+INPUTS | 5 | RW  | RESET  | CP_CS  | $OpTx$FX_DC$6  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 4 | 1 | 15 | 15 | 10 | 15
+INPUTP | 2 | 158 | 263
+EQ | 2 | 
+   !CP_WE_S.D = !RW & RESET & !CP_CS & !$OpTx$FX_DC$6;
+   CP_WE_S.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
+
+MACROCELL | 0 | 12 | IDE_R_S
+ATTRIBUTES | 8520480 | 0
 OUTPUTMC | 1 | 0 | 16
-INPUTS | 10 | AS  | RW  | RESET  | ide  | IDE_ENABLE  | lan/lan_CLKF  | autoconfig  | A<3>  | A<5>  | A<4>
-INPUTMC | 4 | 4 | 14 | 0 | 6 | 7 | 7 | 6 | 2
-INPUTP | 6 | 90 | 93 | 160 | 58 | 54 | 56
-EXPORTS | 1 | 0 | 16
+INPUTS | 6 | AS  | RW  | RESET  | ide  | IDE_ENABLE  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 8 | 16 | 0 | 15 | 10 | 15
+INPUTP | 3 | 152 | 158 | 263
+EQ | 2 | 
+   !IDE_R_S.D = !AS & RW & RESET & ide & !IDE_ENABLE;
+   IDE_R_S.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
+
+MACROCELL | 0 | 10 | IDE_W_S
+ATTRIBUTES | 8520480 | 0
+OUTPUTMC | 1 | 2 | 1
+INPUTS | 5 | AS  | RW  | RESET  | ide  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 2 | 8 | 16 | 10 | 15
+INPUTP | 3 | 152 | 158 | 263
+EQ | 2 | 
+   !IDE_W_S.D = !AS & !RW & RESET & ide;
+   IDE_W_S.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
+
+MACROCELL | 1 | 6 | LAN_RD_S
+ATTRIBUTES | 8520480 | 0
+OUTPUTMC | 1 | 7 | 9
+INPUTS | 5 | RW  | RESET  | LAN_CS  | $OpTx$FX_DC$6  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 7 | 7 | 15 | 15 | 10 | 15
+INPUTP | 2 | 158 | 263
+EQ | 2 | 
+   LAN_RD_S.D = RW & RESET & LAN_CS & !$OpTx$FX_DC$6;
+   LAN_RD_S.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
+
+MACROCELL | 1 | 3 | LAN_WRH_S
+ATTRIBUTES | 8520480 | 0
+OUTPUTMC | 1 | 7 | 4
+INPUTS | 5 | RW  | RESET  | LAN_CS  | UDS  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 2 | 7 | 7 | 10 | 15
+INPUTP | 3 | 158 | 263 | 155
+EQ | 2 | 
+   LAN_WRH_S.D = !RW & RESET & LAN_CS & !UDS;
+   LAN_WRH_S.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
+
+MACROCELL | 1 | 0 | LAN_WRL_S
+ATTRIBUTES | 8520480 | 0
+OUTPUTMC | 1 | 12 | 13
+INPUTS | 5 | RW  | RESET  | LAN_CS  | LDS  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 2 | 7 | 7 | 10 | 15
+INPUTP | 3 | 158 | 263 | 157
+EQ | 2 | 
+   LAN_WRL_S.D = !RW & RESET & LAN_CS & !LDS;
+   LAN_WRL_S.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
+
+MACROCELL | 0 | 8 | ROM_OE_S
+ATTRIBUTES | 8520480 | 0
+OUTPUTMC | 1 | 4 | 4
+INPUTS | 6 | AS  | RW  | RESET  | ide  | IDE_ENABLE  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 3 | 8 | 16 | 0 | 15 | 10 | 15
+INPUTP | 3 | 152 | 158 | 263
+EQ | 2 | 
+   !ROM_OE_S.D = !AS & RW & RESET & ide & IDE_ENABLE;
+   ROM_OE_S.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
+
+MACROCELL | 12 | 1 | CP_RD_OBUF
+ATTRIBUTES | 264962 | 0
+INPUTS | 2 | AS  | CP_RD_S
+INPUTMC | 1 | 1 | 15
+INPUTP | 1 | 152
+EQ | 1 | 
+   !CP_RD = !AS & !CP_RD_S;
+
+MACROCELL | 10 | 16 | CP_WE_OBUF
+ATTRIBUTES | 264962 | 0
+INPUTS | 2 | AS  | CP_WE_S
+INPUTMC | 1 | 1 | 12
+INPUTP | 1 | 152
+EQ | 1 | 
+   !CP_WE = !AS & !CP_WE_S;
+
+MACROCELL | 0 | 16 | IDE_R_OBUF
+ATTRIBUTES | 264962 | 0
+INPUTS | 2 | AS  | IDE_R_S
+INPUTMC | 1 | 0 | 12
+INPUTP | 1 | 152
+EQ | 1 | 
+   !IDE_R = !AS & !IDE_R_S;
+
+MACROCELL | 2 | 1 | IDE_W_OBUF
+ATTRIBUTES | 264962 | 0
+INPUTS | 2 | AS  | IDE_W_S
+INPUTMC | 1 | 0 | 10
+INPUTP | 1 | 152
+EQ | 1 | 
+   !IDE_W = !AS & !IDE_W_S;
+
+MACROCELL | 4 | 4 | ROM_OE_OBUF
+ATTRIBUTES | 264962 | 0
+INPUTS | 2 | AS  | ROM_OE_S
+INPUTMC | 1 | 0 | 8
+INPUTP | 1 | 152
+EQ | 1 | 
+   !ROM_OE = !AS & !ROM_OE_S;
+
+MACROCELL | 7 | 9 | LAN_RD_OBUF
+ATTRIBUTES | 264962 | 0
+OUTPUTMC | 1 | 7 | 8
+INPUTS | 4 | AS  | LAN_RD_S  | LAN_BASEADR<2>  | A<18>
+INPUTMC | 2 | 1 | 6 | 12 | 11
+INPUTP | 2 | 152 | 171
+EXPORTS | 1 | 7 | 8
 EQ | 3 | 
-   !ROM_OE.D = !AS & RW & RESET & ide & IDE_ENABLE;
-   ROM_OE.CLK = !lan/lan_CLKF;
-    ROM_OE_S.EXP  =  !AS & RW & autoconfig & A<3> & !A<5> & !A<4>
+   LAN_RD = !AS & LAN_RD_S;
+    LAN_RD_OBUF.EXP  =  LAN_BASEADR<2> & !A<18>
+	# !LAN_BASEADR<2> & A<18>
 
-MACROCELL | 3 | 11 | LAN_RD_OBUF
+MACROCELL | 7 | 4 | LAN_WRH_OBUF
 ATTRIBUTES | 264962 | 0
-INPUTS | 3 | AS  | RW  | lan
-INPUTMC | 1 | 6 | 0
-INPUTP | 2 | 90 | 93
+INPUTS | 2 | AS  | LAN_WRH_S
+INPUTMC | 1 | 1 | 3
+INPUTP | 1 | 152
 EQ | 1 | 
-   LAN_RD = !AS & RW & lan;
+   LAN_WRH = !AS & LAN_WRH_S;
 
-MACROCELL | 3 | 10 | LAN_WRH_OBUF
+MACROCELL | 12 | 13 | LAN_WRL_OBUF
 ATTRIBUTES | 264962 | 0
-INPUTS | 4 | AS  | RW  | lan  | UDS
-INPUTMC | 1 | 6 | 0
-INPUTP | 3 | 90 | 93 | 91
+INPUTS | 2 | AS  | LAN_WRL_S
+INPUTMC | 1 | 1 | 0
+INPUTP | 1 | 152
 EQ | 1 | 
-   LAN_WRH = !AS & !RW & lan & !UDS;
+   LAN_WRL = !AS & LAN_WRL_S;
 
-MACROCELL | 6 | 5 | LAN_WRL_OBUF
-ATTRIBUTES | 264962 | 0
-INPUTS | 4 | AS  | RW  | lan  | LDS
-INPUTMC | 1 | 6 | 0
-INPUTP | 3 | 90 | 93 | 92
-EQ | 1 | 
-   LAN_WRL = !AS & !RW & lan & !LDS;
-
-MACROCELL | 7 | 15 | ROM_B_0_OBUF$BUF1
+MACROCELL | 13 | 14 | ROM_B_0_OBUF$BUF1
 ATTRIBUTES | 265986 | 0
 INPUTS | 1 | SLAVE
-INPUTMC | 1 | 5 | 1
+INPUTMC | 1 | 13 | 13
 EQ | 2 | 
    OWN = Gnd;
    OWN.OE = !SLAVE;
 
-MACROCELL | 2 | 1 | ROM_B_0_OBUF$BUF5
+MACROCELL | 13 | 2 | ROM_B_0_OBUF$BUF2
+ATTRIBUTES | 265986 | 0
+INPUTS | 2 | AS  | ide
+INPUTMC | 1 | 8 | 16
+INPUTP | 1 | 152
+EQ | 2 | 
+   OVR = Gnd;
+   OVR.OE = !AS & ide;
+
+MACROCELL | 2 | 13 | ROM_B_0_OBUF$BUF7
 ATTRIBUTES | 265986 | 0
 INPUTS | 1 | CP_IRQ
-INPUTP | 1 | 34
+INPUTP | 1 | 59
 EQ | 2 | 
    INT_OUT = Gnd;
    INT_OUT.OE = !CP_IRQ;
 
-MACROCELL | 1 | 3 | A_LAN_0_OBUF$BUF0
+MACROCELL | 14 | 11 | ROM_B_0_OBUF$BUF8
+ATTRIBUTES | 265986 | 0
+INPUTS | 3 | AS  | ide  | IDE_WAIT
+INPUTMC | 1 | 8 | 16
+INPUTP | 2 | 152 | 61
+EQ | 2 | 
+   DTACK = Gnd;
+   DTACK.OE = !AS & ide & IDE_WAIT;
+
+MACROCELL | 3 | 5 | A_LAN_0_OBUF$BUF0
 ATTRIBUTES | 264962 | 0
 INPUTS | 1 | A<1>
-INPUTP | 1 | 63
+INPUTP | 1 | 107
 EQ | 1 | 
    A_LAN<0> = A<1>;
 
-MACROCELL | 0 | 3 | A_LAN_10_OBUF$BUF0
+MACROCELL | 0 | 13 | A_LAN_10_OBUF$BUF0
 ATTRIBUTES | 264962 | 0
 INPUTS | 1 | A<11>
-INPUTP | 1 | 68
+INPUTP | 1 | 114
 EQ | 1 | 
    IDE_A<2> = A<11>;
 
-MACROCELL | 3 | 14 | A_LAN_10_OBUF$BUF1
+MACROCELL | 5 | 5 | A_LAN_10_OBUF$BUF1
 ATTRIBUTES | 264962 | 0
 INPUTS | 1 | A<11>
-INPUTP | 1 | 68
+INPUTP | 1 | 114
 EQ | 1 | 
    A_LAN<10> = A<11>;
 
-MACROCELL | 3 | 15 | A_LAN_11_OBUF$BUF0
+MACROCELL | 5 | 7 | A_LAN_11_OBUF$BUF0
 ATTRIBUTES | 264962 | 0
 INPUTS | 1 | A<12>
-INPUTP | 1 | 69
+INPUTP | 1 | 115
 EQ | 1 | 
    A_LAN<11> = A<12>;
 
-MACROCELL | 3 | 12 | A_LAN_12_OBUF$BUF0
+MACROCELL | 5 | 4 | A_LAN_12_OBUF$BUF0
 ATTRIBUTES | 264962 | 0
 INPUTS | 1 | A<13>
-INPUTP | 1 | 72
+INPUTP | 1 | 123
 EQ | 1 | 
    A_LAN<12> = A<13>;
 
-MACROCELL | 3 | 13 | A_LAN_13_OBUF$BUF0
+MACROCELL | 5 | 2 | A_LAN_13_OBUF$BUF0
 ATTRIBUTES | 264962 | 0
 INPUTS | 1 | A<14>
-INPUTP | 1 | 74
+INPUTP | 1 | 125
 EQ | 1 | 
    A_LAN<13> = A<14>;
 
-MACROCELL | 1 | 5 | A_LAN_1_OBUF$BUF0
+MACROCELL | 3 | 4 | A_LAN_1_OBUF$BUF0
 ATTRIBUTES | 264962 | 0
 INPUTS | 1 | A<2>
-INPUTP | 1 | 60
+INPUTP | 1 | 101
 EQ | 1 | 
    A_LAN<1> = A<2>;
 
-MACROCELL | 1 | 8 | A_LAN_2_OBUF$BUF0
+MACROCELL | 3 | 11 | A_LAN_2_OBUF$BUF0
 ATTRIBUTES | 264962 | 0
 INPUTS | 1 | A<3>
-INPUTP | 1 | 58
+INPUTP | 1 | 99
 EQ | 1 | 
    A_LAN<2> = A<3>;
 
-MACROCELL | 1 | 7 | A_LAN_3_OBUF$BUF0
+MACROCELL | 3 | 7 | A_LAN_3_OBUF$BUF0
 ATTRIBUTES | 264962 | 0
 INPUTS | 1 | A<4>
-INPUTP | 1 | 56
+INPUTP | 1 | 97
 EQ | 1 | 
    A_LAN<3> = A<4>;
 
-MACROCELL | 1 | 10 | A_LAN_4_OBUF$BUF0
+MACROCELL | 1 | 1 | A_LAN_4_OBUF$BUF0
 ATTRIBUTES | 264962 | 0
 INPUTS | 1 | A<5>
-INPUTP | 1 | 54
+INPUTP | 1 | 91
 EQ | 1 | 
    A_LAN<4> = A<5>;
 
-MACROCELL | 1 | 9 | A_LAN_5_OBUF$BUF0
+MACROCELL | 3 | 13 | A_LAN_5_OBUF$BUF0
 ATTRIBUTES | 264962 | 0
 INPUTS | 1 | A<6>
-INPUTP | 1 | 57
+INPUTP | 1 | 98
 EQ | 1 | 
    A_LAN<5> = A<6>;
 
-MACROCELL | 1 | 13 | A_LAN_6_OBUF$BUF0
+MACROCELL | 1 | 4 | A_LAN_6_OBUF$BUF0
 ATTRIBUTES | 264962 | 0
 INPUTS | 1 | A<7>
-INPUTP | 1 | 59
+INPUTP | 1 | 100
 EQ | 1 | 
    A_LAN<6> = A<7>;
 
-MACROCELL | 1 | 11 | A_LAN_7_OBUF$BUF0
+MACROCELL | 1 | 2 | A_LAN_7_OBUF$BUF0
 ATTRIBUTES | 264962 | 0
 INPUTS | 1 | A<8>
-INPUTP | 1 | 62
+INPUTP | 1 | 106
 EQ | 1 | 
    A_LAN<7> = A<8>;
 
-MACROCELL | 0 | 10 | A_LAN_8_OBUF$BUF0
+MACROCELL | 0 | 11 | A_LAN_8_OBUF$BUF0
 ATTRIBUTES | 264962 | 0
 INPUTS | 1 | A<9>
-INPUTP | 1 | 64
+INPUTP | 1 | 108
 EQ | 1 | 
    IDE_A<0> = A<9>;
 
-MACROCELL | 3 | 16 | A_LAN_8_OBUF$BUF1
+MACROCELL | 5 | 9 | A_LAN_8_OBUF$BUF1
 ATTRIBUTES | 264962 | 0
 INPUTS | 1 | A<9>
-INPUTP | 1 | 64
+INPUTP | 1 | 108
 EQ | 1 | 
    A_LAN<8> = A<9>;
 
-MACROCELL | 0 | 11 | A_LAN_9_OBUF$BUF0
-ATTRIBUTES | 264962 | 0
-OUTPUTMC | 1 | 0 | 12
-INPUTS | 12 | A<10>  | Dout1<1>  | A<3>  | A<5>  | $OpTx$FX_DC$54  | AS  | RW  | autoconfig  | $OpTx$FX_DC$43  | A<4>  | A<2>  | $OpTx$FX_DC$26
-INPUTMC | 5 | 0 | 12 | 7 | 8 | 6 | 2 | 7 | 4 | 7 | 5
-INPUTP | 7 | 66 | 58 | 54 | 90 | 93 | 56 | 60
-EXPORTS | 1 | 0 | 12
-EQ | 7 | 
-   IDE_A<1> = A<10>;
-    A_LAN_9_OBUF$BUF0.EXP  =  Dout1<1> & A<3> & A<5>
-	# Dout1<1> & !A<3> & $OpTx$FX_DC$54
-	# !AS & RW & autoconfig & A<3> & A<5> & 
-	!$OpTx$FX_DC$43
-	# !AS & RW & autoconfig & !A<3> & A<4> & A<2> & 
-	!$OpTx$FX_DC$26
-
-MACROCELL | 1 | 0 | A_LAN_9_OBUF$BUF1
+MACROCELL | 0 | 14 | A_LAN_9_OBUF$BUF0
 ATTRIBUTES | 264962 | 0
 INPUTS | 1 | A<10>
-INPUTP | 1 | 66
+INPUTP | 1 | 112
+EQ | 1 | 
+   IDE_A<1> = A<10>;
+
+MACROCELL | 5 | 13 | A_LAN_9_OBUF$BUF1
+ATTRIBUTES | 264962 | 0
+INPUTS | 1 | A<10>
+INPUTP | 1 | 112
 EQ | 1 | 
    A_LAN<9> = A<10>;
 
-MACROCELL | 7 | 16 | CFOUT_OBUF
-ATTRIBUTES | 396034 | 0
-OUTPUTMC | 21 | 0 | 13 | 2 | 17 | 2 | 14 | 6 | 2 | 0 | 0 | 2 | 12 | 1 | 17 | 1 | 6 | 1 | 2 | 1 | 1 | 5 | 17 | 5 | 12 | 5 | 6 | 5 | 3 | 2 | 7 | 2 | 4 | 7 | 11 | 7 | 8 | 7 | 4 | 2 | 0 | 2 | 16
-INPUTS | 2 | AUTO_CONFIG_DONE<2>  | $OpTx$FX_DC$26
-INPUTMC | 2 | 4 | 6 | 7 | 5
-EQ | 1 | 
-   !CFOUT = AUTO_CONFIG_DONE<2> & $OpTx$FX_DC$26;
+MACROCELL | 4 | 1 | CP_CS_OBUF
+ATTRIBUTES | 8782758 | 0
+OUTPUTMC | 4 | 1 | 15 | 1 | 12 | 13 | 13 | 1 | 17
+INPUTS | 7 | SHUT_UP<1>  | CP_BASEADR<4>  | A<20>  | EXP21_.EXP  | EXP22_.EXP  | SHUT_UP<2>/SHUT_UP<2>_CLKF  | lan/lan_RSTF
+INPUTMC | 6 | 14 | 10 | 6 | 14 | 4 | 0 | 4 | 2 | 10 | 15 | 5 | 11
+INPUTP | 1 | 167
+IMPORTS | 2 | 4 | 0 | 4 | 2
+EQ | 22 | 
+   CP_CS.D = SHUT_UP<1>
+	# CP_BASEADR<4> & !A<20>
+	# !CP_BASEADR<4> & A<20>
+;Imported pterms FB5_1
+	# CP_BASEADR<3> & !A<19>
+	# !CP_BASEADR<3> & A<19>
+	# CP_BASEADR<5> & !A<21>
+	# !CP_BASEADR<5> & A<21>
+	# CP_BASEADR<6> & !A<22>
+;Imported pterms FB5_3
+	# CP_BASEADR<0> & !A<16>
+	# !CP_BASEADR<0> & A<16>
+	# !CP_BASEADR<6> & A<22>
+	# CP_BASEADR<7> & !A<23>
+	# !CP_BASEADR<7> & A<23>
+;Imported pterms FB5_4
+	# CP_BASEADR<1> & !A<17>
+	# !CP_BASEADR<1> & A<17>
+	# CP_BASEADR<2> & !A<18>
+	# !CP_BASEADR<2> & A<18>;
+   CP_CS.CLK = !SHUT_UP<2>/SHUT_UP<2>_CLKF;
+   CP_CS.AP = !lan/lan_RSTF;
 
-MACROCELL | 6 | 1 | CP_RD_OBUF
-ATTRIBUTES | 264962 | 0
-OUTPUTMC | 1 | 6 | 0
-INPUTS | 7 | LAN_BASEADR<0>  | A<16>  | LAN_BASEADR<6>  | A<22>  | LAN_BASEADR<7>  | A<23>  | autoconfig.EXP
-INPUTMC | 4 | 6 | 13 | 6 | 6 | 6 | 4 | 6 | 2
-INPUTP | 3 | 108 | 97 | 96
-EXPORTS | 1 | 6 | 0
-IMPORTS | 1 | 6 | 2
-EQ | 7 | 
-   !CP_RD = ;Imported pterms FB7_3
-	  !AS & RW & CP_CS_BUFR;
-    CP_RD_OBUF.EXP  =  LAN_BASEADR<0> & !A<16>
-	# !LAN_BASEADR<0> & A<16>
-	# !LAN_BASEADR<6> & A<22>
-	# LAN_BASEADR<7> & !A<23>
-	# !LAN_BASEADR<7> & A<23>
-
-MACROCELL | 4 | 12 | CP_WE_OBUF
-ATTRIBUTES | 264962 | 0
-OUTPUTMC | 1 | 4 | 13
-INPUTS | 9 | AS  | RW  | CP_CS_BUFR  | UDS  | IDE_BASEADR<1>  | A<17>  | IDE_BASEADR<2>  | A<18>  | CP_BASEADR<1>.EXP
-INPUTMC | 4 | 4 | 0 | 1 | 6 | 1 | 2 | 4 | 11
-INPUTP | 5 | 90 | 93 | 91 | 106 | 105
-EXPORTS | 1 | 4 | 13
-IMPORTS | 1 | 4 | 11
-EQ | 7 | 
-   !CP_WE = !AS & !RW & CP_CS_BUFR & !UDS
-;Imported pterms FB5_12
-	# !AS & !RW & CP_CS_BUFR & !LDS;
-    CP_WE_OBUF.EXP  =  IDE_BASEADR<1> & !A<17>
-	# !IDE_BASEADR<1> & A<17>
-	# IDE_BASEADR<2> & !A<18>
-	# !IDE_BASEADR<2> & A<18>
-
-MACROCELL | 0 | 8 | IDE_CS_0_OBUF
+MACROCELL | 0 | 7 | IDE_CS_0_OBUF
 ATTRIBUTES | 264962 | 0
 INPUTS | 1 | A<12>
-INPUTP | 1 | 69
+INPUTP | 1 | 115
 EQ | 1 | 
    IDE_CS<0> = !A<12>;
 
-MACROCELL | 0 | 0 | IDE_CS_1_OBUF
+MACROCELL | 0 | 9 | IDE_CS_1_OBUF
 ATTRIBUTES | 264962 | 0
-OUTPUTMC | 1 | 0 | 17
-INPUTS | 13 | AS  | RW  | autoconfig  | A<3>  | A<5>  | CFOUT  | A<1>  | AUTO_CONFIG_DONE<0>  | A<2>  | $OpTx$FX_DC$11  | A<4>  | A<6>  | D_7_IOBUFE.EXP
-INPUTMC | 5 | 6 | 2 | 7 | 16 | 4 | 8 | 7 | 6 | 0 | 1
-INPUTP | 8 | 90 | 93 | 58 | 54 | 63 | 60 | 56 | 57
-EXPORTS | 1 | 0 | 17
-IMPORTS | 1 | 0 | 1
-EQ | 10 | 
-   IDE_CS<1> = ;Imported pterms FB1_2
-	  !A<13>;
-    IDE_CS_1_OBUF.EXP  =  !AS & RW & autoconfig & A<3> & A<5> & CFOUT
-	# !AS & RW & autoconfig & A<3> & !A<5> & A<1>
-	# !AS & RW & !AUTO_CONFIG_DONE<0> & autoconfig & 
-	A<2> & A<1> & $OpTx$FX_DC$11
-	# !AS & RW & autoconfig & !A<3> & A<4> & !A<1> & 
-	CFOUT
-	# !AS & RW & autoconfig & !A<2> & !A<1> & !A<6> & 
-	CFOUT
+INPUTS | 1 | A<13>
+INPUTP | 1 | 123
+EQ | 1 | 
+   IDE_CS<1> = !A<13>;
 
-MACROCELL | 5 | 1 | SLAVE_OBUF
+MACROCELL | 13 | 13 | SLAVE_OBUF
 ATTRIBUTES | 396034 | 0
-OUTPUTMC | 1 | 7 | 15
-INPUTS | 5 | AS  | CP_CS_BUFR  | autoconfig  | ide  | lan
-INPUTMC | 4 | 4 | 0 | 6 | 2 | 4 | 14 | 6 | 0
-INPUTP | 1 | 90
+OUTPUTMC | 1 | 13 | 14
+INPUTS | 5 | AS  | LAN_CS  | ide  | autoconfig  | CP_CS
+INPUTMC | 4 | 7 | 7 | 8 | 16 | 15 | 16 | 4 | 1
+INPUTP | 1 | 152
 EQ | 2 | 
    SLAVE = AS
-	# !CP_CS_BUFR & !autoconfig & !ide & !lan;
+	# !LAN_CS & !ide & !autoconfig & CP_CS;
 
-MACROCELL | 6 | 11 | ROM_B_0_OBUF$BUF6
+MACROCELL | 11 | 1 | ROM_B_0_OBUF$BUF3
 ATTRIBUTES | 265986 | 0
 INPUTS | 0
 EQ | 2 | 
-   DTACK = Gnd;
-   DTACK.OE = Gnd;
+   LAN_CFG<4> = Gnd;
+   LAN_CFG<4>.OE = Gnd;
 
-MACROCELL | 3 | 2 | LAN_CFG_2_OBUF
+MACROCELL | 1 | 7 | ROM_B_0_OBUF$BUF4
+ATTRIBUTES | 265986 | 0
+INPUTS | 0
+EQ | 2 | 
+   LAN_CFG<3> = Gnd;
+   LAN_CFG<3>.OE = Gnd;
+
+MACROCELL | 5 | 1 | ROM_B_0_OBUF$BUF5
+ATTRIBUTES | 265986 | 0
+INPUTS | 0
+EQ | 2 | 
+   LAN_CFG<2> = Gnd;
+   LAN_CFG<2>.OE = Gnd;
+
+MACROCELL | 1 | 5 | ROM_B_0_OBUF$BUF6
+ATTRIBUTES | 265986 | 0
+INPUTS | 0
+EQ | 2 | 
+   LAN_CFG<1> = Gnd;
+   LAN_CFG<1>.OE = Gnd;
+
+MACROCELL | 13 | 10 | CFOUT_OBUF
 ATTRIBUTES | 264962 | 0
 INPUTS | 0
 EQ | 1 | 
-   LAN_CS = Vcc;
+   CFOUT = Vcc;
 
-MACROCELL | 3 | 9 | LAN_CFG_2_OBUF$BUF0
+MACROCELL | 10 | 13 | ROM_B_0_OBUF
 ATTRIBUTES | 264962 | 0
 INPUTS | 0
 EQ | 1 | 
-   LAN_CFG<2> = Vcc;
-
-MACROCELL | 4 | 16 | ROM_B_0_OBUF
-ATTRIBUTES | 264962 | 0
-OUTPUTMC | 1 | 4 | 17
-INPUTS | 4 | CP_BASEADR<1>  | A<17>  | CP_BASEADR<2>  | A<18>
-INPUTMC | 2 | 4 | 11 | 6 | 16
-INPUTP | 2 | 106 | 105
-EXPORTS | 1 | 4 | 17
-EQ | 5 | 
    ROM_B<1> = Gnd;
-    ROM_B_0_OBUF.EXP  =  CP_BASEADR<1> & !A<17>
-	# !CP_BASEADR<1> & A<17>
-	# CP_BASEADR<2> & !A<18>
-	# !CP_BASEADR<2> & A<18>
 
-MACROCELL | 4 | 9 | ROM_B_0_OBUF$BUF0
+MACROCELL | 12 | 7 | ROM_B_0_OBUF$BUF0
 ATTRIBUTES | 264962 | 0
 INPUTS | 0
 EQ | 1 | 
    ROM_B<0> = Gnd;
 
-MACROCELL | 5 | 4 | ROM_B_0_OBUF$BUF2
-ATTRIBUTES | 264962 | 0
-INPUTS | 0
-EQ | 1 | 
-   LAN_CFG<4> = Gnd;
-
-MACROCELL | 1 | 14 | ROM_B_0_OBUF$BUF3
-ATTRIBUTES | 264962 | 0
-INPUTS | 0
-EQ | 1 | 
-   LAN_CFG<3> = Gnd;
-
-MACROCELL | 1 | 12 | ROM_B_0_OBUF$BUF4
-ATTRIBUTES | 264962 | 0
-INPUTS | 0
-EQ | 1 | 
-   LAN_CFG<1> = Gnd;
-
-MACROCELL | 7 | 7 | lan/lan_CLKF
+MACROCELL | 10 | 15 | SHUT_UP<2>/SHUT_UP<2>_CLKF
 ATTRIBUTES | 133888 | 0
-OUTPUTMC | 42 | 4 | 0 | 0 | 17 | 2 | 17 | 2 | 15 | 6 | 2 | 4 | 14 | 6 | 0 | 0 | 12 | 5 | 2 | 5 | 0 | 2 | 13 | 0 | 6 | 4 | 2 | 4 | 11 | 6 | 16 | 6 | 15 | 6 | 14 | 7 | 17 | 7 | 14 | 7 | 13 | 1 | 17 | 1 | 6 | 1 | 2 | 1 | 1 | 5 | 17 | 5 | 12 | 5 | 6 | 5 | 3 | 6 | 13 | 6 | 12 | 6 | 10 | 6 | 9 | 6 | 8 | 6 | 7 | 6 | 6 | 6 | 4 | 6 | 3 | 4 | 10 | 7 | 12 | 0 | 13 | 0 | 14 | 0 | 15
+OUTPUTMC | 48 | 7 | 7 | 6 | 17 | 0 | 17 | 6 | 16 | 8 | 16 | 6 | 15 | 14 | 12 | 14 | 10 | 13 | 17 | 15 | 16 | 0 | 15 | 9 | 17 | 9 | 15 | 9 | 14 | 9 | 12 | 6 | 14 | 5 | 17 | 5 | 16 | 5 | 15 | 2 | 16 | 3 | 17 | 3 | 0 | 3 | 15 | 15 | 17 | 12 | 17 | 12 | 16 | 12 | 15 | 12 | 14 | 5 | 14 | 5 | 12 | 14 | 17 | 14 | 16 | 12 | 12 | 12 | 11 | 12 | 10 | 12 | 9 | 14 | 15 | 14 | 14 | 14 | 13 | 1 | 15 | 1 | 12 | 0 | 12 | 0 | 10 | 1 | 6 | 1 | 3 | 1 | 0 | 0 | 8 | 4 | 1
 INPUTS | 2 | C1  | C3
-INPUTP | 2 | 115 | 114
+INPUTP | 2 | 188 | 187
 EQ | 2 | 
-   !lan/lan_CLKF = C1
+   SHUT_UP<2>/SHUT_UP<2>_CLKF = C1
 	$ C3;
 
-MACROCELL | 7 | 3 | autoconfig/autoconfig_RSTF
+MACROCELL | 5 | 11 | lan/lan_RSTF
 ATTRIBUTES | 133888 | 0
-OUTPUTMC | 4 | 4 | 0 | 6 | 2 | 4 | 14 | 6 | 0
+OUTPUTMC | 4 | 7 | 7 | 8 | 16 | 15 | 16 | 4 | 1
 INPUTS | 2 | RESET  | BERR
-INPUTP | 2 | 160 | 109
+INPUTP | 2 | 263 | 176
 EQ | 1 | 
-   autoconfig/autoconfig_RSTF = RESET & BERR;
+   lan/lan_RSTF = RESET & BERR;
 
-MACROCELL | 2 | 12 | D_9_IOBUFE/D_9_IOBUFE_TRST
+MACROCELL | 1 | 10 | D_8_IOBUFE/D_8_IOBUFE_TRST
 ATTRIBUTES | 133888 | 0
-OUTPUTMC | 17 | 1 | 4 | 2 | 2 | 2 | 10 | 2 | 3 | 2 | 11 | 2 | 6 | 2 | 9 | 0 | 2 | 2 | 0 | 1 | 16 | 0 | 7 | 0 | 5 | 1 | 15 | 0 | 1 | 0 | 4 | 2 | 8 | 2 | 13
-INPUTS | 13 | AS  | RW  | CP_CS_BUFR  | lan  | autoconfig  | RESET  | A<3>  | A<1>  | A<6>  | UDS  | CFOUT  | $OpTx$FX_DC$26  | $OpTx$FX_DC$11
-INPUTMC | 6 | 4 | 0 | 6 | 0 | 6 | 2 | 7 | 16 | 7 | 5 | 7 | 6
-INPUTP | 7 | 90 | 93 | 160 | 58 | 63 | 57 | 91
-EXPORTS | 1 | 2 | 13
-EQ | 5 | 
-   D_9_IOBUFE/D_9_IOBUFE_TRST = !AS & RW & CP_CS_BUFR
-	# !AS & RW & autoconfig
-	# !AS & RW & lan;
-    D_9_IOBUFE/D_9_IOBUFE_TRST.EXP  =  !AS & !RW & RESET & autoconfig & A<3> & !A<1> & 
-	A<6> & !UDS & CFOUT & $OpTx$FX_DC$26 & $OpTx$FX_DC$11
-
-MACROCELL | 2 | 7 | $OpTx$FX_DC$37
-ATTRIBUTES | 133888 | 0
-OUTPUTMC | 2 | 0 | 17 | 2 | 15
-INPUTS | 5 | $OpTx$FX_DC$35  | A<3>  | A<5>  | A<2>  | CFOUT
-INPUTMC | 2 | 4 | 5 | 7 | 16
-INPUTP | 3 | 58 | 54 | 60
+OUTPUTMC | 15 | 3 | 1 | 4 | 13 | 4 | 14 | 4 | 16 | 6 | 2 | 6 | 4 | 6 | 11 | 1 | 14 | 4 | 9 | 1 | 11 | 0 | 5 | 0 | 4 | 1 | 9 | 1 | 13 | 1 | 16
+INPUTS | 4 | $OpTx$INV$5  | RW  | autoconfig  | $OpTx$FX_DC$6
+INPUTMC | 3 | 1 | 17 | 15 | 16 | 15 | 15
+INPUTP | 1 | 158
 EQ | 2 | 
-   $OpTx$FX_DC$37 = !$OpTx$FX_DC$35
-	# !A<3> & !A<5> & A<2> & !CFOUT;
+   D_8_IOBUFE/D_8_IOBUFE_TRST = $OpTx$INV$5
+	# RW & autoconfig & !$OpTx$FX_DC$6;
 
-MACROCELL | 4 | 5 | $OpTx$FX_DC$35
+MACROCELL | 15 | 15 | $OpTx$FX_DC$6
 ATTRIBUTES | 133888 | 0
-OUTPUTMC | 3 | 2 | 17 | 0 | 12 | 2 | 7
-INPUTS | 3 | AS  | RW  | autoconfig
-INPUTMC | 1 | 6 | 2
-INPUTP | 2 | 90 | 93
+OUTPUTMC | 26 | 9 | 2 | 9 | 16 | 11 | 9 | 7 | 1 | 11 | 7 | 7 | 2 | 11 | 4 | 9 | 1 | 10 | 11 | 9 | 4 | 9 | 9 | 4 | 7 | 9 | 11 | 9 | 10 | 9 | 13 | 11 | 11 | 1 | 15 | 1 | 12 | 1 | 6 | 1 | 10 | 1 | 17 | 1 | 8 | 11 | 17 | 11 | 15 | 11 | 16 | 13 | 16
+INPUTS | 2 | UDS  | LDS
+INPUTP | 2 | 155 | 157
 EQ | 1 | 
-   $OpTx$FX_DC$35 = !AS & RW & autoconfig;
+   $OpTx$FX_DC$6 = UDS & LDS;
 
-MACROCELL | 0 | 16 | $OpTx$FX_DC$33
+MACROCELL | 1 | 17 | $OpTx$INV$5
 ATTRIBUTES | 133888 | 0
-OUTPUTMC | 3 | 0 | 17 | 0 | 12 | 3 | 17
-INPUTS | 11 | AS  | RW  | autoconfig  | A<2>  | A<6>  | A<5>  | A<4>  | A<1>  | $OpTx$FX_DC$51  | $OpTx$FX_DC$11  | ROM_OE_S.EXP
-INPUTMC | 4 | 6 | 2 | 2 | 4 | 7 | 6 | 0 | 15
-INPUTP | 7 | 90 | 93 | 60 | 57 | 54 | 56 | 63
-EXPORTS | 1 | 0 | 17
-IMPORTS | 1 | 0 | 15
-EQ | 7 | 
-   $OpTx$FX_DC$33 = !AS & RW & autoconfig & A<5> & A<4>
-	# !AS & RW & autoconfig & A<2> & A<6>
-;Imported pterms FB1_16
-	# !AS & RW & autoconfig & A<3> & !A<5> & !A<4>;
-    $OpTx$FX_DC$33.EXP  =  !A<4> & !A<1> & !A<6> & $OpTx$FX_DC$51
-	# !AS & RW & autoconfig & A<5> & !A<1>
-	# !AS & RW & autoconfig & !A<2> & !$OpTx$FX_DC$11
-
-MACROCELL | 2 | 4 | $OpTx$FX_DC$51
-ATTRIBUTES | 133888 | 0
-OUTPUTMC | 1 | 0 | 16
-INPUTS | 6 | Dout1<2>  | $OpTx$FX_DC$26  | AS  | RW  | autoconfig  | CFOUT
-INPUTMC | 4 | 0 | 17 | 7 | 5 | 6 | 2 | 7 | 16
-INPUTP | 2 | 90 | 93
+OUTPUTMC | 18 | 3 | 1 | 4 | 13 | 4 | 14 | 4 | 16 | 6 | 2 | 6 | 4 | 6 | 11 | 1 | 14 | 4 | 9 | 1 | 11 | 0 | 5 | 0 | 4 | 1 | 9 | 1 | 13 | 1 | 16 | 4 | 11 | 1 | 10 | 1 | 8
+INPUTS | 4 | RW  | CP_CS  | $OpTx$FX_DC$6  | LAN_CS
+INPUTMC | 3 | 4 | 1 | 15 | 15 | 7 | 7
+INPUTP | 1 | 158
 EQ | 2 | 
-   $OpTx$FX_DC$51 = Dout1<2> & $OpTx$FX_DC$26
-	# !AS & RW & autoconfig & CFOUT & $OpTx$FX_DC$26;
+   $OpTx$INV$5 = RW & LAN_CS & !$OpTx$FX_DC$6
+	# RW & !CP_CS & !$OpTx$FX_DC$6;
 
-MACROCELL | 7 | 5 | $OpTx$FX_DC$26
+MACROCELL | 1 | 8 | D_9_IOBUFE/D_9_IOBUFE_TRST
 ATTRIBUTES | 133888 | 0
-OUTPUTMC | 7 | 2 | 16 | 2 | 14 | 0 | 11 | 2 | 12 | 7 | 16 | 2 | 4 | 0 | 13
-INPUTS | 2 | AUTO_CONFIG_DONE<0>  | AUTO_CONFIG_DONE<1>
-INPUTMC | 2 | 4 | 8 | 4 | 7
+OUTPUTMC | 1 | 4 | 11
+INPUTS | 4 | $OpTx$INV$5  | RW  | autoconfig  | $OpTx$FX_DC$6
+INPUTMC | 3 | 1 | 17 | 15 | 16 | 15 | 15
+INPUTP | 1 | 158
+EQ | 2 | 
+   D_9_IOBUFE/D_9_IOBUFE_TRST = $OpTx$INV$5
+	# RW & autoconfig & !$OpTx$FX_DC$6;
+
+MACROCELL | 11 | 17 | AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+ATTRIBUTES | 133888 | 0
+OUTPUTMC | 11 | 6 | 16 | 6 | 15 | 2 | 16 | 3 | 17 | 3 | 0 | 3 | 15 | 3 | 14 | 2 | 15 | 2 | 17 | 3 | 1 | 3 | 16
+INPUTS | 4 | RESET  | AS  | autoconfig  | $OpTx$FX_DC$6
+INPUTMC | 2 | 15 | 16 | 15 | 15
+INPUTP | 2 | 263 | 152
+EQ | 2 | 
+   AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2 = !RESET
+	# !AS & autoconfig & !$OpTx$FX_DC$6;
+
+MACROCELL | 10 | 17 | N32/N32_D2
+ATTRIBUTES | 133888 | 0
+OUTPUTMC | 2 | 6 | 16 | 6 | 15
+INPUTS | 13 | RW  | A<6>  | A<5>  | A<3>  | A<4>  | A<1>  | A<2>  | $OpTx$FX_DC$8  | AUTO_CONFIG_DONE<1>  | AUTO_CONFIG_DONE<0>  | SHUT_UP<0>  | SHUT_UP<1>  | SHUT_UP<2>
+INPUTMC | 6 | 0 | 3 | 6 | 17 | 0 | 17 | 14 | 12 | 14 | 10 | 13 | 17
+INPUTP | 7 | 158 | 98 | 91 | 99 | 97 | 107 | 101
+EQ | 8 | 
+   N32/N32_D2 = !RW & A<6> & !A<5> & A<3> & !A<4> & !A<1> & A<2> & 
+	!$OpTx$FX_DC$8
+	# !RW & AUTO_CONFIG_DONE<1> & !AUTO_CONFIG_DONE<0> & 
+	SHUT_UP<2> & A<6> & !A<5> & A<3> & !A<4> & !A<1>
+	# !RW & !AUTO_CONFIG_DONE<1> & AUTO_CONFIG_DONE<0> & 
+	SHUT_UP<1> & A<6> & !A<5> & A<3> & !A<4> & !A<1>
+	# !RW & !AUTO_CONFIG_DONE<1> & !AUTO_CONFIG_DONE<0> & 
+	SHUT_UP<0> & A<6> & !A<5> & A<3> & !A<4> & !A<1>;
+
+MACROCELL | 0 | 3 | $OpTx$FX_DC$8
+ATTRIBUTES | 133888 | 0
+OUTPUTMC | 2 | 15 | 16 | 10 | 17
+INPUTS | 2 | AUTO_CONFIG_DONE<1>  | AUTO_CONFIG_DONE<0>
+INPUTMC | 2 | 6 | 17 | 0 | 17
 EQ | 1 | 
-   $OpTx$FX_DC$26 = AUTO_CONFIG_DONE<0> & AUTO_CONFIG_DONE<1>;
+   $OpTx$FX_DC$8 = AUTO_CONFIG_DONE<1> & AUTO_CONFIG_DONE<0>;
 
-MACROCELL | 7 | 6 | $OpTx$FX_DC$11
+MACROCELL | 11 | 15 | LAN_BASEADR_0__or0001/LAN_BASEADR_0__or0001_D2
 ATTRIBUTES | 133888 | 0
-OUTPUTMC | 17 | 0 | 16 | 2 | 14 | 5 | 2 | 5 | 0 | 2 | 12 | 1 | 17 | 1 | 6 | 1 | 2 | 1 | 1 | 5 | 17 | 5 | 12 | 5 | 6 | 5 | 3 | 3 | 6 | 3 | 3 | 2 | 16 | 0 | 0
-INPUTS | 2 | A<5>  | A<4>
-INPUTP | 2 | 54 | 56
+OUTPUTMC | 9 | 14 | 12 | 14 | 16 | 12 | 12 | 12 | 11 | 12 | 10 | 12 | 9 | 14 | 15 | 14 | 14 | 14 | 13
+INPUTS | 14 | RESET  | AS  | RW  | AUTO_CONFIG_DONE<1>  | AUTO_CONFIG_DONE<0>  | SHUT_UP<0>  | autoconfig  | A<6>  | A<5>  | A<3>  | A<4>  | A<1>  | A<2>  | $OpTx$FX_DC$6
+INPUTMC | 5 | 6 | 17 | 0 | 17 | 14 | 12 | 15 | 16 | 15 | 15
+INPUTP | 9 | 263 | 152 | 158 | 98 | 91 | 99 | 97 | 107 | 101
+EQ | 4 | 
+   LAN_BASEADR_0__or0001/LAN_BASEADR_0__or0001_D2 = !RESET
+	# !AS & !RW & !AUTO_CONFIG_DONE<1> & 
+	!AUTO_CONFIG_DONE<0> & SHUT_UP<0> & autoconfig & A<6> & !A<5> & A<3> & 
+	!A<4> & !A<1> & !A<2> & !$OpTx$FX_DC$6;
+
+MACROCELL | 11 | 16 | CP_BASEADR_0__or0001/CP_BASEADR_0__or0001_D2
+ATTRIBUTES | 133888 | 0
+OUTPUTMC | 9 | 14 | 10 | 9 | 17 | 9 | 15 | 9 | 14 | 9 | 12 | 6 | 14 | 5 | 17 | 5 | 16 | 5 | 15
+INPUTS | 14 | RESET  | AS  | RW  | AUTO_CONFIG_DONE<1>  | AUTO_CONFIG_DONE<0>  | SHUT_UP<1>  | autoconfig  | A<6>  | A<5>  | A<3>  | A<4>  | A<1>  | A<2>  | $OpTx$FX_DC$6
+INPUTMC | 5 | 6 | 17 | 0 | 17 | 14 | 10 | 15 | 16 | 15 | 15
+INPUTP | 9 | 263 | 152 | 158 | 98 | 91 | 99 | 97 | 107 | 101
+EQ | 4 | 
+   CP_BASEADR_0__or0001/CP_BASEADR_0__or0001_D2 = !RESET
+	# !AS & !RW & !AUTO_CONFIG_DONE<1> & 
+	AUTO_CONFIG_DONE<0> & SHUT_UP<1> & autoconfig & A<6> & !A<5> & A<3> & 
+	!A<4> & !A<1> & !A<2> & !$OpTx$FX_DC$6;
+
+MACROCELL | 13 | 16 | IDE_BASEADR_0__or0001/IDE_BASEADR_0__or0001_D2
+ATTRIBUTES | 133888 | 0
+OUTPUTMC | 9 | 13 | 17 | 15 | 17 | 12 | 17 | 12 | 16 | 12 | 15 | 12 | 14 | 5 | 14 | 5 | 12 | 14 | 17
+INPUTS | 13 | RESET  | AS  | RW  | SHUT_UP<2>  | autoconfig  | A<6>  | A<5>  | A<3>  | A<4>  | A<1>  | A<2>  | $OpTx$FX_DC$6  | $OpTx$FX_DC$28
+INPUTMC | 4 | 13 | 17 | 15 | 16 | 15 | 15 | 0 | 6
+INPUTP | 9 | 263 | 152 | 158 | 98 | 91 | 99 | 97 | 107 | 101
+EQ | 4 | 
+   IDE_BASEADR_0__or0001/IDE_BASEADR_0__or0001_D2 = !RESET
+	# !AS & !RW & SHUT_UP<2> & autoconfig & A<6> & 
+	!A<5> & A<3> & !A<4> & !A<1> & !A<2> & !$OpTx$FX_DC$6 & 
+	$OpTx$FX_DC$28;
+
+MACROCELL | 0 | 6 | $OpTx$FX_DC$28
+ATTRIBUTES | 133888 | 0
+OUTPUTMC | 2 | 13 | 16 | 2 | 17
+INPUTS | 2 | AUTO_CONFIG_DONE<1>  | AUTO_CONFIG_DONE<0>
+INPUTMC | 2 | 6 | 17 | 0 | 17
 EQ | 1 | 
-   $OpTx$FX_DC$11 = !A<5> & !A<4>;
+   $OpTx$FX_DC$28 = AUTO_CONFIG_DONE<1> & !AUTO_CONFIG_DONE<0>;
 
-MACROCELL | 7 | 9 | $OpTx$FX_DC$53
-ATTRIBUTES | 133888 | 0
-OUTPUTMC | 1 | 2 | 17
-INPUTS | 4 | A<3>  | A<5>  | A<2>  | A<6>
-INPUTP | 4 | 58 | 54 | 60 | 57
-EQ | 2 | 
-   $OpTx$FX_DC$53 = A<3> & A<5>
-	# !A<3> & !A<2> & !A<6>;
-
-MACROCELL | 3 | 17 | $OpTx$FX_DC$44
-ATTRIBUTES | 133888 | 0
-OUTPUTMC | 2 | 2 | 17 | 2 | 15
-INPUTS | 7 | $OpTx$FX_DC$33  | AS  | RW  | autoconfig  | A<3>  | A<2>  | A<1>
-INPUTMC | 2 | 0 | 16 | 6 | 2
-INPUTP | 5 | 90 | 93 | 58 | 60 | 63
-EQ | 2 | 
-   $OpTx$FX_DC$44 = $OpTx$FX_DC$33
-	# !AS & RW & autoconfig & A<3> & A<2> & !A<1>;
-
-MACROCELL | 0 | 9 | $OpTx$FX_DC$41
-ATTRIBUTES | 133888 | 0
-OUTPUTMC | 3 | 2 | 17 | 2 | 15 | 0 | 12
-INPUTS | 8 | RESET  | AS  | RW  | autoconfig  | A<5>  | A<2>  | A<4>  | A<6>
-INPUTMC | 1 | 6 | 2
-INPUTP | 7 | 160 | 90 | 93 | 54 | 60 | 56 | 57
-EQ | 3 | 
-   $OpTx$FX_DC$41 = !RESET
-	# !AS & RW & autoconfig & A<5> & !A<2>
-	# !AS & RW & autoconfig & A<4> & A<6>;
-
-MACROCELL | 7 | 10 | $OpTx$FX_DC$52
+MACROCELL | 3 | 10 | $OpTx$FX_DC$33
 ATTRIBUTES | 133888 | 0
 OUTPUTMC | 1 | 2 | 16
-INPUTS | 4 | A<5>  | A<2>  | A<6>  | AUTOBOOT_OFF
-INPUTP | 4 | 54 | 60 | 57 | 84
-EQ | 2 | 
-   $OpTx$FX_DC$52 = !A<5> & A<2>
-	# !A<2> & !A<6> & !AUTOBOOT_OFF;
-
-MACROCELL | 7 | 11 | $OpTx$FX_DC$50
-ATTRIBUTES | 133888 | 0
-OUTPUTMC | 1 | 2 | 0
-INPUTS | 4 | A<2>  | AUTO_CONFIG_DONE<0>  | A<5>  | CFOUT
-INPUTMC | 2 | 4 | 8 | 7 | 16
-INPUTP | 2 | 60 | 54
-EQ | 2 | 
-   $OpTx$FX_DC$50 = !A<2>
-	# AUTO_CONFIG_DONE<0> & !A<5> & CFOUT;
-
-MACROCELL | 2 | 14 | $OpTx$FX_DC$49
-ATTRIBUTES | 133888 | 0
-OUTPUTMC | 2 | 2 | 15 | 0 | 12
-INPUTS | 13 | Dout1<3>  | A<5>  | A<1>  | A<6>  | $OpTx$FX_DC$11  | AS  | RW  | autoconfig  | CFOUT  | A<2>  | $OpTx$FX_DC$26  | A<3>  | AUTO_CONFIG_DONE_CYCLE<2>.EXP
-INPUTMC | 6 | 2 | 15 | 7 | 6 | 6 | 2 | 7 | 16 | 7 | 5 | 2 | 13
-INPUTP | 7 | 54 | 63 | 57 | 90 | 93 | 60 | 58
-EXPORTS | 1 | 2 | 15
-IMPORTS | 1 | 2 | 13
-EQ | 12 | 
-   $OpTx$FX_DC$49 = ;Imported pterms FB3_14
-	  !AS & RW & autoconfig & A<3> & !A<2> & A<1>
-	# !AS & RW & autoconfig & !A<3> & A<5> & A<1>
-	# !AS & RW & autoconfig & !A<3> & A<4> & !A<2> & 
-	!A<1>;
-    $OpTx$FX_DC$49.EXP  =  Dout1<3> & A<5> & A<1>
-	# Dout1<3> & !A<1> & !A<6> & $OpTx$FX_DC$11
-	# !AS & RW & autoconfig & A<5> & A<1> & CFOUT
-	# !AS & RW & autoconfig & A<2> & CFOUT & 
-	$OpTx$FX_DC$26 & $OpTx$FX_DC$11
-	# !AS & RW & autoconfig & !A<3> & !A<5> & !A<1> & 
-	!A<6> & CFOUT
-
-MACROCELL | 7 | 8 | $OpTx$FX_DC$54
-ATTRIBUTES | 133888 | 0
-OUTPUTMC | 1 | 0 | 11
-INPUTS | 5 | A<2>  | A<1>  | CFOUT  | A<5>  | A<6>
-INPUTMC | 1 | 7 | 16
-INPUTP | 4 | 60 | 63 | 54 | 57
-EQ | 2 | 
-   $OpTx$FX_DC$54 = A<2> & A<1> & !CFOUT
-	# !A<5> & !A<1> & !A<6> & !CFOUT;
-
-MACROCELL | 7 | 4 | $OpTx$FX_DC$43
-ATTRIBUTES | 133888 | 0
-OUTPUTMC | 1 | 0 | 11
-INPUTS | 2 | A<1>  | CFOUT
-INPUTMC | 1 | 7 | 16
-INPUTP | 1 | 63
+INPUTS | 2 | A<1>  | A<2>
+INPUTP | 2 | 107 | 101
 EQ | 1 | 
-   $OpTx$FX_DC$43 = A<1> & !CFOUT;
+   $OpTx$FX_DC$33 = !A<1> & A<2>;
 
-MACROCELL | 3 | 6 | $OpTx$FX_DC$23
+MACROCELL | 3 | 12 | $OpTx$FX_DC$19
 ATTRIBUTES | 133888 | 0
-OUTPUTMC | 8 | 4 | 2 | 4 | 11 | 4 | 10 | 6 | 15 | 6 | 14 | 7 | 17 | 7 | 14 | 7 | 13
-INPUTS | 11 | AS  | RW  | AUTO_CONFIG_DONE<0>  | AUTO_CONFIG_DONE<1>  | autoconfig  | A<3>  | A<2>  | A<1>  | A<6>  | UDS  | $OpTx$FX_DC$11
-INPUTMC | 4 | 4 | 8 | 4 | 7 | 6 | 2 | 7 | 6
-INPUTP | 7 | 90 | 93 | 58 | 60 | 63 | 57 | 91
+OUTPUTMC | 2 | 2 | 16 | 3 | 14
+INPUTS | 5 | RESET  | A<6>  | A<5>  | A<4>  | A<2>
+INPUTP | 5 | 263 | 98 | 91 | 97 | 101
 EQ | 3 | 
-   $OpTx$FX_DC$23 = !AS & !RW & AUTO_CONFIG_DONE<0> & 
-	!AUTO_CONFIG_DONE<1> & autoconfig & A<3> & !A<2> & !A<1> & A<6> & !UDS & 
-	$OpTx$FX_DC$11;
+   $OpTx$FX_DC$19 = RESET & !A<6> & !A<5>
+	# RESET & !A<6> & !A<4> & A<2>
+	# RESET & !A<5> & !A<4> & !A<2>;
 
-MACROCELL | 3 | 3 | $OpTx$FX_DC$27
+MACROCELL | 3 | 14 | $OpTx$FX_DC$36
 ATTRIBUTES | 133888 | 0
-OUTPUTMC | 9 | 1 | 17 | 1 | 6 | 1 | 2 | 1 | 1 | 5 | 17 | 5 | 12 | 5 | 6 | 5 | 3 | 7 | 12
-INPUTS | 12 | AS  | RW  | AUTO_CONFIG_DONE<2>  | AUTO_CONFIG_DONE<0>  | AUTO_CONFIG_DONE<1>  | autoconfig  | A<3>  | A<2>  | A<1>  | A<6>  | UDS  | $OpTx$FX_DC$11
-INPUTMC | 5 | 4 | 6 | 4 | 8 | 4 | 7 | 6 | 2 | 7 | 6
-INPUTP | 7 | 90 | 93 | 58 | 60 | 63 | 57 | 91
-EQ | 3 | 
-   $OpTx$FX_DC$27 = !AS & !RW & !AUTO_CONFIG_DONE<2> & 
-	AUTO_CONFIG_DONE<0> & AUTO_CONFIG_DONE<1> & autoconfig & A<3> & !A<2> & 
-	!A<1> & A<6> & !UDS & $OpTx$FX_DC$11;
+OUTPUTMC | 2 | 3 | 17 | 3 | 15
+INPUTS | 8 | AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2  | $OpTx$FX_DC$19  | A<5>  | A<1>  | A<3>  | A<4>  | A<2>  | AUTO_CONFIG_DONE<1>
+INPUTMC | 3 | 11 | 17 | 3 | 12 | 6 | 17
+INPUTP | 5 | 91 | 107 | 99 | 97 | 101
+EXPORTS | 1 | 3 | 15
+EQ | 10 | 
+   $OpTx$FX_DC$36 = 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2 & !$OpTx$FX_DC$19
+	# A<5> & A<1> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+	# A<3> & !A<4> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+	# A<3> & A<1> & !A<2> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2;
+    $OpTx$FX_DC$36.EXP  =  AUTO_CONFIG_DONE<1> & !A<5> & !A<4> & A<2> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
 
-MACROCELL | 2 | 16 | $OpTx$FX_DC$21
-ATTRIBUTES | 133888 | 0
-OUTPUTMC | 10 | 6 | 13 | 6 | 12 | 6 | 10 | 6 | 9 | 6 | 8 | 6 | 7 | 6 | 6 | 6 | 4 | 6 | 3 | 2 | 17
-INPUTS | 16 | AS  | RW  | AUTO_CONFIG_DONE<0>  | autoconfig  | A<3>  | A<2>  | A<1>  | A<6>  | UDS  | $OpTx$FX_DC$11  | Dout1<0>  | A<5>  | $OpTx$FX_DC$26  | A<4>  | CFOUT  | $OpTx$FX_DC$52
-INPUTMC | 7 | 4 | 8 | 6 | 2 | 7 | 6 | 2 | 17 | 7 | 5 | 7 | 16 | 7 | 10
-INPUTP | 9 | 90 | 93 | 58 | 60 | 63 | 57 | 91 | 54 | 56
-EXPORTS | 1 | 2 | 17
-EQ | 8 | 
-   $OpTx$FX_DC$21 = !AS & !RW & !AUTO_CONFIG_DONE<0> & autoconfig & 
-	A<3> & !A<2> & !A<1> & A<6> & !UDS & $OpTx$FX_DC$11;
-    $OpTx$FX_DC$21.EXP  =  Dout1<0> & !A<3> & !A<5> & A<2> & $OpTx$FX_DC$26
-	# !AS & RW & autoconfig & A<3> & A<5> & 
-	!$OpTx$FX_DC$26
-	# !AS & RW & autoconfig & !A<3> & A<4> & !A<2>
-	# !AS & RW & autoconfig & !A<3> & CFOUT & 
-	$OpTx$FX_DC$26 & $OpTx$FX_DC$52
-
-MACROCELL | 2 | 5 | _10_
-ATTRIBUTES | 264962 | 0
-OUTPUTMC | 1 | 2 | 6
-INPUTS | 5 | CP_CS_BUFR  | AS  | RW  | lan  | DQ<14>.PIN
-INPUTMC | 2 | 4 | 0 | 6 | 0
-INPUTP | 3 | 90 | 93 | 146
-EXPORTS | 1 | 2 | 6
+MACROCELL | 2 | 15 | EXP18_
+ATTRIBUTES | 2048 | 0
+OUTPUTMC | 1 | 2 | 16
+INPUTS | 4 | A<5>  | A<3>  | A<4>  | AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+INPUTMC | 1 | 11 | 17
+INPUTP | 3 | 91 | 99 | 97
+EXPORTS | 1 | 2 | 16
 EQ | 2 | 
-   CP_CS = CP_CS_BUFR;
-    _10_.EXP  =  !AS & RW & lan & DQ<14>.PIN
+       EXP18_.EXP  =  !A<5> & A<3> & !A<4> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
 
-MACROCELL | 4 | 1 | EXP11_
+MACROCELL | 2 | 17 | EXP19_
 ATTRIBUTES | 2048 | 0
-OUTPUTMC | 1 | 4 | 0
-INPUTS | 6 | CP_BASEADR<0>  | A<16>  | CP_BASEADR<6>  | A<22>  | CP_BASEADR<7>  | A<23>
-INPUTMC | 3 | 4 | 2 | 7 | 14 | 7 | 13
-INPUTP | 3 | 108 | 97 | 96
-EXPORTS | 1 | 4 | 0
+OUTPUTMC | 1 | 2 | 16
+INPUTS | 11 | A<3>  | A<4>  | AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2  | $OpTx$FX_DC$28  | AUTO_CONFIG_DONE<1>  | A<5>  | A<2>  | A<6>  | A<1>  | AUTOBOOT_OFF  | AUTO_CONFIG_DONE<0>
+INPUTMC | 4 | 11 | 17 | 0 | 6 | 6 | 17 | 0 | 17
+INPUTP | 7 | 99 | 97 | 91 | 101 | 98 | 107 | 142
+EXPORTS | 1 | 2 | 16
+EQ | 12 | 
+       EXP19_.EXP  =  A<3> & !A<4> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2 & !$OpTx$FX_DC$28
+	# AUTO_CONFIG_DONE<1> & !A<5> & !A<3> & A<2> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+	# !A<6> & !A<3> & A<1> & !A<2> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+	# AUTO_CONFIG_DONE<1> & !A<6> & !A<3> & !A<2> & 
+	!AUTOBOOT_OFF & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+	# AUTO_CONFIG_DONE<0> & !A<6> & !A<5> & !A<3> & 
+	A<1> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+
+MACROCELL | 3 | 16 | EXP20_
+ATTRIBUTES | 2048 | 0
+OUTPUTMC | 1 | 3 | 17
+INPUTS | 8 | AUTO_CONFIG_DONE<1>  | A<3>  | A<4>  | A<1>  | AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2  | A<2>  | A<5>  | AUTO_CONFIG_DONE<0>
+INPUTMC | 3 | 6 | 17 | 11 | 17 | 0 | 17
+INPUTP | 5 | 99 | 97 | 107 | 101 | 91
+EXPORTS | 1 | 3 | 17
+EQ | 12 | 
+       EXP20_.EXP  =  AUTO_CONFIG_DONE<1> & !A<3> & A<4> & A<1> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+	# !AUTO_CONFIG_DONE<1> & !A<3> & A<4> & A<2> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+	# !A<3> & A<4> & !A<1> & !A<2> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+	# AUTO_CONFIG_DONE<1> & !A<5> & !A<4> & !A<1> & 
+	A<2> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+	# !AUTO_CONFIG_DONE<1> & AUTO_CONFIG_DONE<0> & !A<4> & 
+	A<1> & A<2> & 
+	AUTO_CONFIG_DONE_CYCLE_0__or0000/AUTO_CONFIG_DONE_CYCLE_0__or0000_D2
+
+MACROCELL | 4 | 0 | EXP21_
+ATTRIBUTES | 2048 | 0
+OUTPUTMC | 1 | 4 | 1
+INPUTS | 6 | CP_BASEADR<3>  | A<19>  | CP_BASEADR<5>  | A<21>  | CP_BASEADR<6>  | A<22>
+INPUTMC | 3 | 9 | 12 | 5 | 17 | 5 | 16
+INPUTP | 3 | 169 | 163 | 162
+EXPORTS | 1 | 4 | 1
 EQ | 5 | 
-       EXP11_.EXP  =  CP_BASEADR<0> & !A<16>
-	# !CP_BASEADR<0> & A<16>
-	# !CP_BASEADR<6> & A<22>
-	# CP_BASEADR<7> & !A<23>
-	# !CP_BASEADR<7> & A<23>
-
-MACROCELL | 4 | 13 | EXP12_
-ATTRIBUTES | 2048 | 0
-OUTPUTMC | 1 | 4 | 14
-INPUTS | 7 | IDE_BASEADR<3>  | A<19>  | IDE_BASEADR<5>  | A<21>  | IDE_BASEADR<6>  | A<22>  | CP_WE_OBUF.EXP
-INPUTMC | 4 | 1 | 1 | 5 | 12 | 5 | 6 | 4 | 12
-INPUTP | 3 | 103 | 98 | 97
-EXPORTS | 1 | 4 | 14
-IMPORTS | 1 | 4 | 12
-EQ | 10 | 
-       EXP12_.EXP  =  IDE_BASEADR<3> & !A<19>
-	# !IDE_BASEADR<3> & A<19>
-	# IDE_BASEADR<5> & !A<21>
-	# !IDE_BASEADR<5> & A<21>
-	# IDE_BASEADR<6> & !A<22>
-;Imported pterms FB5_13
-	# IDE_BASEADR<1> & !A<17>
-	# !IDE_BASEADR<1> & A<17>
-	# IDE_BASEADR<2> & !A<18>
-	# !IDE_BASEADR<2> & A<18>
-
-MACROCELL | 4 | 15 | EXP13_
-ATTRIBUTES | 2048 | 0
-OUTPUTMC | 1 | 4 | 14
-INPUTS | 6 | IDE_BASEADR<0>  | A<16>  | IDE_BASEADR<6>  | A<22>  | IDE_BASEADR<7>  | A<23>
-INPUTMC | 3 | 1 | 17 | 5 | 6 | 5 | 3
-INPUTP | 3 | 108 | 97 | 96
-EXPORTS | 1 | 4 | 14
-EQ | 5 | 
-       EXP13_.EXP  =  IDE_BASEADR<0> & !A<16>
-	# !IDE_BASEADR<0> & A<16>
-	# !IDE_BASEADR<6> & A<22>
-	# IDE_BASEADR<7> & !A<23>
-	# !IDE_BASEADR<7> & A<23>
-
-MACROCELL | 4 | 17 | EXP14_
-ATTRIBUTES | 2048 | 0
-OUTPUTMC | 1 | 4 | 0
-INPUTS | 7 | CP_BASEADR<3>  | A<19>  | CP_BASEADR<5>  | A<21>  | CP_BASEADR<6>  | A<22>  | ROM_B_0_OBUF.EXP
-INPUTMC | 4 | 6 | 15 | 7 | 17 | 7 | 14 | 4 | 16
-INPUTP | 3 | 103 | 98 | 97
-EXPORTS | 1 | 4 | 0
-IMPORTS | 1 | 4 | 16
-EQ | 10 | 
-       EXP14_.EXP  =  CP_BASEADR<3> & !A<19>
+       EXP21_.EXP  =  CP_BASEADR<3> & !A<19>
 	# !CP_BASEADR<3> & A<19>
 	# CP_BASEADR<5> & !A<21>
 	# !CP_BASEADR<5> & A<21>
 	# CP_BASEADR<6> & !A<22>
-;Imported pterms FB5_17
+
+MACROCELL | 4 | 2 | EXP22_
+ATTRIBUTES | 2048 | 0
+OUTPUTMC | 1 | 4 | 1
+INPUTS | 7 | CP_BASEADR<0>  | A<16>  | CP_BASEADR<6>  | A<22>  | CP_BASEADR<7>  | A<23>  | EXP23_.EXP
+INPUTMC | 4 | 9 | 17 | 5 | 16 | 5 | 15 | 4 | 3
+INPUTP | 3 | 175 | 162 | 161
+EXPORTS | 1 | 4 | 1
+IMPORTS | 1 | 4 | 3
+EQ | 10 | 
+       EXP22_.EXP  =  CP_BASEADR<0> & !A<16>
+	# !CP_BASEADR<0> & A<16>
+	# !CP_BASEADR<6> & A<22>
+	# CP_BASEADR<7> & !A<23>
+	# !CP_BASEADR<7> & A<23>
+;Imported pterms FB5_4
 	# CP_BASEADR<1> & !A<17>
 	# !CP_BASEADR<1> & A<17>
 	# CP_BASEADR<2> & !A<18>
 	# !CP_BASEADR<2> & A<18>
 
-MACROCELL | 6 | 17 | EXP15_
+MACROCELL | 4 | 3 | EXP23_
 ATTRIBUTES | 2048 | 0
-OUTPUTMC | 1 | 6 | 0
-INPUTS | 7 | LAN_BASEADR<3>  | A<19>  | LAN_BASEADR<5>  | A<21>  | LAN_BASEADR<6>  | A<22>  | CP_BASEADR<2>.EXP
-INPUTMC | 4 | 6 | 9 | 6 | 7 | 6 | 6 | 6 | 16
-INPUTP | 3 | 103 | 98 | 97
-EXPORTS | 1 | 6 | 0
-IMPORTS | 1 | 6 | 16
-EQ | 10 | 
-       EXP15_.EXP  =  LAN_BASEADR<3> & !A<19>
+OUTPUTMC | 1 | 4 | 2
+INPUTS | 4 | CP_BASEADR<1>  | A<17>  | CP_BASEADR<2>  | A<18>
+INPUTMC | 2 | 9 | 15 | 9 | 14
+INPUTP | 2 | 172 | 171
+EXPORTS | 1 | 4 | 2
+EQ | 4 | 
+       EXP23_.EXP  =  CP_BASEADR<1> & !A<17>
+	# !CP_BASEADR<1> & A<17>
+	# CP_BASEADR<2> & !A<18>
+	# !CP_BASEADR<2> & A<18>
+
+MACROCELL | 7 | 5 | EXP24_
+ATTRIBUTES | 2048 | 0
+OUTPUTMC | 1 | 7 | 6
+INPUTS | 2 | LAN_BASEADR<1>  | A<17>
+INPUTMC | 1 | 12 | 12
+INPUTP | 1 | 172
+EXPORTS | 1 | 7 | 6
+EQ | 2 | 
+       EXP24_.EXP  =  LAN_BASEADR<1> & !A<17>
+	# !LAN_BASEADR<1> & A<17>
+
+MACROCELL | 7 | 6 | EXP25_
+ATTRIBUTES | 2048 | 0
+OUTPUTMC | 1 | 7 | 7
+INPUTS | 7 | LAN_BASEADR<3>  | A<19>  | LAN_BASEADR<5>  | A<21>  | LAN_BASEADR<7>  | A<23>  | EXP24_.EXP
+INPUTMC | 4 | 12 | 10 | 14 | 15 | 14 | 13 | 7 | 5
+INPUTP | 3 | 169 | 163 | 161
+EXPORTS | 1 | 7 | 7
+IMPORTS | 1 | 7 | 5
+EQ | 8 | 
+       EXP25_.EXP  =  LAN_BASEADR<3> & !A<19>
 	# !LAN_BASEADR<3> & A<19>
 	# LAN_BASEADR<5> & !A<21>
 	# !LAN_BASEADR<5> & A<21>
-	# LAN_BASEADR<6> & !A<22>
-;Imported pterms FB7_17
+	# LAN_BASEADR<7> & !A<23>
+;Imported pterms FB8_6
 	# LAN_BASEADR<1> & !A<17>
 	# !LAN_BASEADR<1> & A<17>
+
+MACROCELL | 7 | 8 | EXP26_
+ATTRIBUTES | 2048 | 0
+OUTPUTMC | 1 | 7 | 7
+INPUTS | 7 | LAN_BASEADR<0>  | A<16>  | LAN_BASEADR<6>  | A<22>  | LAN_BASEADR<7>  | A<23>  | LAN_RD_OBUF.EXP
+INPUTMC | 4 | 14 | 16 | 14 | 14 | 14 | 13 | 7 | 9
+INPUTP | 3 | 175 | 162 | 161
+EXPORTS | 1 | 7 | 7
+IMPORTS | 1 | 7 | 9
+EQ | 8 | 
+       EXP26_.EXP  =  LAN_BASEADR<0> & !A<16>
+	# !LAN_BASEADR<0> & A<16>
+	# LAN_BASEADR<6> & !A<22>
+	# !LAN_BASEADR<6> & A<22>
+	# !LAN_BASEADR<7> & A<23>
+;Imported pterms FB8_10
 	# LAN_BASEADR<2> & !A<18>
 	# !LAN_BASEADR<2> & A<18>
 
-PIN | AS | 64 | 0 | N/A | 90 | 70 | 1 | 4 | 2 | 2 | 2 | 10 | 2 | 3 | 2 | 11 | 2 | 6 | 2 | 9 | 0 | 2 | 2 | 0 | 1 | 16 | 0 | 7 | 0 | 5 | 1 | 15 | 0 | 1 | 0 | 4 | 2 | 8 | 4 | 6 | 4 | 8 | 4 | 7 | 0 | 0 | 2 | 16 | 2 | 14 | 0 | 11 | 5 | 2 | 5 | 0 | 2 | 5 | 0 | 6 | 1 | 17 | 1 | 6 | 1 | 2 | 1 | 1 | 5 | 17 | 5 | 12 | 5 | 6 | 5 | 3 | 3 | 0 | 3 | 5 | 5 | 9 | 3 | 7 | 5 | 7 | 3 | 8 | 5 | 5 | 5 | 15 | 5 | 11 | 5 | 10 | 5 | 14 | 5 | 13 | 3 | 1 | 5 | 16 | 3 | 4 | 5 | 8 | 0 | 13 | 0 | 14 | 0 | 15 | 3 | 11 | 3 | 10 | 6 | 5 | 4 | 11 | 4 | 12 | 5 | 1 | 2 | 12 | 4 | 5 | 0 | 16 | 2 | 4 | 3 | 17 | 0 | 9 | 2 | 13 | 3 | 6 | 3 | 3 | 6 | 2
-PIN | RW | 64 | 0 | N/A | 93 | 66 | 1 | 4 | 2 | 2 | 2 | 10 | 2 | 3 | 2 | 11 | 2 | 6 | 2 | 9 | 0 | 2 | 2 | 0 | 1 | 16 | 0 | 7 | 0 | 5 | 1 | 15 | 0 | 1 | 0 | 4 | 2 | 8 | 0 | 0 | 2 | 16 | 2 | 14 | 0 | 11 | 5 | 2 | 5 | 0 | 2 | 5 | 0 | 6 | 1 | 17 | 1 | 6 | 1 | 2 | 1 | 1 | 5 | 17 | 5 | 12 | 5 | 6 | 5 | 3 | 3 | 0 | 3 | 5 | 5 | 9 | 3 | 7 | 5 | 7 | 3 | 8 | 5 | 5 | 5 | 15 | 5 | 11 | 5 | 10 | 5 | 14 | 5 | 13 | 3 | 1 | 5 | 16 | 3 | 4 | 5 | 8 | 0 | 13 | 0 | 14 | 0 | 15 | 3 | 11 | 3 | 10 | 6 | 5 | 4 | 11 | 4 | 12 | 2 | 12 | 4 | 5 | 0 | 16 | 2 | 4 | 3 | 17 | 0 | 9 | 2 | 13 | 3 | 6 | 3 | 3 | 6 | 2
-PIN | RESET | 65600 | 0 | N/A | 160 | 40 | 0 | 17 | 5 | 2 | 5 | 0 | 2 | 13 | 0 | 6 | 4 | 2 | 4 | 11 | 2 | 12 | 6 | 15 | 6 | 14 | 7 | 17 | 7 | 14 | 7 | 13 | 1 | 17 | 1 | 6 | 1 | 2 | 1 | 1 | 5 | 17 | 5 | 12 | 5 | 6 | 5 | 3 | 6 | 13 | 6 | 12 | 6 | 10 | 6 | 9 | 6 | 8 | 6 | 7 | 6 | 6 | 6 | 4 | 6 | 3 | 4 | 10 | 7 | 12 | 0 | 13 | 0 | 14 | 0 | 15 | 7 | 3 | 0 | 9 | 4 | 6 | 4 | 8 | 4 | 7
-PIN | A<20> | 64 | 0 | N/A | 102 | 4 | 4 | 0 | 6 | 2 | 4 | 14 | 6 | 0
-PIN | A<21> | 64 | 0 | N/A | 98 | 4 | 4 | 17 | 6 | 2 | 4 | 13 | 6 | 17
-PIN | A<19> | 64 | 0 | N/A | 103 | 4 | 4 | 17 | 6 | 2 | 4 | 13 | 6 | 17
-PIN | A<22> | 64 | 0 | N/A | 97 | 7 | 4 | 17 | 6 | 2 | 4 | 13 | 4 | 1 | 4 | 15 | 6 | 1 | 6 | 17
-PIN | A<23> | 64 | 0 | N/A | 96 | 4 | 4 | 15 | 6 | 2 | 4 | 1 | 6 | 1
-PIN | A<16> | 64 | 0 | N/A | 108 | 4 | 4 | 15 | 6 | 2 | 4 | 1 | 6 | 1
-PIN | A<18> | 64 | 0 | N/A | 105 | 4 | 4 | 16 | 6 | 2 | 4 | 12 | 6 | 16
-PIN | A<17> | 64 | 0 | N/A | 106 | 4 | 4 | 16 | 6 | 2 | 4 | 12 | 6 | 16
-PIN | A<3> | 64 | 0 | N/A | 58 | 26 | 0 | 17 | 2 | 0 | 2 | 14 | 0 | 11 | 5 | 2 | 5 | 0 | 2 | 12 | 1 | 17 | 1 | 6 | 1 | 2 | 1 | 1 | 5 | 17 | 5 | 12 | 5 | 6 | 5 | 3 | 1 | 8 | 2 | 7 | 0 | 15 | 7 | 9 | 3 | 17 | 2 | 13 | 3 | 6 | 3 | 3 | 2 | 16 | 0 | 0 | 0 | 13
-PIN | A<5> | 64 | 0 | N/A | 54 | 17 | 0 | 17 | 2 | 16 | 2 | 14 | 0 | 11 | 1 | 10 | 2 | 7 | 0 | 16 | 7 | 6 | 7 | 9 | 0 | 9 | 7 | 10 | 7 | 11 | 2 | 13 | 7 | 8 | 0 | 0 | 0 | 13 | 0 | 15
-PIN | A<4> | 64 | 0 | N/A | 56 | 11 | 0 | 15 | 2 | 16 | 0 | 11 | 1 | 7 | 0 | 16 | 7 | 6 | 0 | 9 | 2 | 13 | 0 | 0 | 0 | 13 | 2 | 0
-PIN | A<1> | 64 | 0 | N/A | 63 | 24 | 0 | 16 | 2 | 0 | 2 | 14 | 0 | 0 | 5 | 2 | 5 | 0 | 2 | 12 | 1 | 17 | 1 | 6 | 1 | 2 | 1 | 1 | 5 | 17 | 5 | 12 | 5 | 6 | 5 | 3 | 1 | 3 | 3 | 17 | 2 | 13 | 7 | 8 | 7 | 4 | 3 | 6 | 3 | 3 | 2 | 16 | 0 | 13
-PIN | A<6> | 64 | 0 | N/A | 57 | 23 | 0 | 0 | 2 | 0 | 2 | 14 | 5 | 2 | 5 | 0 | 2 | 12 | 1 | 17 | 1 | 6 | 1 | 2 | 1 | 1 | 5 | 17 | 5 | 12 | 5 | 6 | 5 | 3 | 1 | 9 | 0 | 16 | 7 | 9 | 0 | 9 | 7 | 10 | 7 | 8 | 3 | 6 | 3 | 3 | 2 | 16
-PIN | A<2> | 64 | 0 | N/A | 60 | 25 | 0 | 13 | 0 | 0 | 2 | 14 | 0 | 11 | 1 | 17 | 1 | 6 | 1 | 2 | 1 | 1 | 5 | 17 | 5 | 12 | 5 | 6 | 5 | 3 | 1 | 5 | 2 | 7 | 0 | 16 | 7 | 9 | 3 | 17 | 0 | 9 | 7 | 10 | 7 | 11 | 2 | 13 | 7 | 8 | 3 | 6 | 3 | 3 | 2 | 16
-PIN | CFIN | 64 | 0 | N/A | 116 | 1 | 6 | 2
-PIN | UDS | 64 | 0 | N/A | 91 | 16 | 5 | 2 | 5 | 0 | 2 | 12 | 1 | 17 | 1 | 6 | 1 | 2 | 1 | 1 | 5 | 17 | 5 | 12 | 5 | 6 | 5 | 3 | 3 | 10 | 4 | 12 | 3 | 6 | 3 | 3 | 2 | 16
-PIN | C3 | 64 | 0 | N/A | 114 | 1 | 7 | 7
-PIN | C1 | 64 | 0 | N/A | 115 | 1 | 7 | 7
-PIN | BERR | 64 | 0 | N/A | 109 | 1 | 7 | 3
-PIN | LDS | 64 | 0 | N/A | 92 | 2 | 6 | 5 | 4 | 11
-PIN | AUTOBOOT_OFF | 64 | 0 | N/A | 84 | 1 | 7 | 10
-PIN | CP_IRQ | 64 | 0 | N/A | 34 | 1 | 2 | 1
-PIN | A<11> | 64 | 0 | N/A | 68 | 2 | 0 | 3 | 3 | 14
-PIN | A<12> | 64 | 0 | N/A | 69 | 2 | 3 | 15 | 0 | 8
-PIN | A<13> | 64 | 0 | N/A | 72 | 2 | 3 | 12 | 0 | 1
-PIN | A<14> | 64 | 0 | N/A | 74 | 1 | 3 | 13
-PIN | A<7> | 64 | 0 | N/A | 59 | 1 | 1 | 13
-PIN | A<8> | 64 | 0 | N/A | 62 | 1 | 1 | 11
-PIN | A<9> | 64 | 0 | N/A | 64 | 2 | 0 | 10 | 3 | 16
-PIN | A<10> | 64 | 0 | N/A | 66 | 2 | 0 | 11 | 1 | 0
-PIN | CP_CS | 536871040 | 0 | N/A | 37
-PIN | IDE_R | 536871040 | 0 | N/A | 29
-PIN | IDE_W | 536871040 | 0 | N/A | 30
-PIN | ROM_OE | 536871040 | 0 | N/A | 39
-PIN | LAN_RD | 536871040 | 0 | N/A | 149
-PIN | LAN_WRH | 536871040 | 0 | N/A | 147
-PIN | LAN_WRL | 536871040 | 0 | N/A | 86
-PIN | OWN | 536871040 | 0 | N/A | 119
-PIN | INT_OUT | 536871040 | 0 | N/A | 35
-PIN | A_LAN<0> | 536871040 | 0 | N/A | 5
-PIN | IDE_A<2> | 536871040 | 0 | N/A | 27
-PIN | A_LAN<10> | 536871040 | 0 | N/A | 155
-PIN | A_LAN<11> | 536871040 | 0 | N/A | 156
-PIN | A_LAN<12> | 536871040 | 0 | N/A | 154
-PIN | A_LAN<13> | 536871040 | 0 | N/A | 153
-PIN | A_LAN<1> | 536871040 | 0 | N/A | 4
-PIN | A_LAN<2> | 536871040 | 0 | N/A | 8
-PIN | A_LAN<3> | 536871040 | 0 | N/A | 6
-PIN | A_LAN<4> | 536871040 | 0 | N/A | 11
-PIN | A_LAN<5> | 536871040 | 0 | N/A | 9
-PIN | A_LAN<6> | 536871040 | 0 | N/A | 13
-PIN | A_LAN<7> | 536871040 | 0 | N/A | 12
-PIN | IDE_A<0> | 536871040 | 0 | N/A | 26
-PIN | A_LAN<8> | 536871040 | 0 | N/A | 157
-PIN | IDE_A<1> | 536871040 | 0 | N/A | 28
-PIN | A_LAN<9> | 536871040 | 0 | N/A | 159
-PIN | CFOUT | 536871040 | 0 | N/A | 117
-PIN | CP_RD | 536871040 | 0 | N/A | 79
-PIN | CP_WE | 536871040 | 0 | N/A | 78
-PIN | IDE_CS<0> | 536871040 | 0 | N/A | 24
-PIN | IDE_CS<1> | 536871040 | 0 | N/A | 25
-PIN | SLAVE | 536871040 | 0 | N/A | 118
-PIN | DTACK | 536871040 | 0 | N/A | 95
-PIN | LAN_CS | 536871040 | 0 | N/A | 148
-PIN | LAN_CFG<2> | 536871040 | 0 | N/A | 152
-PIN | ROM_B<1> | 536871040 | 0 | N/A | 77
-PIN | ROM_B<0> | 536871040 | 0 | N/A | 76
-PIN | LAN_CFG<4> | 536871040 | 0 | N/A | 123
-PIN | LAN_CFG<3> | 536871040 | 0 | N/A | 15
-PIN | LAN_CFG<1> | 536871040 | 0 | N/A | 14
-PIN | D<0> | 536870976 | 0 | N/A | 2 | 1 | 3 | 0
-PIN | D<10> | 536870976 | 0 | N/A | 45 | 4 | 6 | 15 | 1 | 2 | 6 | 10 | 3 | 5
-PIN | D<11> | 536870976 | 0 | N/A | 47 | 4 | 6 | 15 | 1 | 1 | 6 | 9 | 5 | 9
-PIN | D<12> | 536870976 | 0 | N/A | 48 | 4 | 6 | 14 | 5 | 17 | 6 | 8 | 3 | 7
-PIN | D<13> | 536870976 | 0 | N/A | 49 | 4 | 7 | 17 | 5 | 12 | 6 | 7 | 5 | 7
-PIN | D<14> | 536870976 | 0 | N/A | 50 | 4 | 7 | 14 | 5 | 6 | 6 | 6 | 3 | 8
-PIN | D<15> | 536870976 | 0 | N/A | 52 | 4 | 7 | 13 | 5 | 3 | 6 | 4 | 5 | 5
-PIN | D<1> | 536870976 | 0 | N/A | 19 | 1 | 5 | 15
-PIN | D<2> | 536870976 | 0 | N/A | 43 | 1 | 5 | 11
-PIN | D<3> | 536870976 | 0 | N/A | 17 | 1 | 5 | 10
-PIN | D<4> | 536870976 | 0 | N/A | 23 | 1 | 5 | 14
-PIN | D<5> | 536870976 | 0 | N/A | 22 | 1 | 5 | 13
-PIN | D<6> | 536870976 | 0 | N/A | 16 | 1 | 3 | 1
-PIN | D<7> | 536870976 | 0 | N/A | 18 | 1 | 5 | 16
-PIN | D<8> | 536870976 | 0 | N/A | 21 | 4 | 4 | 2 | 1 | 17 | 6 | 13 | 3 | 4
-PIN | D<9> | 536870976 | 0 | N/A | 44 | 4 | 4 | 11 | 1 | 6 | 6 | 12 | 5 | 8
-PIN | DQ<0> | 536870976 | 0 | N/A | 133 | 1 | 1 | 4
-PIN | DQ<10> | 536870976 | 0 | N/A | 144 | 1 | 2 | 2
-PIN | DQ<11> | 536870976 | 0 | N/A | 129 | 1 | 2 | 10
-PIN | DQ<12> | 536870976 | 0 | N/A | 145 | 2 | 2 | 3 | 2 | 2
-PIN | DQ<13> | 536870976 | 0 | N/A | 127 | 2 | 2 | 11 | 2 | 10
-PIN | DQ<14> | 536870976 | 0 | N/A | 146 | 2 | 2 | 6 | 2 | 5
-PIN | DQ<15> | 536870976 | 0 | N/A | 125 | 2 | 2 | 9 | 2 | 8
-PIN | DQ<1> | 536870976 | 0 | N/A | 132 | 1 | 0 | 2
-PIN | DQ<2> | 536870976 | 0 | N/A | 135 | 1 | 2 | 0
-PIN | DQ<3> | 536870976 | 0 | N/A | 134 | 1 | 1 | 16
-PIN | DQ<4> | 536870976 | 0 | N/A | 139 | 1 | 0 | 7
-PIN | DQ<5> | 536870976 | 0 | N/A | 136 | 1 | 0 | 5
-PIN | DQ<6> | 536870976 | 0 | N/A | 141 | 1 | 1 | 15
-PIN | DQ<7> | 536870976 | 0 | N/A | 140 | 1 | 0 | 1
-PIN | DQ<8> | 536870976 | 0 | N/A | 143 | 1 | 0 | 4
-PIN | DQ<9> | 536870976 | 0 | N/A | 130 | 1 | 2 | 8
+MACROCELL | 8 | 14 | EXP27_
+ATTRIBUTES | 2048 | 0
+OUTPUTMC | 1 | 8 | 15
+INPUTS | 4 | IDE_BASEADR<1>  | A<17>  | IDE_BASEADR<2>  | A<18>
+INPUTMC | 2 | 12 | 17 | 12 | 16
+INPUTP | 2 | 172 | 171
+EXPORTS | 1 | 8 | 15
+EQ | 4 | 
+       EXP27_.EXP  =  IDE_BASEADR<1> & !A<17>
+	# !IDE_BASEADR<1> & A<17>
+	# IDE_BASEADR<2> & !A<18>
+	# !IDE_BASEADR<2> & A<18>
+
+MACROCELL | 8 | 15 | EXP28_
+ATTRIBUTES | 2048 | 0
+OUTPUTMC | 1 | 8 | 16
+INPUTS | 7 | IDE_BASEADR<3>  | A<19>  | IDE_BASEADR<5>  | A<21>  | IDE_BASEADR<6>  | A<22>  | EXP27_.EXP
+INPUTMC | 4 | 12 | 15 | 5 | 14 | 5 | 12 | 8 | 14
+INPUTP | 3 | 169 | 163 | 162
+EXPORTS | 1 | 8 | 16
+IMPORTS | 1 | 8 | 14
+EQ | 10 | 
+       EXP28_.EXP  =  IDE_BASEADR<3> & !A<19>
+	# !IDE_BASEADR<3> & A<19>
+	# IDE_BASEADR<5> & !A<21>
+	# !IDE_BASEADR<5> & A<21>
+	# IDE_BASEADR<6> & !A<22>
+;Imported pterms FB9_15
+	# IDE_BASEADR<1> & !A<17>
+	# !IDE_BASEADR<1> & A<17>
+	# IDE_BASEADR<2> & !A<18>
+	# !IDE_BASEADR<2> & A<18>
+
+MACROCELL | 8 | 17 | EXP29_
+ATTRIBUTES | 2048 | 0
+OUTPUTMC | 1 | 8 | 16
+INPUTS | 6 | IDE_BASEADR<0>  | A<16>  | IDE_BASEADR<6>  | A<22>  | IDE_BASEADR<7>  | A<23>
+INPUTMC | 3 | 15 | 17 | 5 | 12 | 14 | 17
+INPUTP | 3 | 175 | 162 | 161
+EXPORTS | 1 | 8 | 16
+EQ | 5 | 
+       EXP29_.EXP  =  IDE_BASEADR<0> & !A<16>
+	# !IDE_BASEADR<0> & A<16>
+	# !IDE_BASEADR<6> & A<22>
+	# IDE_BASEADR<7> & !A<23>
+	# !IDE_BASEADR<7> & A<23>
+
+PIN | AS | 64 | 0 | N/A | 152 | 21 | 6 | 17 | 0 | 17 | 0 | 15 | 0 | 12 | 0 | 10 | 0 | 8 | 12 | 1 | 10 | 16 | 0 | 16 | 2 | 1 | 4 | 4 | 7 | 9 | 7 | 4 | 12 | 13 | 13 | 2 | 14 | 11 | 13 | 13 | 11 | 17 | 11 | 15 | 11 | 16 | 13 | 16
+PIN | RW | 64 | 0 | N/A | 158 | 32 | 0 | 15 | 9 | 2 | 9 | 16 | 11 | 9 | 7 | 1 | 11 | 7 | 7 | 2 | 11 | 4 | 9 | 1 | 10 | 11 | 9 | 4 | 9 | 9 | 4 | 7 | 9 | 11 | 9 | 10 | 9 | 13 | 11 | 11 | 1 | 15 | 1 | 12 | 0 | 12 | 0 | 10 | 1 | 6 | 1 | 3 | 1 | 0 | 0 | 8 | 1 | 10 | 1 | 17 | 1 | 8 | 10 | 17 | 11 | 15 | 11 | 16 | 13 | 16
+PIN | RESET | 64 | 0 | N/A | 263 | 49 | 6 | 17 | 0 | 17 | 6 | 16 | 6 | 15 | 14 | 12 | 14 | 10 | 13 | 17 | 0 | 15 | 9 | 17 | 9 | 15 | 9 | 14 | 9 | 12 | 6 | 14 | 5 | 17 | 5 | 16 | 5 | 15 | 3 | 0 | 15 | 17 | 12 | 17 | 12 | 16 | 12 | 15 | 12 | 14 | 5 | 14 | 5 | 12 | 14 | 17 | 14 | 16 | 12 | 12 | 12 | 11 | 12 | 10 | 12 | 9 | 14 | 15 | 14 | 14 | 14 | 13 | 1 | 15 | 1 | 12 | 0 | 12 | 0 | 10 | 1 | 6 | 1 | 3 | 1 | 0 | 0 | 8 | 5 | 11 | 11 | 17 | 11 | 15 | 11 | 16 | 13 | 16 | 3 | 12 | 3 | 1 | 3 | 17
+PIN | A<20> | 64 | 0 | N/A | 167 | 4 | 7 | 7 | 8 | 16 | 15 | 16 | 4 | 1
+PIN | A<21> | 64 | 0 | N/A | 163 | 4 | 7 | 6 | 8 | 15 | 15 | 16 | 4 | 0
+PIN | A<19> | 64 | 0 | N/A | 169 | 4 | 7 | 6 | 8 | 15 | 15 | 16 | 4 | 0
+PIN | A<23> | 64 | 0 | N/A | 161 | 5 | 7 | 6 | 7 | 8 | 15 | 16 | 4 | 2 | 8 | 17
+PIN | A<22> | 64 | 0 | N/A | 162 | 6 | 4 | 2 | 8 | 15 | 15 | 16 | 4 | 0 | 7 | 8 | 8 | 17
+PIN | A<16> | 64 | 0 | N/A | 175 | 4 | 4 | 2 | 7 | 8 | 15 | 16 | 8 | 17
+PIN | A<17> | 64 | 0 | N/A | 172 | 4 | 7 | 5 | 8 | 14 | 15 | 16 | 4 | 3
+PIN | A<18> | 64 | 0 | N/A | 171 | 4 | 4 | 3 | 8 | 14 | 15 | 16 | 7 | 9
+PIN | CFIN | 64 | 0 | N/A | 190 | 1 | 15 | 16
+PIN | A<3> | 64 | 0 | N/A | 99 | 14 | 2 | 16 | 3 | 16 | 3 | 0 | 3 | 15 | 3 | 11 | 10 | 17 | 11 | 15 | 11 | 16 | 13 | 16 | 3 | 14 | 2 | 15 | 2 | 17 | 3 | 1 | 3 | 17
+PIN | A<4> | 64 | 0 | N/A | 97 | 14 | 2 | 16 | 3 | 16 | 3 | 0 | 3 | 1 | 3 | 7 | 10 | 17 | 11 | 15 | 11 | 16 | 13 | 16 | 3 | 12 | 3 | 14 | 2 | 15 | 2 | 17 | 3 | 17
+PIN | A<5> | 64 | 0 | N/A | 91 | 14 | 2 | 15 | 3 | 16 | 3 | 0 | 3 | 15 | 1 | 1 | 10 | 17 | 11 | 15 | 11 | 16 | 13 | 16 | 3 | 12 | 3 | 14 | 2 | 17 | 3 | 1 | 3 | 17
+PIN | A<2> | 64 | 0 | N/A | 101 | 14 | 3 | 14 | 3 | 16 | 3 | 0 | 3 | 15 | 3 | 4 | 10 | 17 | 11 | 15 | 11 | 16 | 13 | 16 | 3 | 10 | 3 | 12 | 2 | 17 | 3 | 1 | 3 | 17
+PIN | A<1> | 64 | 0 | N/A | 107 | 13 | 3 | 14 | 3 | 16 | 3 | 0 | 3 | 15 | 3 | 5 | 10 | 17 | 11 | 15 | 11 | 16 | 13 | 16 | 3 | 10 | 2 | 17 | 3 | 1 | 3 | 17
+PIN | A<6> | 64 | 0 | N/A | 98 | 11 | 3 | 12 | 3 | 0 | 3 | 15 | 3 | 13 | 10 | 17 | 11 | 15 | 11 | 16 | 13 | 16 | 2 | 17 | 3 | 1 | 3 | 17
+PIN | AUTOBOOT_OFF | 64 | 0 | N/A | 142 | 1 | 2 | 17
+PIN | C3 | 64 | 0 | N/A | 187 | 1 | 10 | 15
+PIN | C1 | 64 | 0 | N/A | 188 | 1 | 10 | 15
+PIN | BERR | 64 | 0 | N/A | 176 | 1 | 5 | 11
+PIN | UDS | 64 | 0 | N/A | 155 | 2 | 1 | 3 | 15 | 15
+PIN | LDS | 64 | 0 | N/A | 157 | 2 | 1 | 0 | 15 | 15
+PIN | IDE_WAIT | 64 | 0 | N/A | 61 | 1 | 14 | 11
+PIN | CP_IRQ | 64 | 0 | N/A | 59 | 1 | 2 | 13
+PIN | A<11> | 64 | 0 | N/A | 114 | 2 | 0 | 13 | 5 | 5
+PIN | A<12> | 64 | 0 | N/A | 115 | 2 | 5 | 7 | 0 | 7
+PIN | A<13> | 64 | 0 | N/A | 123 | 2 | 5 | 4 | 0 | 9
+PIN | A<14> | 64 | 0 | N/A | 125 | 1 | 5 | 2
+PIN | A<7> | 64 | 0 | N/A | 100 | 1 | 1 | 4
+PIN | A<8> | 64 | 0 | N/A | 106 | 1 | 1 | 2
+PIN | A<9> | 64 | 0 | N/A | 108 | 2 | 0 | 11 | 5 | 9
+PIN | A<10> | 64 | 0 | N/A | 112 | 2 | 0 | 14 | 5 | 13
+PIN | LAN_CS | 536871040 | 0 | N/A | 240
+PIN | CP_RD | 536871040 | 0 | N/A | 132
+PIN | CP_WE | 536871040 | 0 | N/A | 131
+PIN | IDE_R | 536871040 | 0 | N/A | 46
+PIN | IDE_W | 536871040 | 0 | N/A | 47
+PIN | ROM_OE | 536871040 | 0 | N/A | 65
+PIN | LAN_RD | 536871040 | 0 | N/A | 242
+PIN | LAN_WRH | 536871040 | 0 | N/A | 237
+PIN | LAN_WRL | 536871040 | 0 | N/A | 145
+PIN | OWN | 536871040 | 0 | N/A | 195
+PIN | OVR | 536871040 | 0 | N/A | 185
+PIN | INT_OUT | 536871040 | 0 | N/A | 60
+PIN | DTACK | 536871040 | 0 | N/A | 160
+PIN | A_LAN<0> | 536871040 | 0 | N/A | 7
+PIN | IDE_A<2> | 536871040 | 0 | N/A | 44
+PIN | A_LAN<10> | 536871040 | 0 | N/A | 255
+PIN | A_LAN<11> | 536871040 | 0 | N/A | 256
+PIN | A_LAN<12> | 536871040 | 0 | N/A | 254
+PIN | A_LAN<13> | 536871040 | 0 | N/A | 253
+PIN | A_LAN<1> | 536871040 | 0 | N/A | 6
+PIN | A_LAN<2> | 536871040 | 0 | N/A | 12
+PIN | A_LAN<3> | 536871040 | 0 | N/A | 8
+PIN | A_LAN<4> | 536871040 | 0 | N/A | 20
+PIN | A_LAN<5> | 536871040 | 0 | N/A | 13
+PIN | A_LAN<6> | 536871040 | 0 | N/A | 22
+PIN | A_LAN<7> | 536871040 | 0 | N/A | 21
+PIN | IDE_A<0> | 536871040 | 0 | N/A | 43
+PIN | A_LAN<8> | 536871040 | 0 | N/A | 258
+PIN | IDE_A<1> | 536871040 | 0 | N/A | 45
+PIN | A_LAN<9> | 536871040 | 0 | N/A | 262
+PIN | CP_CS | 536871040 | 0 | N/A | 63
+PIN | IDE_CS<0> | 536871040 | 0 | N/A | 39
+PIN | IDE_CS<1> | 536871040 | 0 | N/A | 41
+PIN | SLAVE | 536871040 | 0 | N/A | 193
+PIN | LAN_CFG<4> | 536871040 | 0 | N/A | 199
+PIN | LAN_CFG<3> | 536871040 | 0 | N/A | 24
+PIN | LAN_CFG<2> | 536871040 | 0 | N/A | 251
+PIN | LAN_CFG<1> | 536871040 | 0 | N/A | 23
+PIN | CFOUT | 536871040 | 0 | N/A | 191
+PIN | ROM_B<1> | 536871040 | 0 | N/A | 129
+PIN | ROM_B<0> | 536871040 | 0 | N/A | 139
+PIN | D<0> | 536870976 | 0 | N/A | 4 | 1 | 9 | 2
+PIN | D<10> | 536870976 | 0 | N/A | 74 | 4 | 9 | 14 | 12 | 16 | 12 | 11 | 9 | 16
+PIN | D<11> | 536870976 | 0 | N/A | 77 | 4 | 9 | 12 | 12 | 15 | 12 | 10 | 11 | 9
+PIN | D<12> | 536870976 | 0 | N/A | 78 | 4 | 6 | 14 | 12 | 14 | 12 | 9 | 7 | 1
+PIN | D<13> | 536870976 | 0 | N/A | 80 | 4 | 5 | 17 | 5 | 14 | 14 | 15 | 11 | 7
+PIN | D<14> | 536870976 | 0 | N/A | 81 | 4 | 5 | 16 | 5 | 12 | 14 | 14 | 7 | 2
+PIN | D<15> | 536870976 | 0 | N/A | 89 | 4 | 5 | 15 | 14 | 17 | 14 | 13 | 11 | 4
+PIN | D<1> | 536870976 | 0 | N/A | 30 | 1 | 9 | 1
+PIN | D<2> | 536870976 | 0 | N/A | 71 | 1 | 10 | 11
+PIN | D<3> | 536870976 | 0 | N/A | 28 | 1 | 9 | 4
+PIN | D<4> | 536870976 | 0 | N/A | 38 | 1 | 9 | 9
+PIN | D<5> | 536870976 | 0 | N/A | 37 | 1 | 4 | 7
+PIN | D<6> | 536870976 | 0 | N/A | 26 | 1 | 9 | 11
+PIN | D<7> | 536870976 | 0 | N/A | 29 | 1 | 9 | 10
+PIN | D<8> | 536870976 | 0 | N/A | 32 | 4 | 9 | 17 | 15 | 17 | 14 | 16 | 9 | 13
+PIN | D<9> | 536870976 | 0 | N/A | 73 | 4 | 9 | 15 | 12 | 17 | 12 | 12 | 11 | 11
+PIN | DQ<0> | 536870976 | 0 | N/A | 217 | 1 | 3 | 1
+PIN | DQ<10> | 536870976 | 0 | N/A | 234 | 1 | 4 | 13
+PIN | DQ<11> | 536870976 | 0 | N/A | 207 | 1 | 4 | 14
+PIN | DQ<12> | 536870976 | 0 | N/A | 235 | 1 | 4 | 16
+PIN | DQ<13> | 536870976 | 0 | N/A | 204 | 1 | 6 | 2
+PIN | DQ<14> | 536870976 | 0 | N/A | 236 | 1 | 6 | 4
+PIN | DQ<15> | 536870976 | 0 | N/A | 202 | 1 | 6 | 11
+PIN | DQ<1> | 536870976 | 0 | N/A | 216 | 1 | 1 | 14
+PIN | DQ<2> | 536870976 | 0 | N/A | 127 | 1 | 4 | 9
+PIN | DQ<3> | 536870976 | 0 | N/A | 219 | 1 | 1 | 11
+PIN | DQ<4> | 536870976 | 0 | N/A | 225 | 1 | 0 | 5
+PIN | DQ<5> | 536870976 | 0 | N/A | 69 | 1 | 0 | 4
+PIN | DQ<6> | 536870976 | 0 | N/A | 227 | 1 | 1 | 9
+PIN | DQ<7> | 536870976 | 0 | N/A | 226 | 1 | 1 | 13
+PIN | DQ<8> | 536870976 | 0 | N/A | 231 | 1 | 1 | 16
+PIN | DQ<9> | 536870976 | 0 | N/A | 209 | 1 | 4 | 11

@@ -2,7 +2,7 @@ Release 14.6 ngdbuild P.68d (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 Command Line: C:\Xilinx\14.6\ISE_DS\ISE\bin\nt64\unwrapped\ngdbuild.exe
--intstyle ise -dd _ngo -uc pinlist.ucf -p xc95144xl-TQ144-10 LAN_IDE_CP.ngc
+-intstyle ise -dd _ngo -uc pinlist.ucf -p xc95288xl-TQ144-10 LAN_IDE_CP.ngc
 LAN_IDE_CP.ngd
 
 Reading NGO file
@@ -30,7 +30,7 @@ NGDBUILD Design Results Summary:
   Number of errors:     0
   Number of warnings:   1
 
-Total memory usage is 190196 kilobytes
+Total memory usage is 190176 kilobytes
 
 Writing NGD file "LAN_IDE_CP.ngd" ...
 Total REAL time to NGDBUILD completion:  5 sec

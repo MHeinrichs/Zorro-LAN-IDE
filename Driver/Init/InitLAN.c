@@ -61,10 +61,11 @@ int SoftReset(APTR *BaseAddress){
                 do{
              
 	                delayCIA();
-  	                v = READREG(BaseAddress,ESTAT);
-                    printf("Read 0x%x at register 0x%x\n",v,ESTAT);
+  	                v = (WORD) READREG(BaseAddress,ESTAT);
+  	                v &= (WORD) w;
+                    printf("Read 0x%x at register 0x%x (should be 0x%x)\n",v,ESTAT,w);
                 	
-                }while((v & w) != w);
+                }while(v != w);
 
                 // Check to see if the reset operation was successful by
                 // checking if EUDAST went back to its reset default.  This test
@@ -72,7 +73,7 @@ int SoftReset(APTR *BaseAddress){
                 // this test fail, such as a PSP pin shorted to logic high.
                 w=READREG(BaseAddress,EUDAST);
                 printf("Read 0x%x at register 0x%x\n",w,EUDAST);
-        } while(READREG(BaseAddress,EUDAST) != 0);
+        } while(w != 0);
 
 
         // Really ensure reset is done and give some time for power to be stable
@@ -148,9 +149,19 @@ APTR LocateBoard(int manufactor, int product)
 
 main(int argc, char *argv[])
 {
-    static int manufactor = 2588;
-    static int product = 123;
+    int manufactor = 2588;
+    int product = 123;
     int v =0;
+    if(argc==2){
+    	product =atoi(argv[1]);
+    }
+    if(argc==3){
+    	manufactor =atoi(argv[1]);
+    	product =atoi(argv[2]);
+    }
+    
+    			
+    
     APTR board = LocateBoard(manufactor,product);
     if(board){
         printf("Found board for manufactor/product %d/%d at address 0x%lx.\n",manufactor,product, board);

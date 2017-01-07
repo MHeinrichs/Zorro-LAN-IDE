@@ -19,6 +19,8 @@
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -83,8 +85,8 @@ architecture Behavioral of LAN_IDE_CP is
 	SIGNAL lan: STD_LOGIC;
 	SIGNAL cp: STD_LOGIC;
 	signal Dout1:STD_LOGIC_VECTOR(3 downto 0);
-	signal AUTO_CONFIG_DONE:STD_LOGIC_VECTOR(2 downto 0);
-	signal AUTO_CONFIG_DONE_CYCLE:STD_LOGIC_VECTOR(2 downto 0);
+	signal AUTO_CONFIG_DONE:STD_LOGIC_VECTOR(1 downto 0);
+	signal AUTO_CONFIG_DONE_CYCLE:STD_LOGIC_VECTOR(1 downto 0);
 	signal SHUT_UP:STD_LOGIC_VECTOR(2 downto 0);
 	signal IDE_BASEADR:STD_LOGIC_VECTOR(7 downto 0);
 	signal LAN_BASEADR:STD_LOGIC_VECTOR(7 downto 0);
@@ -98,6 +100,13 @@ architecture Behavioral of LAN_IDE_CP is
 	signal AMIGA_CLK: std_logic;
 	signal LAN_INT_ENABLE: std_logic;
 	signal DECODE_RESET: std_logic;
+	signal LAN_INT_D0: std_logic;
+	signal DS: std_logic;
+	signal LAN_RD_S: std_logic;
+	signal LAN_WRH_S: std_logic;
+	signal LAN_WRL_S: std_logic;
+	signal CP_RD_S: std_logic;
+	signal CP_WE_S: std_logic;
 
    Function to_std_logic(X: in Boolean) return Std_Logic is
    variable ret : std_logic;
@@ -111,65 +120,98 @@ begin
 	AMIGA_CLK <= not (C1 xor C3);
 	DECODE_RESET <= BERR and reset;
 	
+	DS <= UDS and LDS;
+	
 	ADDRESS_DECODE: process(DECODE_RESET,AMIGA_CLK)
 	begin
 		if(DECODE_RESET ='0')then
-			autoconfig <='0';
-			ide <='0';
-			lan <='0';
-			cp  <='0';
+			autoconfig <= '0';
+			ide <= '0';
+			lan <= '0';
+			cp  <= '0';
 		elsif(rising_edge(AMIGA_CLK))then				
-			if(A(23 downto 16) = x"E8" and not(AUTO_CONFIG_DONE ="111") and CFIN='0')then
-				autoconfig <='1';
+			if(A(23 downto 16) = x"E8" and AUTO_CONFIG_DONE < "11" )then
+				autoconfig <= not CFIN;
 			else
 				autoconfig <='0';
 			end if;
 
 
-			if(A(23 downto 16) = LAN_BASEADR and SHUT_UP(0) = '0')then					
-				lan <='1';					
+			if(A(23 downto 16) = LAN_BASEADR )then					
+				lan <= not SHUT_UP(0);					
 			else
-				lan <='0';
+				lan <= '0';
 			end if;				
 
-			if(A(23 downto 16) = CP_BASEADR and SHUT_UP(1) = '0')then					
-				cp <='1';					
+			if(A(23 downto 16) = CP_BASEADR)then					
+				cp <= not SHUT_UP(1);					
 			else
-				cp <='0';
+				cp <= '0';
 			end if;				
 
-			if(A(23 downto 16) = IDE_BASEADR and SHUT_UP(2) = '0')then					
-				ide <='1';					
+			if(A(23 downto 16) = IDE_BASEADR)then					
+				ide <= not SHUT_UP(2);					
 			else
-				ide <='0';
+				ide <= '0';
 			end if;				
 		end if;				
 	end process ADDRESS_DECODE;
 	
 	--LAN interrupt enable
-	lan_int_proc: process (AMIGA_CLK,reset)
-	begin
-		if(reset ='0') then
-				LAN_INT_ENABLE <='0';
-		elsif falling_edge(AMIGA_CLK) then
-			if(LAN_INT = '1' and AUTO_CONFIG_DONE ="111") then --enable if high and ac completed!
-				LAN_INT_ENABLE <= '1';
-			end if;
-		end if;
-	end process lan_int_proc;
+--	lan_int_proc: process (AMIGA_CLK,reset)
+--	begin
+--		if(reset ='0') then
+--				LAN_INT_ENABLE <='0';
+--				LAN_INT_D0 <='0';
+--		elsif falling_edge(AMIGA_CLK) then
+--			LAN_INT_D0 <= LAN_INT;
+--			if(LAN_INT = '1' and LAN_INT_D0 = '0' and AUTO_CONFIG_DONE ="111") then --enable if high and ac completed!
+--				LAN_INT_ENABLE <= '1';
+--			end if;
+--		end if;
+--	end process lan_int_proc;
 	
-	--ide
-		-- this is the clocked process
+	--lan signal generation: all Signals are HIGH active!
+	lan_rw_gen: process (AMIGA_CLK)
+	begin
+		if falling_edge(AMIGA_CLK) then			
+			if(lan='1' and DS='0' and reset ='1')then
+				LAN_RD_S		<= RW;	
+				LAN_WRH_S   <= (not RW) and (not UDS);
+				LAN_WRL_S   <= (not RW) and (not LDS);
+			else
+				LAN_RD_S		<= '0';
+				LAN_WRH_S	<= '0';
+				LAN_WRL_S	<= '0';
+			end if;				
+		end if;
+	end process lan_rw_gen;
+	
+	--cp signal generation
+	cp_rw_gen: process (AMIGA_CLK)
+	begin
+		if falling_edge(AMIGA_CLK) then			
+			if(cp='1' and DS='0' and reset ='1')then --datastrobe instead of AS!
+				CP_RD_S		<= not RW;
+				CP_WE_S		<= RW;
+			else
+				CP_RD_S		<= '1';
+				CP_WE_S		<= '1';
+			end if;				
+		end if;
+	end process cp_rw_gen;
+
+
+	--ide signal generation
 	ide_rw_gen: process (AMIGA_CLK)
 	begin
-	
-		if falling_edge(AMIGA_CLK) then
+		if falling_edge(AMIGA_CLK) then			
 			if	(reset = '0') then
+				IDE_ENABLE 	<= '1';
 				IDE_R_S		<= '1';
 				IDE_W_S		<= '1';
 				ROM_OE_S		<= '1';
-				IDE_ENABLE 	<= '1';
-			elsif(AS='0' and ide='1')then
+			elsif(ide='1' and AS='0')then
 				if(RW='0')then
 					--the write goes to the hdd!
 					IDE_ENABLE  <= '0'; -- enable IDE on first read
@@ -185,163 +227,155 @@ begin
 				IDE_R_S		<= '1';
 				IDE_W_S		<= '1';
 				ROM_OE_S		<= '1';					
-			end if;
-				
+			end if;				
 		end if;
 	end process ide_rw_gen;
 		
 	
-	--autoconfig
-	
-	autoconfig_done: process (reset, AS)
-	begin
-		if	reset = '0' then
-			-- reset active ...
-			AUTO_CONFIG_DONE	<="000";
-		elsif rising_edge(AS) then -- no reset, so wait for rising edge of the nAS		
-			AUTO_CONFIG_DONE <= AUTO_CONFIG_DONE_CYCLE;
-		end if;
-	end process autoconfig_done;
-
+	--autoconfig	
+--0
 
 	autoconfig_proc: process (reset, AMIGA_CLK)
 	begin
 		if falling_edge(AMIGA_CLK) then -- no reset, so wait for rising edge of the clock		
 			if	reset = '0' then
 				-- reset active ...
-				AUTO_CONFIG_DONE_CYCLE	<="000";
+				AUTO_CONFIG_DONE_CYCLE	<="00";
 				Dout1<="1111";
 				--Dout2<="1111";
 				SHUT_UP	<="111";
 				IDE_BASEADR<=x"FF";
 				LAN_BASEADR<=x"FF";
 				CP_BASEADR<=x"FF";
-			elsif(autoconfig= '1' and AS='0') then
-				if(RW='1') then
-					case A(6 downto 1) is
-						when "000000"	=> 
-							if(AUTO_CONFIG_DONE(0)='0' or AUTO_CONFIG_DONE(1)='0')then
-								Dout1 <= 	"1100" ; --ZII, No-System-Memory, no ROM
-							elsif(AUTO_CONFIG_DONE(2)='0')then
-								Dout1 <= 	"110"&not(AUTOBOOT_OFF) ; --ZII, no System-Memory, (perhaps)ROM
-							end if;
-						when "000001"	=> Dout1 <=	"0001" ; --one Card, 64KB =001
-						when "000010"	=> 
-							if(AUTO_CONFIG_DONE(0)='0' or AUTO_CONFIG_DONE(1)='0')then
-								Dout1 <=	"1000" ; --ProductID high nibble : E->0001
-							elsif(AUTO_CONFIG_DONE(2)='0')then
-								Dout1 <=	"1111" ; --ProductID high nibble : F->0000=0
-							end if;
-						when "000011"	=> 
-							if(AUTO_CONFIG_DONE(0)='0')then
-								Dout1 <=	"0100" ; --ProductID low nibble: F->0000
-							elsif(AUTO_CONFIG_DONE(1)='0')then
-								Dout1 <=	"0011" ; --ProductID low nibble: F->0000
-							elsif(AUTO_CONFIG_DONE(2)='0')then
-								Dout1 <=	"1001" ; --ProductID low nibble: 9->0110=6
-							end if;						
-						when "001000"	=> Dout1 <=	"1111" ; --Ventor ID 0
-						when "001001"	=> Dout1 <=	"0101" ; --Ventor ID 1
-							if(AUTO_CONFIG_DONE(0)='0' or AUTO_CONFIG_DONE(1)='0')then
-								Dout1 <=	"0101" ; --Ventor ID 1
-							elsif(AUTO_CONFIG_DONE(2)='0')then
-								Dout1 <=	"0111" ; --Ventor ID 1
-							end if;						
-						when "001010"	=> 
-							if(AUTO_CONFIG_DONE(0)='0' or AUTO_CONFIG_DONE(1)='0')then
-								Dout1 <=	"1110" ; --Ventor ID 2
-							elsif(AUTO_CONFIG_DONE(2)='0')then
-								Dout1 <=	"1101" ; --Ventor ID 2
-							end if;												
-						when "001011"	=> 
-							if(AUTO_CONFIG_DONE(0)='0' or AUTO_CONFIG_DONE(1)='0')then
-								Dout1 <=	"0011" ; --Ventor ID 3 : $0A1C: A1K.org
-							elsif(AUTO_CONFIG_DONE(2)='0')then
-								Dout1 <=	"0011" ; --Ventor ID 3 : $082C: BSC
-							end if;						
-						when "001100"	=> Dout1 <=	"0100" ; --Serial byte 0 (msb) high nibble
-						when "001101"	=> Dout1 <=	"1110" ; --Serial byte 0 (msb) low  nibble
-						when "001110"	=> Dout1 <=	"1001" ; --Serial byte 1       high nibble
-						when "001111"	=> Dout1 <=	"0100" ; --Serial byte 1       low  nibble
-						when "010000"	=> Dout1 <=	"1111" ; --Serial byte 2       high nibble
-						when "010001"	=> Dout1 <=	"1111" ; --Serial byte 2       low  nibble
-						when "010010"	=> Dout1 <=	"0100" ; --Serial byte 3 (lsb) high nibble
-						when "010011"	=> Dout1 <=	"1010" ; --Serial byte 3 (lsb) low  nibble: B16B00B5
-						--when "010100"	=> Dout1 <=	"1111" ; --Rom vector high byte high nibble 
-						--when "010101"	=> Dout1 <=	"1111" ; --Rom vector high byte low  nibble 
-						--when "010110"	=> Dout1 <=	"1111" ; --Rom vector low byte high nibble
-						when "010111"	=> 
-						if(AUTO_CONFIG_DONE(0)='0' or AUTO_CONFIG_DONE(1)='0')then
-								Dout1 <=	"1111" ; --Rom vector low byte low  nibble						
-							elsif(AUTO_CONFIG_DONE(2)='0')then
-								Dout1 <=	"1110" ; --Rom vector low byte low  nibble						
-							end if;
-						when "100000"	=> Dout1 <=	"0000" ; --Interrupt config: all zero
-						when "100001"	=> Dout1 <=	"0000" ; --Interrupt config: all zero
-						when others	=> Dout1 <=	"1111" ;
-					end case;	
-				else --write
-					if( UDS='0' )then
-						if(A (6 downto 1)="100100")then								
-							if(AUTO_CONFIG_DONE(0)='0')then
+				AUTO_CONFIG_DONE	<="00";
+			elsif(AS='1')then
+				AUTO_CONFIG_DONE <= AUTO_CONFIG_DONE_CYCLE;
+			elsif(autoconfig= '1' and DS='0') then
+				case A(6 downto 1) is
+					when "000000"	=> 
+						if(AUTO_CONFIG_DONE < "10")then
+							Dout1 <= 	"1100" ; --ZII, No-System-Memory, no ROM
+						else
+							Dout1 <= 	"110"&not(AUTOBOOT_OFF) ; --ZII, no System-Memory, (perhaps)ROM
+						end if;
+					when "000001"	=> Dout1 <=	"0001" ; --one Card, 64KB =001
+					when "000010"	=> 
+						if(AUTO_CONFIG_DONE < "10")then
+							Dout1 <=	"1000" ; --ProductID high nibble : 7->1000
+						else
+							Dout1 <=	"1111" ; --ProductID high nibble : 0->1111
+						end if;
+					when "000011"	=> 
+						if(AUTO_CONFIG_DONE = "00")then
+							Dout1 <=	"0100" ; --ProductID low nibble: B->0100
+						elsif(AUTO_CONFIG_DONE = "01")then
+							Dout1 <=	"0011" ; --ProductID low nibble: C->0011
+						else
+							Dout1 <=	"1001" ; --ProductID low nibble: 6->1001 
+						end if;						
+					when "001000"	=> Dout1 <=	"1111" ; --Ventor ID 0
+					when "001001"	=> 
+						if(AUTO_CONFIG_DONE < "10")then
+							Dout1 <=	"0101" ; --Ventor ID 1
+						else
+							Dout1 <=	"0111" ; --Ventor ID 1
+						end if;						
+					when "001010"	=> 
+						if(AUTO_CONFIG_DONE < "10")then
+							Dout1 <=	"1110" ; --Ventor ID 2
+						else
+							Dout1 <=	"1101" ; --Ventor ID 2
+						end if;												
+					when "001011"	=> 
+						if(AUTO_CONFIG_DONE < "10")then
+							Dout1 <=	"0011" ; --Ventor ID 3 : $0A1C: A1K.org
+						else
+							Dout1 <=	"0011" ; --Ventor ID 3 : $082C: BSC
+						end if;						
+					when "001100"	=> Dout1 <=	"0100" ; --Serial byte 0 (msb) high nibble
+					when "001101"	=> Dout1 <=	"1110" ; --Serial byte 0 (msb) low  nibble
+					when "001110"	=> Dout1 <=	"1001" ; --Serial byte 1       high nibble
+					when "001111"	=> Dout1 <=	"0100" ; --Serial byte 1       low  nibble
+					when "010000"	=> Dout1 <=	"1111" ; --Serial byte 2       high nibble
+					when "010001"	=> Dout1 <=	"1111" ; --Serial byte 2       low  nibble
+					when "010010"	=> Dout1 <=	"0100" ; --Serial byte 3 (lsb) high nibble
+					when "010011"	=> Dout1 <=	"1010" ; --Serial byte 3 (lsb) low  nibble: B16B00B5
+					--when "010100"	=> Dout1 <=	"1111" ; --Rom vector high byte high nibble 
+					--when "010101"	=> Dout1 <=	"1111" ; --Rom vector high byte low  nibble 
+					--when "010110"	=> Dout1 <=	"1111" ; --Rom vector low byte high nibble
+					when "010111"	=> 
+						if(AUTO_CONFIG_DONE = "10")then
+							Dout1 <=	"1110" ; --Rom vector low byte low  nibble						
+						else
+							Dout1 <=	"1111" ; --Rom vector low byte low  nibble						
+						end if;
+					when "100000"	=> Dout1 <=	"0000" ; --Interrupt config: all zero
+					when "100001"	=> Dout1 <=	"0000" ; --Interrupt config: all zero
+					when "100100"	=>
+						Dout1 <=	"1111" ;
+						if(RW='0')then
+							if(AUTO_CONFIG_DONE = "00" and SHUT_UP(0) ='1')then
 								LAN_BASEADR(7 downto 0)	<= D(15 downto 8); --Base adress
 								SHUT_UP(0)				<='0'; --enable board
-								AUTO_CONFIG_DONE_CYCLE(0)	<='1'; --done here
-							elsif(AUTO_CONFIG_DONE(1)='0')then									
+								AUTO_CONFIG_DONE_CYCLE	<= AUTO_CONFIG_DONE_CYCLE+1; --done here
+							elsif(AUTO_CONFIG_DONE = "01" and SHUT_UP(1) ='1')then									
 								CP_BASEADR(7 downto 0)	<= D(15 downto 8); --Base adress
 								SHUT_UP(1) <= '0'; --enable board
-								AUTO_CONFIG_DONE_CYCLE(1)	<='1'; --done here
-							elsif(AUTO_CONFIG_DONE(2)='0')then
+								AUTO_CONFIG_DONE_CYCLE	<= AUTO_CONFIG_DONE_CYCLE+1; --done here
+							elsif(AUTO_CONFIG_DONE = "10" and SHUT_UP(2) ='1')then
 								IDE_BASEADR(7 downto 0)	<= D(15 downto 8); --Base adress
 								SHUT_UP(2) <= '0'; --enable board
-								AUTO_CONFIG_DONE_CYCLE(2)	<='1'; --done here
-							end if;
-						elsif(A (6 downto 1)="100110")then
-							if(AUTO_CONFIG_DONE(0)='0')then
-								AUTO_CONFIG_DONE_CYCLE(0)	<='1'; --done here
-							elsif(AUTO_CONFIG_DONE(1)='0')then									
-								AUTO_CONFIG_DONE_CYCLE(1)	<='1'; --done here
-							elsif(AUTO_CONFIG_DONE(2)='0')then
-								AUTO_CONFIG_DONE_CYCLE(2)	<='1'; --done here
+								AUTO_CONFIG_DONE_CYCLE	<= AUTO_CONFIG_DONE_CYCLE+1; --done here
 							end if;
 						end if;
-					end if;
-				end if;
+					when "100110"	=>
+						Dout1 <=	"1111" ;
+						if(RW='0')then
+							if(AUTO_CONFIG_DONE = "00")then
+								AUTO_CONFIG_DONE_CYCLE	<= AUTO_CONFIG_DONE_CYCLE+1; --done here
+							elsif(AUTO_CONFIG_DONE = "01")then								
+								AUTO_CONFIG_DONE_CYCLE	<= AUTO_CONFIG_DONE_CYCLE+1; --done here
+							elsif(AUTO_CONFIG_DONE = "10")then
+								AUTO_CONFIG_DONE_CYCLE	<= AUTO_CONFIG_DONE_CYCLE+1; --done here
+							end if;
+						end if;
+					when others	=> Dout1 <=	"1111" ;
+				end case;	
 			end if;
 		end if;
 	end process autoconfig_proc; --- that's all
 
-	LAN_WRL	<= '1' when AS='0' and RW='0' and lan='1' and LDS = '0' else '0';
-	LAN_WRH	<= '1' when AS='0' and RW='0' and lan='1' and UDS = '0' else '0';
-	LAN_CS	<= '1';
-	LAN_RD	<= '1' when AS='0' and RW='1' and lan='1' else '0';
-	LAN_CFG	<= "0010";
+	LAN_CS	<= lan;
+	LAN_WRL	<= LAN_WRL_S when AS='0' else '0';
+	LAN_WRH	<= LAN_WRH_S when AS='0' else '0';
+	LAN_RD	<= LAN_RD_S  when AS='0' else '0';
+	LAN_CFG	<= "ZZZZ";
 	
-	CP_WE		<= '0' when AS='0' and RW='0' and cp='1' and (UDS='0' or LDS='0') else '1';
-	CP_RD		<= '0' when AS='0' and RW='1' and cp='1' else '1';
-	CP_CS		<= cp;
+	CP_WE		<= CP_WE_S when AS='0' else '1';
+	CP_RD		<= CP_RD_S when AS='0' else '1';
+	CP_CS		<= not(cp);
 
 	A_LAN <= A(14 downto 1);-- when lan='1' else A(13 downto 1) &'0';
 	--signal assignment
 	D	<=	--RAM_D 						when RW='1' and TRANSFER_IN_PROGRES ='1' else
-			DQ								when RW='1' and (lan ='1' or cp = '1') and AS='0' else
-			Dout1	& x"FFF" 			when RW='1' and autoconfig ='1' and AS='0' else
+			DQ								when RW='1' and (lan ='1' or cp = '1') and DS='0' else
+			Dout1	& x"FFF" 			when RW='1' and autoconfig ='1' and DS='0' else
 			"ZZZZZZZZZZZZZZZZ";
 
-	DQ <= 	D 	when RW='0' and AS='0'
+	DQ <= 	D 	when RW='0' and DS='0'
 							--and (UDS ='0' or LDS='0')
 							--and (lan ='1' or cp = '1') 
 					else "ZZZZZZZZZZZZZZZZ";
 								
-	IDE_W <=	IDE_W_S;
-	IDE_R <=	IDE_R_S;
+	IDE_W <=	IDE_W_S when AS='0' else '1';
+	IDE_R <=	IDE_R_S when AS='0' else '1';
 	IDE_CS(0)<= not(A(12));			
 	IDE_CS(1)<= not(A(13));
 	IDE_A(0)	<= A(9);
 	IDE_A(1)	<= A(10);
 	IDE_A(2)	<= A(11);
 	ROM_B	<= "00";
-	ROM_OE	<= ROM_OE_S;				
+	ROM_OE	<= ROM_OE_S when AS='0' else '1';				
 
 	--INT_OUT <= 'Z';
 	INT_OUT <= '0' when 
@@ -349,14 +383,16 @@ begin
 							CP_IRQ = '0' else 'Z';
 	
 	OWN 	<= '0' when AS='0' and (autoconfig  = '1' or ide = '1' or lan = '1' or cp = '1') else 'Z';
-	SLAVE <= '0' when AS='0' and (autoconfig  = '1' or ide = '1' or lan = '1' or cp = '1') else '1';
+	SLAVE <= '0' when AS='0' and (autoconfig  = '1' or ide = '1' or lan = '1' or cp = '1') else '1';	
 	CFOUT <= '0' when AUTO_CONFIG_DONE="111" else '1';
+	
+	OVR <= '0' when ide='1' and AS='0' else 'Z';
 	
 --	DTACK <= DTACK_S when --TRANSFER_IN_PROGRES ='1' or 
 --								AUTOCONFIG_IN_PROGRES ='1' 
 --						  else 'Z';
 	
-	DTACK <= 'Z';
+	DTACK <= '0' when ide='1' and AS='0' and IDE_WAIT='1' else 'Z';
 
 end Behavioral;
 
