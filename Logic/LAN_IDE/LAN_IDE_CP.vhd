@@ -96,7 +96,7 @@ architecture Behavioral of LAN_IDE_CP is
 	signal IDE_R_S:STD_LOGIC;
 	signal IDE_W_S:STD_LOGIC;
 	signal DTACK_S:STD_LOGIC;
-   signal AS_D: std_logic;
+   signal DS_D: std_logic;
 	signal AMIGA_CLK: std_logic;
 	signal LAN_INT_ENABLE: std_logic;
 	signal DECODE_RESET: std_logic;
@@ -129,7 +129,7 @@ begin
 			ide <= '0';
 			lan <= '0';
 			cp  <= '0';
-		elsif(rising_edge(AMIGA_CLK))then				
+		elsif(falling_edge(AS))then				
 			if(A(23 downto 16) = x"E8" and AUTO_CONFIG_DONE < "11" )then
 				autoconfig <= not CFIN;
 			else
@@ -137,20 +137,20 @@ begin
 			end if;
 
 
-			if(A(23 downto 16) = LAN_BASEADR )then					
-				lan <= not SHUT_UP(0);					
+			if(A(23 downto 16) = LAN_BASEADR and SHUT_UP(0)='0' )then					
+				lan <= '1';					
 			else
 				lan <= '0';
 			end if;				
 
-			if(A(23 downto 16) = CP_BASEADR)then					
-				cp <= not SHUT_UP(1);					
+			if(A(23 downto 16) = CP_BASEADR and SHUT_UP(1)='0')then					
+				cp <= '1';					
 			else
 				cp <= '0';
 			end if;				
 
-			if(A(23 downto 16) = IDE_BASEADR)then					
-				ide <= not SHUT_UP(2);					
+			if(A(23 downto 16) = IDE_BASEADR and SHUT_UP(2)='0')then					
+				ide <= '1';					
 			else
 				ide <= '0';
 			end if;				
@@ -158,27 +158,25 @@ begin
 	end process ADDRESS_DECODE;
 	
 	--LAN interrupt enable
---	lan_int_proc: process (AMIGA_CLK,reset)
---	begin
---		if(reset ='0') then
---				LAN_INT_ENABLE <='0';
---				LAN_INT_D0 <='0';
---		elsif falling_edge(AMIGA_CLK) then
---			LAN_INT_D0 <= LAN_INT;
---			if(LAN_INT = '1' and LAN_INT_D0 = '0' and AUTO_CONFIG_DONE ="111") then --enable if high and ac completed!
---				LAN_INT_ENABLE <= '1';
---			end if;
---		end if;
---	end process lan_int_proc;
+	lan_int_proc: process (AMIGA_CLK,reset)
+	begin
+		if(reset ='0') then
+			LAN_INT_ENABLE <='0';
+		elsif falling_edge(AMIGA_CLK) then
+			if(lan = '1' and AS ='0' and RW='0') then --enable if a write to A15 occured
+				LAN_INT_ENABLE <= A(15);
+			end if;
+		end if;
+	end process lan_int_proc;
 	
 	--lan signal generation: all Signals are HIGH active!
 	lan_rw_gen: process (AMIGA_CLK)
 	begin
 		if falling_edge(AMIGA_CLK) then			
 			if(lan='1' and DS='0' and reset ='1')then
-				LAN_RD_S		<= RW;	
-				LAN_WRH_S   <= (not RW) and (not UDS);
-				LAN_WRL_S   <= (not RW) and (not LDS);
+				LAN_RD_S		<= RW  and (not A(15));	
+				LAN_WRH_S   <= (not RW) and (not UDS) and (not A(15));
+				LAN_WRL_S   <= (not RW) and (not LDS) and (not A(15));
 			else
 				LAN_RD_S		<= '0';
 				LAN_WRH_S	<= '0';
@@ -233,11 +231,10 @@ begin
 		
 	
 	--autoconfig	
---0
-
 	autoconfig_proc: process (reset, AMIGA_CLK)
 	begin
 		if falling_edge(AMIGA_CLK) then -- no reset, so wait for rising edge of the clock		
+			DS_D <= DS;
 			if	reset = '0' then
 				-- reset active ...
 				AUTO_CONFIG_DONE_CYCLE	<="00";
@@ -330,14 +327,8 @@ begin
 						end if;
 					when "100110"	=>
 						Dout1 <=	"1111" ;
-						if(RW='0')then
-							if(AUTO_CONFIG_DONE = "00")then
-								AUTO_CONFIG_DONE_CYCLE	<= AUTO_CONFIG_DONE_CYCLE+1; --done here
-							elsif(AUTO_CONFIG_DONE = "01")then								
-								AUTO_CONFIG_DONE_CYCLE	<= AUTO_CONFIG_DONE_CYCLE+1; --done here
-							elsif(AUTO_CONFIG_DONE = "10")then
-								AUTO_CONFIG_DONE_CYCLE	<= AUTO_CONFIG_DONE_CYCLE+1; --done here
-							end if;
+						if(RW='0' and DS_D='1')then
+							AUTO_CONFIG_DONE_CYCLE	<= AUTO_CONFIG_DONE_CYCLE+1; --done here
 						end if;
 					when others	=> Dout1 <=	"1111" ;
 				end case;	
@@ -364,7 +355,7 @@ begin
 
 	DQ <= 	D 	when RW='0' and DS='0'
 							--and (UDS ='0' or LDS='0')
-							--and (lan ='1' or cp = '1') 
+							and (lan ='1' or cp = '1') 
 					else "ZZZZZZZZZZZZZZZZ";
 								
 	IDE_W <=	IDE_W_S when AS='0' else '1';
@@ -379,7 +370,7 @@ begin
 
 	--INT_OUT <= 'Z';
 	INT_OUT <= '0' when 
-							--(LAN_INT = '0' and LAN_INT_ENABLE ='1') or 
+							(LAN_INT = '0' and LAN_INT_ENABLE ='1') or 
 							CP_IRQ = '0' else 'Z';
 	
 	OWN 	<= '0' when AS='0' and (autoconfig  = '1' or ide = '1' or lan = '1' or cp = '1') else 'Z';

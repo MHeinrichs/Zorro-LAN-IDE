@@ -8,16 +8,10 @@
 <msg type="warning" file="Cpld" num="0" delta="new" >Unable to retrieve the path to the iSE Project Repository. Will use the default filename of &apos;<arg fmt="%s" index="1">LAN_IDE_CP.ise</arg>&apos;.
 </msg>
 
-<msg type="info" file="Cpld" num="0" delta="new" >Inferring BUFG constraint for signal &apos;<arg fmt="%s" index="1">DQ&lt;5&gt;</arg>&apos; based upon the LOC constraint &apos;<arg fmt="%s" index="2">P38</arg>&apos;. It is recommended that you declare this BUFG explicitedly in your design. Note that for certain device families the output of a BUFG constraint can not drive a gated clock, and the BUFG constraint will be ignored.
-</msg>
-
 <msg type="info" file="Cpld" num="0" delta="new" >Inferring BUFG constraint for signal &apos;<arg fmt="%s" index="1">CLK_EXT</arg>&apos; based upon the LOC constraint &apos;<arg fmt="%s" index="2">P30</arg>&apos;. It is recommended that you declare this BUFG explicitedly in your design. Note that for certain device families the output of a BUFG constraint can not drive a gated clock, and the BUFG constraint will be ignored.
 </msg>
 
 <msg type="warning" file="Cpld" num="936" delta="old" >The output buffer &apos;<arg fmt="%s" index="1">MTACK_OBUF</arg>&apos; is missing an input and will be deleted.
-</msg>
-
-<msg type="warning" file="Cpld" num="1007" delta="old" >Removing unused input(s) &apos;<arg fmt="%s" index="1">A&lt;15&gt;</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
 </msg>
 
 <msg type="warning" file="Cpld" num="1007" delta="old" >Removing unused input(s) &apos;<arg fmt="%s" index="1">CLK_EXT</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
@@ -32,16 +26,10 @@
 <msg type="warning" file="Cpld" num="1007" delta="old" >Removing unused input(s) &apos;<arg fmt="%s" index="1">FCS</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
 </msg>
 
-<msg type="warning" file="Cpld" num="1007" delta="old" >Removing unused input(s) &apos;<arg fmt="%s" index="1">LAN_INT</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
-</msg>
-
 <msg type="warning" file="Cpld" num="1007" delta="old" >Removing unused input(s) &apos;<arg fmt="%s" index="1">MTCR</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
 </msg>
 
 <msg type="warning" file="Cpld" num="1007" delta="old" >Removing unused input(s) &apos;<arg fmt="%s" index="1">Z3</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
-</msg>
-
-<msg type="warning" file="Cpld" num="1239" delta="new" >The global <arg fmt="%s" index="1">clock</arg> designation (BUFG) on signal &apos;<arg fmt="%s" index="2">N47</arg>&apos; is ignored. Most likely the signal is gated and therefore cannot be used as a global control signal.
 </msg>
 
 </messages>

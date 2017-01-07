@@ -1,7 +1,7 @@
 Release 8.1i - Fit P.68d
 Copyright(c) 1995-2003 Xilinx Inc. All rights reserved
 
- 1- 7-2017 10:34PM
+ 1- 7-2017 11:31PM
 
 NOTE: This file is designed to be imported into a spreadsheet program
 such as Microsoft Excel for viewing, printing and sorting. The pipe '|'
@@ -91,7 +91,7 @@ P70|CP_WE|O|I/O|OUTPUT|||||||||
 P71|CP_RD|O|I/O|OUTPUT|||||||||
 P72|GND||GND||||||||||
 P73|VCC||VCCIO||||||||||
-P74|ROM_B<0>|O|I/O|OUTPUT|||||||||
+P74|A<15>|I|I/O|INPUT|||||||||
 P75|AUTOBOOT_OFF|I|I/O|INPUT|||||||||
 P76|LAN_WRL|O|I/O|OUTPUT|||||||||
 P77|TIE||I/O||||||||||
@@ -110,7 +110,7 @@ P89|GND||GND||||||||||
 P90|GND||GND||||||||||
 P91|A<20>|I|I/O|INPUT|||||||||
 P92|A<19>|I|I/O|INPUT|||||||||
-P93|TIE||I/O||||||||||
+P93|ROM_B<0>|O|I/O|OUTPUT|||||||||
 P94|A<18>|I|I/O|INPUT|||||||||
 P95|A<17>|I|I/O|INPUT|||||||||
 P96|TIE||I/O||||||||||
@@ -128,7 +128,7 @@ P107|OWN|O|I/O|OUTPUT|||||||||
 P108|GND||GND||||||||||
 P109|VCC||VCCIO||||||||||
 P110|LAN_CFG<4>|O|I/O|OUTPUT|||||||||
-P111|TIE||I/O||||||||||
+P111|LAN_INT|I|I/O|INPUT|||||||||
 P112|DQ<15>|I/O|I/O|BIDIR|||||||||
 P113|DQ<13>|I/O|I/O|BIDIR|||||||||
 P114|GND||GND||||||||||
@@ -160,7 +160,7 @@ P139|A_LAN<11>|O|I/O|OUTPUT|||||||||
 P140|A_LAN<8>|O|I/O|OUTPUT|||||||||
 P141|VCC||VCCINT||||||||||
 P142|A_LAN<9>|O|I/O|OUTPUT|||||||||
-P143|RESET|I|I/O/GSR|INPUT|||||||||
+P143|RESET|GSR/I|I/O/GSR||||||||||
 P144|GND||GND||||||||||
 
 To preserve the pinout above for future design iterations in
