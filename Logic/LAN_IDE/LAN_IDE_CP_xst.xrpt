@@ -5,14 +5,14 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="Xst" timeStamp="Sat Jan 07 23:30:56 2017">
+  <application stringID="Xst" timeStamp="Sun Jan 15 00:05:45 2017">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
         <column stringID="value"/>
         <row stringID="row" value="0">
           <item stringID="variable" value="Path"/>
-          <item stringID="value" value="C:\Xilinx\14.6\ISE_DS\ISE\\lib\nt64;C:\Xilinx\14.6\ISE_DS\ISE\\bin\nt64;C:\Xilinx\14.6\ISE_DS\ISE\bin\nt64;C:\Xilinx\14.6\ISE_DS\ISE\lib\nt64;C:\Xilinx\14.6\ISE_DS\ISE\..\..\..\DocNav;C:\Xilinx\14.6\ISE_DS\PlanAhead\bin;C:\Xilinx\14.6\ISE_DS\EDK\bin\nt64;C:\Xilinx\14.6\ISE_DS\EDK\lib\nt64;C:\Xilinx\14.6\ISE_DS\EDK\gnu\microblaze\nt\bin;C:\Xilinx\14.6\ISE_DS\EDK\gnu\powerpc-eabi\nt\bin;C:\Xilinx\14.6\ISE_DS\EDK\gnuwin\bin;C:\Xilinx\14.6\ISE_DS\EDK\gnu\arm\nt\bin;C:\Xilinx\14.6\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_be\bin;C:\Xilinx\14.6\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_le\bin;C:\Xilinx\14.6\ISE_DS\common\bin\nt64;C:\Xilinx\14.6\ISE_DS\common\lib\nt64;E:\ispLEVER_Classic2_0\ispcpld\bin;E:\ispLEVER_Classic2_0\ispFPGA\bin\nt;E:\ispLEVER_Classic2_0\active-hdl\BIN;C:\ProgramData\Oracle\Java\javapath;C:\SynaptiCAD\bin\win32;C:\Program Files\Java\jre7\bin;C\Windows\System32;C:\Program Files (x86)\WinAVR\bin;C:\Program Files (x86)\WinAVR\utils\bin;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\SSH Communications Security\SSH Secure Shell;C:\Program Files (x86)\UltraEdit;c:\Xilinx\14.6\ISE_DS\ISE\bin\nt64C:\ispLever\ispcpld\bin;C:\ispLever\ispFPGA\bin\nt;C:\ispLever\active-hdl\BIN;C:\Program Files\WinRAR;C:\SynaptiCAD\bin;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;%PATH;C:\Program Files (x86)\IDM Computer Solutions\UltraEdit\;C:\Program Files (x86)\UltraEdit\;C:\Program Files\Java\jdk1.7.0_02\bin;C:\Users\Matze\AppData\Local\Microsoft\WindowsApps"/>
+          <item stringID="value" value="C:\Xilinx\14.6\ISE_DS\ISE\\lib\nt64;C:\Xilinx\14.6\ISE_DS\ISE\\bin\nt64;C:\Xilinx\14.6\ISE_DS\ISE\bin\nt64;C:\Xilinx\14.6\ISE_DS\ISE\lib\nt64;C:\Xilinx\14.6\ISE_DS\ISE\..\..\..\DocNav;C:\Xilinx\14.6\ISE_DS\PlanAhead\bin;C:\Xilinx\14.6\ISE_DS\EDK\bin\nt64;C:\Xilinx\14.6\ISE_DS\EDK\lib\nt64;C:\Xilinx\14.6\ISE_DS\EDK\gnu\microblaze\nt\bin;C:\Xilinx\14.6\ISE_DS\EDK\gnu\powerpc-eabi\nt\bin;C:\Xilinx\14.6\ISE_DS\EDK\gnuwin\bin;C:\Xilinx\14.6\ISE_DS\EDK\gnu\arm\nt\bin;C:\Xilinx\14.6\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_be\bin;C:\Xilinx\14.6\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_le\bin;C:\Xilinx\14.6\ISE_DS\common\bin\nt64;C:\Xilinx\14.6\ISE_DS\common\lib\nt64;E:\ispLEVER_Classic2_0\ispcpld\bin;E:\ispLEVER_Classic2_0\ispFPGA\bin\nt;E:\ispLEVER_Classic2_0\active-hdl\BIN;C:\ProgramData\Oracle\Java\javapath;C:\SynaptiCAD\bin\win32;C:\Program Files\Java\jre7\bin;C\Windows\System32;C:\Program Files (x86)\WinAVR\bin;C:\Program Files (x86)\WinAVR\utils\bin;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\SSH Communications Security\SSH Secure Shell;C:\Program Files (x86)\UltraEdit;C:\ispLever\ispcpld\bin;C:\ispLever\ispFPGA\bin\nt;C:\ispLever\active-hdl\BIN;C:\Program Files\WinRAR;C:\SynaptiCAD\bin;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;%PATH;C:\Program Files (x86)\IDM Computer Solutions\UltraEdit\;C:\Program Files (x86)\UltraEdit\;C:\Program Files\Java\jdk1.7.0_02\bin;C:\Users\Matze\AppData\Local\Microsoft\WindowsApps"/>
         </row>
         <row stringID="row" value="1">
           <item stringID="variable" value="PATHEXT"/>
@@ -60,11 +60,11 @@
       <item DEFAULT="NGC" label="-ofmt" stringID="XST_OFMT" value="NGC"/>
       <item DEFAULT="" label="-p" stringID="XST_P" value="xc9500xl"/>
       <item DEFAULT="" label="-top" stringID="XST_TOP" value="LAN_IDE_CP"/>
-      <item DEFAULT="SPEED" label="-opt_mode" stringID="XST_OPTMODE" value="Speed"/>
-      <item DEFAULT="1" label="-opt_level" stringID="XST_OPTLEVEL" value="2"/>
+      <item DEFAULT="SPEED" label="-opt_mode" stringID="XST_OPTMODE" value="Area"/>
+      <item DEFAULT="1" label="-opt_level" stringID="XST_OPTLEVEL" value="1"/>
       <item DEFAULT="NO" label="-iuc" stringID="XST_IUC" value="NO"/>
       <item DEFAULT="YES" label="-keep_hierarchy" stringID="XST_KEEPHIERARCHY" value="Yes"/>
-      <item DEFAULT="as_optimized" label="-netlist_hierarchy" stringID="XST_NETLISTHIERARCHY" value="As_Optimized"/>
+      <item DEFAULT="as_optimized" label="-netlist_hierarchy" stringID="XST_NETLISTHIERARCHY" value="Rebuilt"/>
       <item DEFAULT="NO" label="-rtlview" stringID="XST_RTLVIEW" value="Yes"/>
       <item DEFAULT="/" stringID="XST_HIERARCHYSEPARATOR" value="/"/>
       <item DEFAULT="&lt;>" label="-bus_delimiter" stringID="XST_BUSDELIMITER" value="&lt;>"/>
@@ -73,15 +73,15 @@
       <item DEFAULT="YES" label="-fsm_extract" stringID="XST_FSMEXTRACT" value="YES"/>
       <item DEFAULT="AUTO" label="-fsm_encoding" stringID="XST_FSMENCODING" value="Auto"/>
       <item DEFAULT="NO" label="-safe_implementation" stringID="XST_SAFEIMPLEMENTATION" value="Yes"/>
-      <item DEFAULT="YES" stringID="XST_MUXEXTRACT" value="Yes"/>
+      <item DEFAULT="YES" stringID="XST_MUXEXTRACT" value="No"/>
       <item DEFAULT="YES" label="-resource_sharing" stringID="XST_RESOURCESHARING" value="YES"/>
       <item DEFAULT="YES" label="-iobuf" stringID="XST_IOBUF" value="YES"/>
       <item DEFAULT="YES" label="-equivalent_register_removal" stringID="XST_EQUIVALENTREGISTERREMOVAL" value="YES"/>
     </section>
     <section stringID="XST_HDL_SYNTHESIS_REPORT">
       <item dataType="int" stringID="XST_ADDERSSUBTRACTORS" value="1"></item>
-      <item dataType="int" stringID="XST_REGISTERS" value="24">
-        <item dataType="int" stringID="XST_1BIT_REGISTER" value="18"/>
+      <item dataType="int" stringID="XST_REGISTERS" value="23">
+        <item dataType="int" stringID="XST_1BIT_REGISTER" value="17"/>
         <item dataType="int" stringID="XST_2BIT_REGISTER" value="2"/>
         <item dataType="int" stringID="XST_4BIT_REGISTER" value="1"/>
         <item dataType="int" stringID="XST_8BIT_REGISTER" value="3"/>
@@ -96,8 +96,8 @@
     </section>
     <section stringID="XST_ADVANCED_HDL_SYNTHESIS_REPORT">
       <item dataType="int" stringID="XST_ADDERSSUBTRACTORS" value="1"></item>
-      <item dataType="int" stringID="XST_REGISTERS" value="6">
-        <item dataType="int" stringID="XST_FLIPFLOPS" value="6"/>
+      <item dataType="int" stringID="XST_REGISTERS" value="5">
+        <item dataType="int" stringID="XST_FLIPFLOPS" value="5"/>
       </item>
       <item dataType="int" stringID="XST_COMPARATORS" value="3"></item>
     </section>
@@ -111,38 +111,36 @@
         <item stringID="XST_RTL_TOP_LEVEL_OUTPUT_FILE_NAME" value="LAN_IDE_CP.ngr"/>
         <item stringID="XST_TOP_LEVEL_OUTPUT_FILE_NAME" value="LAN_IDE_CP"/>
         <item stringID="XST_OUTPUT_FORMAT" value="NGC"/>
-        <item stringID="XST_OPTIMIZATION_GOAL" value="Speed"/>
+        <item stringID="XST_OPTIMIZATION_GOAL" value="Area"/>
         <item stringID="XST_KEEP_HIERARCHY" value="Yes"/>
       </section>
       <section stringID="XST_DESIGN_STATISTICS">
         <item stringID="XST_IOS" value="116"/>
       </section>
       <section stringID="XST_CELL_USAGE">
-        <item dataType="int" stringID="XST_BELS" value="457">
-          <item dataType="int" stringID="XST_AND2" value="106"/>
-          <item dataType="int" stringID="XST_AND3" value="15"/>
-          <item dataType="int" stringID="XST_AND4" value="9"/>
+        <item dataType="int" stringID="XST_BELS" value="414">
+          <item dataType="int" stringID="XST_AND2" value="97"/>
+          <item dataType="int" stringID="XST_AND3" value="9"/>
           <item dataType="int" stringID="XST_GND" value="1"/>
-          <item dataType="int" stringID="XST_INV" value="197"/>
-          <item dataType="int" stringID="XST_OR2" value="87"/>
-          <item dataType="int" stringID="XST_VCC" value="1"/>
+          <item dataType="int" stringID="XST_INV" value="153"/>
+          <item dataType="int" stringID="XST_OR2" value="120"/>
           <item dataType="int" stringID="XST_XOR2" value="26"/>
         </item>
-        <item dataType="int" stringID="XST_FLIPFLOPSLATCHES" value="50">
+        <item dataType="int" stringID="XST_FLIPFLOPSLATCHES" value="49">
           <item dataType="int" stringID="XST_FD" value="9"/>
           <item dataType="int" stringID="XST_FDC" value="4"/>
-          <item dataType="int" stringID="XST_FDCE" value="37"/>
+          <item dataType="int" stringID="XST_FDCE" value="36"/>
         </item>
-        <item dataType="int" stringID="XST_IO_BUFFERS" value="109">
-          <item dataType="int" stringID="XST_IBUF" value="36"/>
+        <item dataType="int" stringID="XST_IO_BUFFERS" value="106">
+          <item dataType="int" stringID="XST_IBUF" value="33"/>
           <item dataType="int" stringID="XST_OBUF" value="33"/>
         </item>
       </section>
     </section>
     <section stringID="XST_ERRORS_STATISTICS">
       <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_ERRORS" value="0"/>
-      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_WARNINGS" value="10"/>
-      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_INFOS" value="1"/>
+      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_WARNINGS" value="13"/>
+      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_INFOS" value="0"/>
     </section>
   </application>
 

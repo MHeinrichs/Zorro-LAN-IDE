@@ -7,11 +7,11 @@ run
 -ofmt NGC
 -p xc9500xl
 -top LAN_IDE_CP
--opt_mode Speed
--opt_level 2
+-opt_mode Area
+-opt_level 1
 -iuc NO
 -keep_hierarchy Yes
--netlist_hierarchy As_Optimized
+-netlist_hierarchy Rebuilt
 -rtlview Yes
 -hierarchy_separator /
 -bus_delimiter <>
@@ -19,7 +19,7 @@ run
 -verilog2001 YES
 -fsm_extract YES -fsm_encoding Auto
 -safe_implementation Yes
--mux_extract Yes
+-mux_extract No
 -resource_sharing YES
 -iobuf YES
 -pld_mp YES

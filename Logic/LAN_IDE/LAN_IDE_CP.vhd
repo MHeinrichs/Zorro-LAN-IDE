@@ -163,8 +163,8 @@ begin
 		if(reset ='0') then
 			LAN_INT_ENABLE <='0';
 		elsif falling_edge(AMIGA_CLK) then
-			if(lan = '1' and AS ='0' and RW='0') then --enable if a write to A15 occured
-				LAN_INT_ENABLE <= A(15);
+			if(lan = '1' and AS ='0' and RW='0' and A(15)='1') then --enable if a write to A15 occured
+				LAN_INT_ENABLE <= D(15);
 			end if;
 		end if;
 	end process lan_int_proc;
@@ -173,10 +173,10 @@ begin
 	lan_rw_gen: process (AMIGA_CLK)
 	begin
 		if falling_edge(AMIGA_CLK) then			
-			if(lan='1' and DS='0' and reset ='1')then
-				LAN_RD_S		<= RW  and (not A(15));	
-				LAN_WRH_S   <= (not RW) and (not UDS) and (not A(15));
-				LAN_WRL_S   <= (not RW) and (not LDS) and (not A(15));
+			if(lan='1' and DS='0')then
+				LAN_RD_S		<= RW;
+				LAN_WRH_S   <= not UDS and not RW;
+				LAN_WRL_S   <= not LDS and not RW;
 			else
 				LAN_RD_S		<= '0';
 				LAN_WRH_S	<= '0';
@@ -189,7 +189,7 @@ begin
 	cp_rw_gen: process (AMIGA_CLK)
 	begin
 		if falling_edge(AMIGA_CLK) then			
-			if(cp='1' and DS='0' and reset ='1')then --datastrobe instead of AS!
+			if(cp = '1' and DS='0' and reset ='1')then --datastrobe instead of AS!
 				CP_RD_S		<= not RW;
 				CP_WE_S		<= RW;
 			else
@@ -310,18 +310,18 @@ begin
 					when "100001"	=> Dout1 <=	"0000" ; --Interrupt config: all zero
 					when "100100"	=>
 						Dout1 <=	"1111" ;
-						if(RW='0')then
+						if(RW='0' and DS_D='1')then
 							if(AUTO_CONFIG_DONE = "00" and SHUT_UP(0) ='1')then
 								LAN_BASEADR(7 downto 0)	<= D(15 downto 8); --Base adress
-								SHUT_UP(0)				<='0'; --enable board
+								SHUT_UP(0)					<='0'; --enable board
 								AUTO_CONFIG_DONE_CYCLE	<= AUTO_CONFIG_DONE_CYCLE+1; --done here
 							elsif(AUTO_CONFIG_DONE = "01" and SHUT_UP(1) ='1')then									
 								CP_BASEADR(7 downto 0)	<= D(15 downto 8); --Base adress
-								SHUT_UP(1) <= '0'; --enable board
+								SHUT_UP(1)					<= '0'; --enable board
 								AUTO_CONFIG_DONE_CYCLE	<= AUTO_CONFIG_DONE_CYCLE+1; --done here
 							elsif(AUTO_CONFIG_DONE = "10" and SHUT_UP(2) ='1')then
 								IDE_BASEADR(7 downto 0)	<= D(15 downto 8); --Base adress
-								SHUT_UP(2) <= '0'; --enable board
+								SHUT_UP(2) 					<= '0'; --enable board
 								AUTO_CONFIG_DONE_CYCLE	<= AUTO_CONFIG_DONE_CYCLE+1; --done here
 							end if;
 						end if;
@@ -336,15 +336,15 @@ begin
 		end if;
 	end process autoconfig_proc; --- that's all
 
-	LAN_CS	<= lan;
+	LAN_CS	<= lan;--'1' when LAN_BASEADR=x"EA" else '0';
 	LAN_WRL	<= LAN_WRL_S when AS='0' else '0';
 	LAN_WRH	<= LAN_WRH_S when AS='0' else '0';
-	LAN_RD	<= LAN_RD_S  when AS='0' else '0';
+	LAN_RD	<= LAN_RD_S when AS='0' else '0';
 	LAN_CFG	<= "ZZZZ";
 	
 	CP_WE		<= CP_WE_S when AS='0' else '1';
 	CP_RD		<= CP_RD_S when AS='0' else '1';
-	CP_CS		<= not(cp);
+	CP_CS		<= not cp;
 
 	A_LAN <= A(14 downto 1);-- when lan='1' else A(13 downto 1) &'0';
 	--signal assignment
@@ -368,14 +368,14 @@ begin
 	ROM_B	<= "00";
 	ROM_OE	<= ROM_OE_S when AS='0' else '1';				
 
-	--INT_OUT <= 'Z';
-	INT_OUT <= '0' when 
-							(LAN_INT = '0' and LAN_INT_ENABLE ='1') or 
-							CP_IRQ = '0' else 'Z';
+	INT_OUT <= 'Z';
+--	INT_OUT <= '0' when 
+--							(LAN_INT = '0' and LAN_INT_ENABLE ='1') or 
+--							CP_IRQ = '0' else 'Z';
 	
 	OWN 	<= '0' when AS='0' and (autoconfig  = '1' or ide = '1' or lan = '1' or cp = '1') else 'Z';
 	SLAVE <= '0' when AS='0' and (autoconfig  = '1' or ide = '1' or lan = '1' or cp = '1') else '1';	
-	CFOUT <= '0' when AUTO_CONFIG_DONE="111" else '1';
+	CFOUT <= '0' when AUTO_CONFIG_DONE=3 else '1';
 	
 	OVR <= '0' when ide='1' and AS='0' else 'Z';
 	
