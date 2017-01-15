@@ -3,7 +3,7 @@
 <!--The data in this file is primarily intended for consumption by Xilinx tools.
 The structure and the elements are likely to change over the next few releases.
 This means code written to parse this file will need to be revisited each subsequent release.-->
-<application name="pn" timeStamp="Sun Jan 15 00:05:44 2017">
+<application name="pn" timeStamp="Mon Jan 16 00:35:28 2017">
 <section name="Project Information" visible="false">
 <property name="ProjectID" value="D176CAD312EA42C990C709B74E81AC07" type="project"/>
 <property name="ProjectIteration" value="0" type="project"/>
@@ -17,6 +17,7 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="PROP_LastAppliedStrategy" value="area;C:/Users/Matze/Amiga/Hardwarehacks/Zorro-LAN-IDE/Logic/LAN_IDE/area.xds" type="design"/>
 <property name="PROP_ManualCompileOrderImp" value="false" type="design"/>
 <property name="PROP_PropSpecInProjFile" value="Store all values" type="design"/>
+<property name="PROP_SelectedInstanceHierarchicalPath" value="/LAN_IDE_CP_TB" type="process"/>
 <property name="PROP_Simulator" value="ISim (VHDL/Verilog)" type="design"/>
 <property name="PROP_SynthExtractMux" value="No" type="process"/>
 <property name="PROP_SynthOpt" value="Area" type="process"/>
@@ -30,6 +31,7 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="PROP_intWorkingDirLocWRTProjDir" value="Same" type="design"/>
 <property name="PROP_intWorkingDirUsed" value="No" type="design"/>
 <property name="PROP_lockPinsUcfFile" value="changed" type="process"/>
+<property name="PROP_selectedSimRootSourceNode_behav" value="work.LAN_IDE_CP_TB" type="process"/>
 <property name="PROP_xilxSynthMaxFanout" value="100000" type="process"/>
 <property name="PROP_xstNetlistHierarchy" value="Rebuilt" type="process"/>
 <property name="PROP_AutoTop" value="true" type="design"/>
@@ -43,7 +45,7 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="PROP_DevSpeed" value="-10" type="design"/>
 <property name="PROP_PreferredLanguage" value="VHDL" type="design"/>
 <property name="FILE_UCF" value="1" type="source"/>
-<property name="FILE_VHDL" value="1" type="source"/>
+<property name="FILE_VHDL" value="2" type="source"/>
 </section>
 </application>
 </document>

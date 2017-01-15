@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.09 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.09 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> Reading design: LAN_IDE_CP.prj
 
@@ -76,7 +76,8 @@ wysiwyg                            : NO
 *                          HDL Compilation                              *
 =========================================================================
 Compiling vhdl file "C:/Users/Matze/Amiga/Hardwarehacks/Zorro-LAN-IDE/Logic/LAN_IDE/LAN_IDE_CP.vhd" in Library work.
-Architecture behavioral of Entity lan_ide_cp is up to date.
+Entity <lan_ide_cp> compiled.
+Entity <lan_ide_cp> (Architecture <behavioral>) compiled.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
@@ -88,8 +89,6 @@ Analyzing hierarchy for entity <LAN_IDE_CP> in library <work> (architecture <beh
 *                            HDL Analysis                               *
 =========================================================================
 Analyzing Entity <LAN_IDE_CP> in library <work> (Architecture <behavioral>).
-WARNING:Xst:819 - "C:/Users/Matze/Amiga/Hardwarehacks/Zorro-LAN-IDE/Logic/LAN_IDE/LAN_IDE_CP.vhd" line 131: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
-   <AS>
 Entity <LAN_IDE_CP> analyzed. Unit <LAN_IDE_CP> generated.
 
 
@@ -98,6 +97,7 @@ Entity <LAN_IDE_CP> analyzed. Unit <LAN_IDE_CP> generated.
 =========================================================================
 
 Performing bidirectional port resolution...
+INFO:Xst:2561 - Always blocking tristate driving signal <A> in unit <LAN_IDE_CP> is removed.
 
 Synthesizing Unit <LAN_IDE_CP>.
     Related source file is "C:/Users/Matze/Amiga/Hardwarehacks/Zorro-LAN-IDE/Logic/LAN_IDE/LAN_IDE_CP.vhd".
@@ -105,12 +105,9 @@ WARNING:Xst:647 - Input <DS0> is never used. This port will be preserved and lef
 WARNING:Xst:647 - Input <DS1> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <FCS> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:1306 - Output <MTACK> is never assigned.
-WARNING:Xst:647 - Input <LAN_INT> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <CP_IRQ> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <Z3> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <CLK_EXT> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <MTCR> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:646 - Signal <LAN_INT_ENABLE> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <LAN_INT_D0> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <DTACK_S> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
     Found 16-bit tristate buffer for signal <D>.
@@ -123,33 +120,34 @@ WARNING:Xst:1780 - Signal <DTACK_S> is never used or assigned. This unconnected 
     Found 1-bit xor2 for signal <AMIGA_CLK$xor0000> created at line 120.
     Found 2-bit register for signal <AUTO_CONFIG_DONE>.
     Found 2-bit register for signal <AUTO_CONFIG_DONE_CYCLE>.
-    Found 2-bit adder for signal <AUTO_CONFIG_DONE_CYCLE$share0000> created at line 251.
+    Found 2-bit adder for signal <AUTO_CONFIG_DONE_CYCLE$share0000> created at line 253.
     Found 1-bit register for signal <autoconfig>.
-    Found 2-bit comparator less for signal <autoconfig$cmp_lt0000> created at line 133.
     Found 1-bit register for signal <cp>.
-    Found 8-bit comparator equal for signal <cp$cmp_eq0000> created at line 146.
+    Found 8-bit comparator equal for signal <cp$cmp_eq0001> created at line 137.
+    Found 8-bit comparator equal for signal <cp$cmp_eq0002> created at line 142.
+    Found 2-bit comparator less for signal <cp$cmp_lt0000> created at line 133.
     Found 8-bit register for signal <CP_BASEADR>.
     Found 1-bit register for signal <CP_RD_S>.
     Found 1-bit register for signal <CP_WE_S>.
     Found 4-bit register for signal <Dout1>.
-    Found 2-bit comparator less for signal <Dout1$cmp_lt0000> created at line 253.
+    Found 3-bit comparator less for signal <Dout1$cmp_lt0000> created at line 255.
     Found 1-bit register for signal <DS_D>.
     Found 1-bit register for signal <ide>.
-    Found 8-bit comparator equal for signal <ide$cmp_eq0000> created at line 152.
+    Found 8-bit comparator equal for signal <ide$cmp_eq0000> created at line 147.
     Found 8-bit register for signal <IDE_BASEADR>.
     Found 1-bit register for signal <IDE_ENABLE>.
     Found 1-bit register for signal <IDE_R_S>.
     Found 1-bit register for signal <IDE_W_S>.
-    Found 1-bit register for signal <lan>.
-    Found 8-bit comparator equal for signal <lan$cmp_eq0000> created at line 140.
+    Found 1-bit register for signal <lan_adr>.
     Found 8-bit register for signal <LAN_BASEADR>.
+    Found 1-bit register for signal <LAN_INT_ENABLE>.
     Found 1-bit register for signal <LAN_RD_S>.
     Found 1-bit register for signal <LAN_WRH_S>.
     Found 1-bit register for signal <LAN_WRL_S>.
     Found 1-bit register for signal <ROM_OE_S>.
     Found 3-bit register for signal <SHUT_UP>.
     Summary:
-	inferred   5 D-type flip-flop(s).
+	inferred   6 D-type flip-flop(s).
 	inferred   1 Adder/Subtractor(s).
 	inferred   5 Comparator(s).
 	inferred   1 Xor(s).
@@ -163,13 +161,14 @@ HDL Synthesis Report
 Macro Statistics
 # Adders/Subtractors                                   : 1
  2-bit adder                                           : 1
-# Registers                                            : 23
- 1-bit register                                        : 17
+# Registers                                            : 24
+ 1-bit register                                        : 18
  2-bit register                                        : 2
  4-bit register                                        : 1
  8-bit register                                        : 3
 # Comparators                                          : 5
- 2-bit comparator less                                 : 2
+ 2-bit comparator less                                 : 1
+ 3-bit comparator less                                 : 1
  8-bit comparator equal                                : 3
 # Tristates                                            : 10
  1-bit tristate buffer                                 : 8
@@ -190,8 +189,8 @@ Advanced HDL Synthesis Report
 Macro Statistics
 # Adders/Subtractors                                   : 1
  2-bit adder                                           : 1
-# Registers                                            : 5
- Flip-Flops                                            : 5
+# Registers                                            : 6
+ Flip-Flops                                            : 6
 # Comparators                                          : 3
  8-bit comparator equal                                : 3
 
@@ -233,21 +232,22 @@ Design Statistics
 # IOs                              : 116
 
 Cell Usage :
-# BELS                             : 414
-#      AND2                        : 97
-#      AND3                        : 9
+# BELS                             : 437
+#      AND2                        : 103
+#      AND3                        : 11
+#      AND4                        : 1
 #      GND                         : 1
-#      INV                         : 153
-#      OR2                         : 120
-#      OR3                         : 5
-#      OR4                         : 3
+#      INV                         : 164
+#      OR2                         : 125
+#      OR3                         : 4
+#      OR4                         : 2
 #      XOR2                        : 26
-# FlipFlops/Latches                : 49
+# FlipFlops/Latches                : 50
 #      FD                          : 9
 #      FDC                         : 4
-#      FDCE                        : 36
-# IO Buffers                       : 106
-#      IBUF                        : 33
+#      FDCE                        : 37
+# IO Buffers                       : 109
+#      IBUF                        : 36
 #      IOBUFE                      : 32
 #      OBUF                        : 33
 #      OBUFE                       : 8
@@ -255,13 +255,13 @@ Cell Usage :
 
 
 Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 7.55 secs
+Total CPU time to Xst completion: 7.84 secs
  
 --> 
 
-Total memory usage is 293716 kilobytes
+Total memory usage is 293704 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   13 (   0 filtered)
-Number of infos    :    0 (   0 filtered)
+Number of warnings :    9 (   0 filtered)
+Number of infos    :    1 (   0 filtered)
 

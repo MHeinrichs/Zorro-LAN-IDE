@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -o "C:/Users/Matze/Amiga/Hardwarehacks/Zorro-LAN-IDE/Logic/LAN_IDE/LAN_IDE_CP_TB_isim_beh.exe" -prj "C:/Users/Matze/Amiga/Hardwarehacks/Zorro-LAN-IDE/Logic/LAN_IDE/LAN_IDE_CP_TB_beh.prj" "work.LAN_IDE_CP_TB" 

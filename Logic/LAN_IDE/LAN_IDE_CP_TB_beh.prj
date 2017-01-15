@@ -1,0 +1,2 @@
+vhdl work "LAN_IDE_CP.vhd"
+vhdl work "LAN_IDE_CP_TB.vhd"

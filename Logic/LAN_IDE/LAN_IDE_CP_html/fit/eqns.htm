@@ -3,20 +3,22 @@
 <script src="paths.js"></script><script src="eqns.js"></script><script>
       var design = "LAN_IDE_CP";
       var device = "XC95288XL";
-      signals = new Array("AUTO_CONFIG_DONE0_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE_CYCLE0_SPECSIG","AUTO_CONFIG_DONE_CYCLE1_SPECSIG","A_LAN0_SPECSIG","A_LAN10_SPECSIG","A_LAN11_SPECSIG","A_LAN12_SPECSIG","A_LAN13_SPECSIG","A_LAN1_SPECSIG","A_LAN2_SPECSIG","A_LAN3_SPECSIG","A_LAN4_SPECSIG","A_LAN5_SPECSIG","A_LAN6_SPECSIG","A_LAN7_SPECSIG","A_LAN8_SPECSIG","A_LAN9_SPECSIG","CFOUT","CP_BASEADR0_SPECSIG","CP_BASEADR1_SPECSIG","CP_BASEADR2_SPECSIG","CP_BASEADR3_SPECSIG","CP_BASEADR4_SPECSIG","CP_BASEADR5_SPECSIG","CP_BASEADR6_SPECSIG","CP_BASEADR7_SPECSIG","CP_CS","CP_RD","CP_RD_S","CP_WE","CP_WE_S","D0_SPECSIG","D10_SPECSIG","D11_SPECSIG","D12_SPECSIG","D13_SPECSIG","D14_SPECSIG","D15_SPECSIG","D1_SPECSIG","D2_SPECSIG","D3_SPECSIG","D4_SPECSIG","D5_SPECSIG","D6_SPECSIG","D7_SPECSIG","D8_SPECSIG","D9_SPECSIG","DQ0_SPECSIG","DQ10_SPECSIG","DQ11_SPECSIG","DQ12_SPECSIG","DQ13_SPECSIG","DQ14_SPECSIG","DQ15_SPECSIG","DQ1_SPECSIG","DQ2_SPECSIG","DQ3_SPECSIG","DQ4_SPECSIG","DQ5_SPECSIG","DQ6_SPECSIG","DQ7_SPECSIG","DQ8_SPECSIG","DQ9_SPECSIG","DS_D","DTACK","Dout10_SPECSIG","Dout11_SPECSIG","Dout12_SPECSIG","Dout13_SPECSIG","IDE_A0_SPECSIG","IDE_A1_SPECSIG","IDE_A2_SPECSIG","IDE_BASEADR0_SPECSIG","IDE_BASEADR1_SPECSIG","IDE_BASEADR2_SPECSIG","IDE_BASEADR3_SPECSIG","IDE_BASEADR4_SPECSIG","IDE_BASEADR5_SPECSIG","IDE_BASEADR6_SPECSIG","IDE_BASEADR7_SPECSIG","IDE_CS0_SPECSIG","IDE_CS1_SPECSIG","IDE_ENABLE","IDE_R","IDE_R_S","IDE_W","IDE_W_S","INT_OUT","LAN_BASEADR0_SPECSIG","LAN_BASEADR1_SPECSIG","LAN_BASEADR2_SPECSIG","LAN_BASEADR3_SPECSIG","LAN_BASEADR4_SPECSIG","LAN_BASEADR5_SPECSIG","LAN_BASEADR6_SPECSIG","LAN_BASEADR7_SPECSIG","LAN_CFG1_SPECSIG","LAN_CFG2_SPECSIG","LAN_CFG3_SPECSIG","LAN_CFG4_SPECSIG","LAN_CS","LAN_RD","LAN_RD_S","LAN_WRH","LAN_WRH_S","LAN_WRL","LAN_WRL_S","OVR","OWN","OpTxFX_DC175__INT_SPECSIG","OpTxFX_DC176__INT_SPECSIG","ROM_B0_SPECSIG","ROM_B1_SPECSIG","ROM_OE","ROM_OE_S","SHUT_UP0_SPECSIG","SHUT_UP1_SPECSIG","SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG","SHUT_UP2_SPECSIG","SLAVE","SLAVE_OBUF__INT_SPECSIG","autoconfig","ide","ideide_RSTF__INT_SPECSIG");
-      sigNegs = new Array("OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","ON","ON","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","ON","ON","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","ON","ON","ON","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","ON","ON","ON","OFF","ON","OFF","OFF","OFF","ON","OFF");
-      sigTypes = new Array("D","D","T","T","","","","","","","","","","","","","","","","T","T","T","T","T","T","T","T","D","","D","","D","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","D","","D","D","D","D","","","","T","T","T","T","T","T","T","T","","","D","","D","","D","","T","T","T","T","T","T","T","T","","","","","D","","D","","D","","D","","","","","","","","D","D","D","","D","","","D","D","");
+      signals = new Array("AUTO_CONFIG_DONE0_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE_CYCLE0_SPECSIG","AUTO_CONFIG_DONE_CYCLE1_SPECSIG","A_LAN0_SPECSIG","A_LAN10_SPECSIG","A_LAN11_SPECSIG","A_LAN12_SPECSIG","A_LAN13_SPECSIG","A_LAN1_SPECSIG","A_LAN2_SPECSIG","A_LAN3_SPECSIG","A_LAN4_SPECSIG","A_LAN5_SPECSIG","A_LAN6_SPECSIG","A_LAN7_SPECSIG","A_LAN8_SPECSIG","A_LAN9_SPECSIG","CFOUT","CP_BASEADR0_SPECSIG","CP_BASEADR1_SPECSIG","CP_BASEADR2_SPECSIG","CP_BASEADR3_SPECSIG","CP_BASEADR4_SPECSIG","CP_BASEADR5_SPECSIG","CP_BASEADR6_SPECSIG","CP_BASEADR7_SPECSIG","CP_CS","CP_RD","CP_RD_S","CP_WE","CP_WE_S","D0_SPECSIG","D10_SPECSIG","D11_SPECSIG","D12_SPECSIG","D13_SPECSIG","D14_SPECSIG","D15_SPECSIG","D1_SPECSIG","D2_SPECSIG","D3_SPECSIG","D4_SPECSIG","D5_SPECSIG","D6_SPECSIG","D7_SPECSIG","D8_SPECSIG","D9_SPECSIG","DQ0_SPECSIG","DQ10_SPECSIG","DQ11_SPECSIG","DQ12_SPECSIG","DQ13_SPECSIG","DQ14_SPECSIG","DQ15_SPECSIG","DQ1_SPECSIG","DQ2_SPECSIG","DQ3_SPECSIG","DQ4_SPECSIG","DQ5_SPECSIG","DQ6_SPECSIG","DQ7_SPECSIG","DQ8_SPECSIG","DQ9_SPECSIG","DS_D","DTACK","Dout10_SPECSIG","Dout11_SPECSIG","Dout12_SPECSIG","Dout13_SPECSIG","IDE_A0_SPECSIG","IDE_A1_SPECSIG","IDE_A2_SPECSIG","IDE_BASEADR0_SPECSIG","IDE_BASEADR1_SPECSIG","IDE_BASEADR2_SPECSIG","IDE_BASEADR3_SPECSIG","IDE_BASEADR4_SPECSIG","IDE_BASEADR5_SPECSIG","IDE_BASEADR6_SPECSIG","IDE_BASEADR7_SPECSIG","IDE_CS0_SPECSIG","IDE_CS1_SPECSIG","IDE_ENABLE","IDE_R","IDE_R_S","IDE_W","IDE_W_S","INT_OUT","LAN_BASEADR0_SPECSIG","LAN_BASEADR1_SPECSIG","LAN_BASEADR2_SPECSIG","LAN_BASEADR3_SPECSIG","LAN_BASEADR4_SPECSIG","LAN_BASEADR5_SPECSIG","LAN_BASEADR6_SPECSIG","LAN_BASEADR7_SPECSIG","LAN_CFG1_SPECSIG","LAN_CFG2_SPECSIG","LAN_CFG3_SPECSIG","LAN_CFG4_SPECSIG","LAN_CS","LAN_INT_ENABLE","LAN_RD","LAN_RD_S","LAN_WRH","LAN_WRH_S","LAN_WRL","LAN_WRL_S","Mcompar_ide_cmp_eq0000_AEB_or0000Mcompar_ide_cmp_eq0000_AEB_or0000_D2_SPECSIG","OVR","OWN","OpTxFX_DC174__INT_SPECSIG","OpTxFX_DC175__INT_SPECSIG","OpTxFX_DC323_SPECSIG","ROM_B0_SPECSIG","ROM_B1_SPECSIG","ROM_B_0_OBUFBUF7ROM_B_0_OBUFBUF7_TRST_SPECSIG","ROM_OE","ROM_OE_S","SHUT_UP0_SPECSIG","SHUT_UP1_SPECSIG","SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG","SHUT_UP2_SPECSIG","SLAVE","SLAVE_OBUF__INT_SPECSIG","autoconfig","cp_and0000cp_and0000_D2_SPECSIG","ide","ideide_RSTF__INT_SPECSIG");
+      sigNegs = new Array("OFF","OFF","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","ON","ON","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","ON","ON","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","ON","ON","ON","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","ON","ON","ON","OFF","ON","OFF","OFF","OFF","OFF","OFF","OFF");
+      sigTypes = new Array("D","D","T","T","","","","","","","","","","","","","","","","T","T","T","T","T","T","T","T","D","","D","","D","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","D","","D","D","D","D","","","","T","T","T","T","T","T","T","T","","","D","","D","","D","","T","T","T","T","T","T","T","T","","","","","D","D","","D","","D","","D","","","","","","","","","","","D","D","D","","D","","","D","","D","");
 
       
-        specSig["A2_SPECSIG"]=new Array("A<2>");
+        specSig["D15PIN_SPECSIG"]=new Array("D<15>.PIN");
       
-        specSig["A22_SPECSIG"]=new Array("A<22>");
+        specSig["A15_SPECSIG"]=new Array("A<15>");
       
         specSig["A23_SPECSIG"]=new Array("A<23>");
       
-        specSig["A21_SPECSIG"]=new Array("A<21>");
+        specSig["A22_SPECSIG"]=new Array("A<22>");
       
         specSig["A20_SPECSIG"]=new Array("A<20>");
+      
+        specSig["A21_SPECSIG"]=new Array("A<21>");
       
         specSig["A16_SPECSIG"]=new Array("A<16>");
       
@@ -58,15 +60,17 @@
       
         specSig["DQ9PIN_SPECSIG"]=new Array("DQ<9>.PIN");
       
-        specSig["A1_SPECSIG"]=new Array("A<1>");
-      
         specSig["A4_SPECSIG"]=new Array("A<4>");
+      
+        specSig["A1_SPECSIG"]=new Array("A<1>");
       
         specSig["A5_SPECSIG"]=new Array("A<5>");
       
         specSig["A3_SPECSIG"]=new Array("A<3>");
       
         specSig["A6_SPECSIG"]=new Array("A<6>");
+      
+        specSig["A2_SPECSIG"]=new Array("A<2>");
       
         specSig["D8PIN_SPECSIG"]=new Array("D<8>.PIN");
       
@@ -81,8 +85,6 @@
         specSig["D13PIN_SPECSIG"]=new Array("D<13>.PIN");
       
         specSig["D14PIN_SPECSIG"]=new Array("D<14>.PIN");
-      
-        specSig["D15PIN_SPECSIG"]=new Array("D<15>.PIN");
       
         specSig["D0PIN_SPECSIG"]=new Array("D<0>.PIN");
       
@@ -188,6 +190,8 @@
       
         specSig["A_LAN9_SPECSIG"]=new Array("A_LAN<9>");
       
+        specSig["GSRI_SPECSIG"]=new Array("GSR/I");
+      
         specSig["D13_SPECSIG"]=new Array("D<13>");
       
         specSig["D14_SPECSIG"]=new Array("D<14>");
@@ -234,11 +238,13 @@
       
         specSig["b_SPECSIG"]=new Array("(b)");
       
-        specSig["CP_BASEADR3_SPECSIG"]=new Array("CP_BASEADR<3>");
+        specSig["SHUT_UP1_SPECSIG"]=new Array("SHUT_UP<1>");
       
-        specSig["OpTxFX_DC176__INT_SPECSIG"]=new Array("$OpTx$FX_DC$176__$INT");
+        specSig["LAN_BASEADR2_SPECSIG"]=new Array("LAN_BASEADR<2>");
       
         specSig["OpTxFX_DC175__INT_SPECSIG"]=new Array("$OpTx$FX_DC$175__$INT");
+      
+        specSig["OpTxFX_DC174__INT_SPECSIG"]=new Array("$OpTx$FX_DC$174__$INT");
       
         specSig["Dout13_SPECSIG"]=new Array("Dout1<3>");
       
@@ -246,39 +252,41 @@
       
         specSig["SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG"]=new Array("SHUT_UP<2>/SHUT_UP<2>_CLKF");
       
-        specSig["IDE_BASEADR3_SPECSIG"]=new Array("IDE_BASEADR<3>");
+        specSig["CP_BASEADR4_SPECSIG"]=new Array("CP_BASEADR<4>");
       
-        specSig["IDE_BASEADR2_SPECSIG"]=new Array("IDE_BASEADR<2>");
+        specSig["LAN_BASEADR6_SPECSIG"]=new Array("LAN_BASEADR<6>");
       
-        specSig["IDE_BASEADR1_SPECSIG"]=new Array("IDE_BASEADR<1>");
+        specSig["LAN_BASEADR4_SPECSIG"]=new Array("LAN_BASEADR<4>");
       
-        specSig["IDE_BASEADR0_SPECSIG"]=new Array("IDE_BASEADR<0>");
+        specSig["IDE_BASEADR6_SPECSIG"]=new Array("IDE_BASEADR<6>");
+      
+        specSig["IDE_BASEADR4_SPECSIG"]=new Array("IDE_BASEADR<4>");
+      
+        specSig["CP_BASEADR6_SPECSIG"]=new Array("CP_BASEADR<6>");
       
         specSig["AUTO_CONFIG_DONE0_SPECSIG"]=new Array("AUTO_CONFIG_DONE<0>");
       
-        specSig["SHUT_UP2_SPECSIG"]=new Array("SHUT_UP<2>");
-      
-        specSig["AUTO_CONFIG_DONE_CYCLE0_SPECSIG"]=new Array("AUTO_CONFIG_DONE_CYCLE<0>");
-      
-        specSig["SHUT_UP0_SPECSIG"]=new Array("SHUT_UP<0>");
+        specSig["ROM_B_0_OBUFBUF7ROM_B_0_OBUFBUF7_TRST_SPECSIG"]=new Array("ROM_B_0_OBUF$BUF7/ROM_B_0_OBUF$BUF7_TRST");
       
         specSig["AUTO_CONFIG_DONE_CYCLE1_SPECSIG"]=new Array("AUTO_CONFIG_DONE_CYCLE<1>");
       
-        specSig["SHUT_UP1_SPECSIG"]=new Array("SHUT_UP<1>");
-      
-        specSig["Dout11_SPECSIG"]=new Array("Dout1<1>");
-      
         specSig["CP_BASEADR0_SPECSIG"]=new Array("CP_BASEADR<0>");
+      
+        specSig["IDE_BASEADR0_SPECSIG"]=new Array("IDE_BASEADR<0>");
+      
+        specSig["LAN_BASEADR0_SPECSIG"]=new Array("LAN_BASEADR<0>");
+      
+        specSig["AUTO_CONFIG_DONE_CYCLE0_SPECSIG"]=new Array("AUTO_CONFIG_DONE_CYCLE<0>");
+      
+        specSig["OpTxFX_DC323_SPECSIG"]=new Array("$OpTx$FX_DC$323");
       
         specSig["CP_BASEADR1_SPECSIG"]=new Array("CP_BASEADR<1>");
       
         specSig["CP_BASEADR2_SPECSIG"]=new Array("CP_BASEADR<2>");
       
-        specSig["CP_BASEADR4_SPECSIG"]=new Array("CP_BASEADR<4>");
+        specSig["CP_BASEADR3_SPECSIG"]=new Array("CP_BASEADR<3>");
       
         specSig["CP_BASEADR5_SPECSIG"]=new Array("CP_BASEADR<5>");
-      
-        specSig["CP_BASEADR6_SPECSIG"]=new Array("CP_BASEADR<6>");
       
         specSig["CP_BASEADR7_SPECSIG"]=new Array("CP_BASEADR<7>");
       
@@ -286,49 +294,53 @@
       
         specSig["ideide_RSTF__INT_SPECSIG"]=new Array("ide/ide_RSTF__$INT");
       
-        specSig["IDE_BASEADR4_SPECSIG"]=new Array("IDE_BASEADR<4>");
+        specSig["LAN_BASEADR3_SPECSIG"]=new Array("LAN_BASEADR<3>");
       
-        specSig["IDE_BASEADR5_SPECSIG"]=new Array("IDE_BASEADR<5>");
+        specSig["IDE_BASEADR3_SPECSIG"]=new Array("IDE_BASEADR<3>");
       
-        specSig["IDE_BASEADR6_SPECSIG"]=new Array("IDE_BASEADR<6>");
-      
-        specSig["IDE_BASEADR7_SPECSIG"]=new Array("IDE_BASEADR<7>");
+        specSig["SHUT_UP0_SPECSIG"]=new Array("SHUT_UP<0>");
       
         specSig["Dout12_SPECSIG"]=new Array("Dout1<2>");
       
-        specSig["LAN_BASEADR0_SPECSIG"]=new Array("LAN_BASEADR<0>");
+        specSig["Dout11_SPECSIG"]=new Array("Dout1<1>");
       
         specSig["LAN_BASEADR1_SPECSIG"]=new Array("LAN_BASEADR<1>");
       
-        specSig["LAN_BASEADR2_SPECSIG"]=new Array("LAN_BASEADR<2>");
-      
-        specSig["LAN_BASEADR3_SPECSIG"]=new Array("LAN_BASEADR<3>");
-      
-        specSig["LAN_BASEADR4_SPECSIG"]=new Array("LAN_BASEADR<4>");
-      
         specSig["LAN_BASEADR5_SPECSIG"]=new Array("LAN_BASEADR<5>");
-      
-        specSig["LAN_BASEADR6_SPECSIG"]=new Array("LAN_BASEADR<6>");
       
         specSig["LAN_BASEADR7_SPECSIG"]=new Array("LAN_BASEADR<7>");
       
+        specSig["Mcompar_ide_cmp_eq0000_AEB_or0000Mcompar_ide_cmp_eq0000_AEB_or0000_D2_SPECSIG"]=new Array("Mcompar_ide_cmp_eq0000_AEB_or0000/Mcompar_ide_cmp_eq0000_AEB_or0000_D2");
+      
+        specSig["SHUT_UP2_SPECSIG"]=new Array("SHUT_UP<2>");
+      
+        specSig["cp_and0000cp_and0000_D2_SPECSIG"]=new Array("cp_and0000/cp_and0000_D2");
+      
         specSig["SLAVE_OBUF__INT_SPECSIG"]=new Array("SLAVE_OBUF__$INT");
       
-            pterms["FB1_1_1"]=new Array("/AS","RESET","A2_SPECSIG","autoconfig","/A5_SPECSIG","A4_SPECSIG","A1_SPECSIG","/A6_SPECSIG","/UDS");
+        specSig["IDE_BASEADR7_SPECSIG"]=new Array("IDE_BASEADR<7>");
+      
+        specSig["IDE_BASEADR5_SPECSIG"]=new Array("IDE_BASEADR<5>");
+      
+        specSig["IDE_BASEADR2_SPECSIG"]=new Array("IDE_BASEADR<2>");
+      
+        specSig["IDE_BASEADR1_SPECSIG"]=new Array("IDE_BASEADR<1>");
+      
+            pterms["FB1_1_1"]=new Array("/AS","RESET","/AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A6_SPECSIG","/A3_SPECSIG","A1_SPECSIG","/A5_SPECSIG","/UDS");
           
-            pterms["FB1_1_2"]=new Array("/AS","RESET","/AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A5_SPECSIG","A1_SPECSIG","/A6_SPECSIG","/UDS","/A3_SPECSIG");
+            pterms["FB1_1_2"]=new Array("/AS","RESET","autoconfig","A6_SPECSIG","/A3_SPECSIG","/A4_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/UDS");
           
-            pterms["FB1_1_3"]=new Array("/AS","RESET","A2_SPECSIG","autoconfig","A5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A6_SPECSIG","/LDS","/A3_SPECSIG");
+            pterms["FB1_1_3"]=new Array("/AS","RESET","autoconfig","/A6_SPECSIG","A3_SPECSIG","A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/UDS");
           
-            pterms["FB1_1_4"]=new Array("/AS","RESET","/A2_SPECSIG","autoconfig","/A5_SPECSIG","A4_SPECSIG","/A1_SPECSIG","/A6_SPECSIG","/UDS","A3_SPECSIG");
+            pterms["FB1_1_4"]=new Array("/AS","RESET","autoconfig","/A6_SPECSIG","A3_SPECSIG","A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/LDS");
           
-            pterms["FB1_1_5"]=new Array("/AS","RESET","/A2_SPECSIG","autoconfig","/A5_SPECSIG","A4_SPECSIG","/A1_SPECSIG","/A6_SPECSIG","/LDS","A3_SPECSIG");
+            pterms["FB1_1_5"]=new Array("/AS","RESET","autoconfig","/A6_SPECSIG","/A3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","A2_SPECSIG","A5_SPECSIG","/LDS");
           
             pterms["FB1_2_1"]=new Array("/RW","LAN_CS","/LDS");
           
             pterms["FB1_2_2"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
-            pterms["FB1_2_3"]=new Array("/AS","RESET","A2_SPECSIG","autoconfig","A5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A6_SPECSIG","/UDS","/A3_SPECSIG");
+            pterms["FB1_2_3"]=new Array("/AS","RESET","autoconfig","/A6_SPECSIG","/A3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","A2_SPECSIG","A5_SPECSIG","/UDS");
           
             pterms["FB1_3_1"]=new Array("/RW","LAN_CS","/UDS");
           
@@ -346,7 +358,7 @@
           
             pterms["FB1_5_4"]=new Array("UDS","LDS");
           
-            pterms["FB1_5_5"]=new Array("/OpTxFX_DC175__INT_SPECSIG");
+            pterms["FB1_5_5"]=new Array("/OpTxFX_DC174__INT_SPECSIG");
           
             pterms["FB1_6_1"]=new Array("/RW");
           
@@ -356,7 +368,7 @@
           
             pterms["FB1_6_4"]=new Array("UDS","LDS");
           
-            pterms["FB1_6_5"]=new Array("/OpTxFX_DC175__INT_SPECSIG");
+            pterms["FB1_6_5"]=new Array("/OpTxFX_DC174__INT_SPECSIG");
           
             pterms["FB1_7_1"]=new Array("RW","LAN_CS","/UDS");
           
@@ -402,25 +414,27 @@
           
             pterms["FB1_17_1"]=new Array("RESET","/Dout13_SPECSIG","UDS","LDS");
           
-            pterms["FB1_17_2"]=new Array("/AS","RESET","A2_SPECSIG","autoconfig","/A5_SPECSIG","A4_SPECSIG","A1_SPECSIG","/A6_SPECSIG","/LDS");
+            pterms["FB1_17_2"]=new Array("/AS","RESET","/AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A6_SPECSIG","/A3_SPECSIG","A1_SPECSIG","/A5_SPECSIG","/LDS");
           
-            pterms["FB1_17_3"]=new Array("/AS","RESET","/A2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","A6_SPECSIG","/UDS","/A3_SPECSIG");
+            pterms["FB1_17_3"]=new Array("/AS","RESET","autoconfig","A6_SPECSIG","/A3_SPECSIG","/A4_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/LDS");
           
-            pterms["FB1_17_4"]=new Array("/AS","RESET","/A2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","A6_SPECSIG","/LDS","/A3_SPECSIG");
+            pterms["FB1_17_4"]=new Array("/AS","RESET","autoconfig","/A6_SPECSIG","A4_SPECSIG","A1_SPECSIG","A2_SPECSIG","/A5_SPECSIG","/UDS");
           
-            pterms["FB1_17_5"]=new Array("/AS","RESET","/AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A5_SPECSIG","A1_SPECSIG","/A6_SPECSIG","/LDS","/A3_SPECSIG");
+            pterms["FB1_17_5"]=new Array("/AS","RESET","autoconfig","/A6_SPECSIG","A4_SPECSIG","A1_SPECSIG","A2_SPECSIG","/A5_SPECSIG","/LDS");
           
             pterms["FB1_18_1"]=new Array("AS","RESET","/Dout13_SPECSIG");
           
             pterms["FB1_18_2"]=new Array("RESET","/autoconfig","/Dout13_SPECSIG");
           
-            pterms["FB1_18_3"]=new Array("/AS","RESET","/A2_SPECSIG","autoconfig","/A5_SPECSIG","A1_SPECSIG","/A6_SPECSIG","/UDS","/A3_SPECSIG");
+            pterms["FB1_18_3"]=new Array("/AS","RESET","autoconfig","/A6_SPECSIG","/A3_SPECSIG","A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/UDS");
           
-            pterms["FB1_18_4"]=new Array("/AS","RESET","/A2_SPECSIG","autoconfig","/A5_SPECSIG","A1_SPECSIG","/A6_SPECSIG","/LDS","/A3_SPECSIG");
+            pterms["FB1_18_4"]=new Array("/AS","RESET","autoconfig","/A6_SPECSIG","/A3_SPECSIG","A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/LDS");
           
             pterms["FB1_18_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
-            pterms["FB2_2_1"]=new Array("A5_SPECSIG");
+            pterms["FB2_2_1"]=new Array("LAN_CS","A5_SPECSIG");
+          
+            pterms["FB2_2_2"]=new Array("/LAN_CS","A4_SPECSIG");
           
             pterms["FB2_3_1"]=new Array("A8_SPECSIG");
           
@@ -434,7 +448,7 @@
           
             pterms["FB2_10_4"]=new Array("UDS","LDS");
           
-            pterms["FB2_10_5"]=new Array("/OpTxFX_DC175__INT_SPECSIG");
+            pterms["FB2_10_5"]=new Array("/OpTxFX_DC174__INT_SPECSIG");
           
             pterms["FB2_12_1"]=new Array("/RW");
           
@@ -444,7 +458,7 @@
           
             pterms["FB2_12_4"]=new Array("UDS","LDS");
           
-            pterms["FB2_12_5"]=new Array("/OpTxFX_DC175__INT_SPECSIG");
+            pterms["FB2_12_5"]=new Array("/OpTxFX_DC174__INT_SPECSIG");
           
             pterms["FB2_14_1"]=new Array("/RW");
           
@@ -454,7 +468,7 @@
           
             pterms["FB2_14_4"]=new Array("UDS","LDS");
           
-            pterms["FB2_14_5"]=new Array("/OpTxFX_DC175__INT_SPECSIG");
+            pterms["FB2_14_5"]=new Array("/OpTxFX_DC174__INT_SPECSIG");
           
             pterms["FB2_15_1"]=new Array("/RW");
           
@@ -464,7 +478,7 @@
           
             pterms["FB2_15_4"]=new Array("UDS","LDS");
           
-            pterms["FB2_15_5"]=new Array("/OpTxFX_DC175__INT_SPECSIG");
+            pterms["FB2_15_5"]=new Array("/OpTxFX_DC174__INT_SPECSIG");
           
             pterms["FB2_17_1"]=new Array("/RW");
           
@@ -474,213 +488,215 @@
           
             pterms["FB2_17_4"]=new Array("UDS","LDS");
           
-            pterms["FB2_17_5"]=new Array("/OpTxFX_DC175__INT_SPECSIG");
+            pterms["FB2_17_5"]=new Array("/OpTxFX_DC174__INT_SPECSIG");
           
-            pterms["FB3_1_1"]=new Array("/RESET","/IDE_BASEADR3_SPECSIG");
+            pterms["FB3_1_1"]=new Array("/RESET","/CP_BASEADR4_SPECSIG");
           
-            pterms["FB3_1_2"]=new Array("/AS","/RW","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/IDE_BASEADR3_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D11PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB3_1_2"]=new Array("/AS","/RW","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/CP_BASEADR4_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D12PIN_SPECSIG","/LDS","DS_D");
           
-            pterms["FB3_1_3"]=new Array("/AS","/RW","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/IDE_BASEADR3_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D11PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB3_1_3"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
-            pterms["FB3_1_4"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
+            pterms["FB3_1_4"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","CP_BASEADR6_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D14PIN_SPECSIG","/UDS","DS_D");
           
-            pterms["FB3_1_5"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","IDE_BASEADR0_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D8PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB3_1_5"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","CP_BASEADR6_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D14PIN_SPECSIG","/LDS","DS_D");
           
             pterms["FB3_2_1"]=new Array("/AS","/IDE_W_S");
           
-            pterms["FB3_2_2"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","IDE_BASEADR3_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D11PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB3_2_2"]=new Array("/AS","/RW","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/CP_BASEADR4_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D12PIN_SPECSIG","/UDS","DS_D");
           
-            pterms["FB3_2_3"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","IDE_BASEADR3_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D11PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB3_2_3"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","CP_BASEADR4_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D12PIN_SPECSIG","/UDS","DS_D");
           
-            pterms["FB3_15_1"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","IDE_BASEADR2_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D10PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB3_2_4"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","CP_BASEADR4_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D12PIN_SPECSIG","/LDS","DS_D");
           
-            pterms["FB3_15_2"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","IDE_BASEADR2_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D10PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB3_11_1"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","LAN_BASEADR6_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D14PIN_SPECSIG","/UDS","DS_D");
           
-            pterms["FB3_16_1"]=new Array("/RESET","/IDE_BASEADR2_SPECSIG");
+            pterms["FB3_12_1"]=new Array("/RESET","/LAN_BASEADR6_SPECSIG");
           
-            pterms["FB3_16_2"]=new Array("/AS","/RW","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/IDE_BASEADR2_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D10PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB3_12_2"]=new Array("/AS","/RW","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/LAN_BASEADR6_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D14PIN_SPECSIG","/UDS","DS_D");
           
-            pterms["FB3_16_3"]=new Array("/AS","/RW","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/IDE_BASEADR2_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D10PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB3_12_3"]=new Array("/AS","/RW","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/LAN_BASEADR6_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D14PIN_SPECSIG","/LDS","DS_D");
           
-            pterms["FB3_16_4"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
+            pterms["FB3_12_4"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","LAN_BASEADR6_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D14PIN_SPECSIG","/LDS","DS_D");
           
-            pterms["FB3_16_5"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","IDE_BASEADR1_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D9PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB3_12_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
-            pterms["FB3_17_1"]=new Array("/RESET","/IDE_BASEADR1_SPECSIG");
+            pterms["FB3_13_1"]=new Array("/RESET","/LAN_BASEADR4_SPECSIG");
           
-            pterms["FB3_17_2"]=new Array("/AS","/RW","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/IDE_BASEADR1_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D9PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB3_13_2"]=new Array("/AS","/RW","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/LAN_BASEADR4_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D12PIN_SPECSIG","/UDS","DS_D");
           
-            pterms["FB3_17_3"]=new Array("/AS","/RW","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/IDE_BASEADR1_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D9PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB3_13_3"]=new Array("/AS","/RW","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/LAN_BASEADR4_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D12PIN_SPECSIG","/LDS","DS_D");
           
-            pterms["FB3_17_4"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","IDE_BASEADR1_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D9PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB3_13_4"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","LAN_BASEADR4_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D12PIN_SPECSIG","/LDS","DS_D");
+          
+            pterms["FB3_13_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
+          
+            pterms["FB3_14_1"]=new Array("ROM_B_0_OBUFBUF7ROM_B_0_OBUFBUF7_TRST_SPECSIG");
+          
+            pterms["FB3_14_2"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","LAN_BASEADR4_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D12PIN_SPECSIG","/UDS","DS_D");
+          
+            pterms["FB3_15_1"]=new Array("/RESET","/IDE_BASEADR6_SPECSIG");
+          
+            pterms["FB3_15_2"]=new Array("/AS","/RW","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/IDE_BASEADR6_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D14PIN_SPECSIG","/UDS","DS_D");
+          
+            pterms["FB3_15_3"]=new Array("/AS","/RW","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/IDE_BASEADR6_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D14PIN_SPECSIG","/LDS","DS_D");
+          
+            pterms["FB3_15_4"]=new Array("/AS","/RW","RESET","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","IDE_BASEADR6_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D14PIN_SPECSIG","/LDS","DS_D");
+          
+            pterms["FB3_15_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
+          
+            pterms["FB3_16_1"]=new Array("/AS","/RW","RESET","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","IDE_BASEADR6_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D14PIN_SPECSIG","/UDS","DS_D");
+          
+            pterms["FB3_17_1"]=new Array("/RESET","/IDE_BASEADR4_SPECSIG");
+          
+            pterms["FB3_17_2"]=new Array("/AS","/RW","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/IDE_BASEADR4_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D12PIN_SPECSIG","/UDS","DS_D");
+          
+            pterms["FB3_17_3"]=new Array("/AS","/RW","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/IDE_BASEADR4_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D12PIN_SPECSIG","/LDS","DS_D");
+          
+            pterms["FB3_17_4"]=new Array("/AS","/RW","RESET","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","IDE_BASEADR4_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D12PIN_SPECSIG","/LDS","DS_D");
           
             pterms["FB3_17_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
-            pterms["FB3_18_1"]=new Array("/RESET","/IDE_BASEADR0_SPECSIG");
+            pterms["FB3_18_1"]=new Array("/RESET","/CP_BASEADR6_SPECSIG");
           
-            pterms["FB3_18_2"]=new Array("/AS","/RW","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/IDE_BASEADR0_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D8PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB3_18_2"]=new Array("/AS","/RW","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/CP_BASEADR6_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D14PIN_SPECSIG","/UDS","DS_D");
           
-            pterms["FB3_18_3"]=new Array("/AS","/RW","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/IDE_BASEADR0_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D8PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB3_18_3"]=new Array("/AS","/RW","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/CP_BASEADR6_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D14PIN_SPECSIG","/LDS","DS_D");
           
-            pterms["FB3_18_4"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","IDE_BASEADR0_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D8PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB3_18_4"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
-            pterms["FB3_18_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
-          
-            pterms["FB4_1_1"]=new Array("DQ0PIN_SPECSIG");
-          
-            pterms["FB4_1_2"]=new Array("/LAN_CS","CP_CS");
-          
-            pterms["FB4_1_3"]=new Array("UDS","LDS");
+            pterms["FB3_18_5"]=new Array("/AS","/RW","RESET","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","IDE_BASEADR4_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D12PIN_SPECSIG","/UDS","DS_D");
           
             pterms["FB4_2_1"]=new Array("/RW");
           
-            pterms["FB4_2_2"]=new Array("/OpTxFX_DC175__INT_SPECSIG");
+            pterms["FB4_2_2"]=new Array("DQ0PIN_SPECSIG");
           
-            pterms["FB4_2_3"]=new Array("/AS","/RW","RESET","A2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB4_2_3"]=new Array("/LAN_CS","CP_CS");
           
-            pterms["FB4_2_4"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB4_2_4"]=new Array("UDS","LDS");
           
-            pterms["FB4_2_5"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB4_2_5"]=new Array("/OpTxFX_DC174__INT_SPECSIG");
           
-            pterms["FB4_3_1"]=new Array("/AS","/RW","RESET","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB4_3_1"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE_CYCLE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A5_SPECSIG","/UDS","DS_D");
           
-            pterms["FB4_3_2"]=new Array("/AS","/RW","RESET","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB4_3_2"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE0_SPECSIG","AUTO_CONFIG_DONE_CYCLE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A5_SPECSIG","/UDS","DS_D");
           
-            pterms["FB4_3_3"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB4_3_3"]=new Array("/AS","/RW","RESET","AUTO_CONFIG_DONE_CYCLE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","A2_SPECSIG","/A5_SPECSIG","/UDS","DS_D");
           
-            pterms["FB4_3_4"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB4_3_4"]=new Array("/AS","/RW","RESET","AUTO_CONFIG_DONE_CYCLE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","A2_SPECSIG","/A5_SPECSIG","/LDS","DS_D");
           
             pterms["FB4_3_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
-            pterms["FB4_4_1"]=new Array("RESET","/SHUT_UP0_SPECSIG");
+            pterms["FB4_4_1"]=new Array("/RESET","/CP_BASEADR0_SPECSIG");
           
-            pterms["FB4_4_2"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB4_4_2"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
-            pterms["FB4_4_3"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
+            pterms["FB4_4_3"]=new Array("/RESET","AUTO_CONFIG_DONE_CYCLE1_SPECSIG");
           
-            pterms["FB4_4_4"]=new Array("/RESET","AUTO_CONFIG_DONE_CYCLE0_SPECSIG");
+            pterms["FB4_4_4"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE_CYCLE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A5_SPECSIG","/LDS","DS_D");
           
-            pterms["FB4_4_5"]=new Array("/AS","/RW","RESET","A2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB4_4_5"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE0_SPECSIG","AUTO_CONFIG_DONE_CYCLE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A5_SPECSIG","/LDS","DS_D");
           
             pterms["FB4_5_1"]=new Array("A2_SPECSIG");
           
-            pterms["FB4_5_2"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB4_5_2"]=new Array("/AS","/RW","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/CP_BASEADR0_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D8PIN_SPECSIG","/UDS","DS_D");
+          
+            pterms["FB4_5_3"]=new Array("/AS","/RW","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/CP_BASEADR0_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D8PIN_SPECSIG","/LDS","DS_D");
+          
+            pterms["FB4_5_4"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","CP_BASEADR0_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D8PIN_SPECSIG","/UDS","DS_D");
+          
+            pterms["FB4_5_5"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","CP_BASEADR0_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D8PIN_SPECSIG","/LDS","DS_D");
           
             pterms["FB4_6_1"]=new Array("A1_SPECSIG");
           
-            pterms["FB4_6_2"]=new Array("/AS","/RW","RESET","A2_SPECSIG","AUTO_CONFIG_DONE_CYCLE0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB4_6_2"]=new Array("/AS","/RW","RESET","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","IDE_BASEADR0_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D8PIN_SPECSIG","/UDS","DS_D");
           
-            pterms["FB4_6_3"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","AUTO_CONFIG_DONE_CYCLE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB4_7_1"]=new Array("/RESET","/IDE_BASEADR0_SPECSIG");
           
-            pterms["FB4_6_4"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","AUTO_CONFIG_DONE_CYCLE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB4_7_2"]=new Array("/AS","/RW","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/IDE_BASEADR0_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D8PIN_SPECSIG","/UDS","DS_D");
           
-            pterms["FB4_7_1"]=new Array("/AS","/RW","RESET","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","AUTO_CONFIG_DONE_CYCLE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB4_7_3"]=new Array("/AS","/RW","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/IDE_BASEADR0_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D8PIN_SPECSIG","/LDS","DS_D");
           
-            pterms["FB4_7_2"]=new Array("/AS","/RW","RESET","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","AUTO_CONFIG_DONE_CYCLE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/LDS","DS_D","A3_SPECSIG");
-          
-            pterms["FB4_7_3"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","AUTO_CONFIG_DONE_CYCLE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/LDS","DS_D","A3_SPECSIG");
-          
-            pterms["FB4_7_4"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","AUTO_CONFIG_DONE_CYCLE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB4_7_4"]=new Array("/AS","/RW","RESET","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","IDE_BASEADR0_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D8PIN_SPECSIG","/LDS","DS_D");
           
             pterms["FB4_7_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
-            pterms["FB4_8_1"]=new Array("A4_SPECSIG");
+            pterms["FB4_8_1"]=new Array("LAN_CS","A4_SPECSIG");
           
-            pterms["FB4_8_2"]=new Array("/RESET","AUTO_CONFIG_DONE_CYCLE1_SPECSIG");
+            pterms["FB4_8_2"]=new Array("/LAN_CS","A3_SPECSIG");
           
-            pterms["FB4_8_3"]=new Array("/AS","/RW","RESET","A2_SPECSIG","AUTO_CONFIG_DONE_CYCLE0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB4_8_3"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","LAN_BASEADR0_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D8PIN_SPECSIG","/UDS","DS_D");
           
-            pterms["FB4_9_1"]=new Array("RESET","/SHUT_UP1_SPECSIG");
+            pterms["FB4_9_1"]=new Array("/RESET","/LAN_BASEADR0_SPECSIG");
           
-            pterms["FB4_9_2"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB4_9_2"]=new Array("/AS","/RW","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/LAN_BASEADR0_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D8PIN_SPECSIG","/UDS","DS_D");
           
-            pterms["FB4_9_3"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB4_9_3"]=new Array("/AS","/RW","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/LAN_BASEADR0_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D8PIN_SPECSIG","/LDS","DS_D");
           
-            pterms["FB4_9_4"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
+            pterms["FB4_9_4"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","LAN_BASEADR0_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D8PIN_SPECSIG","/LDS","DS_D");
           
-            pterms["FB4_10_1"]=new Array("RESET","/SHUT_UP2_SPECSIG");
+            pterms["FB4_9_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
-            pterms["FB4_10_2"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB4_10_1"]=new Array("AS","RESET","AUTO_CONFIG_DONE_CYCLE0_SPECSIG");
           
-            pterms["FB4_10_3"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB4_10_2"]=new Array("/AS","RESET","AUTO_CONFIG_DONE0_SPECSIG");
           
-            pterms["FB4_10_4"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
+            pterms["FB4_10_3"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
-            pterms["FB4_11_1"]=new Array("AS","RESET","AUTO_CONFIG_DONE_CYCLE0_SPECSIG");
+            pterms["FB4_11_1"]=new Array("AS","RESET","AUTO_CONFIG_DONE_CYCLE1_SPECSIG");
           
-            pterms["FB4_11_2"]=new Array("/AS","RESET","AUTO_CONFIG_DONE0_SPECSIG");
+            pterms["FB4_11_2"]=new Array("/AS","RESET","AUTO_CONFIG_DONE1_SPECSIG");
           
             pterms["FB4_11_3"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
-            pterms["FB4_12_1"]=new Array("A3_SPECSIG");
+            pterms["FB4_12_1"]=new Array("LAN_CS","A3_SPECSIG");
           
-            pterms["FB4_13_1"]=new Array("AS","RESET","AUTO_CONFIG_DONE_CYCLE1_SPECSIG");
+            pterms["FB4_12_2"]=new Array("/LAN_CS","A2_SPECSIG");
           
-            pterms["FB4_13_2"]=new Array("/AS","RESET","AUTO_CONFIG_DONE1_SPECSIG");
+            pterms["FB4_14_1"]=new Array("LAN_CS","A6_SPECSIG");
           
-            pterms["FB4_13_3"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
+            pterms["FB4_14_2"]=new Array("/LAN_CS","A5_SPECSIG");
           
-            pterms["FB4_14_1"]=new Array("A6_SPECSIG");
+            pterms["FB4_14_3"]=new Array("RW","RESET");
           
-            pterms["FB4_14_2"]=new Array("/AS","RESET","A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A5_SPECSIG","A4_SPECSIG","/A1_SPECSIG","/A6_SPECSIG","/UDS");
+            pterms["FB4_14_4"]=new Array("RESET","/A6_SPECSIG");
           
-            pterms["FB4_14_3"]=new Array("/AS","RESET","A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A4_SPECSIG","/A1_SPECSIG","/A6_SPECSIG","/UDS","/A3_SPECSIG");
+            pterms["FB4_14_5"]=new Array("RESET","/DS_D");
           
-            pterms["FB4_14_4"]=new Array("/AS","RESET","A2_SPECSIG","autoconfig","A5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A6_SPECSIG","/UDS","/A3_SPECSIG");
+            pterms["FB4_15_1"]=new Array("RESET","/A3_SPECSIG");
           
-            pterms["FB4_14_5"]=new Array("/AS","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A5_SPECSIG","A1_SPECSIG","/A6_SPECSIG","/UDS","/A3_SPECSIG");
+            pterms["FB4_15_2"]=new Array("RESET","A4_SPECSIG");
           
-            pterms["FB4_15_1"]=new Array("/AS","RESET","/A2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/UDS","/A3_SPECSIG");
+            pterms["FB4_15_3"]=new Array("RESET","A1_SPECSIG");
           
-            pterms["FB4_15_2"]=new Array("/AS","RESET","A2_SPECSIG","autoconfig","/A5_SPECSIG","A4_SPECSIG","/A6_SPECSIG","/UDS","A3_SPECSIG");
+            pterms["FB4_15_4"]=new Array("RESET","A5_SPECSIG");
           
-            pterms["FB4_15_3"]=new Array("/AS","RESET","A2_SPECSIG","autoconfig","/A5_SPECSIG","A4_SPECSIG","/A6_SPECSIG","/LDS","A3_SPECSIG");
+            pterms["FB4_15_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
-            pterms["FB4_15_4"]=new Array("/AS","RESET","autoconfig","/A5_SPECSIG","A4_SPECSIG","/A1_SPECSIG","/A6_SPECSIG","/UDS","A3_SPECSIG");
+            pterms["FB4_16_1"]=new Array("AS","RESET");
           
-            pterms["FB4_15_5"]=new Array("/AS","RESET","autoconfig","/A5_SPECSIG","A4_SPECSIG","/A1_SPECSIG","/A6_SPECSIG","/LDS","A3_SPECSIG");
+            pterms["FB4_16_2"]=new Array("RESET","/autoconfig");
           
-            pterms["FB4_16_1"]=new Array("AS","RESET","/Dout11_SPECSIG");
+            pterms["FB4_16_3"]=new Array("/RESET","/AUTO_CONFIG_DONE_CYCLE0_SPECSIG");
           
-            pterms["FB4_16_2"]=new Array("RESET","/autoconfig","/Dout11_SPECSIG");
+            pterms["FB4_16_4"]=new Array("RESET","UDS","LDS");
           
-            pterms["FB4_16_3"]=new Array("RESET","/Dout11_SPECSIG","UDS","LDS");
+            pterms["FB4_16_5"]=new Array("RESET","AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","/A2_SPECSIG");
           
-            pterms["FB4_16_4"]=new Array("/AS","RESET","/A2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/LDS","/A3_SPECSIG");
+            pterms["FB5_1_1"]=new Array("CP_BASEADR5_SPECSIG","/A21_SPECSIG");
           
-            pterms["FB4_16_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
+            pterms["FB5_1_2"]=new Array("/CP_BASEADR5_SPECSIG","A21_SPECSIG");
           
-            pterms["FB4_17_1"]=new Array("/AS","RESET","A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A5_SPECSIG","A4_SPECSIG","/A1_SPECSIG","/A6_SPECSIG","/LDS");
+            pterms["FB5_1_3"]=new Array("CP_BASEADR6_SPECSIG","/A22_SPECSIG");
           
-            pterms["FB4_17_2"]=new Array("/AS","RESET","A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A4_SPECSIG","/A1_SPECSIG","/A6_SPECSIG","/LDS","/A3_SPECSIG");
+            pterms["FB5_1_4"]=new Array("/CP_BASEADR6_SPECSIG","A22_SPECSIG");
           
-            pterms["FB4_17_3"]=new Array("/AS","RESET","A2_SPECSIG","autoconfig","A5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A6_SPECSIG","/LDS","/A3_SPECSIG");
-          
-            pterms["FB4_17_4"]=new Array("/AS","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A5_SPECSIG","A1_SPECSIG","/A6_SPECSIG","/LDS","/A3_SPECSIG");
-          
-            pterms["FB4_17_5"]=new Array("/AS","RESET","AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","A1_SPECSIG","/A6_SPECSIG","/LDS","/A3_SPECSIG");
-          
-            pterms["FB4_18_1"]=new Array("/AS","RESET","AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","A1_SPECSIG","/A6_SPECSIG","/UDS","/A3_SPECSIG");
-          
-            pterms["FB4_18_2"]=new Array("/AS","RESET","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","A1_SPECSIG","/A6_SPECSIG","/UDS","/A3_SPECSIG");
-          
-            pterms["FB4_18_3"]=new Array("/AS","RESET","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","A1_SPECSIG","/A6_SPECSIG","/LDS","/A3_SPECSIG");
-          
-            pterms["FB5_1_1"]=new Array("CP_BASEADR4_SPECSIG","/A20_SPECSIG");
-          
-            pterms["FB5_1_2"]=new Array("CP_BASEADR5_SPECSIG","/A21_SPECSIG");
-          
-            pterms["FB5_1_3"]=new Array("/CP_BASEADR5_SPECSIG","A21_SPECSIG");
-          
-            pterms["FB5_1_4"]=new Array("CP_BASEADR6_SPECSIG","/A22_SPECSIG");
-          
-            pterms["FB5_1_5"]=new Array("/CP_BASEADR6_SPECSIG","A22_SPECSIG");
+            pterms["FB5_1_5"]=new Array("/CP_BASEADR7_SPECSIG","A23_SPECSIG");
           
             pterms["FB5_2_1"]=new Array("SHUT_UP1_SPECSIG");
           
-            pterms["FB5_2_2"]=new Array("CP_BASEADR7_SPECSIG","/A23_SPECSIG");
+            pterms["FB5_2_2"]=new Array("/OpTxFX_DC323_SPECSIG");
           
-            pterms["FB5_2_3"]=new Array("/CP_BASEADR7_SPECSIG","A23_SPECSIG");
+            pterms["FB5_2_3"]=new Array("CP_BASEADR7_SPECSIG","/A23_SPECSIG");
           
             pterms["FB5_2_4"]=new Array("/ideide_RSTF__INT_SPECSIG");
           
@@ -688,11 +704,11 @@
           
             pterms["FB5_3_1"]=new Array("CP_BASEADR2_SPECSIG","/A18_SPECSIG");
           
-            pterms["FB5_3_2"]=new Array("/CP_BASEADR2_SPECSIG","A18_SPECSIG");
+            pterms["FB5_3_2"]=new Array("CP_BASEADR3_SPECSIG","/A19_SPECSIG");
           
-            pterms["FB5_3_3"]=new Array("CP_BASEADR3_SPECSIG","/A19_SPECSIG");
+            pterms["FB5_3_3"]=new Array("/CP_BASEADR3_SPECSIG","A19_SPECSIG");
           
-            pterms["FB5_3_4"]=new Array("/CP_BASEADR3_SPECSIG","A19_SPECSIG");
+            pterms["FB5_3_4"]=new Array("CP_BASEADR4_SPECSIG","/A20_SPECSIG");
           
             pterms["FB5_3_5"]=new Array("/CP_BASEADR4_SPECSIG","A20_SPECSIG");
           
@@ -704,7 +720,13 @@
           
             pterms["FB5_4_4"]=new Array("/CP_BASEADR1_SPECSIG","A17_SPECSIG");
           
+            pterms["FB5_4_5"]=new Array("/CP_BASEADR2_SPECSIG","A18_SPECSIG");
+          
             pterms["FB5_5_1"]=new Array("/AS","/ROM_OE_S");
+          
+            pterms["FB5_5_2"]=new Array("/AUTO_CONFIG_DONE1_SPECSIG","/CFIN","/A18_SPECSIG","/A17_SPECSIG","/A16_SPECSIG","A23_SPECSIG","A22_SPECSIG","A21_SPECSIG","A19_SPECSIG","/A20_SPECSIG");
+          
+            pterms["FB5_5_3"]=new Array("/AUTO_CONFIG_DONE0_SPECSIG","/CFIN","/A18_SPECSIG","/A17_SPECSIG","/A16_SPECSIG","A23_SPECSIG","A22_SPECSIG","A21_SPECSIG","A19_SPECSIG","/A20_SPECSIG");
           
             pterms["FB5_10_1"]=new Array("/RW");
           
@@ -714,7 +736,7 @@
           
             pterms["FB5_10_4"]=new Array("UDS","LDS");
           
-            pterms["FB5_10_5"]=new Array("/OpTxFX_DC175__INT_SPECSIG");
+            pterms["FB5_10_5"]=new Array("/OpTxFX_DC174__INT_SPECSIG");
           
             pterms["FB5_12_1"]=new Array("/RW");
           
@@ -724,7 +746,7 @@
           
             pterms["FB5_12_4"]=new Array("UDS","LDS");
           
-            pterms["FB5_12_5"]=new Array("/OpTxFX_DC175__INT_SPECSIG");
+            pterms["FB5_12_5"]=new Array("/OpTxFX_DC174__INT_SPECSIG");
           
             pterms["FB5_14_1"]=new Array("/RW");
           
@@ -734,7 +756,7 @@
           
             pterms["FB5_14_4"]=new Array("UDS","LDS");
           
-            pterms["FB5_14_5"]=new Array("/OpTxFX_DC175__INT_SPECSIG");
+            pterms["FB5_14_5"]=new Array("/OpTxFX_DC174__INT_SPECSIG");
           
             pterms["FB5_15_1"]=new Array("/RW");
           
@@ -744,7 +766,7 @@
           
             pterms["FB5_15_4"]=new Array("UDS","LDS");
           
-            pterms["FB5_15_5"]=new Array("/OpTxFX_DC175__INT_SPECSIG");
+            pterms["FB5_15_5"]=new Array("/OpTxFX_DC174__INT_SPECSIG");
           
             pterms["FB5_16_1"]=new Array("RW","LAN_CS","/LDS","DQ12PIN_SPECSIG");
           
@@ -758,9 +780,13 @@
           
             pterms["FB5_17_4"]=new Array("RW","/LDS","DQ12PIN_SPECSIG","/CP_CS");
           
-            pterms["FB5_17_5"]=new Array("/OpTxFX_DC175__INT_SPECSIG");
+            pterms["FB5_17_5"]=new Array("/OpTxFX_DC174__INT_SPECSIG");
           
             pterms["FB5_18_1"]=new Array("RW","LAN_CS","/UDS","DQ12PIN_SPECSIG");
+          
+            pterms["FB6_1_1"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","CP_BASEADR3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D11PIN_SPECSIG","/UDS","DS_D");
+          
+            pterms["FB6_1_2"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","CP_BASEADR3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D11PIN_SPECSIG","/LDS","DS_D");
           
             pterms["FB6_3_1"]=new Array("A14_SPECSIG");
           
@@ -774,49 +800,57 @@
           
             pterms["FB6_14_1"]=new Array("A10_SPECSIG");
           
-            pterms["FB6_15_1"]=new Array("IDE_BASEADR4_SPECSIG","/A20_SPECSIG");
+            pterms["FB6_15_1"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","LAN_BASEADR3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D11PIN_SPECSIG","/UDS","DS_D");
           
-            pterms["FB6_15_2"]=new Array("/IDE_BASEADR4_SPECSIG","A20_SPECSIG");
+            pterms["FB6_16_1"]=new Array("/RESET","/LAN_BASEADR3_SPECSIG");
           
-            pterms["FB6_15_3"]=new Array("IDE_BASEADR5_SPECSIG","/A21_SPECSIG");
+            pterms["FB6_16_2"]=new Array("/AS","/RW","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/LAN_BASEADR3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D11PIN_SPECSIG","/UDS","DS_D");
           
-            pterms["FB6_15_4"]=new Array("/IDE_BASEADR5_SPECSIG","A21_SPECSIG");
+            pterms["FB6_16_3"]=new Array("/AS","/RW","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/LAN_BASEADR3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D11PIN_SPECSIG","/LDS","DS_D");
           
-            pterms["FB6_16_1"]=new Array("IDE_BASEADR0_SPECSIG","/A16_SPECSIG");
+            pterms["FB6_16_4"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","LAN_BASEADR3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D11PIN_SPECSIG","/LDS","DS_D");
           
-            pterms["FB6_16_2"]=new Array("/IDE_BASEADR0_SPECSIG","A16_SPECSIG");
+            pterms["FB6_16_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
-            pterms["FB6_16_3"]=new Array("IDE_BASEADR1_SPECSIG","/A17_SPECSIG");
+            pterms["FB6_17_1"]=new Array("/RESET","/IDE_BASEADR3_SPECSIG");
           
-            pterms["FB6_16_4"]=new Array("IDE_BASEADR2_SPECSIG","/A18_SPECSIG");
+            pterms["FB6_17_2"]=new Array("/AS","/RW","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/IDE_BASEADR3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D11PIN_SPECSIG","/UDS","DS_D");
           
-            pterms["FB6_16_5"]=new Array("/IDE_BASEADR2_SPECSIG","A18_SPECSIG");
+            pterms["FB6_17_3"]=new Array("/AS","/RW","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/IDE_BASEADR3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D11PIN_SPECSIG","/LDS","DS_D");
           
-            pterms["FB6_17_1"]=new Array("SHUT_UP2_SPECSIG");
+            pterms["FB6_17_4"]=new Array("/AS","/RW","RESET","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","IDE_BASEADR3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D11PIN_SPECSIG","/LDS","DS_D");
           
-            pterms["FB6_17_2"]=new Array("IDE_BASEADR3_SPECSIG","/A19_SPECSIG");
+            pterms["FB6_17_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
-            pterms["FB6_17_3"]=new Array("/IDE_BASEADR3_SPECSIG","A19_SPECSIG");
+            pterms["FB6_18_1"]=new Array("/RESET","/CP_BASEADR3_SPECSIG");
           
-            pterms["FB6_17_4"]=new Array("/ideide_RSTF__INT_SPECSIG");
+            pterms["FB6_18_2"]=new Array("/AS","/RW","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/CP_BASEADR3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D11PIN_SPECSIG","/UDS","DS_D");
           
-            pterms["FB6_17_5"]=new Array("/AS");
+            pterms["FB6_18_3"]=new Array("/AS","/RW","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/CP_BASEADR3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D11PIN_SPECSIG","/LDS","DS_D");
           
-            pterms["FB6_18_1"]=new Array("/IDE_BASEADR1_SPECSIG","A17_SPECSIG");
+            pterms["FB6_18_4"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
-            pterms["FB6_18_2"]=new Array("IDE_BASEADR6_SPECSIG","/A22_SPECSIG");
+            pterms["FB6_18_5"]=new Array("/AS","/RW","RESET","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","IDE_BASEADR3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D11PIN_SPECSIG","/UDS","DS_D");
           
-            pterms["FB6_18_3"]=new Array("/IDE_BASEADR6_SPECSIG","A22_SPECSIG");
+            pterms["FB7_1_1"]=new Array("/AS","RESET","AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A6_SPECSIG","/A3_SPECSIG","/A4_SPECSIG","A1_SPECSIG","/A5_SPECSIG","/UDS");
           
-            pterms["FB6_18_4"]=new Array("IDE_BASEADR7_SPECSIG","/A23_SPECSIG");
+            pterms["FB7_1_2"]=new Array("/AS","RESET","/AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A6_SPECSIG","/A3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","A2_SPECSIG","/UDS");
           
-            pterms["FB6_18_5"]=new Array("/IDE_BASEADR7_SPECSIG","A23_SPECSIG");
+            pterms["FB7_1_3"]=new Array("/AS","RESET","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","/A6_SPECSIG","/A3_SPECSIG","/A4_SPECSIG","A1_SPECSIG","/A5_SPECSIG","/UDS");
           
-            pterms["FB7_2_1"]=new Array("RW","LAN_CS","/UDS","DQ13PIN_SPECSIG");
+            pterms["FB7_1_4"]=new Array("/AS","RESET","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","/A6_SPECSIG","/A3_SPECSIG","/A4_SPECSIG","A1_SPECSIG","/A5_SPECSIG","/LDS");
           
-            pterms["FB7_2_2"]=new Array("RW","LAN_CS","/LDS","DQ13PIN_SPECSIG");
+            pterms["FB7_1_5"]=new Array("/AS","RESET","autoconfig","/A6_SPECSIG","/A3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","A2_SPECSIG","A5_SPECSIG","/UDS");
           
-            pterms["FB7_2_3"]=new Array("RW","/UDS","DQ13PIN_SPECSIG","/CP_CS");
+            pterms["FB7_2_1"]=new Array("RESET","/SHUT_UP0_SPECSIG");
+          
+            pterms["FB7_2_2"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/UDS","DS_D");
+          
+            pterms["FB7_2_3"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/LDS","DS_D");
+          
+            pterms["FB7_2_4"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
+          
+            pterms["FB7_2_5"]=new Array("RW","LAN_CS","/LDS","DQ13PIN_SPECSIG");
           
             pterms["FB7_3_1"]=new Array("/RW","Dout11_SPECSIG");
           
@@ -826,13 +860,11 @@
           
             pterms["FB7_3_4"]=new Array("RW","/LDS","DQ13PIN_SPECSIG","/CP_CS");
           
-            pterms["FB7_3_5"]=new Array("/OpTxFX_DC175__INT_SPECSIG");
+            pterms["FB7_3_5"]=new Array("/OpTxFX_DC174__INT_SPECSIG");
           
-            pterms["FB7_4_1"]=new Array("RW","LAN_CS","/UDS","DQ14PIN_SPECSIG");
+            pterms["FB7_4_1"]=new Array("RW","LAN_CS","/UDS","DQ13PIN_SPECSIG");
           
-            pterms["FB7_4_2"]=new Array("RW","LAN_CS","/LDS","DQ14PIN_SPECSIG");
-          
-            pterms["FB7_4_3"]=new Array("RW","/UDS","DQ14PIN_SPECSIG","/CP_CS");
+            pterms["FB7_4_2"]=new Array("RW","/UDS","DQ13PIN_SPECSIG","/CP_CS");
           
             pterms["FB7_5_1"]=new Array("/RW","Dout12_SPECSIG");
           
@@ -842,53 +874,57 @@
           
             pterms["FB7_5_4"]=new Array("RW","/LDS","DQ14PIN_SPECSIG","/CP_CS");
           
-            pterms["FB7_5_5"]=new Array("/OpTxFX_DC175__INT_SPECSIG");
+            pterms["FB7_5_5"]=new Array("/OpTxFX_DC174__INT_SPECSIG");
           
-            pterms["FB7_6_1"]=new Array("/AS","RESET","A2_SPECSIG","autoconfig","/A5_SPECSIG","A4_SPECSIG","A1_SPECSIG","/A6_SPECSIG","/UDS","/A3_SPECSIG");
+            pterms["FB7_6_1"]=new Array("RW","LAN_CS","/UDS","DQ14PIN_SPECSIG");
           
-            pterms["FB7_6_2"]=new Array("/AS","RESET","A2_SPECSIG","autoconfig","/A5_SPECSIG","A4_SPECSIG","/A1_SPECSIG","/A6_SPECSIG","/UDS","A3_SPECSIG");
+            pterms["FB7_6_2"]=new Array("RW","LAN_CS","/LDS","DQ14PIN_SPECSIG");
           
-            pterms["FB7_6_3"]=new Array("/AS","RESET","A2_SPECSIG","autoconfig","/A5_SPECSIG","A4_SPECSIG","/A1_SPECSIG","/A6_SPECSIG","/LDS","A3_SPECSIG");
+            pterms["FB7_6_3"]=new Array("RW","/UDS","DQ14PIN_SPECSIG","/CP_CS");
           
-            pterms["FB7_6_4"]=new Array("/AS","RESET","A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A6_SPECSIG","/UDS","/A3_SPECSIG");
+            pterms["FB7_7_1"]=new Array("/AS","RESET","autoconfig","/A6_SPECSIG","A3_SPECSIG","A4_SPECSIG","/A1_SPECSIG","A2_SPECSIG","/A5_SPECSIG","/UDS");
           
-            pterms["FB7_6_5"]=new Array("/AS","RESET","A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A6_SPECSIG","/LDS","/A3_SPECSIG");
+            pterms["FB7_7_2"]=new Array("/AS","RESET","autoconfig","/A6_SPECSIG","/A3_SPECSIG","A4_SPECSIG","A1_SPECSIG","A2_SPECSIG","/A5_SPECSIG","/UDS");
           
-            pterms["FB7_7_1"]=new Array("AS","RESET","/Dout12_SPECSIG");
+            pterms["FB7_7_3"]=new Array("/AS","RESET","autoconfig","/A6_SPECSIG","/A3_SPECSIG","/A4_SPECSIG","A1_SPECSIG","A2_SPECSIG","A5_SPECSIG","/UDS");
           
-            pterms["FB7_7_2"]=new Array("RESET","/autoconfig","/Dout12_SPECSIG");
+            pterms["FB7_7_4"]=new Array("/AS","RESET","/AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A6_SPECSIG","/A3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","A2_SPECSIG","/A5_SPECSIG","/UDS");
           
-            pterms["FB7_7_3"]=new Array("RESET","/Dout12_SPECSIG","UDS","LDS");
+            pterms["FB7_7_5"]=new Array("/AS","RESET","/AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A6_SPECSIG","/A3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","A2_SPECSIG","/A5_SPECSIG","/LDS");
           
-            pterms["FB7_7_4"]=new Array("/AS","RESET","/A2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","A6_SPECSIG","/UDS","/A3_SPECSIG");
+            pterms["FB7_8_1"]=new Array("AS","RESET","/Dout12_SPECSIG");
           
-            pterms["FB7_7_5"]=new Array("/AS","RESET","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","A1_SPECSIG","/A6_SPECSIG","/UDS","/A3_SPECSIG");
+            pterms["FB7_8_2"]=new Array("RESET","/autoconfig","/Dout12_SPECSIG");
           
-            pterms["FB7_8_1"]=new Array("/AS","RESET","/A2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","A6_SPECSIG","/LDS","/A3_SPECSIG");
+            pterms["FB7_8_3"]=new Array("RESET","/Dout12_SPECSIG","UDS","LDS");
           
-            pterms["FB7_8_2"]=new Array("/AS","RESET","AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","A1_SPECSIG","/A6_SPECSIG","/UDS","/A3_SPECSIG");
+            pterms["FB7_8_4"]=new Array("/AS","RESET","autoconfig","A6_SPECSIG","/A3_SPECSIG","/A4_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/LDS");
           
-            pterms["FB7_8_3"]=new Array("/AS","RESET","AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","A1_SPECSIG","/A6_SPECSIG","/LDS","/A3_SPECSIG");
+            pterms["FB7_8_5"]=new Array("/AS","RESET","autoconfig","/A3_SPECSIG","/A4_SPECSIG","A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/LDS");
           
-            pterms["FB7_8_4"]=new Array("/AS","RESET","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","A1_SPECSIG","/A6_SPECSIG","/LDS","/A3_SPECSIG");
+            pterms["FB7_9_1"]=new Array("/AS","RESET","AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A6_SPECSIG","/A3_SPECSIG","/A4_SPECSIG","A1_SPECSIG","/A5_SPECSIG","/UDS");
           
-            pterms["FB7_8_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
+            pterms["FB7_9_2"]=new Array("/AS","RESET","AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A6_SPECSIG","/A3_SPECSIG","/A4_SPECSIG","A1_SPECSIG","/A5_SPECSIG","/LDS");
           
-            pterms["FB7_9_1"]=new Array("/AS","RESET","/A2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","A1_SPECSIG","/UDS","/A3_SPECSIG");
+            pterms["FB7_9_3"]=new Array("/AS","RESET","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","/A6_SPECSIG","/A3_SPECSIG","/A4_SPECSIG","A1_SPECSIG","/A5_SPECSIG","/UDS");
           
-            pterms["FB7_9_2"]=new Array("/AS","RESET","/A2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","A1_SPECSIG","/LDS","/A3_SPECSIG");
+            pterms["FB7_9_4"]=new Array("/AS","RESET","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","/A6_SPECSIG","/A3_SPECSIG","/A4_SPECSIG","A1_SPECSIG","/A5_SPECSIG","/LDS");
           
-            pterms["FB7_9_3"]=new Array("/AS","RESET","A2_SPECSIG","autoconfig","A5_SPECSIG","/A4_SPECSIG","A1_SPECSIG","/A6_SPECSIG","/UDS","/A3_SPECSIG");
+            pterms["FB7_9_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
-            pterms["FB7_9_4"]=new Array("/AS","RESET","A2_SPECSIG","autoconfig","A5_SPECSIG","/A4_SPECSIG","A1_SPECSIG","/A6_SPECSIG","/LDS","/A3_SPECSIG");
+            pterms["FB7_10_1"]=new Array("/AS","RESET","autoconfig","A6_SPECSIG","/A3_SPECSIG","/A4_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/UDS");
           
-            pterms["FB7_9_5"]=new Array("/AS","RESET","A2_SPECSIG","autoconfig","/A5_SPECSIG","A4_SPECSIG","A1_SPECSIG","/A6_SPECSIG","/LDS","/A3_SPECSIG");
+            pterms["FB7_10_2"]=new Array("/AS","RESET","autoconfig","/A3_SPECSIG","/A4_SPECSIG","A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/UDS");
           
-            pterms["FB7_11_1"]=new Array("RW","LAN_CS","/UDS","DQ15PIN_SPECSIG");
+            pterms["FB7_10_3"]=new Array("/AS","RESET","autoconfig","/A6_SPECSIG","A3_SPECSIG","A4_SPECSIG","/A1_SPECSIG","A2_SPECSIG","/A5_SPECSIG","/LDS");
           
-            pterms["FB7_11_2"]=new Array("RW","LAN_CS","/LDS","DQ15PIN_SPECSIG");
+            pterms["FB7_10_4"]=new Array("/AS","RESET","autoconfig","/A6_SPECSIG","/A3_SPECSIG","A4_SPECSIG","A1_SPECSIG","A2_SPECSIG","/A5_SPECSIG","/LDS");
           
-            pterms["FB7_11_3"]=new Array("RW","/UDS","DQ15PIN_SPECSIG","/CP_CS");
+            pterms["FB7_10_5"]=new Array("/AS","RESET","autoconfig","/A6_SPECSIG","/A3_SPECSIG","/A4_SPECSIG","A1_SPECSIG","A2_SPECSIG","A5_SPECSIG","/LDS");
+          
+            pterms["FB7_11_1"]=new Array("RW","LAN_CS","/LDS","DQ15PIN_SPECSIG");
+          
+            pterms["FB7_11_2"]=new Array("RW","/UDS","DQ15PIN_SPECSIG","/CP_CS");
           
             pterms["FB7_12_1"]=new Array("/RW","Dout13_SPECSIG");
           
@@ -898,81 +934,77 @@
           
             pterms["FB7_12_4"]=new Array("RW","/LDS","DQ15PIN_SPECSIG","/CP_CS");
           
-            pterms["FB7_12_5"]=new Array("/OpTxFX_DC175__INT_SPECSIG");
+            pterms["FB7_12_5"]=new Array("/OpTxFX_DC174__INT_SPECSIG");
           
-            pterms["FB7_13_1"]=new Array("/AS","RESET","A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","/A4_SPECSIG","/A6_SPECSIG","/UDS","/A3_SPECSIG");
+            pterms["FB7_13_1"]=new Array("RW","LAN_CS","/UDS","DQ15PIN_SPECSIG");
           
-            pterms["FB7_13_2"]=new Array("/AS","RESET","A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","/A4_SPECSIG","/A6_SPECSIG","/LDS","/A3_SPECSIG");
+            pterms["FB7_15_1"]=new Array("/AS","RESET","AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A6_SPECSIG","A4_SPECSIG","/A1_SPECSIG","A2_SPECSIG","/A5_SPECSIG","/UDS");
           
-            pterms["FB7_13_3"]=new Array("/AS","RESET","A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A5_SPECSIG","/A1_SPECSIG","/A6_SPECSIG","/UDS","/A3_SPECSIG");
+            pterms["FB7_15_2"]=new Array("/AS","RESET","/AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A6_SPECSIG","/A3_SPECSIG","A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/UDS");
           
-            pterms["FB7_13_4"]=new Array("/AS","RESET","/A2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/UDS","/A3_SPECSIG","AUTOBOOT_OFF");
+            pterms["FB7_16_1"]=new Array("/AS","RESET","autoconfig","/A3_SPECSIG","/A4_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/UDS");
           
-            pterms["FB7_13_5"]=new Array("/AS","RESET","/A2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/LDS","/A3_SPECSIG","AUTOBOOT_OFF");
+            pterms["FB7_16_2"]=new Array("/AS","RESET","autoconfig","/A6_SPECSIG","A3_SPECSIG","A4_SPECSIG","/A1_SPECSIG","/A5_SPECSIG","/UDS");
           
-            pterms["FB7_14_1"]=new Array("RESET","/Dout10_SPECSIG","UDS","LDS");
+            pterms["FB7_16_3"]=new Array("/AS","RESET","autoconfig","/A6_SPECSIG","A3_SPECSIG","A4_SPECSIG","/A1_SPECSIG","/A5_SPECSIG","/LDS");
           
-            pterms["FB7_14_2"]=new Array("/AS","RESET","A2_SPECSIG","autoconfig","A5_SPECSIG","/A4_SPECSIG","/A6_SPECSIG","/LDS","/A3_SPECSIG");
+            pterms["FB7_16_4"]=new Array("/AS","RESET","autoconfig","/A6_SPECSIG","A3_SPECSIG","A4_SPECSIG","A2_SPECSIG","/A5_SPECSIG","/UDS");
           
-            pterms["FB7_14_3"]=new Array("/AS","RESET","/A2_SPECSIG","autoconfig","/A5_SPECSIG","A4_SPECSIG","/A6_SPECSIG","/LDS","A3_SPECSIG");
+            pterms["FB7_16_5"]=new Array("/AS","RESET","autoconfig","/A6_SPECSIG","A3_SPECSIG","A4_SPECSIG","A2_SPECSIG","/A5_SPECSIG","/LDS");
           
-            pterms["FB7_14_4"]=new Array("/AS","RESET","/A2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","A6_SPECSIG","/LDS","/A3_SPECSIG");
+            pterms["FB7_17_1"]=new Array("AS","RESET","/Dout11_SPECSIG");
           
-            pterms["FB7_14_5"]=new Array("/AS","RESET","autoconfig","/A5_SPECSIG","A4_SPECSIG","A1_SPECSIG","/A6_SPECSIG","/LDS","A3_SPECSIG");
+            pterms["FB7_17_2"]=new Array("RESET","/autoconfig","/Dout11_SPECSIG");
           
-            pterms["FB7_15_1"]=new Array("AS","RESET","/Dout10_SPECSIG");
+            pterms["FB7_17_3"]=new Array("RESET","/Dout11_SPECSIG","UDS","LDS");
           
-            pterms["FB7_15_2"]=new Array("RESET","/autoconfig","/Dout10_SPECSIG");
+            pterms["FB7_17_4"]=new Array("/AS","RESET","autoconfig","/A3_SPECSIG","/A4_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/LDS");
           
-            pterms["FB7_15_3"]=new Array("/AS","RESET","/AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A6_SPECSIG","/UDS","/A3_SPECSIG");
+            pterms["FB7_17_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
-            pterms["FB7_15_4"]=new Array("/AS","RESET","/AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A6_SPECSIG","/LDS","/A3_SPECSIG");
+            pterms["FB7_18_1"]=new Array("/AS","RESET","AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A6_SPECSIG","/A3_SPECSIG","/A4_SPECSIG","A1_SPECSIG","/A5_SPECSIG","/LDS");
           
-            pterms["FB7_15_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
+            pterms["FB7_18_2"]=new Array("/AS","RESET","AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A6_SPECSIG","A4_SPECSIG","/A1_SPECSIG","A2_SPECSIG","/A5_SPECSIG","/LDS");
           
-            pterms["FB7_16_1"]=new Array("/AS","RESET","A2_SPECSIG","autoconfig","A5_SPECSIG","/A4_SPECSIG","/A6_SPECSIG","/UDS","/A3_SPECSIG");
+            pterms["FB7_18_3"]=new Array("/AS","RESET","/AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A6_SPECSIG","/A3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","A2_SPECSIG","/LDS");
           
-            pterms["FB7_16_2"]=new Array("/AS","RESET","/A2_SPECSIG","autoconfig","/A5_SPECSIG","A4_SPECSIG","/A6_SPECSIG","/UDS","A3_SPECSIG");
+            pterms["FB7_18_4"]=new Array("/AS","RESET","/AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A6_SPECSIG","/A3_SPECSIG","A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/LDS");
           
-            pterms["FB7_16_3"]=new Array("/AS","RESET","/A2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","A6_SPECSIG","/UDS","/A3_SPECSIG");
-          
-            pterms["FB7_16_4"]=new Array("/AS","RESET","autoconfig","/A5_SPECSIG","A4_SPECSIG","A1_SPECSIG","/A6_SPECSIG","/UDS","A3_SPECSIG");
-          
-            pterms["FB7_16_5"]=new Array("/AS","RESET","A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A5_SPECSIG","/A1_SPECSIG","/A6_SPECSIG","/LDS","/A3_SPECSIG");
-          
-            pterms["FB7_17_1"]=new Array("/AS","RESET","A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A5_SPECSIG","/A4_SPECSIG","A1_SPECSIG","/A6_SPECSIG","/UDS");
-          
-            pterms["FB7_17_2"]=new Array("/AS","RESET","A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A5_SPECSIG","/A4_SPECSIG","A1_SPECSIG","/A6_SPECSIG","/LDS");
+            pterms["FB7_18_5"]=new Array("/AS","RESET","autoconfig","/A6_SPECSIG","/A3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","A2_SPECSIG","A5_SPECSIG","/LDS");
           
             pterms["FB8_2_1"]=new Array("D12PIN_SPECSIG");
           
-            pterms["FB8_2_2"]=new Array("/OpTxFX_DC176__INT_SPECSIG");
+            pterms["FB8_2_2"]=new Array("/OpTxFX_DC175__INT_SPECSIG");
           
             pterms["FB8_3_1"]=new Array("D14PIN_SPECSIG");
           
-            pterms["FB8_3_2"]=new Array("/OpTxFX_DC176__INT_SPECSIG");
+            pterms["FB8_3_2"]=new Array("/OpTxFX_DC175__INT_SPECSIG");
           
             pterms["FB8_5_1"]=new Array("/AS","LAN_WRH_S");
           
-            pterms["FB8_6_1"]=new Array("LAN_BASEADR3_SPECSIG","/A19_SPECSIG");
+            pterms["FB8_6_1"]=new Array("LAN_BASEADR2_SPECSIG","/A18_SPECSIG");
           
-            pterms["FB8_6_2"]=new Array("/LAN_BASEADR3_SPECSIG","A19_SPECSIG");
+            pterms["FB8_6_2"]=new Array("/LAN_BASEADR2_SPECSIG","A18_SPECSIG");
+          
+            pterms["FB8_6_3"]=new Array("LAN_BASEADR3_SPECSIG","/A19_SPECSIG");
+          
+            pterms["FB8_6_4"]=new Array("/LAN_BASEADR3_SPECSIG","A19_SPECSIG");
           
             pterms["FB8_7_1"]=new Array("LAN_BASEADR4_SPECSIG","/A20_SPECSIG");
           
-            pterms["FB8_7_2"]=new Array("LAN_BASEADR5_SPECSIG","/A21_SPECSIG");
+            pterms["FB8_7_2"]=new Array("/LAN_BASEADR4_SPECSIG","A20_SPECSIG");
           
-            pterms["FB8_7_3"]=new Array("/LAN_BASEADR5_SPECSIG","A21_SPECSIG");
+            pterms["FB8_7_3"]=new Array("LAN_BASEADR5_SPECSIG","/A21_SPECSIG");
           
-            pterms["FB8_7_4"]=new Array("LAN_BASEADR7_SPECSIG","/A23_SPECSIG");
+            pterms["FB8_7_4"]=new Array("LAN_BASEADR6_SPECSIG","/A22_SPECSIG");
           
-            pterms["FB8_7_5"]=new Array("/LAN_BASEADR7_SPECSIG","A23_SPECSIG");
+            pterms["FB8_7_5"]=new Array("/LAN_BASEADR6_SPECSIG","A22_SPECSIG");
           
             pterms["FB8_8_1"]=new Array("SHUT_UP0_SPECSIG");
           
-            pterms["FB8_8_2"]=new Array("LAN_BASEADR6_SPECSIG","/A22_SPECSIG");
+            pterms["FB8_8_2"]=new Array("LAN_BASEADR7_SPECSIG","/A23_SPECSIG");
           
-            pterms["FB8_8_3"]=new Array("/LAN_BASEADR6_SPECSIG","A22_SPECSIG");
+            pterms["FB8_8_3"]=new Array("/LAN_BASEADR7_SPECSIG","A23_SPECSIG");
           
             pterms["FB8_8_4"]=new Array("/ideide_RSTF__INT_SPECSIG");
           
@@ -986,121 +1018,123 @@
           
             pterms["FB8_9_4"]=new Array("/LAN_BASEADR1_SPECSIG","A17_SPECSIG");
           
-            pterms["FB8_9_5"]=new Array("/LAN_BASEADR4_SPECSIG","A20_SPECSIG");
+            pterms["FB8_9_5"]=new Array("/LAN_BASEADR5_SPECSIG","A21_SPECSIG");
           
             pterms["FB8_10_1"]=new Array("/AS","LAN_RD_S");
           
-            pterms["FB8_10_2"]=new Array("LAN_BASEADR2_SPECSIG","/A18_SPECSIG");
+            pterms["FB8_10_2"]=new Array("/AUTO_CONFIG_DONE1_SPECSIG","/CFIN","/A18_SPECSIG","/A17_SPECSIG","/A16_SPECSIG","A23_SPECSIG","A22_SPECSIG","A21_SPECSIG","A19_SPECSIG","/A20_SPECSIG");
           
-            pterms["FB8_10_3"]=new Array("/LAN_BASEADR2_SPECSIG","A18_SPECSIG");
+            pterms["FB8_10_3"]=new Array("/AUTO_CONFIG_DONE0_SPECSIG","/CFIN","/A18_SPECSIG","/A17_SPECSIG","/A16_SPECSIG","A23_SPECSIG","A22_SPECSIG","A21_SPECSIG","A19_SPECSIG","/A20_SPECSIG");
           
-            pterms["FB8_18_1"]=new Array("C1");
+            pterms["FB9_14_1"]=new Array("CP_BASEADR1_SPECSIG","/SHUT_UP2_SPECSIG","/A17_SPECSIG","OpTxFX_DC323_SPECSIG","/cp_and0000cp_and0000_D2_SPECSIG","/Mcompar_ide_cmp_eq0000_AEB_or0000Mcompar_ide_cmp_eq0000_AEB_or0000_D2_SPECSIG");
           
-            pterms["FB8_18_2"]=new Array("C3");
+            pterms["FB9_15_1"]=new Array("CP_BASEADR4_SPECSIG","/SHUT_UP2_SPECSIG","/A20_SPECSIG","OpTxFX_DC323_SPECSIG","/cp_and0000cp_and0000_D2_SPECSIG","/Mcompar_ide_cmp_eq0000_AEB_or0000Mcompar_ide_cmp_eq0000_AEB_or0000_D2_SPECSIG");
           
-            pterms["FB9_1_1"]=new Array("/RESET","/LAN_BASEADR6_SPECSIG");
+            pterms["FB9_15_2"]=new Array("CP_BASEADR5_SPECSIG","/SHUT_UP2_SPECSIG","/A21_SPECSIG","OpTxFX_DC323_SPECSIG","/cp_and0000cp_and0000_D2_SPECSIG","/Mcompar_ide_cmp_eq0000_AEB_or0000Mcompar_ide_cmp_eq0000_AEB_or0000_D2_SPECSIG");
           
-            pterms["FB9_1_2"]=new Array("/AS","/RW","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/LAN_BASEADR6_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D14PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB9_15_3"]=new Array("/CP_BASEADR5_SPECSIG","/SHUT_UP2_SPECSIG","A21_SPECSIG","OpTxFX_DC323_SPECSIG","/cp_and0000cp_and0000_D2_SPECSIG","/Mcompar_ide_cmp_eq0000_AEB_or0000Mcompar_ide_cmp_eq0000_AEB_or0000_D2_SPECSIG");
           
-            pterms["FB9_1_3"]=new Array("/AS","/RW","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/LAN_BASEADR6_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D14PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB9_15_4"]=new Array("CP_BASEADR6_SPECSIG","/SHUT_UP2_SPECSIG","/A22_SPECSIG","OpTxFX_DC323_SPECSIG","/cp_and0000cp_and0000_D2_SPECSIG","/Mcompar_ide_cmp_eq0000_AEB_or0000Mcompar_ide_cmp_eq0000_AEB_or0000_D2_SPECSIG");
           
-            pterms["FB9_1_4"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
+            pterms["FB9_15_5"]=new Array("/CP_BASEADR6_SPECSIG","/SHUT_UP2_SPECSIG","A22_SPECSIG","OpTxFX_DC323_SPECSIG","/cp_and0000cp_and0000_D2_SPECSIG","/Mcompar_ide_cmp_eq0000_AEB_or0000Mcompar_ide_cmp_eq0000_AEB_or0000_D2_SPECSIG");
           
-            pterms["FB9_1_5"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","LAN_BASEADR0_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D8PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB9_16_1"]=new Array("SHUT_UP1_SPECSIG","/SHUT_UP2_SPECSIG","OpTxFX_DC323_SPECSIG","/cp_and0000cp_and0000_D2_SPECSIG","/Mcompar_ide_cmp_eq0000_AEB_or0000Mcompar_ide_cmp_eq0000_AEB_or0000_D2_SPECSIG");
           
-            pterms["FB9_2_1"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","LAN_BASEADR6_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D14PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB9_16_2"]=new Array("CP_BASEADR7_SPECSIG","/SHUT_UP2_SPECSIG","/A23_SPECSIG","OpTxFX_DC323_SPECSIG","/cp_and0000cp_and0000_D2_SPECSIG","/Mcompar_ide_cmp_eq0000_AEB_or0000Mcompar_ide_cmp_eq0000_AEB_or0000_D2_SPECSIG");
           
-            pterms["FB9_2_2"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","LAN_BASEADR6_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D14PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB9_16_3"]=new Array("/CP_BASEADR7_SPECSIG","/SHUT_UP2_SPECSIG","A23_SPECSIG","OpTxFX_DC323_SPECSIG","/cp_and0000cp_and0000_D2_SPECSIG","/Mcompar_ide_cmp_eq0000_AEB_or0000Mcompar_ide_cmp_eq0000_AEB_or0000_D2_SPECSIG");
           
-            pterms["FB9_15_1"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","LAN_BASEADR4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D12PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB9_16_4"]=new Array("/ideide_RSTF__INT_SPECSIG");
           
-            pterms["FB9_15_2"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","LAN_BASEADR4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D12PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB9_16_5"]=new Array("/AS");
           
-            pterms["FB9_16_1"]=new Array("/RESET","/LAN_BASEADR4_SPECSIG");
+            pterms["FB9_17_1"]=new Array("CP_BASEADR2_SPECSIG","/SHUT_UP2_SPECSIG","/A18_SPECSIG","OpTxFX_DC323_SPECSIG","/cp_and0000cp_and0000_D2_SPECSIG","/Mcompar_ide_cmp_eq0000_AEB_or0000Mcompar_ide_cmp_eq0000_AEB_or0000_D2_SPECSIG");
           
-            pterms["FB9_16_2"]=new Array("/AS","/RW","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/LAN_BASEADR4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D12PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB9_17_2"]=new Array("/CP_BASEADR2_SPECSIG","/SHUT_UP2_SPECSIG","A18_SPECSIG","OpTxFX_DC323_SPECSIG","/cp_and0000cp_and0000_D2_SPECSIG","/Mcompar_ide_cmp_eq0000_AEB_or0000Mcompar_ide_cmp_eq0000_AEB_or0000_D2_SPECSIG");
           
-            pterms["FB9_16_3"]=new Array("/AS","/RW","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/LAN_BASEADR4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D12PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB9_17_3"]=new Array("CP_BASEADR3_SPECSIG","/SHUT_UP2_SPECSIG","/A19_SPECSIG","OpTxFX_DC323_SPECSIG","/cp_and0000cp_and0000_D2_SPECSIG","/Mcompar_ide_cmp_eq0000_AEB_or0000Mcompar_ide_cmp_eq0000_AEB_or0000_D2_SPECSIG");
           
-            pterms["FB9_16_4"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
+            pterms["FB9_17_4"]=new Array("/CP_BASEADR3_SPECSIG","/SHUT_UP2_SPECSIG","A19_SPECSIG","OpTxFX_DC323_SPECSIG","/cp_and0000cp_and0000_D2_SPECSIG","/Mcompar_ide_cmp_eq0000_AEB_or0000Mcompar_ide_cmp_eq0000_AEB_or0000_D2_SPECSIG");
           
-            pterms["FB9_16_5"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","LAN_BASEADR2_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D10PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB9_17_5"]=new Array("/CP_BASEADR4_SPECSIG","/SHUT_UP2_SPECSIG","A20_SPECSIG","OpTxFX_DC323_SPECSIG","/cp_and0000cp_and0000_D2_SPECSIG","/Mcompar_ide_cmp_eq0000_AEB_or0000Mcompar_ide_cmp_eq0000_AEB_or0000_D2_SPECSIG");
           
-            pterms["FB9_17_1"]=new Array("/RESET","/LAN_BASEADR2_SPECSIG");
+            pterms["FB9_18_1"]=new Array("CP_BASEADR0_SPECSIG","/SHUT_UP2_SPECSIG","/A16_SPECSIG","OpTxFX_DC323_SPECSIG","/cp_and0000cp_and0000_D2_SPECSIG","/Mcompar_ide_cmp_eq0000_AEB_or0000Mcompar_ide_cmp_eq0000_AEB_or0000_D2_SPECSIG");
           
-            pterms["FB9_17_2"]=new Array("/AS","/RW","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/LAN_BASEADR2_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D10PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB9_18_2"]=new Array("/CP_BASEADR0_SPECSIG","/SHUT_UP2_SPECSIG","A16_SPECSIG","OpTxFX_DC323_SPECSIG","/cp_and0000cp_and0000_D2_SPECSIG","/Mcompar_ide_cmp_eq0000_AEB_or0000Mcompar_ide_cmp_eq0000_AEB_or0000_D2_SPECSIG");
           
-            pterms["FB9_17_3"]=new Array("/AS","/RW","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/LAN_BASEADR2_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D10PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB9_18_3"]=new Array("/CP_BASEADR1_SPECSIG","/SHUT_UP2_SPECSIG","A17_SPECSIG","OpTxFX_DC323_SPECSIG","/cp_and0000cp_and0000_D2_SPECSIG","/Mcompar_ide_cmp_eq0000_AEB_or0000Mcompar_ide_cmp_eq0000_AEB_or0000_D2_SPECSIG");
           
-            pterms["FB9_17_4"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","LAN_BASEADR2_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D10PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB9_18_4"]=new Array("/AUTO_CONFIG_DONE1_SPECSIG","/CFIN","/SHUT_UP2_SPECSIG","/A18_SPECSIG","/A17_SPECSIG","/A16_SPECSIG","A23_SPECSIG","A22_SPECSIG","A21_SPECSIG","A19_SPECSIG","/A20_SPECSIG","OpTxFX_DC323_SPECSIG","/cp_and0000cp_and0000_D2_SPECSIG","/Mcompar_ide_cmp_eq0000_AEB_or0000Mcompar_ide_cmp_eq0000_AEB_or0000_D2_SPECSIG");
           
-            pterms["FB9_17_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
+            pterms["FB9_18_5"]=new Array("/AUTO_CONFIG_DONE0_SPECSIG","/CFIN","/SHUT_UP2_SPECSIG","/A18_SPECSIG","/A17_SPECSIG","/A16_SPECSIG","A23_SPECSIG","A22_SPECSIG","A21_SPECSIG","A19_SPECSIG","/A20_SPECSIG","OpTxFX_DC323_SPECSIG","/cp_and0000cp_and0000_D2_SPECSIG","/Mcompar_ide_cmp_eq0000_AEB_or0000Mcompar_ide_cmp_eq0000_AEB_or0000_D2_SPECSIG");
           
-            pterms["FB9_18_1"]=new Array("/RESET","/LAN_BASEADR0_SPECSIG");
-          
-            pterms["FB9_18_2"]=new Array("/AS","/RW","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/LAN_BASEADR0_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D8PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
-          
-            pterms["FB9_18_3"]=new Array("/AS","/RW","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/LAN_BASEADR0_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D8PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
-          
-            pterms["FB9_18_4"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","LAN_BASEADR0_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D8PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
-          
-            pterms["FB9_18_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
+            pterms["FB10_1_1"]=new Array("RESET","BERR");
           
             pterms["FB10_2_1"]=new Array("D1PIN_SPECSIG");
           
-            pterms["FB10_2_2"]=new Array("/OpTxFX_DC176__INT_SPECSIG");
+            pterms["FB10_2_2"]=new Array("/OpTxFX_DC175__INT_SPECSIG");
           
             pterms["FB10_3_1"]=new Array("D0PIN_SPECSIG");
           
-            pterms["FB10_3_2"]=new Array("/OpTxFX_DC176__INT_SPECSIG");
+            pterms["FB10_3_2"]=new Array("/OpTxFX_DC175__INT_SPECSIG");
+          
+            pterms["FB10_4_1"]=new Array("AS");
+          
+            pterms["FB10_4_2"]=new Array("/LAN_CS","/ide","/autoconfig","CP_CS");
           
             pterms["FB10_5_1"]=new Array("D3PIN_SPECSIG");
           
-            pterms["FB10_5_2"]=new Array("/OpTxFX_DC176__INT_SPECSIG");
+            pterms["FB10_5_2"]=new Array("/OpTxFX_DC175__INT_SPECSIG");
           
             pterms["FB10_6_1"]=new Array("D2PIN_SPECSIG");
           
-            pterms["FB10_6_2"]=new Array("/OpTxFX_DC176__INT_SPECSIG");
+            pterms["FB10_6_2"]=new Array("/OpTxFX_DC175__INT_SPECSIG");
+          
+            pterms["FB10_7_1"]=new Array("/AS","RW","RESET","ide","IDE_ENABLE");
+          
+            pterms["FB10_7_2"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
             pterms["FB10_8_1"]=new Array("D5PIN_SPECSIG");
           
-            pterms["FB10_8_2"]=new Array("/OpTxFX_DC176__INT_SPECSIG");
+            pterms["FB10_8_2"]=new Array("/OpTxFX_DC175__INT_SPECSIG");
           
-            pterms["FB10_9_1"]=new Array("AS");
+            pterms["FB10_9_1"]=new Array("/CP_IRQ");
           
-            pterms["FB10_9_2"]=new Array("/LAN_CS","/ide","/autoconfig","CP_CS");
+            pterms["FB10_9_2"]=new Array("LAN_INT_ENABLE","/LAN_INT");
           
             pterms["FB10_10_1"]=new Array("D4PIN_SPECSIG");
           
-            pterms["FB10_10_2"]=new Array("/OpTxFX_DC176__INT_SPECSIG");
+            pterms["FB10_10_2"]=new Array("/OpTxFX_DC175__INT_SPECSIG");
           
             pterms["FB10_11_1"]=new Array("D7PIN_SPECSIG");
           
-            pterms["FB10_11_2"]=new Array("/OpTxFX_DC176__INT_SPECSIG");
+            pterms["FB10_11_2"]=new Array("/OpTxFX_DC175__INT_SPECSIG");
           
             pterms["FB10_12_1"]=new Array("D6PIN_SPECSIG");
           
-            pterms["FB10_12_2"]=new Array("/OpTxFX_DC176__INT_SPECSIG");
+            pterms["FB10_12_2"]=new Array("/OpTxFX_DC175__INT_SPECSIG");
           
-            pterms["FB10_13_1"]=new Array("/AS","RW","RESET","ide","IDE_ENABLE");
+            pterms["FB10_13_1"]=new Array("/AS","/RW","RESET","ide");
           
             pterms["FB10_13_2"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
             pterms["FB10_14_1"]=new Array("D8PIN_SPECSIG");
           
-            pterms["FB10_14_2"]=new Array("/OpTxFX_DC176__INT_SPECSIG");
+            pterms["FB10_14_2"]=new Array("/OpTxFX_DC175__INT_SPECSIG");
           
-            pterms["FB10_15_1"]=new Array("/AS","/RW","RESET","ide");
+            pterms["FB10_15_1"]=new Array("/AS","RW","RESET","ide","/IDE_ENABLE");
           
             pterms["FB10_15_2"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
-            pterms["FB10_16_1"]=new Array("/AS","RW","RESET","ide","/IDE_ENABLE");
+            pterms["FB10_16_1"]=new Array("D15PIN_SPECSIG");
           
             pterms["FB10_16_2"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
+            pterms["FB10_16_3"]=new Array("/AS","/RW","LAN_CS","A15_SPECSIG");
+          
             pterms["FB10_17_1"]=new Array("D10PIN_SPECSIG");
           
-            pterms["FB10_17_2"]=new Array("/OpTxFX_DC176__INT_SPECSIG");
+            pterms["FB10_17_2"]=new Array("/OpTxFX_DC175__INT_SPECSIG");
           
             pterms["FB10_18_1"]=new Array("RESET","/IDE_ENABLE");
           
@@ -1108,165 +1142,203 @@
           
             pterms["FB10_18_3"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
-            pterms["FB11_1_1"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","IDE_BASEADR4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D12PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB11_1_1"]=new Array("AS","RESET","/Dout10_SPECSIG");
           
-            pterms["FB11_12_1"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","IDE_BASEADR7_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D15PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB11_1_2"]=new Array("RESET","/autoconfig","/Dout10_SPECSIG");
           
-            pterms["FB11_13_1"]=new Array("/RESET","/IDE_BASEADR7_SPECSIG");
+            pterms["FB11_1_3"]=new Array("/AS","RESET","/AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A6_SPECSIG","/A3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A5_SPECSIG","/UDS");
           
-            pterms["FB11_13_2"]=new Array("/AS","/RW","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/IDE_BASEADR7_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D15PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB11_1_4"]=new Array("/AS","RESET","/AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A6_SPECSIG","/A3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A5_SPECSIG","/LDS");
           
-            pterms["FB11_13_3"]=new Array("/AS","/RW","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/IDE_BASEADR7_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D15PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB11_1_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
-            pterms["FB11_13_4"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","IDE_BASEADR7_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D15PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB11_2_1"]=new Array("/AS","RESET","autoconfig","A6_SPECSIG","/A3_SPECSIG","/A4_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/UDS");
           
-            pterms["FB11_13_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
+            pterms["FB11_2_2"]=new Array("/AS","RESET","autoconfig","/A6_SPECSIG","A3_SPECSIG","A4_SPECSIG","A1_SPECSIG","/A5_SPECSIG","/UDS");
           
-            pterms["FB11_14_1"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","IDE_BASEADR6_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D14PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB11_2_3"]=new Array("/AS","RESET","autoconfig","/A6_SPECSIG","A3_SPECSIG","A4_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/UDS");
           
-            pterms["FB11_15_1"]=new Array("/RESET","/IDE_BASEADR6_SPECSIG");
+            pterms["FB11_2_4"]=new Array("/AS","RESET","autoconfig","/A6_SPECSIG","/A3_SPECSIG","/A4_SPECSIG","A2_SPECSIG","A5_SPECSIG","/UDS");
           
-            pterms["FB11_15_2"]=new Array("/AS","/RW","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/IDE_BASEADR6_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D14PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB11_2_5"]=new Array("/AS","RESET","/AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A6_SPECSIG","/A3_SPECSIG","/A1_SPECSIG","A2_SPECSIG","/A5_SPECSIG","/LDS");
           
-            pterms["FB11_15_3"]=new Array("/AS","/RW","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/IDE_BASEADR6_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D14PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB11_3_1"]=new Array("/AS","RESET","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","/A6_SPECSIG","/A3_SPECSIG","/A4_SPECSIG","A2_SPECSIG","/UDS");
           
-            pterms["FB11_15_4"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","IDE_BASEADR6_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D14PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB11_3_2"]=new Array("/AS","RESET","autoconfig","/A3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/UDS","AUTOBOOT_OFF");
           
-            pterms["FB11_15_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
+            pterms["FB11_3_3"]=new Array("/AS","RESET","autoconfig","/A3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/LDS","AUTOBOOT_OFF");
           
-            pterms["FB11_16_1"]=new Array("/RESET","/IDE_BASEADR5_SPECSIG");
+            pterms["FB11_3_4"]=new Array("/AS","RESET","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","/A6_SPECSIG","/A4_SPECSIG","A1_SPECSIG","A2_SPECSIG","A5_SPECSIG","/UDS");
           
-            pterms["FB11_16_2"]=new Array("/AS","/RW","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/IDE_BASEADR5_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D13PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
-          
-            pterms["FB11_16_3"]=new Array("/AS","/RW","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/IDE_BASEADR5_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D13PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
-          
-            pterms["FB11_16_4"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","IDE_BASEADR5_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D13PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
-          
-            pterms["FB11_16_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
+            pterms["FB11_3_5"]=new Array("/AS","RESET","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","/A6_SPECSIG","/A4_SPECSIG","A1_SPECSIG","A2_SPECSIG","A5_SPECSIG","/LDS");
           
             pterms["FB11_17_1"]=new Array("/AS","/CP_WE_S");
           
-            pterms["FB11_17_2"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","IDE_BASEADR5_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D13PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB11_17_2"]=new Array("/AS","RESET","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","/A6_SPECSIG","/A3_SPECSIG","/A4_SPECSIG","A2_SPECSIG","/LDS");
           
-            pterms["FB11_18_1"]=new Array("/RESET","/IDE_BASEADR4_SPECSIG");
+            pterms["FB11_17_3"]=new Array("/AS","RESET","/AUTO_CONFIG_DONE1_SPECSIG","autoconfig","/A6_SPECSIG","/A3_SPECSIG","/A1_SPECSIG","A2_SPECSIG","/A5_SPECSIG","/UDS");
           
-            pterms["FB11_18_2"]=new Array("/AS","/RW","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/IDE_BASEADR4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D12PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB11_18_1"]=new Array("RESET","/Dout10_SPECSIG","UDS","LDS");
           
-            pterms["FB11_18_3"]=new Array("/AS","/RW","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/IDE_BASEADR4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D12PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB11_18_2"]=new Array("/AS","RESET","autoconfig","A6_SPECSIG","/A3_SPECSIG","/A4_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/LDS");
           
-            pterms["FB11_18_4"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP2_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","IDE_BASEADR4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D12PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB11_18_3"]=new Array("/AS","RESET","autoconfig","/A6_SPECSIG","A3_SPECSIG","A4_SPECSIG","A1_SPECSIG","/A5_SPECSIG","/LDS");
           
-            pterms["FB11_18_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
+            pterms["FB11_18_4"]=new Array("/AS","RESET","autoconfig","/A6_SPECSIG","A3_SPECSIG","A4_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/LDS");
           
-            pterms["FB12_1_1"]=new Array("/RESET","/LAN_BASEADR7_SPECSIG");
+            pterms["FB11_18_5"]=new Array("/AS","RESET","autoconfig","/A6_SPECSIG","/A3_SPECSIG","/A4_SPECSIG","A2_SPECSIG","A5_SPECSIG","/LDS");
           
-            pterms["FB12_1_2"]=new Array("/AS","/RW","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/LAN_BASEADR7_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D15PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB12_1_1"]=new Array("/RESET","/LAN_BASEADR5_SPECSIG");
           
-            pterms["FB12_1_3"]=new Array("/AS","/RW","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/LAN_BASEADR7_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D15PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB12_1_2"]=new Array("/AS","/RW","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/LAN_BASEADR5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D13PIN_SPECSIG","/LDS","DS_D");
           
-            pterms["FB12_1_4"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
+            pterms["FB12_1_3"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
-            pterms["FB12_1_5"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","LAN_BASEADR1_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D9PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB12_1_4"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","CP_BASEADR5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D13PIN_SPECSIG","/UDS","DS_D");
           
-            pterms["FB12_2_1"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","LAN_BASEADR7_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D15PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB12_1_5"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","CP_BASEADR5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D13PIN_SPECSIG","/LDS","DS_D");
           
-            pterms["FB12_2_2"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","LAN_BASEADR7_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D15PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB12_2_1"]=new Array("/AS","/RW","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/LAN_BASEADR5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D13PIN_SPECSIG","/UDS","DS_D");
+          
+            pterms["FB12_2_2"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","LAN_BASEADR5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D13PIN_SPECSIG","/UDS","DS_D");
+          
+            pterms["FB12_2_3"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","LAN_BASEADR5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D13PIN_SPECSIG","/LDS","DS_D");
           
             pterms["FB12_5_1"]=new Array("D15PIN_SPECSIG");
           
-            pterms["FB12_5_2"]=new Array("/OpTxFX_DC176__INT_SPECSIG");
+            pterms["FB12_5_2"]=new Array("/OpTxFX_DC175__INT_SPECSIG");
           
             pterms["FB12_8_1"]=new Array("D13PIN_SPECSIG");
           
-            pterms["FB12_8_2"]=new Array("/OpTxFX_DC176__INT_SPECSIG");
+            pterms["FB12_8_2"]=new Array("/OpTxFX_DC175__INT_SPECSIG");
           
             pterms["FB12_10_1"]=new Array("D11PIN_SPECSIG");
           
-            pterms["FB12_10_2"]=new Array("/OpTxFX_DC176__INT_SPECSIG");
+            pterms["FB12_10_2"]=new Array("/OpTxFX_DC175__INT_SPECSIG");
           
             pterms["FB12_12_1"]=new Array("D9PIN_SPECSIG");
           
-            pterms["FB12_12_2"]=new Array("/OpTxFX_DC176__INT_SPECSIG");
+            pterms["FB12_12_2"]=new Array("/OpTxFX_DC175__INT_SPECSIG");
           
-            pterms["FB12_15_1"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","LAN_BASEADR5_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D13PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB12_14_1"]=new Array("/AS","/RW","RESET","/D15PIN_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","IDE_BASEADR7_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/UDS","DS_D");
           
-            pterms["FB12_15_2"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","LAN_BASEADR5_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D13PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB12_14_2"]=new Array("/AS","/RW","RESET","/D15PIN_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","IDE_BASEADR7_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/LDS","DS_D");
           
-            pterms["FB12_16_1"]=new Array("/RESET","/LAN_BASEADR5_SPECSIG");
+            pterms["FB12_15_1"]=new Array("/RESET","/IDE_BASEADR7_SPECSIG");
           
-            pterms["FB12_16_2"]=new Array("/AS","/RW","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/LAN_BASEADR5_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D13PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB12_15_2"]=new Array("/AS","/RW","D15PIN_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/IDE_BASEADR7_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/UDS","DS_D");
           
-            pterms["FB12_16_3"]=new Array("/AS","/RW","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/LAN_BASEADR5_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D13PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB12_15_3"]=new Array("/AS","/RW","D15PIN_SPECSIG","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/IDE_BASEADR7_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/LDS","DS_D");
           
-            pterms["FB12_16_4"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
+            pterms["FB12_15_4"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
-            pterms["FB12_16_5"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","LAN_BASEADR3_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D11PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB12_15_5"]=new Array("/AS","/RW","RESET","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","IDE_BASEADR5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D13PIN_SPECSIG","/UDS","DS_D");
           
-            pterms["FB12_17_1"]=new Array("/RESET","/LAN_BASEADR3_SPECSIG");
+            pterms["FB12_16_1"]=new Array("/RESET","/IDE_BASEADR5_SPECSIG");
           
-            pterms["FB12_17_2"]=new Array("/AS","/RW","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/LAN_BASEADR3_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D11PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB12_16_2"]=new Array("/AS","/RW","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/IDE_BASEADR5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D13PIN_SPECSIG","/UDS","DS_D");
           
-            pterms["FB12_17_3"]=new Array("/AS","/RW","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/LAN_BASEADR3_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D11PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB12_16_3"]=new Array("/AS","/RW","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/IDE_BASEADR5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D13PIN_SPECSIG","/LDS","DS_D");
           
-            pterms["FB12_17_4"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","LAN_BASEADR3_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D11PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB12_16_4"]=new Array("/AS","/RW","RESET","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","IDE_BASEADR5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D13PIN_SPECSIG","/LDS","DS_D");
+          
+            pterms["FB12_16_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
+          
+            pterms["FB12_17_1"]=new Array("/RESET","/CP_BASEADR7_SPECSIG");
+          
+            pterms["FB12_17_2"]=new Array("/AS","/RW","D15PIN_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/CP_BASEADR7_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/UDS","DS_D");
+          
+            pterms["FB12_17_3"]=new Array("/AS","/RW","D15PIN_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/CP_BASEADR7_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/LDS","DS_D");
+          
+            pterms["FB12_17_4"]=new Array("/AS","/RW","RESET","/D15PIN_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","CP_BASEADR7_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/LDS","DS_D");
           
             pterms["FB12_17_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
-            pterms["FB12_18_1"]=new Array("/RESET","/LAN_BASEADR1_SPECSIG");
+            pterms["FB12_18_1"]=new Array("/RESET","/CP_BASEADR5_SPECSIG");
           
-            pterms["FB12_18_2"]=new Array("/AS","/RW","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/LAN_BASEADR1_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D9PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB12_18_2"]=new Array("/AS","/RW","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/CP_BASEADR5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D13PIN_SPECSIG","/UDS","DS_D");
           
-            pterms["FB12_18_3"]=new Array("/AS","/RW","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/LAN_BASEADR1_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D9PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB12_18_3"]=new Array("/AS","/RW","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/CP_BASEADR5_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D13PIN_SPECSIG","/LDS","DS_D");
           
-            pterms["FB12_18_4"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP0_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","LAN_BASEADR1_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D9PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB12_18_4"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
-            pterms["FB12_18_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
+            pterms["FB12_18_5"]=new Array("/AS","/RW","RESET","/D15PIN_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","CP_BASEADR7_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/UDS","DS_D");
           
-            pterms["FB13_1_1"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","CP_BASEADR2_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D10PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB13_1_1"]=new Array("/AS","/RW","RESET","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","IDE_BASEADR2_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D10PIN_SPECSIG","/UDS","DS_D");
           
-            pterms["FB13_1_2"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","CP_BASEADR2_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D10PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB13_1_2"]=new Array("/AS","/RW","RESET","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","IDE_BASEADR2_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D10PIN_SPECSIG","/LDS","DS_D");
           
             pterms["FB13_2_1"]=new Array("/AS","/CP_RD_S");
           
+            pterms["FB13_13_1"]=new Array("RESET","/SHUT_UP2_SPECSIG");
+          
+            pterms["FB13_13_2"]=new Array("/AS","/RW","RESET","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/UDS","DS_D");
+          
+            pterms["FB13_13_3"]=new Array("/AS","/RW","RESET","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/LDS","DS_D");
+          
+            pterms["FB13_13_4"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
+          
             pterms["FB13_14_1"]=new Array("/AS","LAN_WRL_S");
           
-            pterms["FB13_15_1"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","CP_BASEADR4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D12PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB13_15_1"]=new Array("RESET","/SHUT_UP1_SPECSIG");
           
-            pterms["FB13_16_1"]=new Array("/RESET","/CP_BASEADR4_SPECSIG");
+            pterms["FB13_15_2"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/UDS","DS_D");
           
-            pterms["FB13_16_2"]=new Array("/AS","/RW","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/CP_BASEADR4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D12PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB13_15_3"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/LDS","DS_D");
           
-            pterms["FB13_16_3"]=new Array("/AS","/RW","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/CP_BASEADR4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D12PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB13_15_4"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
-            pterms["FB13_16_4"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","CP_BASEADR4_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D12PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB13_15_5"]=new Array("/AS","/RW","RESET","/D15PIN_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","LAN_BASEADR7_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/UDS","DS_D");
+          
+            pterms["FB13_16_1"]=new Array("/RESET","/LAN_BASEADR7_SPECSIG");
+          
+            pterms["FB13_16_2"]=new Array("/AS","/RW","D15PIN_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/LAN_BASEADR7_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/UDS","DS_D");
+          
+            pterms["FB13_16_3"]=new Array("/AS","/RW","D15PIN_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/LAN_BASEADR7_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/LDS","DS_D");
+          
+            pterms["FB13_16_4"]=new Array("/AS","/RW","RESET","/D15PIN_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","LAN_BASEADR7_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/LDS","DS_D");
           
             pterms["FB13_16_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
-            pterms["FB13_17_1"]=new Array("/RESET","/CP_BASEADR3_SPECSIG");
+            pterms["FB13_17_1"]=new Array("/RESET","/LAN_BASEADR2_SPECSIG");
           
-            pterms["FB13_17_2"]=new Array("/AS","/RW","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/CP_BASEADR3_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D11PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB13_17_2"]=new Array("/AS","/RW","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/LAN_BASEADR2_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D10PIN_SPECSIG","/UDS","DS_D");
           
-            pterms["FB13_17_3"]=new Array("/AS","/RW","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/CP_BASEADR3_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D11PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB13_17_3"]=new Array("/AS","/RW","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/LAN_BASEADR2_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D10PIN_SPECSIG","/LDS","DS_D");
           
-            pterms["FB13_17_4"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","CP_BASEADR3_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D11PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB13_17_4"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","LAN_BASEADR2_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D10PIN_SPECSIG","/LDS","DS_D");
           
             pterms["FB13_17_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
-            pterms["FB13_18_1"]=new Array("/RESET","/CP_BASEADR2_SPECSIG");
+            pterms["FB13_18_1"]=new Array("/RESET","/IDE_BASEADR2_SPECSIG");
           
-            pterms["FB13_18_2"]=new Array("/AS","/RW","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/CP_BASEADR2_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D10PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB13_18_2"]=new Array("/AS","/RW","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/IDE_BASEADR2_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D10PIN_SPECSIG","/UDS","DS_D");
           
-            pterms["FB13_18_3"]=new Array("/AS","/RW","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/CP_BASEADR2_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D10PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB13_18_3"]=new Array("/AS","/RW","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/IDE_BASEADR2_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D10PIN_SPECSIG","/LDS","DS_D");
           
             pterms["FB13_18_4"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
-            pterms["FB13_18_5"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","CP_BASEADR3_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D11PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB13_18_5"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","LAN_BASEADR2_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D10PIN_SPECSIG","/UDS","DS_D");
           
-            pterms["FB14_1_1"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","CP_BASEADR0_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D8PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB14_1_1"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","CP_BASEADR1_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D9PIN_SPECSIG","/UDS","DS_D");
+          
+            pterms["FB14_1_2"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","CP_BASEADR1_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D9PIN_SPECSIG","/LDS","DS_D");
           
             pterms["FB14_3_1"]=new Array("/AS","ide");
           
             pterms["FB14_11_1"]=new Array("AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG");
+          
+            pterms["FB14_12_1"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","LAN_BASEADR1_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D9PIN_SPECSIG","/UDS","DS_D");
+          
+            pterms["FB14_13_1"]=new Array("/RESET","/LAN_BASEADR1_SPECSIG");
+          
+            pterms["FB14_13_2"]=new Array("/AS","/RW","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/LAN_BASEADR1_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D9PIN_SPECSIG","/UDS","DS_D");
+          
+            pterms["FB14_13_3"]=new Array("/AS","/RW","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/LAN_BASEADR1_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D9PIN_SPECSIG","/LDS","DS_D");
+          
+            pterms["FB14_13_4"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","LAN_BASEADR1_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D9PIN_SPECSIG","/LDS","DS_D");
+          
+            pterms["FB14_13_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
             pterms["FB14_14_1"]=new Array("AS");
           
@@ -1274,75 +1346,121 @@
           
             pterms["FB14_15_1"]=new Array("/SLAVE_OBUF__INT_SPECSIG");
           
-            pterms["FB14_16_1"]=new Array("RESET","BERR");
+            pterms["FB14_15_2"]=new Array("/AS","/RW","RESET","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","IDE_BASEADR1_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D9PIN_SPECSIG","/UDS","DS_D");
           
-            pterms["FB14_16_2"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","CP_BASEADR1_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D9PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB14_16_1"]=new Array("/RESET","/IDE_BASEADR1_SPECSIG");
           
-            pterms["FB14_17_1"]=new Array("/RESET","/CP_BASEADR1_SPECSIG");
+            pterms["FB14_16_2"]=new Array("/AS","/RW","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/IDE_BASEADR1_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D9PIN_SPECSIG","/UDS","DS_D");
           
-            pterms["FB14_17_2"]=new Array("/AS","/RW","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/CP_BASEADR1_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D9PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB14_16_3"]=new Array("/AS","/RW","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/IDE_BASEADR1_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D9PIN_SPECSIG","/LDS","DS_D");
           
-            pterms["FB14_17_3"]=new Array("/AS","/RW","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/CP_BASEADR1_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D9PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB14_16_4"]=new Array("/AS","/RW","RESET","AUTO_CONFIG_DONE1_SPECSIG","/AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","IDE_BASEADR1_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D9PIN_SPECSIG","/LDS","DS_D");
           
-            pterms["FB14_17_4"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","CP_BASEADR1_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D9PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB14_16_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
+          
+            pterms["FB14_17_1"]=new Array("/RESET","/CP_BASEADR2_SPECSIG");
+          
+            pterms["FB14_17_2"]=new Array("/AS","/RW","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/CP_BASEADR2_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D10PIN_SPECSIG","/UDS","DS_D");
+          
+            pterms["FB14_17_3"]=new Array("/AS","/RW","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/CP_BASEADR2_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D10PIN_SPECSIG","/LDS","DS_D");
+          
+            pterms["FB14_17_4"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","CP_BASEADR2_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D10PIN_SPECSIG","/LDS","DS_D");
           
             pterms["FB14_17_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
-            pterms["FB14_18_1"]=new Array("/RESET","/CP_BASEADR0_SPECSIG");
+            pterms["FB14_18_1"]=new Array("/RESET","/CP_BASEADR1_SPECSIG");
           
-            pterms["FB14_18_2"]=new Array("/AS","/RW","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/CP_BASEADR0_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D8PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB14_18_2"]=new Array("/AS","/RW","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/CP_BASEADR1_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D9PIN_SPECSIG","/UDS","DS_D");
           
-            pterms["FB14_18_3"]=new Array("/AS","/RW","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/CP_BASEADR0_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D8PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB14_18_3"]=new Array("/AS","/RW","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","/CP_BASEADR1_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","D9PIN_SPECSIG","/LDS","DS_D");
           
-            pterms["FB14_18_4"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","CP_BASEADR0_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D8PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB14_18_4"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
           
-            pterms["FB14_18_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
+            pterms["FB14_18_5"]=new Array("/AS","/RW","RESET","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","autoconfig","A6_SPECSIG","A3_SPECSIG","CP_BASEADR2_SPECSIG","/A4_SPECSIG","/A1_SPECSIG","/A2_SPECSIG","/A5_SPECSIG","/D10PIN_SPECSIG","/UDS","DS_D");
           
-            pterms["FB15_1_1"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","CP_BASEADR5_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D13PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB15_1_1"]=new Array("SHUT_UP0_SPECSIG");
           
-            pterms["FB15_1_2"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","CP_BASEADR5_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D13PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB15_1_2"]=new Array("LAN_BASEADR4_SPECSIG","/A20_SPECSIG");
+          
+            pterms["FB15_1_3"]=new Array("/LAN_BASEADR4_SPECSIG","A20_SPECSIG");
+          
+            pterms["FB15_1_4"]=new Array("LAN_BASEADR5_SPECSIG","/A21_SPECSIG");
+          
+            pterms["FB15_1_5"]=new Array("/LAN_BASEADR5_SPECSIG","A21_SPECSIG");
+          
+            pterms["FB15_2_1"]=new Array("LAN_BASEADR0_SPECSIG","/A16_SPECSIG");
+          
+            pterms["FB15_2_2"]=new Array("/LAN_BASEADR0_SPECSIG","A16_SPECSIG");
+          
+            pterms["FB15_2_3"]=new Array("/LAN_BASEADR1_SPECSIG","A17_SPECSIG");
+          
+            pterms["FB15_2_4"]=new Array("LAN_BASEADR3_SPECSIG","/A19_SPECSIG");
+          
+            pterms["FB15_2_5"]=new Array("/LAN_BASEADR3_SPECSIG","A19_SPECSIG");
+          
+            pterms["FB15_3_1"]=new Array("/LAN_BASEADR2_SPECSIG","A18_SPECSIG");
           
             pterms["FB15_12_1"]=new Array("/AS","ide","IDE_WAIT");
           
-            pterms["FB15_15_1"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","CP_BASEADR7_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D15PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB15_15_1"]=new Array("/AUTO_CONFIG_DONE1_SPECSIG","/CFIN","/A18_SPECSIG","/A17_SPECSIG","/A16_SPECSIG","A23_SPECSIG","A22_SPECSIG","A21_SPECSIG","A19_SPECSIG","/A20_SPECSIG");
           
-            pterms["FB15_16_1"]=new Array("/RESET","/CP_BASEADR7_SPECSIG");
+            pterms["FB15_15_2"]=new Array("/AUTO_CONFIG_DONE0_SPECSIG","/CFIN","/A18_SPECSIG","/A17_SPECSIG","/A16_SPECSIG","A23_SPECSIG","A22_SPECSIG","A21_SPECSIG","A19_SPECSIG","/A20_SPECSIG");
           
-            pterms["FB15_16_2"]=new Array("/AS","/RW","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/CP_BASEADR7_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D15PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB15_16_1"]=new Array("C1");
           
-            pterms["FB15_16_3"]=new Array("/AS","/RW","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/CP_BASEADR7_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D15PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB15_16_2"]=new Array("C3");
           
-            pterms["FB15_16_4"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","CP_BASEADR7_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D15PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB15_17_1"]=new Array("/AUTO_CONFIG_DONE1_SPECSIG","/CFIN","/A18_SPECSIG","/A17_SPECSIG","/A16_SPECSIG","A23_SPECSIG","A22_SPECSIG","A21_SPECSIG","A19_SPECSIG","/A20_SPECSIG");
           
-            pterms["FB15_16_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
+            pterms["FB15_17_2"]=new Array("/AUTO_CONFIG_DONE0_SPECSIG","/CFIN","/A18_SPECSIG","/A17_SPECSIG","/A16_SPECSIG","A23_SPECSIG","A22_SPECSIG","A21_SPECSIG","A19_SPECSIG","/A20_SPECSIG");
           
-            pterms["FB15_17_1"]=new Array("/RESET","/CP_BASEADR6_SPECSIG");
+            pterms["FB15_17_3"]=new Array("/ideide_RSTF__INT_SPECSIG");
           
-            pterms["FB15_17_2"]=new Array("/AS","/RW","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/CP_BASEADR6_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D14PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB15_17_4"]=new Array("/AS");
           
-            pterms["FB15_17_3"]=new Array("/AS","/RW","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/CP_BASEADR6_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D14PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB15_17_5"]=new Array("LAN_BASEADR2_SPECSIG","/A18_SPECSIG");
           
-            pterms["FB15_17_4"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","CP_BASEADR6_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D14PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB15_18_1"]=new Array("LAN_BASEADR1_SPECSIG","/A17_SPECSIG");
           
-            pterms["FB15_17_5"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
+            pterms["FB15_18_2"]=new Array("LAN_BASEADR6_SPECSIG","/A22_SPECSIG");
           
-            pterms["FB15_18_1"]=new Array("/RESET","/CP_BASEADR5_SPECSIG");
+            pterms["FB15_18_3"]=new Array("/LAN_BASEADR6_SPECSIG","A22_SPECSIG");
           
-            pterms["FB15_18_2"]=new Array("/AS","/RW","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/CP_BASEADR5_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D13PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB15_18_4"]=new Array("LAN_BASEADR7_SPECSIG","/A23_SPECSIG");
           
-            pterms["FB15_18_3"]=new Array("/AS","/RW","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","/CP_BASEADR5_SPECSIG","/A1_SPECSIG","A6_SPECSIG","D13PIN_SPECSIG","/LDS","DS_D","A3_SPECSIG");
+            pterms["FB15_18_5"]=new Array("/LAN_BASEADR7_SPECSIG","A23_SPECSIG");
           
-            pterms["FB15_18_4"]=new Array("SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG");
+            pterms["FB16_15_1"]=new Array("/IDE_BASEADR4_SPECSIG","A20_SPECSIG");
           
-            pterms["FB15_18_5"]=new Array("/AS","/RW","RESET","/A2_SPECSIG","/AUTO_CONFIG_DONE1_SPECSIG","AUTO_CONFIG_DONE0_SPECSIG","SHUT_UP1_SPECSIG","autoconfig","/A5_SPECSIG","/A4_SPECSIG","CP_BASEADR6_SPECSIG","/A1_SPECSIG","A6_SPECSIG","/D14PIN_SPECSIG","/UDS","DS_D","A3_SPECSIG");
+            pterms["FB16_16_1"]=new Array("IDE_BASEADR0_SPECSIG","/A16_SPECSIG");
           
-            pterms["FB16_18_1"]=new Array("/AUTO_CONFIG_DONE1_SPECSIG","/CFIN","/A18_SPECSIG","/A17_SPECSIG","/A16_SPECSIG","A23_SPECSIG","A22_SPECSIG","A21_SPECSIG","A19_SPECSIG","/A20_SPECSIG");
+            pterms["FB16_16_2"]=new Array("/IDE_BASEADR0_SPECSIG","A16_SPECSIG");
           
-            pterms["FB16_18_2"]=new Array("/AUTO_CONFIG_DONE0_SPECSIG","/CFIN","/A18_SPECSIG","/A17_SPECSIG","/A16_SPECSIG","A23_SPECSIG","A22_SPECSIG","A21_SPECSIG","A19_SPECSIG","/A20_SPECSIG");
+            pterms["FB16_16_3"]=new Array("/IDE_BASEADR1_SPECSIG","A17_SPECSIG");
           
-            pterms["FB16_18_3"]=new Array("/ideide_RSTF__INT_SPECSIG");
+            pterms["FB16_16_4"]=new Array("IDE_BASEADR6_SPECSIG","/A22_SPECSIG");
           
-            pterms["FB16_18_4"]=new Array("/AS");
+            pterms["FB16_16_5"]=new Array("/IDE_BASEADR6_SPECSIG","A22_SPECSIG");
+          
+            pterms["FB16_17_1"]=new Array("IDE_BASEADR1_SPECSIG","/A17_SPECSIG");
+          
+            pterms["FB16_17_2"]=new Array("IDE_BASEADR2_SPECSIG","/A18_SPECSIG");
+          
+            pterms["FB16_17_3"]=new Array("/IDE_BASEADR2_SPECSIG","A18_SPECSIG");
+          
+            pterms["FB16_17_4"]=new Array("IDE_BASEADR3_SPECSIG","/A19_SPECSIG");
+          
+            pterms["FB16_17_5"]=new Array("/IDE_BASEADR3_SPECSIG","A19_SPECSIG");
+          
+            pterms["FB16_18_1"]=new Array("IDE_BASEADR4_SPECSIG","/A20_SPECSIG");
+          
+            pterms["FB16_18_2"]=new Array("IDE_BASEADR5_SPECSIG","/A21_SPECSIG");
+          
+            pterms["FB16_18_3"]=new Array("/IDE_BASEADR5_SPECSIG","A21_SPECSIG");
+          
+            pterms["FB16_18_4"]=new Array("IDE_BASEADR7_SPECSIG","/A23_SPECSIG");
+          
+            pterms["FB16_18_5"]=new Array("/IDE_BASEADR7_SPECSIG","A23_SPECSIG");
           
           d2["LAN_WRL_S"]=new Array("FB1_2_1");
           
@@ -1420,9 +1538,9 @@
           
             d2imp["IDE_A0_SPECSIG"]=new Array("1");
           
-          d2["OpTxFX_DC176__INT_SPECSIG"]=new Array("FB1_13_1","FB1_13_2","FB1_13_3");
+          d2["OpTxFX_DC175__INT_SPECSIG"]=new Array("FB1_13_1","FB1_13_2","FB1_13_3");
           
-            d2imp["OpTxFX_DC176__INT_SPECSIG"]=new Array("1","1","1");
+            d2imp["OpTxFX_DC175__INT_SPECSIG"]=new Array("1","1","1");
           
           d2["IDE_A2_SPECSIG"]=new Array("FB1_14_1");
           
@@ -1432,9 +1550,9 @@
           
             d2imp["IDE_A1_SPECSIG"]=new Array("1");
           
-          d2["OpTxFX_DC175__INT_SPECSIG"]=new Array("FB1_16_1","FB1_16_2","FB1_16_3");
+          d2["OpTxFX_DC174__INT_SPECSIG"]=new Array("FB1_16_1","FB1_16_2","FB1_16_3");
           
-            d2imp["OpTxFX_DC175__INT_SPECSIG"]=new Array("1","1","1");
+            d2imp["OpTxFX_DC174__INT_SPECSIG"]=new Array("1","1","1");
           
           d2["IDE_R"]=new Array("FB1_16_4");
           
@@ -1448,9 +1566,9 @@
               
                 clkimp["Dout13_SPECSIG"]=new Array("1");
               prld["Dout13_SPECSIG"]="GND";
-          d2["A_LAN4_SPECSIG"]=new Array("FB2_2_1");
+          d2["A_LAN4_SPECSIG"]=new Array("FB2_2_1","FB2_2_2");
           
-            d2imp["A_LAN4_SPECSIG"]=new Array("1");
+            d2imp["A_LAN4_SPECSIG"]=new Array("1","1");
           
           d2["A_LAN7_SPECSIG"]=new Array("FB2_3_1");
           
@@ -1516,74 +1634,90 @@
               
                 trstimp["D8_SPECSIG"]=new Array("1");
               
-          d2["IDE_BASEADR3_SPECSIG"]=new Array("FB3_1_1","FB3_1_2","FB3_1_3","FB3_2_2","FB3_2_3");
+          d2["CP_BASEADR4_SPECSIG"]=new Array("FB3_1_1","FB3_1_2","FB3_2_2","FB3_2_3","FB3_2_4");
           
-            d2imp["IDE_BASEADR3_SPECSIG"]=new Array("1","1","1","1","1");
+            d2imp["CP_BASEADR4_SPECSIG"]=new Array("1","1","1","1","1");
           
-              clk["IDE_BASEADR3_SPECSIG"]=new Array("FB3_1_4");
+              clk["CP_BASEADR4_SPECSIG"]=new Array("FB3_1_3");
               
-                clkimp["IDE_BASEADR3_SPECSIG"]=new Array("1");
-              prld["IDE_BASEADR3_SPECSIG"]="GND";
+                clkimp["CP_BASEADR4_SPECSIG"]=new Array("1");
+              prld["CP_BASEADR4_SPECSIG"]="GND";
           d2["IDE_W"]=new Array("FB3_2_1");
           
             d2imp["IDE_W"]=new Array("1");
           
+          d2["LAN_BASEADR6_SPECSIG"]=new Array("FB3_12_1","FB3_12_2","FB3_12_3","FB3_12_4","FB3_11_1");
+          
+            d2imp["LAN_BASEADR6_SPECSIG"]=new Array("1","1","1","1","1");
+          
+              clk["LAN_BASEADR6_SPECSIG"]=new Array("FB3_12_5");
+              
+                clkimp["LAN_BASEADR6_SPECSIG"]=new Array("1");
+              prld["LAN_BASEADR6_SPECSIG"]="GND";
+          d2["LAN_BASEADR4_SPECSIG"]=new Array("FB3_13_1","FB3_13_2","FB3_13_3","FB3_13_4","FB3_14_2");
+          
+            d2imp["LAN_BASEADR4_SPECSIG"]=new Array("1","1","1","1","1");
+          
+              clk["LAN_BASEADR4_SPECSIG"]=new Array("FB3_13_5");
+              
+                clkimp["LAN_BASEADR4_SPECSIG"]=new Array("1");
+              prld["LAN_BASEADR4_SPECSIG"]="GND";
           d2["INT_OUT"]=new Array("GND");
           
             d2imp["INT_OUT"]=new Array("1");
           
-              trst["INT_OUT"]=new Array("GND");
+              trst["INT_OUT"]=new Array("FB3_14_1");
               
                 trstimp["INT_OUT"]=new Array("1");
               
-          d2["IDE_BASEADR2_SPECSIG"]=new Array("FB3_16_1","FB3_16_2","FB3_16_3","FB3_15_1","FB3_15_2");
+          d2["IDE_BASEADR6_SPECSIG"]=new Array("FB3_15_1","FB3_15_2","FB3_15_3","FB3_15_4","FB3_16_1");
           
-            d2imp["IDE_BASEADR2_SPECSIG"]=new Array("1","1","1","1","1");
+            d2imp["IDE_BASEADR6_SPECSIG"]=new Array("1","1","1","1","1");
           
-              clk["IDE_BASEADR2_SPECSIG"]=new Array("FB3_16_4");
+              clk["IDE_BASEADR6_SPECSIG"]=new Array("FB3_15_5");
               
-                clkimp["IDE_BASEADR2_SPECSIG"]=new Array("1");
-              prld["IDE_BASEADR2_SPECSIG"]="GND";
-          d2["IDE_BASEADR1_SPECSIG"]=new Array("FB3_17_1","FB3_17_2","FB3_17_3","FB3_17_4","FB3_16_5");
+                clkimp["IDE_BASEADR6_SPECSIG"]=new Array("1");
+              prld["IDE_BASEADR6_SPECSIG"]="GND";
+          d2["IDE_BASEADR4_SPECSIG"]=new Array("FB3_17_1","FB3_17_2","FB3_17_3","FB3_17_4","FB3_18_5");
           
-            d2imp["IDE_BASEADR1_SPECSIG"]=new Array("1","1","1","1","1");
+            d2imp["IDE_BASEADR4_SPECSIG"]=new Array("1","1","1","1","1");
           
-              clk["IDE_BASEADR1_SPECSIG"]=new Array("FB3_17_5");
+              clk["IDE_BASEADR4_SPECSIG"]=new Array("FB3_17_5");
               
-                clkimp["IDE_BASEADR1_SPECSIG"]=new Array("1");
-              prld["IDE_BASEADR1_SPECSIG"]="GND";
-          d2["IDE_BASEADR0_SPECSIG"]=new Array("FB3_18_1","FB3_18_2","FB3_18_3","FB3_18_4","FB3_1_5");
+                clkimp["IDE_BASEADR4_SPECSIG"]=new Array("1");
+              prld["IDE_BASEADR4_SPECSIG"]="GND";
+          d2["CP_BASEADR6_SPECSIG"]=new Array("FB3_18_1","FB3_18_2","FB3_18_3","FB3_1_4","FB3_1_5");
           
-            d2imp["IDE_BASEADR0_SPECSIG"]=new Array("1","1","1","1","1");
+            d2imp["CP_BASEADR6_SPECSIG"]=new Array("1","1","1","1","1");
           
-              clk["IDE_BASEADR0_SPECSIG"]=new Array("FB3_18_5");
+              clk["CP_BASEADR6_SPECSIG"]=new Array("FB3_18_4");
               
-                clkimp["IDE_BASEADR0_SPECSIG"]=new Array("1");
-              prld["IDE_BASEADR0_SPECSIG"]="GND";
-          d2["D0_SPECSIG"]=new Array("FB4_2_1","FB4_1_1","FB4_1_2","FB4_1_3");
+                clkimp["CP_BASEADR6_SPECSIG"]=new Array("1");
+              prld["CP_BASEADR6_SPECSIG"]="GND";
+          d2["D0_SPECSIG"]=new Array("FB4_2_1","FB4_2_2","FB4_2_3","FB4_2_4");
           
             d2imp["D0_SPECSIG"]=new Array("1","1","1","1");
           
-              trst["D0_SPECSIG"]=new Array("FB4_2_2");
+              trst["D0_SPECSIG"]=new Array("FB4_2_5");
               
                 trstimp["D0_SPECSIG"]=new Array("1");
               
-          d2["AUTO_CONFIG_DONE_CYCLE0_SPECSIG"]=new Array("FB4_3_1","FB4_3_2","FB4_3_3","FB4_3_4","FB4_2_3","FB4_2_4","FB4_2_5","FB4_4_4","FB4_4_5");
+          d2["AUTO_CONFIG_DONE_CYCLE1_SPECSIG"]=new Array("FB4_3_1","FB4_3_2","FB4_3_3","FB4_3_4","FB4_4_3","FB4_4_4","FB4_4_5");
           
-            d2imp["AUTO_CONFIG_DONE_CYCLE0_SPECSIG"]=new Array("1","1","1","1","1","1","1","1","1");
+            d2imp["AUTO_CONFIG_DONE_CYCLE1_SPECSIG"]=new Array("1","1","1","1","1","1","1");
           
-              clk["AUTO_CONFIG_DONE_CYCLE0_SPECSIG"]=new Array("FB4_3_5");
+              clk["AUTO_CONFIG_DONE_CYCLE1_SPECSIG"]=new Array("FB4_3_5");
               
-                clkimp["AUTO_CONFIG_DONE_CYCLE0_SPECSIG"]=new Array("1");
-              prld["AUTO_CONFIG_DONE_CYCLE0_SPECSIG"]="GND";
-          d2["SHUT_UP0_SPECSIG"]=new Array("FB4_4_1","FB4_4_2","FB4_5_2");
+                clkimp["AUTO_CONFIG_DONE_CYCLE1_SPECSIG"]=new Array("1");
+              prld["AUTO_CONFIG_DONE_CYCLE1_SPECSIG"]="GND";
+          d2["CP_BASEADR0_SPECSIG"]=new Array("FB4_4_1","FB4_5_2","FB4_5_3","FB4_5_4","FB4_5_5");
           
-            d2imp["SHUT_UP0_SPECSIG"]=new Array("1","1","1");
+            d2imp["CP_BASEADR0_SPECSIG"]=new Array("1","1","1","1","1");
           
-              clk["SHUT_UP0_SPECSIG"]=new Array("FB4_4_3");
+              clk["CP_BASEADR0_SPECSIG"]=new Array("FB4_4_2");
               
-                clkimp["SHUT_UP0_SPECSIG"]=new Array("1");
-              prld["SHUT_UP0_SPECSIG"]="GND";
+                clkimp["CP_BASEADR0_SPECSIG"]=new Array("1");
+              prld["CP_BASEADR0_SPECSIG"]="GND";
           d2["A_LAN1_SPECSIG"]=new Array("FB4_5_1");
           
             d2imp["A_LAN1_SPECSIG"]=new Array("1");
@@ -1592,69 +1726,61 @@
           
             d2imp["A_LAN0_SPECSIG"]=new Array("1");
           
-          d2["AUTO_CONFIG_DONE_CYCLE1_SPECSIG"]=new Array("FB4_7_1","FB4_7_2","FB4_7_3","FB4_7_4","FB4_6_2","FB4_6_3","FB4_6_4","FB4_8_2","FB4_8_3");
+          d2["IDE_BASEADR0_SPECSIG"]=new Array("FB4_7_1","FB4_7_2","FB4_7_3","FB4_7_4","FB4_6_2");
           
-            d2imp["AUTO_CONFIG_DONE_CYCLE1_SPECSIG"]=new Array("1","1","1","1","1","1","1","1","1");
+            d2imp["IDE_BASEADR0_SPECSIG"]=new Array("1","1","1","1","1");
           
-              clk["AUTO_CONFIG_DONE_CYCLE1_SPECSIG"]=new Array("FB4_7_5");
+              clk["IDE_BASEADR0_SPECSIG"]=new Array("FB4_7_5");
               
-                clkimp["AUTO_CONFIG_DONE_CYCLE1_SPECSIG"]=new Array("1");
-              prld["AUTO_CONFIG_DONE_CYCLE1_SPECSIG"]="GND";
-          d2["A_LAN3_SPECSIG"]=new Array("FB4_8_1");
+                clkimp["IDE_BASEADR0_SPECSIG"]=new Array("1");
+              prld["IDE_BASEADR0_SPECSIG"]="GND";
+          d2["A_LAN3_SPECSIG"]=new Array("FB4_8_1","FB4_8_2");
           
-            d2imp["A_LAN3_SPECSIG"]=new Array("1");
+            d2imp["A_LAN3_SPECSIG"]=new Array("1","1");
           
-          d2["SHUT_UP1_SPECSIG"]=new Array("FB4_9_1","FB4_9_2","FB4_9_3");
+          d2["LAN_BASEADR0_SPECSIG"]=new Array("FB4_9_1","FB4_9_2","FB4_9_3","FB4_9_4","FB4_8_3");
           
-            d2imp["SHUT_UP1_SPECSIG"]=new Array("1","1","1");
+            d2imp["LAN_BASEADR0_SPECSIG"]=new Array("1","1","1","1","1");
           
-              clk["SHUT_UP1_SPECSIG"]=new Array("FB4_9_4");
+              clk["LAN_BASEADR0_SPECSIG"]=new Array("FB4_9_5");
               
-                clkimp["SHUT_UP1_SPECSIG"]=new Array("1");
-              prld["SHUT_UP1_SPECSIG"]="GND";
-          d2["SHUT_UP2_SPECSIG"]=new Array("FB4_10_1","FB4_10_2","FB4_10_3");
-          
-            d2imp["SHUT_UP2_SPECSIG"]=new Array("1","1","1");
-          
-              clk["SHUT_UP2_SPECSIG"]=new Array("FB4_10_4");
-              
-                clkimp["SHUT_UP2_SPECSIG"]=new Array("1");
-              prld["SHUT_UP2_SPECSIG"]="GND";
-          d2["AUTO_CONFIG_DONE0_SPECSIG"]=new Array("FB4_11_1","FB4_11_2");
+                clkimp["LAN_BASEADR0_SPECSIG"]=new Array("1");
+              prld["LAN_BASEADR0_SPECSIG"]="GND";
+          d2["AUTO_CONFIG_DONE0_SPECSIG"]=new Array("FB4_10_1","FB4_10_2");
           
             d2imp["AUTO_CONFIG_DONE0_SPECSIG"]=new Array("1","1");
           
-              clk["AUTO_CONFIG_DONE0_SPECSIG"]=new Array("FB4_11_3");
+              clk["AUTO_CONFIG_DONE0_SPECSIG"]=new Array("FB4_10_3");
               
                 clkimp["AUTO_CONFIG_DONE0_SPECSIG"]=new Array("1");
               prld["AUTO_CONFIG_DONE0_SPECSIG"]="GND";
-          d2["A_LAN2_SPECSIG"]=new Array("FB4_12_1");
-          
-            d2imp["A_LAN2_SPECSIG"]=new Array("1");
-          
-          d2["AUTO_CONFIG_DONE1_SPECSIG"]=new Array("FB4_13_1","FB4_13_2");
+          d2["AUTO_CONFIG_DONE1_SPECSIG"]=new Array("FB4_11_1","FB4_11_2");
           
             d2imp["AUTO_CONFIG_DONE1_SPECSIG"]=new Array("1","1");
           
-              clk["AUTO_CONFIG_DONE1_SPECSIG"]=new Array("FB4_13_3");
+              clk["AUTO_CONFIG_DONE1_SPECSIG"]=new Array("FB4_11_3");
               
                 clkimp["AUTO_CONFIG_DONE1_SPECSIG"]=new Array("1");
               prld["AUTO_CONFIG_DONE1_SPECSIG"]="GND";
-          d2["A_LAN5_SPECSIG"]=new Array("FB4_14_1");
+          d2["A_LAN2_SPECSIG"]=new Array("FB4_12_1","FB4_12_2");
           
-            d2imp["A_LAN5_SPECSIG"]=new Array("1");
+            d2imp["A_LAN2_SPECSIG"]=new Array("1","1");
           
-          d2["Dout11_SPECSIG"]=new Array("FB4_16_1","FB4_16_2","FB4_16_3","FB4_16_4","FB4_15_1","FB4_15_2","FB4_15_3","FB4_15_4","FB4_15_5","FB4_14_2","FB4_14_3","FB4_14_4","FB4_14_5","FB4_17_1","FB4_17_2","FB4_17_3","FB4_17_4","FB4_17_5","FB4_18_1","FB4_18_2","FB4_18_3");
+          d2["A_LAN5_SPECSIG"]=new Array("FB4_14_1","FB4_14_2");
           
-            d2imp["Dout11_SPECSIG"]=new Array("1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1");
+            d2imp["A_LAN5_SPECSIG"]=new Array("1","1");
           
-              clk["Dout11_SPECSIG"]=new Array("FB4_16_5");
+          d2["AUTO_CONFIG_DONE_CYCLE0_SPECSIG"]=new Array("FB4_15_1","FB4_15_2","FB4_15_3","FB4_15_4","FB4_14_3","FB4_14_4","FB4_14_5","FB4_16_1","FB4_16_2","FB4_16_3","FB4_16_4","FB4_16_5");
+          
+            d2imp["AUTO_CONFIG_DONE_CYCLE0_SPECSIG"]=new Array("1","1","1","1","1","1","1","1","1","1","1","1");
+          
+              clk["AUTO_CONFIG_DONE_CYCLE0_SPECSIG"]=new Array("FB4_15_5");
               
-                clkimp["Dout11_SPECSIG"]=new Array("1");
-              prld["Dout11_SPECSIG"]="GND";
-          d2["CP_CS"]=new Array("FB5_2_1","FB5_2_2","FB5_2_3","FB5_1_1","FB5_1_2","FB5_1_3","FB5_1_4","FB5_1_5","FB5_3_1","FB5_3_2","FB5_3_3","FB5_3_4","FB5_3_5","FB5_4_1","FB5_4_2","FB5_4_3","FB5_4_4");
+                clkimp["AUTO_CONFIG_DONE_CYCLE0_SPECSIG"]=new Array("1");
+              prld["AUTO_CONFIG_DONE_CYCLE0_SPECSIG"]="GND";
+          d2["CP_CS"]=new Array("FB5_2_1","FB5_2_2","FB5_2_3","FB5_1_1","FB5_1_2","FB5_1_3","FB5_1_4","FB5_1_5","FB5_3_1","FB5_3_2","FB5_3_3","FB5_3_4","FB5_3_5","FB5_4_1","FB5_4_2","FB5_4_3","FB5_4_4","FB5_4_5","FB5_5_2","FB5_5_3");
           
-            d2imp["CP_CS"]=new Array("1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1");
+            d2imp["CP_CS"]=new Array("1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1");
           
               clk["CP_CS"]=new Array("FB5_2_5");
               
@@ -1740,19 +1866,39 @@
           
             d2imp["A_LAN9_SPECSIG"]=new Array("1");
           
-          d2["ide"]=new Array("FB6_17_1","FB6_17_2","FB6_17_3","FB6_16_1","FB6_16_2","FB6_16_3","FB6_16_4","FB6_16_5","FB6_15_1","FB6_15_2","FB6_15_3","FB6_15_4","FB6_18_1","FB6_18_2","FB6_18_3","FB6_18_4","FB6_18_5");
+          d2["LAN_BASEADR3_SPECSIG"]=new Array("FB6_16_1","FB6_16_2","FB6_16_3","FB6_16_4","FB6_15_1");
           
-            d2imp["ide"]=new Array("1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1");
+            d2imp["LAN_BASEADR3_SPECSIG"]=new Array("1","1","1","1","1");
           
-              clk["ide"]=new Array("FB6_17_5");
+              clk["LAN_BASEADR3_SPECSIG"]=new Array("FB6_16_5");
               
-                clkimp["ide"]=new Array("1");
+                clkimp["LAN_BASEADR3_SPECSIG"]=new Array("1");
+              prld["LAN_BASEADR3_SPECSIG"]="GND";
+          d2["IDE_BASEADR3_SPECSIG"]=new Array("FB6_17_1","FB6_17_2","FB6_17_3","FB6_17_4","FB6_18_5");
+          
+            d2imp["IDE_BASEADR3_SPECSIG"]=new Array("1","1","1","1","1");
+          
+              clk["IDE_BASEADR3_SPECSIG"]=new Array("FB6_17_5");
               
-              rst["ide"]=new Array("FB6_17_4");
+                clkimp["IDE_BASEADR3_SPECSIG"]=new Array("1");
+              prld["IDE_BASEADR3_SPECSIG"]="GND";
+          d2["CP_BASEADR3_SPECSIG"]=new Array("FB6_18_1","FB6_18_2","FB6_18_3","FB6_1_1","FB6_1_2");
+          
+            d2imp["CP_BASEADR3_SPECSIG"]=new Array("1","1","1","1","1");
+          
+              clk["CP_BASEADR3_SPECSIG"]=new Array("FB6_18_4");
               
-                rstimp["ide"]=new Array("1");
-              prld["ide"]="GND";
-          d2["D13_SPECSIG"]=new Array("FB7_3_1","FB7_3_2","FB7_3_3","FB7_3_4","FB7_2_1","FB7_2_2","FB7_2_3");
+                clkimp["CP_BASEADR3_SPECSIG"]=new Array("1");
+              prld["CP_BASEADR3_SPECSIG"]="GND";
+          d2["SHUT_UP0_SPECSIG"]=new Array("FB7_2_1","FB7_2_2","FB7_2_3");
+          
+            d2imp["SHUT_UP0_SPECSIG"]=new Array("1","1","1");
+          
+              clk["SHUT_UP0_SPECSIG"]=new Array("FB7_2_4");
+              
+                clkimp["SHUT_UP0_SPECSIG"]=new Array("1");
+              prld["SHUT_UP0_SPECSIG"]="GND";
+          d2["D13_SPECSIG"]=new Array("FB7_3_1","FB7_3_2","FB7_3_3","FB7_3_4","FB7_2_5","FB7_4_1","FB7_4_2");
           
             d2imp["D13_SPECSIG"]=new Array("1","1","1","1","1","1","1");
           
@@ -1760,7 +1906,7 @@
               
                 trstimp["D13_SPECSIG"]=new Array("1");
               
-          d2["D14_SPECSIG"]=new Array("FB7_5_1","FB7_5_2","FB7_5_3","FB7_5_4","FB7_4_1","FB7_4_2","FB7_4_3");
+          d2["D14_SPECSIG"]=new Array("FB7_5_1","FB7_5_2","FB7_5_3","FB7_5_4","FB7_6_1","FB7_6_2","FB7_6_3");
           
             d2imp["D14_SPECSIG"]=new Array("1","1","1","1","1","1","1");
           
@@ -1768,15 +1914,15 @@
               
                 trstimp["D14_SPECSIG"]=new Array("1");
               
-          d2["Dout12_SPECSIG"]=new Array("FB7_8_1","FB7_8_2","FB7_8_3","FB7_8_4","FB7_7_1","FB7_7_2","FB7_7_3","FB7_7_4","FB7_7_5","FB7_6_1","FB7_6_2","FB7_6_3","FB7_6_4","FB7_6_5","FB7_9_1","FB7_9_2","FB7_9_3","FB7_9_4","FB7_9_5");
+          d2["Dout12_SPECSIG"]=new Array("FB7_9_1","FB7_9_2","FB7_9_3","FB7_9_4","FB7_8_1","FB7_8_2","FB7_8_3","FB7_8_4","FB7_8_5","FB7_7_1","FB7_7_2","FB7_7_3","FB7_7_4","FB7_7_5","FB7_10_1","FB7_10_2","FB7_10_3","FB7_10_4","FB7_10_5");
           
             d2imp["Dout12_SPECSIG"]=new Array("1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1");
           
-              clk["Dout12_SPECSIG"]=new Array("FB7_8_5");
+              clk["Dout12_SPECSIG"]=new Array("FB7_9_5");
               
                 clkimp["Dout12_SPECSIG"]=new Array("1");
               prld["Dout12_SPECSIG"]="GND";
-          d2["D15_SPECSIG"]=new Array("FB7_12_1","FB7_12_2","FB7_12_3","FB7_12_4","FB7_11_1","FB7_11_2","FB7_11_3");
+          d2["D15_SPECSIG"]=new Array("FB7_12_1","FB7_12_2","FB7_12_3","FB7_12_4","FB7_11_1","FB7_11_2","FB7_13_1");
           
             d2imp["D15_SPECSIG"]=new Array("1","1","1","1","1","1","1");
           
@@ -1784,14 +1930,14 @@
               
                 trstimp["D15_SPECSIG"]=new Array("1");
               
-          d2["Dout10_SPECSIG"]=new Array("FB7_15_1","FB7_15_2","FB7_15_3","FB7_15_4","FB7_14_1","FB7_14_2","FB7_14_3","FB7_14_4","FB7_14_5","FB7_13_1","FB7_13_2","FB7_13_3","FB7_13_4","FB7_13_5","FB7_16_1","FB7_16_2","FB7_16_3","FB7_16_4","FB7_16_5","FB7_17_1","FB7_17_2");
+          d2["Dout11_SPECSIG"]=new Array("FB7_17_1","FB7_17_2","FB7_17_3","FB7_17_4","FB7_16_1","FB7_16_2","FB7_16_3","FB7_16_4","FB7_16_5","FB7_15_1","FB7_15_2","FB7_18_1","FB7_18_2","FB7_18_3","FB7_18_4","FB7_18_5","FB7_1_1","FB7_1_2","FB7_1_3","FB7_1_4","FB7_1_5");
           
-            d2imp["Dout10_SPECSIG"]=new Array("1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1");
+            d2imp["Dout11_SPECSIG"]=new Array("1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1");
           
-              clk["Dout10_SPECSIG"]=new Array("FB7_15_5");
+              clk["Dout11_SPECSIG"]=new Array("FB7_17_5");
               
-                clkimp["Dout10_SPECSIG"]=new Array("1");
-              prld["Dout10_SPECSIG"]="GND";
+                clkimp["Dout11_SPECSIG"]=new Array("1");
+              prld["Dout11_SPECSIG"]="GND";
           d2["DQ12_SPECSIG"]=new Array("FB8_2_1");
           
             d2imp["DQ12_SPECSIG"]=new Array("1");
@@ -1812,9 +1958,9 @@
           
             d2imp["LAN_WRH"]=new Array("1");
           
-          d2["LAN_CS"]=new Array("FB8_8_1","FB8_8_2","FB8_8_3","FB8_7_1","FB8_7_2","FB8_7_3","FB8_7_4","FB8_7_5","FB8_6_1","FB8_6_2","FB8_9_1","FB8_9_2","FB8_9_3","FB8_9_4","FB8_9_5","FB8_10_2","FB8_10_3");
+          d2["LAN_CS"]=new Array("FB8_8_1","FB8_8_2","FB8_8_3","FB8_7_1","FB8_7_2","FB8_7_3","FB8_7_4","FB8_7_5","FB8_6_1","FB8_6_2","FB8_6_3","FB8_6_4","FB8_9_1","FB8_9_2","FB8_9_3","FB8_9_4","FB8_9_5","FB8_10_2","FB8_10_3");
           
-            d2imp["LAN_CS"]=new Array("1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1");
+            d2imp["LAN_CS"]=new Array("1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1");
           
               clk["LAN_CS"]=new Array("FB8_8_5");
               
@@ -1828,46 +1974,22 @@
           
             d2imp["LAN_RD"]=new Array("1");
           
-          d1["SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG"]=new Array("FB8_18_1");
+          d2["ide"]=new Array("FB9_16_1","FB9_16_2","FB9_16_3","FB9_15_1","FB9_15_2","FB9_15_3","FB9_15_4","FB9_15_5","FB9_14_1","FB9_17_1","FB9_17_2","FB9_17_3","FB9_17_4","FB9_17_5","FB9_18_1","FB9_18_2","FB9_18_3","FB9_18_4","FB9_18_5");
           
-            d1imp["SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG"]=new Array("1");
+            d2imp["ide"]=new Array("1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1");
           
-          d2["SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG"]=new Array("FB8_18_2");
-          
-            d2imp["SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG"]=new Array("1");
-          
-          d2["LAN_BASEADR6_SPECSIG"]=new Array("FB9_1_1","FB9_1_2","FB9_1_3","FB9_2_1","FB9_2_2");
-          
-            d2imp["LAN_BASEADR6_SPECSIG"]=new Array("1","1","1","1","1");
-          
-              clk["LAN_BASEADR6_SPECSIG"]=new Array("FB9_1_4");
+              clk["ide"]=new Array("FB9_16_5");
               
-                clkimp["LAN_BASEADR6_SPECSIG"]=new Array("1");
-              prld["LAN_BASEADR6_SPECSIG"]="GND";
-          d2["LAN_BASEADR4_SPECSIG"]=new Array("FB9_16_1","FB9_16_2","FB9_16_3","FB9_15_1","FB9_15_2");
-          
-            d2imp["LAN_BASEADR4_SPECSIG"]=new Array("1","1","1","1","1");
-          
-              clk["LAN_BASEADR4_SPECSIG"]=new Array("FB9_16_4");
+                clkimp["ide"]=new Array("1");
               
-                clkimp["LAN_BASEADR4_SPECSIG"]=new Array("1");
-              prld["LAN_BASEADR4_SPECSIG"]="GND";
-          d2["LAN_BASEADR2_SPECSIG"]=new Array("FB9_17_1","FB9_17_2","FB9_17_3","FB9_17_4","FB9_16_5");
-          
-            d2imp["LAN_BASEADR2_SPECSIG"]=new Array("1","1","1","1","1");
-          
-              clk["LAN_BASEADR2_SPECSIG"]=new Array("FB9_17_5");
+              rst["ide"]=new Array("FB9_16_4");
               
-                clkimp["LAN_BASEADR2_SPECSIG"]=new Array("1");
-              prld["LAN_BASEADR2_SPECSIG"]="GND";
-          d2["LAN_BASEADR0_SPECSIG"]=new Array("FB9_18_1","FB9_18_2","FB9_18_3","FB9_18_4","FB9_1_5");
+                rstimp["ide"]=new Array("1");
+              prld["ide"]="GND";
+          d2["ideide_RSTF__INT_SPECSIG"]=new Array("FB10_1_1");
           
-            d2imp["LAN_BASEADR0_SPECSIG"]=new Array("1","1","1","1","1");
+            d2imp["ideide_RSTF__INT_SPECSIG"]=new Array("1");
           
-              clk["LAN_BASEADR0_SPECSIG"]=new Array("FB9_18_5");
-              
-                clkimp["LAN_BASEADR0_SPECSIG"]=new Array("1");
-              prld["LAN_BASEADR0_SPECSIG"]="GND";
           d2["DQ1_SPECSIG"]=new Array("FB10_2_1");
           
             d2imp["DQ1_SPECSIG"]=new Array("1");
@@ -1884,6 +2006,10 @@
               
                 trstimp["DQ0_SPECSIG"]=new Array("1");
               
+          d2["SLAVE_OBUF__INT_SPECSIG"]=new Array("FB10_4_1","FB10_4_2");
+          
+            d2imp["SLAVE_OBUF__INT_SPECSIG"]=new Array("1","1");
+          
           d2["DQ3_SPECSIG"]=new Array("FB10_5_1");
           
             d2imp["DQ3_SPECSIG"]=new Array("1");
@@ -1900,6 +2026,14 @@
               
                 trstimp["DQ2_SPECSIG"]=new Array("1");
               
+          d2["ROM_OE_S"]=new Array("FB10_7_1");
+          
+            d2imp["ROM_OE_S"]=new Array("1");
+          
+              clk["ROM_OE_S"]=new Array("FB10_7_2");
+              
+                clkimp["ROM_OE_S"]=new Array("1");
+              prld["ROM_OE_S"]="GND";
           d2["DQ5_SPECSIG"]=new Array("FB10_8_1");
           
             d2imp["DQ5_SPECSIG"]=new Array("1");
@@ -1908,9 +2042,9 @@
               
                 trstimp["DQ5_SPECSIG"]=new Array("1");
               
-          d2["SLAVE_OBUF__INT_SPECSIG"]=new Array("FB10_9_1","FB10_9_2");
+          d2["ROM_B_0_OBUFBUF7ROM_B_0_OBUFBUF7_TRST_SPECSIG"]=new Array("FB10_9_1","FB10_9_2");
           
-            d2imp["SLAVE_OBUF__INT_SPECSIG"]=new Array("1","1");
+            d2imp["ROM_B_0_OBUFBUF7ROM_B_0_OBUFBUF7_TRST_SPECSIG"]=new Array("1","1");
           
           d2["DQ4_SPECSIG"]=new Array("FB10_10_1");
           
@@ -1936,14 +2070,14 @@
               
                 trstimp["DQ6_SPECSIG"]=new Array("1");
               
-          d2["ROM_OE_S"]=new Array("FB10_13_1");
+          d2["IDE_W_S"]=new Array("FB10_13_1");
           
-            d2imp["ROM_OE_S"]=new Array("1");
+            d2imp["IDE_W_S"]=new Array("1");
           
-              clk["ROM_OE_S"]=new Array("FB10_13_2");
+              clk["IDE_W_S"]=new Array("FB10_13_2");
               
-                clkimp["ROM_OE_S"]=new Array("1");
-              prld["ROM_OE_S"]="GND";
+                clkimp["IDE_W_S"]=new Array("1");
+              prld["IDE_W_S"]="GND";
           d2["DQ8_SPECSIG"]=new Array("FB10_14_1");
           
             d2imp["DQ8_SPECSIG"]=new Array("1");
@@ -1952,22 +2086,28 @@
               
                 trstimp["DQ8_SPECSIG"]=new Array("1");
               
-          d2["IDE_W_S"]=new Array("FB10_15_1");
-          
-            d2imp["IDE_W_S"]=new Array("1");
-          
-              clk["IDE_W_S"]=new Array("FB10_15_2");
-              
-                clkimp["IDE_W_S"]=new Array("1");
-              prld["IDE_W_S"]="GND";
-          d2["IDE_R_S"]=new Array("FB10_16_1");
+          d2["IDE_R_S"]=new Array("FB10_15_1");
           
             d2imp["IDE_R_S"]=new Array("1");
           
-              clk["IDE_R_S"]=new Array("FB10_16_2");
+              clk["IDE_R_S"]=new Array("FB10_15_2");
               
                 clkimp["IDE_R_S"]=new Array("1");
               prld["IDE_R_S"]="GND";
+          d2["LAN_INT_ENABLE"]=new Array("FB10_16_1");
+          
+            d2imp["LAN_INT_ENABLE"]=new Array("1");
+          
+              clk["LAN_INT_ENABLE"]=new Array("FB10_16_2");
+              
+                clkimp["LAN_INT_ENABLE"]=new Array("1");
+              
+              gblrst["LAN_INT_ENABLE"]=new Array("RESET");
+            
+          ce["LAN_INT_ENABLE"]=new Array("FB10_16_3");
+          
+            ceimp["LAN_INT_ENABLE"]=new Array("1");
+          prld["LAN_INT_ENABLE"]="GND";
           d2["DQ10_SPECSIG"]=new Array("FB10_17_1");
           
             d2imp["DQ10_SPECSIG"]=new Array("1");
@@ -1984,58 +2124,34 @@
               
                 clkimp["IDE_ENABLE"]=new Array("1");
               prld["IDE_ENABLE"]="GND";
+          d2["Dout10_SPECSIG"]=new Array("FB11_1_1","FB11_1_2","FB11_1_3","FB11_1_4","FB11_2_1","FB11_2_2","FB11_2_3","FB11_2_4","FB11_2_5","FB11_3_1","FB11_3_2","FB11_3_3","FB11_3_4","FB11_3_5","FB11_18_1","FB11_18_2","FB11_18_3","FB11_18_4","FB11_18_5","FB11_17_2","FB11_17_3");
+          
+            d2imp["Dout10_SPECSIG"]=new Array("1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1");
+          
+              clk["Dout10_SPECSIG"]=new Array("FB11_1_5");
+              
+                clkimp["Dout10_SPECSIG"]=new Array("1");
+              prld["Dout10_SPECSIG"]="GND";
           d2["ROM_B0_SPECSIG"]=new Array("GND");
           
             d2imp["ROM_B0_SPECSIG"]=new Array("1");
           
-          d2["IDE_BASEADR7_SPECSIG"]=new Array("FB11_13_1","FB11_13_2","FB11_13_3","FB11_13_4","FB11_12_1");
-          
-            d2imp["IDE_BASEADR7_SPECSIG"]=new Array("1","1","1","1","1");
-          
-              clk["IDE_BASEADR7_SPECSIG"]=new Array("FB11_13_5");
-              
-                clkimp["IDE_BASEADR7_SPECSIG"]=new Array("1");
-              prld["IDE_BASEADR7_SPECSIG"]="GND";
           d2["ROM_B1_SPECSIG"]=new Array("GND");
           
             d2imp["ROM_B1_SPECSIG"]=new Array("1");
           
-          d2["IDE_BASEADR6_SPECSIG"]=new Array("FB11_15_1","FB11_15_2","FB11_15_3","FB11_15_4","FB11_14_1");
-          
-            d2imp["IDE_BASEADR6_SPECSIG"]=new Array("1","1","1","1","1");
-          
-              clk["IDE_BASEADR6_SPECSIG"]=new Array("FB11_15_5");
-              
-                clkimp["IDE_BASEADR6_SPECSIG"]=new Array("1");
-              prld["IDE_BASEADR6_SPECSIG"]="GND";
-          d2["IDE_BASEADR5_SPECSIG"]=new Array("FB11_16_1","FB11_16_2","FB11_16_3","FB11_16_4","FB11_17_2");
-          
-            d2imp["IDE_BASEADR5_SPECSIG"]=new Array("1","1","1","1","1");
-          
-              clk["IDE_BASEADR5_SPECSIG"]=new Array("FB11_16_5");
-              
-                clkimp["IDE_BASEADR5_SPECSIG"]=new Array("1");
-              prld["IDE_BASEADR5_SPECSIG"]="GND";
           d2["CP_WE"]=new Array("FB11_17_1");
           
             d2imp["CP_WE"]=new Array("1");
           
-          d2["IDE_BASEADR4_SPECSIG"]=new Array("FB11_18_1","FB11_18_2","FB11_18_3","FB11_18_4","FB11_1_1");
+          d2["LAN_BASEADR5_SPECSIG"]=new Array("FB12_1_1","FB12_1_2","FB12_2_1","FB12_2_2","FB12_2_3");
           
-            d2imp["IDE_BASEADR4_SPECSIG"]=new Array("1","1","1","1","1");
+            d2imp["LAN_BASEADR5_SPECSIG"]=new Array("1","1","1","1","1");
           
-              clk["IDE_BASEADR4_SPECSIG"]=new Array("FB11_18_5");
+              clk["LAN_BASEADR5_SPECSIG"]=new Array("FB12_1_3");
               
-                clkimp["IDE_BASEADR4_SPECSIG"]=new Array("1");
-              prld["IDE_BASEADR4_SPECSIG"]="GND";
-          d2["LAN_BASEADR7_SPECSIG"]=new Array("FB12_1_1","FB12_1_2","FB12_1_3","FB12_2_1","FB12_2_2");
-          
-            d2imp["LAN_BASEADR7_SPECSIG"]=new Array("1","1","1","1","1");
-          
-              clk["LAN_BASEADR7_SPECSIG"]=new Array("FB12_1_4");
-              
-                clkimp["LAN_BASEADR7_SPECSIG"]=new Array("1");
-              prld["LAN_BASEADR7_SPECSIG"]="GND";
+                clkimp["LAN_BASEADR5_SPECSIG"]=new Array("1");
+              prld["LAN_BASEADR5_SPECSIG"]="GND";
           d2["LAN_CFG4_SPECSIG"]=new Array("GND");
           
             d2imp["LAN_CFG4_SPECSIG"]=new Array("1");
@@ -2076,62 +2192,86 @@
               
                 trstimp["DQ9_SPECSIG"]=new Array("1");
               
-          d2["LAN_BASEADR5_SPECSIG"]=new Array("FB12_16_1","FB12_16_2","FB12_16_3","FB12_15_1","FB12_15_2");
+          d2["IDE_BASEADR7_SPECSIG"]=new Array("FB12_15_1","FB12_15_2","FB12_15_3","FB12_14_1","FB12_14_2");
           
-            d2imp["LAN_BASEADR5_SPECSIG"]=new Array("1","1","1","1","1");
+            d2imp["IDE_BASEADR7_SPECSIG"]=new Array("1","1","1","1","1");
           
-              clk["LAN_BASEADR5_SPECSIG"]=new Array("FB12_16_4");
+              clk["IDE_BASEADR7_SPECSIG"]=new Array("FB12_15_4");
               
-                clkimp["LAN_BASEADR5_SPECSIG"]=new Array("1");
-              prld["LAN_BASEADR5_SPECSIG"]="GND";
-          d2["LAN_BASEADR3_SPECSIG"]=new Array("FB12_17_1","FB12_17_2","FB12_17_3","FB12_17_4","FB12_16_5");
+                clkimp["IDE_BASEADR7_SPECSIG"]=new Array("1");
+              prld["IDE_BASEADR7_SPECSIG"]="GND";
+          d2["IDE_BASEADR5_SPECSIG"]=new Array("FB12_16_1","FB12_16_2","FB12_16_3","FB12_16_4","FB12_15_5");
           
-            d2imp["LAN_BASEADR3_SPECSIG"]=new Array("1","1","1","1","1");
+            d2imp["IDE_BASEADR5_SPECSIG"]=new Array("1","1","1","1","1");
           
-              clk["LAN_BASEADR3_SPECSIG"]=new Array("FB12_17_5");
+              clk["IDE_BASEADR5_SPECSIG"]=new Array("FB12_16_5");
               
-                clkimp["LAN_BASEADR3_SPECSIG"]=new Array("1");
-              prld["LAN_BASEADR3_SPECSIG"]="GND";
-          d2["LAN_BASEADR1_SPECSIG"]=new Array("FB12_18_1","FB12_18_2","FB12_18_3","FB12_18_4","FB12_1_5");
+                clkimp["IDE_BASEADR5_SPECSIG"]=new Array("1");
+              prld["IDE_BASEADR5_SPECSIG"]="GND";
+          d2["CP_BASEADR7_SPECSIG"]=new Array("FB12_17_1","FB12_17_2","FB12_17_3","FB12_17_4","FB12_18_5");
           
-            d2imp["LAN_BASEADR1_SPECSIG"]=new Array("1","1","1","1","1");
+            d2imp["CP_BASEADR7_SPECSIG"]=new Array("1","1","1","1","1");
           
-              clk["LAN_BASEADR1_SPECSIG"]=new Array("FB12_18_5");
+              clk["CP_BASEADR7_SPECSIG"]=new Array("FB12_17_5");
               
-                clkimp["LAN_BASEADR1_SPECSIG"]=new Array("1");
-              prld["LAN_BASEADR1_SPECSIG"]="GND";
+                clkimp["CP_BASEADR7_SPECSIG"]=new Array("1");
+              prld["CP_BASEADR7_SPECSIG"]="GND";
+          d2["CP_BASEADR5_SPECSIG"]=new Array("FB12_18_1","FB12_18_2","FB12_18_3","FB12_1_4","FB12_1_5");
+          
+            d2imp["CP_BASEADR5_SPECSIG"]=new Array("1","1","1","1","1");
+          
+              clk["CP_BASEADR5_SPECSIG"]=new Array("FB12_18_4");
+              
+                clkimp["CP_BASEADR5_SPECSIG"]=new Array("1");
+              prld["CP_BASEADR5_SPECSIG"]="GND";
           d2["CP_RD"]=new Array("FB13_2_1");
           
             d2imp["CP_RD"]=new Array("1");
           
+          d2["SHUT_UP2_SPECSIG"]=new Array("FB13_13_1","FB13_13_2","FB13_13_3");
+          
+            d2imp["SHUT_UP2_SPECSIG"]=new Array("1","1","1");
+          
+              clk["SHUT_UP2_SPECSIG"]=new Array("FB13_13_4");
+              
+                clkimp["SHUT_UP2_SPECSIG"]=new Array("1");
+              prld["SHUT_UP2_SPECSIG"]="GND";
           d2["LAN_WRL"]=new Array("FB13_14_1");
           
             d2imp["LAN_WRL"]=new Array("1");
           
-          d2["CP_BASEADR4_SPECSIG"]=new Array("FB13_16_1","FB13_16_2","FB13_16_3","FB13_16_4","FB13_15_1");
+          d2["SHUT_UP1_SPECSIG"]=new Array("FB13_15_1","FB13_15_2","FB13_15_3");
           
-            d2imp["CP_BASEADR4_SPECSIG"]=new Array("1","1","1","1","1");
+            d2imp["SHUT_UP1_SPECSIG"]=new Array("1","1","1");
           
-              clk["CP_BASEADR4_SPECSIG"]=new Array("FB13_16_5");
+              clk["SHUT_UP1_SPECSIG"]=new Array("FB13_15_4");
               
-                clkimp["CP_BASEADR4_SPECSIG"]=new Array("1");
-              prld["CP_BASEADR4_SPECSIG"]="GND";
-          d2["CP_BASEADR3_SPECSIG"]=new Array("FB13_17_1","FB13_17_2","FB13_17_3","FB13_17_4","FB13_18_5");
+                clkimp["SHUT_UP1_SPECSIG"]=new Array("1");
+              prld["SHUT_UP1_SPECSIG"]="GND";
+          d2["LAN_BASEADR7_SPECSIG"]=new Array("FB13_16_1","FB13_16_2","FB13_16_3","FB13_16_4","FB13_15_5");
           
-            d2imp["CP_BASEADR3_SPECSIG"]=new Array("1","1","1","1","1");
+            d2imp["LAN_BASEADR7_SPECSIG"]=new Array("1","1","1","1","1");
           
-              clk["CP_BASEADR3_SPECSIG"]=new Array("FB13_17_5");
+              clk["LAN_BASEADR7_SPECSIG"]=new Array("FB13_16_5");
               
-                clkimp["CP_BASEADR3_SPECSIG"]=new Array("1");
-              prld["CP_BASEADR3_SPECSIG"]="GND";
-          d2["CP_BASEADR2_SPECSIG"]=new Array("FB13_18_1","FB13_18_2","FB13_18_3","FB13_1_1","FB13_1_2");
+                clkimp["LAN_BASEADR7_SPECSIG"]=new Array("1");
+              prld["LAN_BASEADR7_SPECSIG"]="GND";
+          d2["LAN_BASEADR2_SPECSIG"]=new Array("FB13_17_1","FB13_17_2","FB13_17_3","FB13_17_4","FB13_18_5");
           
-            d2imp["CP_BASEADR2_SPECSIG"]=new Array("1","1","1","1","1");
+            d2imp["LAN_BASEADR2_SPECSIG"]=new Array("1","1","1","1","1");
           
-              clk["CP_BASEADR2_SPECSIG"]=new Array("FB13_18_4");
+              clk["LAN_BASEADR2_SPECSIG"]=new Array("FB13_17_5");
               
-                clkimp["CP_BASEADR2_SPECSIG"]=new Array("1");
-              prld["CP_BASEADR2_SPECSIG"]="GND";
+                clkimp["LAN_BASEADR2_SPECSIG"]=new Array("1");
+              prld["LAN_BASEADR2_SPECSIG"]="GND";
+          d2["IDE_BASEADR2_SPECSIG"]=new Array("FB13_18_1","FB13_18_2","FB13_18_3","FB13_1_1","FB13_1_2");
+          
+            d2imp["IDE_BASEADR2_SPECSIG"]=new Array("1","1","1","1","1");
+          
+              clk["IDE_BASEADR2_SPECSIG"]=new Array("FB13_18_4");
+              
+                clkimp["IDE_BASEADR2_SPECSIG"]=new Array("1");
+              prld["IDE_BASEADR2_SPECSIG"]="GND";
           d2["OVR"]=new Array("GND");
           
             d2imp["OVR"]=new Array("1");
@@ -2144,6 +2284,14 @@
           
             d2imp["CFOUT"]=new Array("1");
           
+          d2["LAN_BASEADR1_SPECSIG"]=new Array("FB14_13_1","FB14_13_2","FB14_13_3","FB14_13_4","FB14_12_1");
+          
+            d2imp["LAN_BASEADR1_SPECSIG"]=new Array("1","1","1","1","1");
+          
+              clk["LAN_BASEADR1_SPECSIG"]=new Array("FB14_13_5");
+              
+                clkimp["LAN_BASEADR1_SPECSIG"]=new Array("1");
+              prld["LAN_BASEADR1_SPECSIG"]="GND";
           d2["SLAVE"]=new Array("FB14_14_1","FB14_14_2");
           
             d2imp["SLAVE"]=new Array("1","1");
@@ -2156,26 +2304,34 @@
               
                 trstimp["OWN"]=new Array("1");
               
-          d2["ideide_RSTF__INT_SPECSIG"]=new Array("FB14_16_1");
+          d2["IDE_BASEADR1_SPECSIG"]=new Array("FB14_16_1","FB14_16_2","FB14_16_3","FB14_16_4","FB14_15_2");
           
-            d2imp["ideide_RSTF__INT_SPECSIG"]=new Array("1");
+            d2imp["IDE_BASEADR1_SPECSIG"]=new Array("1","1","1","1","1");
           
-          d2["CP_BASEADR1_SPECSIG"]=new Array("FB14_17_1","FB14_17_2","FB14_17_3","FB14_17_4","FB14_16_2");
+              clk["IDE_BASEADR1_SPECSIG"]=new Array("FB14_16_5");
+              
+                clkimp["IDE_BASEADR1_SPECSIG"]=new Array("1");
+              prld["IDE_BASEADR1_SPECSIG"]="GND";
+          d2["CP_BASEADR2_SPECSIG"]=new Array("FB14_17_1","FB14_17_2","FB14_17_3","FB14_17_4","FB14_18_5");
+          
+            d2imp["CP_BASEADR2_SPECSIG"]=new Array("1","1","1","1","1");
+          
+              clk["CP_BASEADR2_SPECSIG"]=new Array("FB14_17_5");
+              
+                clkimp["CP_BASEADR2_SPECSIG"]=new Array("1");
+              prld["CP_BASEADR2_SPECSIG"]="GND";
+          d2["CP_BASEADR1_SPECSIG"]=new Array("FB14_18_1","FB14_18_2","FB14_18_3","FB14_1_1","FB14_1_2");
           
             d2imp["CP_BASEADR1_SPECSIG"]=new Array("1","1","1","1","1");
           
-              clk["CP_BASEADR1_SPECSIG"]=new Array("FB14_17_5");
+              clk["CP_BASEADR1_SPECSIG"]=new Array("FB14_18_4");
               
                 clkimp["CP_BASEADR1_SPECSIG"]=new Array("1");
               prld["CP_BASEADR1_SPECSIG"]="GND";
-          d2["CP_BASEADR0_SPECSIG"]=new Array("FB14_18_1","FB14_18_2","FB14_18_3","FB14_18_4","FB14_1_1");
+          d2["OpTxFX_DC323_SPECSIG"]=new Array("FB15_1_1","FB15_1_2","FB15_1_3","FB15_1_4","FB15_1_5","FB15_2_1","FB15_2_2","FB15_2_3","FB15_2_4","FB15_2_5","FB15_3_1","FB15_18_1","FB15_18_2","FB15_18_3","FB15_18_4","FB15_18_5","FB15_17_5");
           
-            d2imp["CP_BASEADR0_SPECSIG"]=new Array("1","1","1","1","1");
+            d2imp["OpTxFX_DC323_SPECSIG"]=new Array("1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1");
           
-              clk["CP_BASEADR0_SPECSIG"]=new Array("FB14_18_5");
-              
-                clkimp["CP_BASEADR0_SPECSIG"]=new Array("1");
-              prld["CP_BASEADR0_SPECSIG"]="GND";
           d2["DTACK"]=new Array("GND");
           
             d2imp["DTACK"]=new Array("1");
@@ -2184,42 +2340,34 @@
               
                 trstimp["DTACK"]=new Array("1");
               
-          d2["CP_BASEADR7_SPECSIG"]=new Array("FB15_16_1","FB15_16_2","FB15_16_3","FB15_16_4","FB15_15_1");
+          d2["cp_and0000cp_and0000_D2_SPECSIG"]=new Array("FB15_15_1","FB15_15_2");
           
-            d2imp["CP_BASEADR7_SPECSIG"]=new Array("1","1","1","1","1");
+            d2imp["cp_and0000cp_and0000_D2_SPECSIG"]=new Array("1","1");
           
-              clk["CP_BASEADR7_SPECSIG"]=new Array("FB15_16_5");
-              
-                clkimp["CP_BASEADR7_SPECSIG"]=new Array("1");
-              prld["CP_BASEADR7_SPECSIG"]="GND";
-          d2["CP_BASEADR6_SPECSIG"]=new Array("FB15_17_1","FB15_17_2","FB15_17_3","FB15_17_4","FB15_18_5");
+          d1["SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG"]=new Array("FB15_16_1");
           
-            d2imp["CP_BASEADR6_SPECSIG"]=new Array("1","1","1","1","1");
+            d1imp["SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG"]=new Array("1");
           
-              clk["CP_BASEADR6_SPECSIG"]=new Array("FB15_17_5");
-              
-                clkimp["CP_BASEADR6_SPECSIG"]=new Array("1");
-              prld["CP_BASEADR6_SPECSIG"]="GND";
-          d2["CP_BASEADR5_SPECSIG"]=new Array("FB15_18_1","FB15_18_2","FB15_18_3","FB15_1_1","FB15_1_2");
+          d2["SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG"]=new Array("FB15_16_2");
           
-            d2imp["CP_BASEADR5_SPECSIG"]=new Array("1","1","1","1","1");
+            d2imp["SHUT_UP2SHUT_UP<2>_CLKF_SPECSIG"]=new Array("1");
           
-              clk["CP_BASEADR5_SPECSIG"]=new Array("FB15_18_4");
-              
-                clkimp["CP_BASEADR5_SPECSIG"]=new Array("1");
-              prld["CP_BASEADR5_SPECSIG"]="GND";
-          d2["autoconfig"]=new Array("FB16_18_1","FB16_18_2");
+          d2["autoconfig"]=new Array("FB15_17_1","FB15_17_2");
           
             d2imp["autoconfig"]=new Array("1","1");
           
-              clk["autoconfig"]=new Array("FB16_18_4");
+              clk["autoconfig"]=new Array("FB15_17_4");
               
                 clkimp["autoconfig"]=new Array("1");
               
-              rst["autoconfig"]=new Array("FB16_18_3");
+              rst["autoconfig"]=new Array("FB15_17_3");
               
                 rstimp["autoconfig"]=new Array("1");
               prld["autoconfig"]="GND";
+          d2["Mcompar_ide_cmp_eq0000_AEB_or0000Mcompar_ide_cmp_eq0000_AEB_or0000_D2_SPECSIG"]=new Array("FB16_17_1","FB16_17_2","FB16_17_3","FB16_17_4","FB16_17_5","FB16_16_1","FB16_16_2","FB16_16_3","FB16_16_4","FB16_16_5","FB16_15_1","FB16_18_1","FB16_18_2","FB16_18_3","FB16_18_4","FB16_18_5");
+          
+            d2imp["Mcompar_ide_cmp_eq0000_AEB_or0000Mcompar_ide_cmp_eq0000_AEB_or0000_D2_SPECSIG"]=new Array("1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1");
+          
 
       uimSignals = new Array();
 

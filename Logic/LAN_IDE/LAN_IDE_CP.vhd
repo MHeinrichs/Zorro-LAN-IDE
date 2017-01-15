@@ -82,7 +82,7 @@ architecture Behavioral of LAN_IDE_CP is
 
 	SIGNAL ide: STD_LOGIC;
 	SIGNAL autoconfig: STD_LOGIC;
-	SIGNAL lan: STD_LOGIC;
+	SIGNAL lan_adr: STD_LOGIC;
 	SIGNAL cp: STD_LOGIC;
 	signal Dout1:STD_LOGIC_VECTOR(3 downto 0);
 	signal AUTO_CONFIG_DONE:STD_LOGIC_VECTOR(1 downto 0);
@@ -122,38 +122,40 @@ begin
 	
 	DS <= UDS and LDS;
 	
-	ADDRESS_DECODE: process(DECODE_RESET,AMIGA_CLK)
+	ADDRESS_DECODE: process(DECODE_RESET,AS)
 	begin
 		if(DECODE_RESET ='0')then
-			autoconfig <= '0';
-			ide <= '0';
-			lan <= '0';
-			cp  <= '0';
-		elsif(falling_edge(AS))then				
-			if(A(23 downto 16) = x"E8" and AUTO_CONFIG_DONE < "11" )then
-				autoconfig <= not CFIN;
+			autoconfig 	<= '0';
+			ide 			<= '0';
+			lan_adr 		<= '0';
+			cp  			<= '0';
+		elsif(falling_edge(AS))then		
+			if(A(23 downto 16) = x"E8" and AUTO_CONFIG_DONE < "11" and CFIN='0')then
+				autoconfig 	<= '1';
+				lan_adr 		<= '0';
+				cp 			<= '0';
+				ide 			<= '0';
+			elsif(A(23 downto 16) = LAN_BASEADR and SHUT_UP(0)='0' )then					
+				autoconfig 	<= '0';
+				lan_adr 		<= '1';
+				cp  			<= '0';
+				ide 			<= '0';
+			elsif(A(23 downto 16) =  CP_BASEADR and SHUT_UP(1)='0')then					
+				autoconfig 	<= '0';
+				lan_adr 		<= '0';
+				cp  			<= '1';
+				ide 			<= '0';
+			elsif(A(23 downto 16) = IDE_BASEADR and SHUT_UP(2)='0')then					
+				autoconfig 	<= '0';
+				lan_adr 		<= '0';
+				cp  			<= '0';
+				ide 			<= '1';
 			else
-				autoconfig <='0';
-			end if;
-
-
-			if(A(23 downto 16) = LAN_BASEADR and SHUT_UP(0)='0' )then					
-				lan <= '1';					
-			else
-				lan <= '0';
-			end if;				
-
-			if(A(23 downto 16) = CP_BASEADR and SHUT_UP(1)='0')then					
-				cp <= '1';					
-			else
-				cp <= '0';
-			end if;				
-
-			if(A(23 downto 16) = IDE_BASEADR and SHUT_UP(2)='0')then					
-				ide <= '1';					
-			else
-				ide <= '0';
-			end if;				
+				autoconfig 	<= '0';
+				lan_adr 		<= '0';
+				cp  			<= '0';
+				ide 			<= '0';
+			end if;		
 		end if;				
 	end process ADDRESS_DECODE;
 	
@@ -163,7 +165,7 @@ begin
 		if(reset ='0') then
 			LAN_INT_ENABLE <='0';
 		elsif falling_edge(AMIGA_CLK) then
-			if(lan = '1' and AS ='0' and RW='0' and A(15)='1') then --enable if a write to A15 occured
+			if(lan_adr = '1' and AS ='0' and RW='0' and A(15)='1') then --enable if a write to A15 occured
 				LAN_INT_ENABLE <= D(15);
 			end if;
 		end if;
@@ -173,7 +175,7 @@ begin
 	lan_rw_gen: process (AMIGA_CLK)
 	begin
 		if falling_edge(AMIGA_CLK) then			
-			if(lan='1' and DS='0')then
+			if(lan_adr='1' and DS='0')then
 				LAN_RD_S		<= RW;
 				LAN_WRH_S   <= not UDS and not RW;
 				LAN_WRL_S   <= not LDS and not RW;
@@ -250,41 +252,41 @@ begin
 			elsif(autoconfig= '1' and DS='0') then
 				case A(6 downto 1) is
 					when "000000"	=> 
-						if(AUTO_CONFIG_DONE < "10")then
+						if(AUTO_CONFIG_DONE < 2)then
 							Dout1 <= 	"1100" ; --ZII, No-System-Memory, no ROM
 						else
 							Dout1 <= 	"110"&not(AUTOBOOT_OFF) ; --ZII, no System-Memory, (perhaps)ROM
 						end if;
 					when "000001"	=> Dout1 <=	"0001" ; --one Card, 64KB =001
 					when "000010"	=> 
-						if(AUTO_CONFIG_DONE < "10")then
+						if(AUTO_CONFIG_DONE < 2)then
 							Dout1 <=	"1000" ; --ProductID high nibble : 7->1000
 						else
 							Dout1 <=	"1111" ; --ProductID high nibble : 0->1111
 						end if;
 					when "000011"	=> 
-						if(AUTO_CONFIG_DONE = "00")then
+						if(AUTO_CONFIG_DONE = 0)then
 							Dout1 <=	"0100" ; --ProductID low nibble: B->0100
-						elsif(AUTO_CONFIG_DONE = "01")then
+						elsif(AUTO_CONFIG_DONE = 1)then
 							Dout1 <=	"0011" ; --ProductID low nibble: C->0011
 						else
 							Dout1 <=	"1001" ; --ProductID low nibble: 6->1001 
 						end if;						
 					when "001000"	=> Dout1 <=	"1111" ; --Ventor ID 0
 					when "001001"	=> 
-						if(AUTO_CONFIG_DONE < "10")then
+						if(AUTO_CONFIG_DONE < 2)then
 							Dout1 <=	"0101" ; --Ventor ID 1
 						else
 							Dout1 <=	"0111" ; --Ventor ID 1
 						end if;						
 					when "001010"	=> 
-						if(AUTO_CONFIG_DONE < "10")then
+						if(AUTO_CONFIG_DONE < 2)then
 							Dout1 <=	"1110" ; --Ventor ID 2
 						else
 							Dout1 <=	"1101" ; --Ventor ID 2
 						end if;												
 					when "001011"	=> 
-						if(AUTO_CONFIG_DONE < "10")then
+						if(AUTO_CONFIG_DONE < 2)then
 							Dout1 <=	"0011" ; --Ventor ID 3 : $0A1C: A1K.org
 						else
 							Dout1 <=	"0011" ; --Ventor ID 3 : $082C: BSC
@@ -301,7 +303,7 @@ begin
 					--when "010101"	=> Dout1 <=	"1111" ; --Rom vector high byte low  nibble 
 					--when "010110"	=> Dout1 <=	"1111" ; --Rom vector low byte high nibble
 					when "010111"	=> 
-						if(AUTO_CONFIG_DONE = "10")then
+						if(AUTO_CONFIG_DONE = 2)then
 							Dout1 <=	"1110" ; --Rom vector low byte low  nibble						
 						else
 							Dout1 <=	"1111" ; --Rom vector low byte low  nibble						
@@ -311,15 +313,15 @@ begin
 					when "100100"	=>
 						Dout1 <=	"1111" ;
 						if(RW='0' and DS_D='1')then
-							if(AUTO_CONFIG_DONE = "00" and SHUT_UP(0) ='1')then
+							if(AUTO_CONFIG_DONE = 0)then
 								LAN_BASEADR(7 downto 0)	<= D(15 downto 8); --Base adress
 								SHUT_UP(0)					<='0'; --enable board
 								AUTO_CONFIG_DONE_CYCLE	<= AUTO_CONFIG_DONE_CYCLE+1; --done here
-							elsif(AUTO_CONFIG_DONE = "01" and SHUT_UP(1) ='1')then									
+							elsif(AUTO_CONFIG_DONE = 1)then									
 								CP_BASEADR(7 downto 0)	<= D(15 downto 8); --Base adress
 								SHUT_UP(1)					<= '0'; --enable board
 								AUTO_CONFIG_DONE_CYCLE	<= AUTO_CONFIG_DONE_CYCLE+1; --done here
-							elsif(AUTO_CONFIG_DONE = "10" and SHUT_UP(2) ='1')then
+							elsif(AUTO_CONFIG_DONE = 2)then
 								IDE_BASEADR(7 downto 0)	<= D(15 downto 8); --Base adress
 								SHUT_UP(2) 					<= '0'; --enable board
 								AUTO_CONFIG_DONE_CYCLE	<= AUTO_CONFIG_DONE_CYCLE+1; --done here
@@ -336,7 +338,7 @@ begin
 		end if;
 	end process autoconfig_proc; --- that's all
 
-	LAN_CS	<= lan;--'1' when LAN_BASEADR=x"EA" else '0';
+	LAN_CS	<= lan_adr;
 	LAN_WRL	<= LAN_WRL_S when AS='0' else '0';
 	LAN_WRH	<= LAN_WRH_S when AS='0' else '0';
 	LAN_RD	<= LAN_RD_S when AS='0' else '0';
@@ -346,35 +348,38 @@ begin
 	CP_RD		<= CP_RD_S when AS='0' else '1';
 	CP_CS		<= not cp;
 
-	A_LAN <= A(14 downto 1);-- when lan='1' else A(13 downto 1) &'0';
+	--the lanport is shifted by one adress line but I forgot to adopt the clockport address!
+	A_LAN(13 downto 6)<= A(14 downto 7);
+	A_LAN(5 downto 2) <=A(6 downto 3) when lan_adr='1' else A(5 downto 2); --mux the clock-port adresses!
+	A_LAN(1 downto 0)<= A(2 downto 1);
+	
+	
+	
 	--signal assignment
 	D	<=	--RAM_D 						when RW='1' and TRANSFER_IN_PROGRES ='1' else
-			DQ								when RW='1' and (lan ='1' or cp = '1') and DS='0' else
+			DQ								when RW='1' and (lan_adr ='1' or cp = '1') and DS='0' else
 			Dout1	& x"FFF" 			when RW='1' and autoconfig ='1' and DS='0' else
-			"ZZZZZZZZZZZZZZZZ";
+			(others => 'Z');
 
 	DQ <= 	D 	when RW='0' and DS='0'
-							--and (UDS ='0' or LDS='0')
-							and (lan ='1' or cp = '1') 
-					else "ZZZZZZZZZZZZZZZZ";
+							and (lan_adr ='1' or cp = '1') 
+					else (others => 'Z');
 								
 	IDE_W <=	IDE_W_S when AS='0' else '1';
 	IDE_R <=	IDE_R_S when AS='0' else '1';
 	IDE_CS(0)<= not(A(12));			
 	IDE_CS(1)<= not(A(13));
-	IDE_A(0)	<= A(9);
-	IDE_A(1)	<= A(10);
-	IDE_A(2)	<= A(11);
+	IDE_A(2 downto 0)	<= A(11 downto 9);
 	ROM_B	<= "00";
 	ROM_OE	<= ROM_OE_S when AS='0' else '1';				
 
-	INT_OUT <= 'Z';
---	INT_OUT <= '0' when 
---							(LAN_INT = '0' and LAN_INT_ENABLE ='1') or 
---							CP_IRQ = '0' else 'Z';
+--	INT_OUT <= 'Z';
+	INT_OUT <= '0' when 
+							(LAN_INT = '0' and LAN_INT_ENABLE ='1') or 
+							CP_IRQ = '0' else 'Z';
 	
-	OWN 	<= '0' when AS='0' and (autoconfig  = '1' or ide = '1' or lan = '1' or cp = '1') else 'Z';
-	SLAVE <= '0' when AS='0' and (autoconfig  = '1' or ide = '1' or lan = '1' or cp = '1') else '1';	
+	OWN 	<= '0' when AS='0' and (autoconfig  = '1' or ide = '1' or lan_adr = '1' or cp = '1') else 'Z';
+	SLAVE <= '0' when AS='0' and (autoconfig  = '1' or ide = '1' or lan_adr = '1' or cp = '1') else '1';	
 	CFOUT <= '0' when AUTO_CONFIG_DONE=3 else '1';
 	
 	OVR <= '0' when ide='1' and AS='0' else 'Z';
@@ -384,6 +389,6 @@ begin
 --						  else 'Z';
 	
 	DTACK <= '0' when ide='1' and AS='0' and IDE_WAIT='1' else 'Z';
-
+	A	<= (others => 'Z');
 end Behavioral;
 
