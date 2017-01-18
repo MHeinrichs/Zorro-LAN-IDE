@@ -58,8 +58,17 @@
 
 // Define macro for 8-bit PSP SFR address translation to SPI addresses
 #define ENC100_TRANSLATE_TO_PIN_ADDR(a)		(a)
-
 #define ENC100_RAM_SIZE			(24*1024)
+
+//read/write macros
+#define WRITEREG(a,b,c) (*(volatile WORD *)((volatile BYTE *)(a)+(b)))=(WORD)(c)//;printf("Write 0x%x at register 0x%lx\n",(WORD)(c),((volatile BYTE *)(a)+(b)))
+#define READREG(a,b)		(*(volatile WORD *)((volatile BYTE *)(a)+(b)))//;printf("Read from register 0x%lx\n",((volatile BYTE *)(a)+(b)))
+
+//set/clear register bit macros
+#define SETREG(a,b,c)		(*(volatile WORD *)((volatile BYTE *)(a)+((b)+(SET_OFFSET))))=((WORD)(c))//;printf("Set   register 0x%x at register 0x%lx\n",(WORD)(c),(volatile WORD *)((volatile BYTE *)(a)+((b)+(SET_OFFSET)))); 
+#define CLRREG(a,b,c)		(*(volatile WORD *)((volatile BYTE *)(a)+((b)+(CLR_OFFSET))))=((WORD)(c))//;printf("Clear register 0x%x at register 0x%lx\n",(WORD)(c),(volatile WORD *)((volatile BYTE *)(a)+((b)+(CLR_OFFSET))))
+
+
 
 // Crypto memory addresses.  These are accessible by the DMA only and therefore 
 // have the same addresses no matter what MCU interface is being used (SPI, 

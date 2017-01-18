@@ -61,11 +61,20 @@ int SoftReset(APTR *BaseAddress){
                 do{
              
 	                delayCIA();
-  	                v = (WORD) READREG(BaseAddress,ESTAT);
-  	                v &= (WORD) w;
-                    printf("Read 0x%x at register 0x%x (should be 0x%x)\n",v,ESTAT,w);
+ 	                v = (WORD) READREG(BaseAddress,ESTAT);
+ 	                v &= (WORD) w;
+                  printf("Read 0x%x at register 0x%x (should be 0x%x)\n",v,ESTAT,w);
                 	
                 }while(v != w);
+
+				        /*
+				          In software, wait at least 25 µs for the Reset to
+				          take place and the SPI/PSP interface to begin
+				          operating again.
+				        */
+        				for(i=0; i<25; ++i){
+                	delayCIA();
+        				}
 
                 // Check to see if the reset operation was successful by
                 // checking if EUDAST went back to its reset default.  This test
@@ -75,11 +84,13 @@ int SoftReset(APTR *BaseAddress){
                 printf("Read 0x%x at register 0x%x\n",w,EUDAST);
         } while(w != 0);
 
-
-        // Really ensure reset is done and give some time for power to be stable
-        for(i=0; i<1000; ++i){
-                        delayCIA();
+       	/*
+       	Wait at least 256 µs for the PHY registers and PHY status bits to become available.
+       	*/
+        for(i=0; i<256; ++i){
+        	delayCIA();
         }
+
 
 
         // If using PSP, verify all address and data lines are working
@@ -98,7 +109,7 @@ int SoftReset(APTR *BaseAddress){
         }
 
         // Read back and verify random pattern
-
+				i=0;
         for(w = 0; w < ENC100_RAM_SIZE; w += sizeof(wTestWriteData))
         {
                 wTestWriteData = w;
@@ -107,10 +118,12 @@ int SoftReset(APTR *BaseAddress){
                 // See if the data matches.  If your application gets stuck here,
                 // it means you have a hardware failure.  Check all of your PSP
                 // address and data lines.
-                if(wTestWriteData != wTestReadData)
+                if(wTestWriteData != wTestReadData){
                 	printf("Error checking memory at adress %lx! Expected %x - got %x\n",(BaseAddress+w),wTestWriteData,wTestReadData);
-
+                	++i;
+                }
         }
+        printf("Memory passed with %d errors\n",i);
         return v;
 }
 

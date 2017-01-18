@@ -175,7 +175,7 @@ begin
 	lan_rw_gen: process (AMIGA_CLK)
 	begin
 		if falling_edge(AMIGA_CLK) then			
-			if(lan_adr='1' and DS='0')then
+			if(lan_adr='1' and DS='0' and A(15)='0')then
 				LAN_RD_S		<= RW;
 				LAN_WRH_S   <= not UDS and not RW;
 				LAN_WRL_S   <= not LDS and not RW;
@@ -350,7 +350,7 @@ begin
 
 	--the lanport is shifted by one adress line but I forgot to adopt the clockport address!
 	A_LAN(13 downto 6)<= A(14 downto 7);
-	A_LAN(5 downto 2) <=A(6 downto 3) when lan_adr='1' else A(5 downto 2); --mux the clock-port adresses!
+	A_LAN(5 downto 2) <=A(5 downto 2) when cp='1' else A(6 downto 3); --mux the clock-port adresses!
 	A_LAN(1 downto 0)<= A(2 downto 1);
 	
 	

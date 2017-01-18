@@ -16,11 +16,6 @@
 #define VERSION_STRING "1.1"
 #define CIA_TST     (*(volatile BYTE *)(0XBFE301)) //cia call 1.4micro sec
 #define CHP_TST     (*(volatile WORD *)(0X000004)) //chip mem call 400ns
-#define WRITEREG(a,b,c)		(*(volatile WORD *)((volatile BYTE *)(a)+(b)))=((WORD)(c))
-#define READREG(a,b)		((WORD)(*(volatile WORD *)((volatile BYTE *)(a)+(b))))
-#define SETREG(a,b,c)		(*(volatile WORD *)((volatile BYTE *)(a)+(b)+(SET_OFFSET)))=((WORD)(c))
-#define CLRREG(a,b,c)		(*(volatile WORD *)((volatile BYTE *)(a)+(b)+(CLR_OFFSET)))=((WORD)(c))
-
 
 struct Library *ExpansionBase=NULL;
 unsigned long hex2int(char *a);
