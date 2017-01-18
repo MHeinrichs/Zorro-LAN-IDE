@@ -52,7 +52,7 @@ int SoftReset(APTR *BaseAddress){
                 {
                         WRITEREG(BaseAddress,EUDAST, w);
                         v=READREG(BaseAddress, EUDAST);
-                        printf("Read 0x%x at register 0x%x (should be 0x%x)\n",v,EUDAST,w);
+                        printf("Read 0x%x at register 0x%lx (should be 0x%x)\n",v,(volatile BYTE *)(BaseAddress)+(EUDAST),w);
                 } while(v != w);
 
                 // Issue a reset and wait for it to complete
