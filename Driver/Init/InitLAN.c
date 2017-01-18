@@ -27,18 +27,117 @@ WORD delayShort(){
     return (CHP_TST);
 }
 
+int TestMemory(APTR *BaseAddress){
+        int i;
+        WORD w=0;
+        WORD wTestWriteData, wTestReadData;
 
+        // Generate and write pattern
+        for(w = 0; w < ENC100_RAM_SIZE; w += sizeof(wTestWriteData))
+        {
+                wTestWriteData = w;
+                WRITEREG(BaseAddress, w, w);
+        }
+
+        // Read back and verify random pattern
+				i=0;
+        for(w = 0; w < ENC100_RAM_SIZE; w += sizeof(wTestWriteData))
+        {
+                wTestWriteData = w;
+                wTestReadData = READREG(BaseAddress,w);
+
+                // See if the data matches.  If your application gets stuck here,
+                // it means you have a hardware failure.  Check all of your PSP
+                // address and data lines.
+                if(wTestWriteData != wTestReadData){
+                	printf("Error checking memory at adress %lx! Expected %x - got %x\n",(BaseAddress+w),wTestWriteData,wTestReadData);
+                	++i;
+                }
+        }
+        return i;
+}
+
+int SetClock(APTR *BaseAddress,int Clock){
+	WORD s=0,c=0;
+	
+	switch(Clock){
+		case 0:
+			//disable clock
+			c=(ECON2_COCON3|ECON2_COCON2|ECON2_COCON1|ECON2_COCON0);
+			s=0;
+			break;
+		case 3:
+			//3.125Mhz
+			c=(ECON2_COCON1|ECON2_COCON0);
+			s=(ECON2_COCON3|ECON2_COCON2);
+			break;
+		case 4:
+			//4Mhz
+			c=(ECON2_COCON2);
+			s=(ECON2_COCON3|ECON2_COCON1|ECON2_COCON0);
+			break;
+		case 5:
+			//5Mhz
+			c=(ECON2_COCON2|ECON2_COCON0);
+			s=(ECON2_COCON3|ECON2_COCON1);
+			break;
+		case 6:
+			//6.25Mhz
+			c=(ECON2_COCON2|ECON2_COCON1);
+			s=(ECON2_COCON3|ECON2_COCON0);
+			break;
+		case 8:
+			//8.333Mhz
+			c=(ECON2_COCON3);
+			s=(ECON2_COCON2|ECON2_COCON1|ECON2_COCON0);
+			break;
+		case 10:
+			//10Mhz
+			c=(ECON2_COCON3|ECON2_COCON0);
+			s=(ECON2_COCON2|ECON2_COCON1);
+			break;
+		case 12:
+			//12.5Mhz
+			c=(ECON2_COCON3|ECON2_COCON1);
+			s=(ECON2_COCON2|ECON2_COCON0);
+			break;
+		case 16:
+			//16.667Mhz
+			c=(ECON2_COCON3|ECON2_COCON1|ECON2_COCON0);
+			s=(ECON2_COCON2);
+			break;
+		case 20:
+			//20Mhz
+			c=(ECON2_COCON3|ECON2_COCON2);
+			s=(ECON2_COCON1|ECON2_COCON0);
+			break;
+		case 25:
+			//25Mhz
+			c=(ECON2_COCON3|ECON2_COCON2|ECON2_COCON0);
+			s=(ECON2_COCON1);
+			break;
+		case 33:
+			//33.333Mhz
+			c=(ECON2_COCON3|ECON2_COCON2|ECON2_COCON1);
+			s=(ECON2_COCON0);
+			break;
+		default: 
+			//disable clock
+			c=(ECON2_COCON3|ECON2_COCON2|ECON2_COCON1|ECON2_COCON0);
+			s=0;
+			break;
+	}	
+
+  CLRREG(BaseAddress,ECON2, c);
+  SETREG(BaseAddress,ECON2, s);
+
+	return 0;
+}
 
 int SoftReset(APTR *BaseAddress){
         int i;
         WORD w,v=0;
-        WORD wTestWriteData, wTestReadData;
         // Perform a reset via the PSP interface
-				//set the clock to 33mhz: COCON[3..0] = "0001"
-        CLRREG(BaseAddress,ECON2, (ECON2_COCON3|ECON2_COCON2|ECON2_COCON1));
-        SETREG(BaseAddress,ECON2, ECON2_COCON0);
-				
-
         do
         {
 
@@ -90,40 +189,6 @@ int SoftReset(APTR *BaseAddress){
         for(i=0; i<256; ++i){
         	delayCIA();
         }
-
-
-
-        // If using PSP, verify all address and data lines are working
-				// Parallel direct addressing
-
-        // Initialize RAM contents with a random pattern and read back to verify
-        // This step is critical if using a PSP interface since some functionality
-        // may appear to work while a solder bridge or disconnect will cause
-        // certain memory ranges to fail.
-
-        // Generate and write pattern
-        for(w = 0; w < ENC100_RAM_SIZE; w += sizeof(wTestWriteData))
-        {
-                wTestWriteData = w;
-                WRITEREG(BaseAddress, w, w);
-        }
-
-        // Read back and verify random pattern
-				i=0;
-        for(w = 0; w < ENC100_RAM_SIZE; w += sizeof(wTestWriteData))
-        {
-                wTestWriteData = w;
-                wTestReadData = READREG(BaseAddress,w);
-
-                // See if the data matches.  If your application gets stuck here,
-                // it means you have a hardware failure.  Check all of your PSP
-                // address and data lines.
-                if(wTestWriteData != wTestReadData){
-                	printf("Error checking memory at adress %lx! Expected %x - got %x\n",(BaseAddress+w),wTestWriteData,wTestReadData);
-                	++i;
-                }
-        }
-        printf("Memory passed with %d errors\n",i);
         return v;
 }
 
@@ -178,8 +243,11 @@ main(int argc, char *argv[])
     APTR board = LocateBoard(manufactor,product);
     if(board){
         printf("Found board for manufactor/product %d/%d at address 0x%lx.\n",manufactor,product, board);
+        SetClock(board,33);
         v=SoftReset(board);
         printf("SoftReset returned %X\n",v);
+        v=TestMemory(board);
+        printf("Memory passed with %d errors\n",v);
     }else{
         printf("No board found for manufactor/product %d/%d.\n",manufactor,product);
     }

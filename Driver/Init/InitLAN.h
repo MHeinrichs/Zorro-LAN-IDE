@@ -19,7 +19,10 @@
 
 struct Library *ExpansionBase=NULL;
 unsigned long hex2int(char *a);
+int SetClock(APTR *BaseAddress,int Clock);
 int SoftReset(APTR *BaseAddress);
+int TestMemory(APTR *BaseAddress);
+
 APTR LocateBoard(int manufactor, int product);
 
 /**
