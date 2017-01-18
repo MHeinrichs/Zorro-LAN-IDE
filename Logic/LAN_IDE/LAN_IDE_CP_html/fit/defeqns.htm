@@ -22,7 +22,7 @@ $OpTx$FX_DC$323 <= ((SHUT_UP(0))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT LAN_BASEADR(1) AND A(17))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (LAN_BASEADR(3) AND NOT A(19))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT LAN_BASEADR(3) AND A(19))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (ROM_B_0_OBUF$BUF7/ROM_B_0_OBUF$BUF7_TRST.EXP)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (cp_and0000/cp_and0000_D2.EXP)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (LAN_BASEADR(1) AND NOT A(17))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (LAN_BASEADR(6) AND NOT A(22))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT LAN_BASEADR(6) AND A(22))
@@ -175,28 +175,28 @@ FTCPE_CP_BASEADR3: FTCPE port map (CP_BASEADR(3),CP_BASEADR_T(3),SHUT_UP(2)/SHUT
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CP_BASEADR_T(3) <= ((NOT AS AND NOT RW AND RESET AND NOT AUTO_CONFIG_DONE(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND CP_BASEADR(3) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND NOT D(11).PIN AND NOT UDS AND DS_D)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND NOT RW AND RESET AND NOT AUTO_CONFIG_DONE(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND CP_BASEADR(3) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND NOT D(11).PIN AND NOT LDS AND DS_D)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT RESET AND NOT CP_BASEADR(3))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND NOT RW AND NOT AUTO_CONFIG_DONE(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND NOT CP_BASEADR(3) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND D(11).PIN AND NOT UDS AND DS_D)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND NOT RW AND NOT AUTO_CONFIG_DONE(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND NOT CP_BASEADR(3) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND D(11).PIN AND NOT LDS AND DS_D));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND D(11).PIN AND NOT LDS AND DS_D)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND NOT RW AND RESET AND NOT AUTO_CONFIG_DONE(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND CP_BASEADR(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND NOT D(11).PIN AND NOT LDS AND DS_D));
 </td></tr><tr><td>
 FTCPE_CP_BASEADR4: FTCPE port map (CP_BASEADR(4),CP_BASEADR_T(4),SHUT_UP(2)/SHUT_UP(2)_CLKF,'0','0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CP_BASEADR_T(4) <= ((NOT AS AND NOT RW AND NOT AUTO_CONFIG_DONE(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND NOT CP_BASEADR(4) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND D(12).PIN AND NOT UDS AND DS_D)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND NOT RW AND RESET AND NOT AUTO_CONFIG_DONE(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CP_BASEADR_T(4) <= ((NOT AS AND NOT RW AND RESET AND NOT AUTO_CONFIG_DONE(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND CP_BASEADR(4) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND NOT D(12).PIN AND NOT UDS AND DS_D)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND NOT RW AND RESET AND NOT AUTO_CONFIG_DONE(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND CP_BASEADR(4) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND NOT D(12).PIN AND NOT LDS AND DS_D)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT RESET AND NOT CP_BASEADR(4))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND NOT RW AND NOT AUTO_CONFIG_DONE(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND NOT CP_BASEADR(4) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND D(12).PIN AND NOT UDS AND DS_D)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND NOT RW AND NOT AUTO_CONFIG_DONE(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND NOT CP_BASEADR(4) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND D(12).PIN AND NOT LDS AND DS_D));
@@ -220,16 +220,16 @@ FTCPE_CP_BASEADR6: FTCPE port map (CP_BASEADR(6),CP_BASEADR_T(6),SHUT_UP(2)/SHUT
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CP_BASEADR_T(6) <= ((NOT AS AND NOT RW AND RESET AND NOT AUTO_CONFIG_DONE(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND CP_BASEADR(6) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND NOT D(14).PIN AND NOT UDS AND DS_D)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND NOT RW AND RESET AND NOT AUTO_CONFIG_DONE(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND CP_BASEADR(6) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND NOT D(14).PIN AND NOT LDS AND DS_D)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT RESET AND NOT CP_BASEADR(6))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND NOT RW AND NOT AUTO_CONFIG_DONE(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND NOT CP_BASEADR(6) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND D(14).PIN AND NOT UDS AND DS_D)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND NOT RW AND NOT AUTO_CONFIG_DONE(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND NOT CP_BASEADR(6) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND D(14).PIN AND NOT LDS AND DS_D));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND D(14).PIN AND NOT LDS AND DS_D)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND NOT RW AND RESET AND NOT AUTO_CONFIG_DONE(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND CP_BASEADR(6) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND NOT D(14).PIN AND NOT LDS AND DS_D));
 </td></tr><tr><td>
 FTCPE_CP_BASEADR7: FTCPE port map (CP_BASEADR(7),CP_BASEADR_T(7),SHUT_UP(2)/SHUT_UP(2)_CLKF,'0','0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CP_BASEADR_T(7) <= ((NOT AS AND NOT RW AND RESET AND NOT D(15).PIN AND 
@@ -254,7 +254,7 @@ FDCPE_CP_CS: FDCPE port map (CP_CS,CP_CS_D,NOT AS,'0',NOT ide/ide_RSTF__$INT);
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CP_BASEADR(6) AND NOT A(22))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CP_BASEADR(6) AND A(22))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CP_BASEADR(7) AND A(23))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (EXP23_.EXP)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (EXP22_.EXP)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CP_BASEADR(2) AND NOT A(18))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CP_BASEADR(3) AND NOT A(19))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CP_BASEADR(3) AND A(19))
@@ -505,7 +505,7 @@ DTACK_I <= '0';
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DTACK_OE <= (NOT AS AND ide AND IDE_WAIT);
 </td></tr><tr><td>
 FDCPE_Dout10: FDCPE port map (Dout1(0),Dout1_D(0),SHUT_UP(2)/SHUT_UP(2)_CLKF,'0','0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dout1_D(0) <= ((EXP47_.EXP)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dout1_D(0) <= ((EXP53_.EXP)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND RESET AND autoconfig AND A(6) AND NOT A(3) AND NOT A(4) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(2) AND NOT A(5) AND NOT UDS)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND RESET AND autoconfig AND NOT A(6) AND A(3) AND A(4) AND 
@@ -516,7 +516,7 @@ FDCPE_Dout10: FDCPE port map (Dout1(0),Dout1_D(0),SHUT_UP(2)/SHUT_UP(2)_CLKF,'0'
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A(2) AND A(5) AND NOT UDS)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND RESET AND NOT AUTO_CONFIG_DONE(1) AND autoconfig AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(6) AND NOT A(3) AND NOT A(1) AND A(2) AND NOT A(5) AND NOT LDS)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CP_WE_OBUF.EXP)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (ROM_B_0_OBUF$BUF7/ROM_B_0_OBUF$BUF7_TRST.EXP)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RESET AND NOT Dout1(0) AND UDS AND LDS)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND RESET AND autoconfig AND A(6) AND NOT A(3) AND NOT A(4) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(2) AND NOT A(5) AND NOT LDS)
@@ -545,7 +545,7 @@ FDCPE_Dout11: FDCPE port map (Dout1(1),Dout1_D(1),SHUT_UP(2)/SHUT_UP(2)_CLKF,'0'
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A(2) AND NOT A(5) AND NOT UDS)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND RESET AND autoconfig AND NOT A(6) AND A(3) AND A(4) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	A(2) AND NOT A(5) AND NOT LDS)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (EXP37_.EXP)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (EXP36_.EXP)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND RESET AND AUTO_CONFIG_DONE(1) AND autoconfig AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(6) AND NOT A(3) AND NOT A(4) AND A(1) AND NOT A(5) AND NOT LDS)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND RESET AND AUTO_CONFIG_DONE(1) AND autoconfig AND 
@@ -563,7 +563,7 @@ FDCPE_Dout11: FDCPE port map (Dout1(1),Dout1_D(1),SHUT_UP(2)/SHUT_UP(2)_CLKF,'0'
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(5) AND NOT LDS));
 </td></tr><tr><td>
 FDCPE_Dout12: FDCPE port map (Dout1(2),Dout1_D(2),SHUT_UP(2)/SHUT_UP(2)_CLKF,'0','0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dout1_D(2) <= ((EXP31_.EXP)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dout1_D(2) <= ((EXP30_.EXP)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (AS AND RESET AND NOT Dout1(2))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RESET AND NOT autoconfig AND NOT Dout1(2))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (RESET AND NOT Dout1(2) AND UDS AND LDS)
@@ -741,16 +741,16 @@ FTCPE_IDE_BASEADR2: FTCPE port map (IDE_BASEADR(2),IDE_BASEADR_T(2),SHUT_UP(2)/S
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IDE_BASEADR_T(2) <= ((NOT AS AND NOT RW AND RESET AND AUTO_CONFIG_DONE(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND IDE_BASEADR(2) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND NOT D(10).PIN AND NOT UDS AND DS_D)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND NOT RW AND RESET AND AUTO_CONFIG_DONE(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND IDE_BASEADR(2) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND NOT D(10).PIN AND NOT LDS AND DS_D)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT RESET AND NOT IDE_BASEADR(2))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND NOT RW AND AUTO_CONFIG_DONE(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND NOT IDE_BASEADR(2) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND D(10).PIN AND NOT UDS AND DS_D)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND NOT RW AND AUTO_CONFIG_DONE(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND NOT IDE_BASEADR(2) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND D(10).PIN AND NOT LDS AND DS_D));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND D(10).PIN AND NOT LDS AND DS_D)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND NOT RW AND RESET AND AUTO_CONFIG_DONE(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND IDE_BASEADR(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND NOT D(10).PIN AND NOT LDS AND DS_D));
 </td></tr><tr><td>
 FTCPE_IDE_BASEADR3: FTCPE port map (IDE_BASEADR(3),IDE_BASEADR_T(3),SHUT_UP(2)/SHUT_UP(2)_CLKF,'0','0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IDE_BASEADR_T(3) <= ((NOT AS AND NOT RW AND RESET AND AUTO_CONFIG_DONE(1) AND 
@@ -786,16 +786,16 @@ FTCPE_IDE_BASEADR5: FTCPE port map (IDE_BASEADR(5),IDE_BASEADR_T(5),SHUT_UP(2)/S
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IDE_BASEADR_T(5) <= ((NOT AS AND NOT RW AND RESET AND AUTO_CONFIG_DONE(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND IDE_BASEADR(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND NOT D(13).PIN AND NOT UDS AND DS_D)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND NOT RW AND RESET AND AUTO_CONFIG_DONE(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND IDE_BASEADR(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND NOT D(13).PIN AND NOT LDS AND DS_D)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT RESET AND NOT IDE_BASEADR(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND NOT RW AND AUTO_CONFIG_DONE(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND NOT IDE_BASEADR(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND D(13).PIN AND NOT UDS AND DS_D)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND NOT RW AND AUTO_CONFIG_DONE(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND NOT IDE_BASEADR(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND D(13).PIN AND NOT LDS AND DS_D)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND NOT RW AND RESET AND AUTO_CONFIG_DONE(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND IDE_BASEADR(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND NOT D(13).PIN AND NOT LDS AND DS_D));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND D(13).PIN AND NOT LDS AND DS_D));
 </td></tr><tr><td>
 FTCPE_IDE_BASEADR6: FTCPE port map (IDE_BASEADR(6),IDE_BASEADR_T(6),SHUT_UP(2)/SHUT_UP(2)_CLKF,'0','0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IDE_BASEADR_T(6) <= ((NOT AS AND NOT RW AND RESET AND AUTO_CONFIG_DONE(1) AND 
@@ -813,16 +813,16 @@ FTCPE_IDE_BASEADR6: FTCPE port map (IDE_BASEADR(6),IDE_BASEADR_T(6),SHUT_UP(2)/S
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND NOT D(14).PIN AND NOT LDS AND DS_D));
 </td></tr><tr><td>
 FTCPE_IDE_BASEADR7: FTCPE port map (IDE_BASEADR(7),IDE_BASEADR_T(7),SHUT_UP(2)/SHUT_UP(2)_CLKF,'0','0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IDE_BASEADR_T(7) <= ((NOT AS AND NOT RW AND RESET AND NOT D(15).PIN AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IDE_BASEADR_T(7) <= ((NOT AS AND NOT RW AND D(15).PIN AND AUTO_CONFIG_DONE(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND NOT IDE_BASEADR(7) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND NOT UDS AND DS_D)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND NOT RW AND RESET AND NOT D(15).PIN AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	AUTO_CONFIG_DONE(1) AND NOT AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	IDE_BASEADR(7) AND NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND NOT UDS AND DS_D)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND NOT RW AND RESET AND NOT D(15).PIN AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	AUTO_CONFIG_DONE(1) AND NOT AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	IDE_BASEADR(7) AND NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND NOT LDS AND DS_D)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT RESET AND NOT IDE_BASEADR(7))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND NOT RW AND D(15).PIN AND AUTO_CONFIG_DONE(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND NOT IDE_BASEADR(7) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND NOT UDS AND DS_D)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND NOT RW AND D(15).PIN AND AUTO_CONFIG_DONE(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND NOT IDE_BASEADR(7) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND NOT LDS AND DS_D));
@@ -903,16 +903,16 @@ FTCPE_LAN_BASEADR3: FTCPE port map (LAN_BASEADR(3),LAN_BASEADR_T(3),SHUT_UP(2)/S
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LAN_BASEADR_T(3) <= ((NOT AS AND NOT RW AND RESET AND NOT AUTO_CONFIG_DONE(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND LAN_BASEADR(3) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND NOT D(11).PIN AND NOT UDS AND DS_D)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND NOT RW AND RESET AND NOT AUTO_CONFIG_DONE(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND LAN_BASEADR(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND NOT D(11).PIN AND NOT LDS AND DS_D)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT RESET AND NOT LAN_BASEADR(3))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND NOT RW AND NOT AUTO_CONFIG_DONE(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND NOT LAN_BASEADR(3) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND D(11).PIN AND NOT UDS AND DS_D)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND NOT RW AND NOT AUTO_CONFIG_DONE(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND NOT LAN_BASEADR(3) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND D(11).PIN AND NOT LDS AND DS_D)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND NOT RW AND RESET AND NOT AUTO_CONFIG_DONE(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND LAN_BASEADR(3) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND NOT D(11).PIN AND NOT LDS AND DS_D));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND D(11).PIN AND NOT LDS AND DS_D));
 </td></tr><tr><td>
 FTCPE_LAN_BASEADR4: FTCPE port map (LAN_BASEADR(4),LAN_BASEADR_T(4),SHUT_UP(2)/SHUT_UP(2)_CLKF,'0','0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LAN_BASEADR_T(4) <= ((NOT AS AND NOT RW AND RESET AND NOT AUTO_CONFIG_DONE(1) AND 
@@ -930,19 +930,19 @@ FTCPE_LAN_BASEADR4: FTCPE port map (LAN_BASEADR(4),LAN_BASEADR_T(4),SHUT_UP(2)/S
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND NOT D(12).PIN AND NOT LDS AND DS_D));
 </td></tr><tr><td>
 FTCPE_LAN_BASEADR5: FTCPE port map (LAN_BASEADR(5),LAN_BASEADR_T(5),SHUT_UP(2)/SHUT_UP(2)_CLKF,'0','0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LAN_BASEADR_T(5) <= ((NOT AS AND NOT RW AND NOT AUTO_CONFIG_DONE(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND NOT LAN_BASEADR(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND D(13).PIN AND NOT UDS AND DS_D)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND NOT RW AND RESET AND NOT AUTO_CONFIG_DONE(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LAN_BASEADR_T(5) <= ((NOT AS AND NOT RW AND RESET AND NOT AUTO_CONFIG_DONE(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND LAN_BASEADR(5) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND NOT D(13).PIN AND NOT UDS AND DS_D)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND NOT RW AND RESET AND NOT AUTO_CONFIG_DONE(1) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND LAN_BASEADR(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND NOT D(13).PIN AND NOT LDS AND DS_D)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT RESET AND NOT LAN_BASEADR(5))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND NOT RW AND NOT AUTO_CONFIG_DONE(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND NOT LAN_BASEADR(5) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND D(13).PIN AND NOT LDS AND DS_D));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND D(13).PIN AND NOT UDS AND DS_D)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND NOT RW AND NOT AUTO_CONFIG_DONE(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND NOT LAN_BASEADR(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND D(13).PIN AND NOT LDS AND DS_D)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT AS AND NOT RW AND RESET AND NOT AUTO_CONFIG_DONE(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT AUTO_CONFIG_DONE(0) AND autoconfig AND A(6) AND A(3) AND LAN_BASEADR(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(4) AND NOT A(1) AND NOT A(2) AND NOT A(5) AND NOT D(13).PIN AND NOT LDS AND DS_D));
 </td></tr><tr><td>
 FTCPE_LAN_BASEADR6: FTCPE port map (LAN_BASEADR(6),LAN_BASEADR_T(6),SHUT_UP(2)/SHUT_UP(2)_CLKF,'0','0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LAN_BASEADR_T(6) <= ((NOT AS AND NOT RW AND RESET AND NOT AUTO_CONFIG_DONE(1) AND 
@@ -996,7 +996,7 @@ LAN_CFG_I(4) <= '0';
 </td></tr><tr><td>
 FDCPE_LAN_CS: FDCPE port map (LAN_CS,LAN_CS_D,NOT AS,NOT ide/ide_RSTF__$INT,'0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LAN_CS_D <= ((SHUT_UP(0))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (EXP39_.EXP)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (EXP38_.EXP)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (LAN_BASEADR(4) AND NOT A(20))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT LAN_BASEADR(4) AND A(20))
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (LAN_BASEADR(5) AND NOT A(21))
@@ -1130,7 +1130,7 @@ cp_and0000/cp_and0000_D2 <= ((NOT AUTO_CONFIG_DONE(1) AND NOT CFIN AND NOT A(18)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT A(16) AND A(23) AND A(22) AND A(21) AND A(19) AND NOT A(20)));
 </td></tr><tr><td>
 FDCPE_ide: FDCPE port map (ide,ide_D,NOT AS,NOT ide/ide_RSTF__$INT,'0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ide_D <= ((EXP42_.EXP)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ide_D <= ((EXP41_.EXP)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CP_BASEADR(4) AND NOT SHUT_UP(2) AND NOT A(20) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	$OpTx$FX_DC$323 AND NOT cp_and0000/cp_and0000_D2 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT Mcompar_ide_cmp_eq0000_AEB_or0000/Mcompar_ide_cmp_eq0000_AEB_or0000_D2)
@@ -1146,7 +1146,7 @@ FDCPE_ide: FDCPE port map (ide,ide_D,NOT AS,NOT ide/ide_RSTF__$INT,'0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT CP_BASEADR(6) AND NOT SHUT_UP(2) AND A(22) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	$OpTx$FX_DC$323 AND NOT cp_and0000/cp_and0000_D2 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT Mcompar_ide_cmp_eq0000_AEB_or0000/Mcompar_ide_cmp_eq0000_AEB_or0000_D2)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (EXP45_.EXP)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (EXP44_.EXP)
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (CP_BASEADR(2) AND NOT SHUT_UP(2) AND NOT A(18) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	$OpTx$FX_DC$323 AND NOT cp_and0000/cp_and0000_D2 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT Mcompar_ide_cmp_eq0000_AEB_or0000/Mcompar_ide_cmp_eq0000_AEB_or0000_D2)

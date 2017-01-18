@@ -50,7 +50,7 @@ int TestMemory(APTR *BaseAddress){
                 // it means you have a hardware failure.  Check all of your PSP
                 // address and data lines.
                 if(wTestWriteData != wTestReadData){
-                	printf("Error checking memory at adress %lx! Expected %x - got %x\n",(BaseAddress+w),wTestWriteData,wTestReadData);
+                	printf("Error checking memory at adress x%lx! Expected x%x - got x%x\n",((volatile BYTE *)BaseAddress+w),wTestWriteData,wTestReadData);
                 	++i;
                 }
         }

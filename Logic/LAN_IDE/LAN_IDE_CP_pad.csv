@@ -1,7 +1,7 @@
 Release 8.1i - Fit P.68d
 Copyright(c) 1995-2003 Xilinx Inc. All rights reserved
 
- 1-18-2017  9:26PM
+ 1-18-2017 10:56PM
 
 NOTE: This file is designed to be imported into a spreadsheet program
 such as Microsoft Excel for viewing, printing and sorting. The comma ','
@@ -55,7 +55,7 @@ P34,CP_CS,O,I/O,OUTPUT,,,,,,,,,
 P35,ROM_OE,O,I/O,OUTPUT,,,,,,,,,
 P36,GND,,GND,,,,,,,,,,
 P37,VCC,,VCCIO,,,,,,,,,,
-P38,TIE,,I/O/GCK3,,,,,,,,,,
+P38,DQ<5>,I/O,I/O/GCK3,BIDIR,,,,,,,,,
 P39,D<2>,I/O,I/O,BIDIR,,,,,,,,,
 P40,D<9>,I/O,I/O,BIDIR,,,,,,,,,
 P41,D<10>,I/O,I/O,BIDIR,,,,,,,,,
@@ -85,7 +85,7 @@ P64,A<13>,I,I/O,INPUT,,,,,,,,,
 P65,TMS,,TMS,,,,,,,,,,
 P66,A<14>,I,I/O,INPUT,,,,,,,,,
 P67,TCK,,TCK,,,,,,,,,,
-P68,ROM_B<0>,O,I/O,OUTPUT,,,,,,,,,
+P68,DQ<2>,I/O,I/O,BIDIR,,,,,,,,,
 P69,ROM_B<1>,O,I/O,OUTPUT,,,,,,,,,
 P70,CP_WE,O,I/O,OUTPUT,,,,,,,,,
 P71,CP_RD,O,I/O,OUTPUT,,,,,,,,,
@@ -110,7 +110,7 @@ P89,GND,,GND,,,,,,,,,,
 P90,GND,,GND,,,,,,,,,,
 P91,A<20>,I,I/O,INPUT,,,,,,,,,
 P92,A<19>,I,I/O,INPUT,,,,,,,,,
-P93,TIE,,I/O,,,,,,,,,,
+P93,ROM_B<0>,O,I/O,OUTPUT,,,,,,,,,
 P94,A<18>,I,I/O,INPUT,,,,,,,,,
 P95,A<17>,I,I/O,INPUT,,,,,,,,,
 P96,TIE,,I/O,,,,,,,,,,
@@ -137,8 +137,8 @@ P116,DQ<9>,I/O,I/O,BIDIR,,,,,,,,,
 P117,DQ<1>,I/O,I/O,BIDIR,,,,,,,,,
 P118,DQ<0>,I/O,I/O,BIDIR,,,,,,,,,
 P119,DQ<3>,I/O,I/O,BIDIR,,,,,,,,,
-P120,DQ<2>,I/O,I/O,BIDIR,,,,,,,,,
-P121,DQ<5>,I/O,I/O,BIDIR,,,,,,,,,
+P120,TIE,,I/O,,,,,,,,,,
+P121,TIE,,I/O,,,,,,,,,,
 P122,TDO,,TDO,,,,,,,,,,
 P123,GND,,GND,,,,,,,,,,
 P124,DQ<4>,I/O,I/O,BIDIR,,,,,,,,,
