@@ -231,7 +231,7 @@ begin
 		if(reset ='0') then
 			LAN_INT_ENABLE <='0';
 		elsif falling_edge(AMIGA_CLK) then
-			if(lan_adr = '1' and AS ='0' and RW='0' and A(15)='1') then --enable if a write to A15 occured
+			if(lan_adr = '1' and DS ='0' and RW='0' and A(15)='1') then --enable if a write to A15 occured
 				LAN_INT_ENABLE <= D(15);
 			end if;
 		end if;
