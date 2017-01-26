@@ -76,6 +76,10 @@
     <transform xil_pn:end_ts="1484523388" xil_pn:in_ck="-2456358172441667503" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1484523388">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="LAN_IDE_CP.vhd"/>
       <outfile xil_pn:name="LAN_IDE_CP_TB.vhd"/>
     </transform>
@@ -86,12 +90,22 @@
     <transform xil_pn:end_ts="1484523388" xil_pn:in_ck="-2456358172441667503" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1484523388">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="LAN_IDE_CP.vhd"/>
       <outfile xil_pn:name="LAN_IDE_CP_TB.vhd"/>
     </transform>
     <transform xil_pn:end_ts="1484523391" xil_pn:in_ck="-2456358172441667503" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-6213014940301673456" xil_pn:start_ts="1484523388">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="LAN_IDE_CP_TB_beh.prj"/>
       <outfile xil_pn:name="LAN_IDE_CP_TB_isim_beh.exe"/>
       <outfile xil_pn:name="fuse.log"/>
@@ -102,6 +116,9 @@
     <transform xil_pn:end_ts="1484523392" xil_pn:in_ck="7726881599649692674" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="1978615128749952093" xil_pn:start_ts="1484523391">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="LAN_IDE_CP_TB_isim_beh.wdb"/>
       <outfile xil_pn:name="isim.cmd"/>
       <outfile xil_pn:name="isim.log"/>
@@ -111,12 +128,12 @@
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="ForcedSuccessful"/>
     </transform>
-    <transform xil_pn:end_ts="1484523339" xil_pn:in_ck="-2520376148396271922" xil_pn:name="TRANEXT_xstsynthesize_xc9500xl" xil_pn:prop_ck="-1270456749161647274" xil_pn:start_ts="1484523328">
+    <transform xil_pn:end_ts="1485460715" xil_pn:in_ck="-2520376148396271922" xil_pn:name="TRANEXT_xstsynthesize_xc9500xl" xil_pn:prop_ck="-1270456749161647274" xil_pn:start_ts="1485460705">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="OutputChanged"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="InputChanged"/>
       <outfile xil_pn:name="LAN_IDE_CP.lso"/>
       <outfile xil_pn:name="LAN_IDE_CP.ngc"/>
       <outfile xil_pn:name="LAN_IDE_CP.ngr"/>
@@ -131,23 +148,25 @@
       <outfile xil_pn:name="webtalk_pn.xml"/>
       <outfile xil_pn:name="xst"/>
     </transform>
-    <transform xil_pn:end_ts="1484434031" xil_pn:in_ck="176569500195729039" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="-8537920303570934858" xil_pn:start_ts="1484434031">
+    <transform xil_pn:end_ts="1484776541" xil_pn:in_ck="176569500195729039" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="-8537920303570934858" xil_pn:start_ts="1484776541">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1484523346" xil_pn:in_ck="-8547647177936735053" xil_pn:name="TRAN_ngdbuild" xil_pn:prop_ck="6932115226421322529" xil_pn:start_ts="1484523339">
+    <transform xil_pn:end_ts="1485460722" xil_pn:in_ck="-8547647177936735053" xil_pn:name="TRAN_ngdbuild" xil_pn:prop_ck="6932115226421322529" xil_pn:start_ts="1485460715">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="LAN_IDE_CP.bld"/>
       <outfile xil_pn:name="LAN_IDE_CP.ngd"/>
       <outfile xil_pn:name="LAN_IDE_CP_ngdbuild.xrpt"/>
       <outfile xil_pn:name="_ngo"/>
       <outfile xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
     </transform>
-    <transform xil_pn:end_ts="1484523369" xil_pn:in_ck="-2520376148396280667" xil_pn:name="TRANEXT_vm6File_xc9500xl" xil_pn:prop_ck="-3415041726167335061" xil_pn:start_ts="1484523346">
+    <transform xil_pn:end_ts="1485460745" xil_pn:in_ck="-2520376148396280667" xil_pn:name="TRANEXT_vm6File_xc9500xl" xil_pn:prop_ck="-3415041726167335061" xil_pn:start_ts="1485460722">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="LAN_IDE_CP.gyd"/>
       <outfile xil_pn:name="LAN_IDE_CP.mfd"/>
       <outfile xil_pn:name="LAN_IDE_CP.nga"/>
@@ -162,9 +181,10 @@
       <outfile xil_pn:name="LAN_IDE_CP_html"/>
       <outfile xil_pn:name="LAN_IDE_CP_pad.csv"/>
     </transform>
-    <transform xil_pn:end_ts="1484523371" xil_pn:in_ck="-2520376148396271803" xil_pn:name="TRANEXT_crtProg_xc9500" xil_pn:prop_ck="-6294026017969277533" xil_pn:start_ts="1484523369">
+    <transform xil_pn:end_ts="1485460747" xil_pn:in_ck="-2520376148396271803" xil_pn:name="TRANEXT_crtProg_xc9500" xil_pn:prop_ck="-6294026017969277533" xil_pn:start_ts="1485460745">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="LAN_IDE_CP.jed"/>
     </transform>
     <transform xil_pn:end_ts="1484434065" xil_pn:in_ck="-2520376148396271803" xil_pn:name="TRAN_timRpt" xil_pn:prop_ck="111903974446" xil_pn:start_ts="1484434063">
@@ -172,12 +192,14 @@
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="InputChanged"/>
     </transform>
     <transform xil_pn:end_ts="1484434207" xil_pn:in_ck="-8497105071423008236" xil_pn:name="TRAN_createTimingConstraints" xil_pn:start_ts="1484434207">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="InputChanged"/>
     </transform>
   </transforms>

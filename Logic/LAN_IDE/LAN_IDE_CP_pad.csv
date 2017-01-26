@@ -1,7 +1,7 @@
 Release 8.1i - Fit P.68d
 Copyright(c) 1995-2003 Xilinx Inc. All rights reserved
 
- 1-18-2017 10:56PM
+ 1-26-2017 10:01PM
 
 NOTE: This file is designed to be imported into a spreadsheet program
 such as Microsoft Excel for viewing, printing and sorting. The comma ','
@@ -47,7 +47,7 @@ P26,IDE_A<1>,O,I/O,OUTPUT,,,,,,,,,
 P27,IDE_R,O,I/O,OUTPUT,,,,,,,,,
 P28,IDE_W,O,I/O,OUTPUT,,,,,,,,,
 P29,GND,,GND,,,,,,,,,,
-P30,TIE,,I/O/GCK1,,,,,,,,,,
+P30,CLK_EXT,GCK,I/O/GCK1,,,,,,,,,,
 P31,CP_IRQ,I,I/O,INPUT,,,,,,,,,
 P32,INT_OUT,O,I/O/GCK2,OUTPUT,,,,,,,,,
 P33,IDE_WAIT,I,I/O,INPUT,,,,,,,,,
@@ -94,7 +94,7 @@ P73,VCC,,VCCIO,,,,,,,,,,
 P74,A<15>,I,I/O,INPUT,,,,,,,,,
 P75,AUTOBOOT_OFF,I,I/O,INPUT,,,,,,,,,
 P76,LAN_WRL,O,I/O,OUTPUT,,,,,,,,,
-P77,TIE,,I/O,,,,,,,,,,
+P77,ROM_B<0>,O,I/O,OUTPUT,,,,,,,,,
 P78,TIE,,I/O,,,,,,,,,,
 P79,TIE,,I/O,,,,,,,,,,
 P80,AS,I,I/O,INPUT,,,,,,,,,
@@ -110,10 +110,10 @@ P89,GND,,GND,,,,,,,,,,
 P90,GND,,GND,,,,,,,,,,
 P91,A<20>,I,I/O,INPUT,,,,,,,,,
 P92,A<19>,I,I/O,INPUT,,,,,,,,,
-P93,ROM_B<0>,O,I/O,OUTPUT,,,,,,,,,
+P93,TIE,,I/O,,,,,,,,,,
 P94,A<18>,I,I/O,INPUT,,,,,,,,,
 P95,A<17>,I,I/O,INPUT,,,,,,,,,
-P96,TIE,,I/O,,,,,,,,,,
+P96,MTACK,O,I/O,OUTPUT,,,,,,,,,
 P97,A<16>,I,I/O,INPUT,,,,,,,,,
 P98,BERR,I,I/O,INPUT,,,,,,,,,
 P99,GND,,GND,,,,,,,,,,

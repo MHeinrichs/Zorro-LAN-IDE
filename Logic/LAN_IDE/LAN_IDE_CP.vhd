@@ -80,6 +80,18 @@ end LAN_IDE_CP;
 
 architecture Behavioral of LAN_IDE_CP is
 
+	TYPE lan_reset IS (
+				nop,
+				wait0,
+				clr,
+				clr_commit,
+				wait1,
+				set,
+				set_commit,
+				done
+	);
+
+	SIGNAL LAN_RST_SM: lan_reset :=nop;
 	SIGNAL ide: STD_LOGIC;
 	SIGNAL autoconfig: STD_LOGIC;
 	SIGNAL lan_adr: STD_LOGIC;
@@ -96,18 +108,25 @@ architecture Behavioral of LAN_IDE_CP is
 	signal IDE_R_S:STD_LOGIC;
 	signal IDE_W_S:STD_LOGIC;
 	signal DTACK_S:STD_LOGIC;
-   signal DS_D: std_logic;
 	signal AMIGA_CLK: std_logic;
 	signal LAN_INT_ENABLE: std_logic;
 	signal DECODE_RESET: std_logic;
 	signal LAN_INT_D0: std_logic;
 	signal DS: std_logic;
+   signal DS_D: std_logic;
 	signal LAN_RD_S: std_logic;
 	signal LAN_WRH_S: std_logic;
 	signal LAN_WRL_S: std_logic;
 	signal CP_RD_S: std_logic;
 	signal CP_WE_S: std_logic;
-
+	
+	signal LAN_CS_RST: std_logic;
+	signal LAN_WR_RST: std_logic;
+	constant LAN_A_CLRREG:STD_LOGIC_VECTOR(13 downto 0) :="11"&x"FF7";
+	constant LAN_A_SETREG:STD_LOGIC_VECTOR(13 downto 0) :="11"&x"FB7";
+	constant LAN_D_SET:STD_LOGIC_VECTOR(15 downto 0) := "0000000100010000";
+	constant LAN_D_CLR:STD_LOGIC_VECTOR(15 downto 0) := "0000111000000000";
+	
    Function to_std_logic(X: in Boolean) return Std_Logic is
    variable ret : std_logic;
    begin
@@ -121,6 +140,53 @@ begin
 	DECODE_RESET <= BERR and reset;
 	
 	DS <= UDS and LDS;
+	
+	clock_init: process(CLK_EXT)
+	begin
+		if(rising_edge(CLK_EXT))then
+			if(reset = '0')then
+				--init the clock!
+				case LAN_RST_SM is
+					when nop=>
+						LAN_CS_RST<='0';
+						LAN_WR_RST<='0';						
+						LAN_RST_SM<=wait0;
+					when wait0=>
+						LAN_CS_RST<='1';
+						LAN_WR_RST<='0';						
+						LAN_RST_SM<=clr;
+					when clr=>
+						LAN_CS_RST<='1';
+						LAN_WR_RST<='1';						
+						LAN_RST_SM<=clr_commit;
+					when clr_commit=>
+						LAN_CS_RST<='1';
+						LAN_WR_RST<='0';						
+						LAN_RST_SM<=wait1;
+					when wait1=>
+						LAN_CS_RST<='1';
+						LAN_WR_RST<='0';						
+						LAN_RST_SM<=set;
+					when 	set=>
+						LAN_CS_RST<='1';
+						LAN_WR_RST<='1';						
+						LAN_RST_SM<=set_commit;
+					when 	set_commit=>
+						LAN_CS_RST<='1';
+						LAN_WR_RST<='0';						
+						LAN_RST_SM<=done;
+					when 	done=>
+						LAN_CS_RST<='0';
+						LAN_WR_RST<='0';						
+						LAN_RST_SM<=done;
+				end case;
+			else
+				LAN_CS_RST<='0';
+				LAN_WR_RST<='0';						
+				LAN_RST_SM<=nop;
+			end if;
+		end if;
+	end process clock_init;
 	
 	ADDRESS_DECODE: process(DECODE_RESET,AS)
 	begin
@@ -338,10 +404,10 @@ begin
 		end if;
 	end process autoconfig_proc; --- that's all
 
-	LAN_CS	<= lan_adr;
-	LAN_WRL	<= LAN_WRL_S when AS='0' else '0';
-	LAN_WRH	<= LAN_WRH_S when AS='0' else '0';
-	LAN_RD	<= LAN_RD_S when AS='0' else '0';
+	LAN_CS	<= lan_adr   when reset='1' else LAN_CS_RST;						
+	LAN_WRL	<= LAN_WRL_S when AS='0' and reset = '1' else LAN_WR_RST;
+	LAN_WRH	<= LAN_WRH_S when AS='0' and reset = '1' else LAN_WR_RST;
+	LAN_RD	<= LAN_RD_S  when AS='0' and reset = '1' else '0';
 	LAN_CFG	<= "ZZZZ";
 	
 	CP_WE		<= CP_WE_S when AS='0' else '1';
@@ -349,21 +415,28 @@ begin
 	CP_CS		<= not cp;
 
 	--the lanport is shifted by one adress line but I forgot to adopt the clockport address!
-	A_LAN(13 downto 6)<= A(14 downto 7);
-	A_LAN(5 downto 2) <=A(5 downto 2) when cp='1' else A(6 downto 3); --mux the clock-port adresses!
-	A_LAN(1 downto 0)<= A(2 downto 1);
+	A_LAN(13 downto 6)<=	LAN_A_CLRREG(13 downto 6) when (LAN_RST_SM = wait0 or LAN_RST_SM = clr or LAN_RST_SM = clr_commit) else
+								LAN_A_SETREG(13 downto 6) when (LAN_RST_SM = wait1 or LAN_RST_SM = set or LAN_RST_SM = set_commit) else
+								 A(14 downto 7);
+	A_LAN(5 downto 2) <=		LAN_A_CLRREG(5 downto 2) when (LAN_RST_SM = wait0 or LAN_RST_SM = clr or LAN_RST_SM = clr_commit) else
+									LAN_A_SETREG(5 downto 2) when (LAN_RST_SM = wait1 or LAN_RST_SM = set or LAN_RST_SM = set_commit) else
+									A(5 downto 2) when cp='1' else A(6 downto 3); --mux the clock-port adresses!
+	A_LAN(1 downto 0)<= LAN_A_CLRREG(1 downto 0) when (LAN_RST_SM = wait0 or LAN_RST_SM = clr or LAN_RST_SM = clr_commit) else
+							  LAN_A_SETREG(1 downto 0) when (LAN_RST_SM = wait1 or LAN_RST_SM = set or LAN_RST_SM = set_commit) else
+							  A(2 downto 1);
 	
 	
 	
 	--signal assignment
 	D	<=	--RAM_D 						when RW='1' and TRANSFER_IN_PROGRES ='1' else
-			DQ								when RW='1' and (lan_adr ='1' or cp = '1') and DS='0' else
-			Dout1	& x"FFF" 			when RW='1' and autoconfig ='1' and DS='0' else
+			DQ								when RW='1' and (lan_adr ='1' or cp = '1') and AS='0' else
+			Dout1	& x"FFF" 			when RW='1' and autoconfig ='1' and AS='0' else
 			(others => 'Z');
 
-	DQ <= 	D 	when RW='0' and DS='0'
-							and (lan_adr ='1' or cp = '1') 
-					else (others => 'Z');
+	DQ <=	LAN_D_CLR when (LAN_RST_SM = wait0 or LAN_RST_SM = clr or LAN_RST_SM = clr_commit) else
+			LAN_D_SET when (LAN_RST_SM = wait1 or LAN_RST_SM = set or LAN_RST_SM = set_commit) else
+			D 	when RW='0' and AS='0' and (lan_adr ='1' or cp = '1')
+			else (others => 'Z');
 								
 	IDE_W <=	IDE_W_S when AS='0' else '1';
 	IDE_R <=	IDE_R_S when AS='0' else '1';
@@ -378,10 +451,11 @@ begin
 							(LAN_INT = '0' and LAN_INT_ENABLE ='1') or 
 							CP_IRQ = '0' else 'Z';
 	
-	OWN 	<= '0' when AS='0' and (autoconfig  = '1' or ide = '1' or lan_adr = '1' or cp = '1') else 'Z';
+	OWN 	<= 'Z';--'0' when AS='0' and (autoconfig  = '1' or ide = '1' or lan_adr = '1' or cp = '1') else 'Z';
 	SLAVE <= '0' when AS='0' and (autoconfig  = '1' or ide = '1' or lan_adr = '1' or cp = '1') else '1';	
-	CFOUT <= '0' when AUTO_CONFIG_DONE=3 else '1';
+	CFOUT <= '0' when AUTO_CONFIG_DONE=3 else 'Z';
 	
+--	OVR <= 'Z';
 	OVR <= '0' when ide='1' and AS='0' else 'Z';
 	
 --	DTACK <= DTACK_S when --TRANSFER_IN_PROGRES ='1' or 
@@ -389,6 +463,10 @@ begin
 --						  else 'Z';
 	
 	DTACK <= '0' when ide='1' and AS='0' and IDE_WAIT='1' else 'Z';
+--	DTACK <= 'Z';
 	A	<= (others => 'Z');
+   MTACK <= 'Z';
+
+
 end Behavioral;
 
