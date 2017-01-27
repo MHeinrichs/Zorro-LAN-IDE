@@ -5,7 +5,7 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="Xst" timeStamp="Thu Jan 26 22:15:58 2017">
+  <application stringID="Xst" timeStamp="Fri Jan 27 23:27:07 2017">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
@@ -80,8 +80,8 @@
     </section>
     <section stringID="XST_HDL_SYNTHESIS_REPORT">
       <item dataType="int" stringID="XST_ADDERSSUBTRACTORS" value="1"></item>
-      <item dataType="int" stringID="XST_REGISTERS" value="26">
-        <item dataType="int" stringID="XST_1BIT_REGISTER" value="20"/>
+      <item dataType="int" stringID="XST_REGISTERS" value="27">
+        <item dataType="int" stringID="XST_1BIT_REGISTER" value="21"/>
         <item dataType="int" stringID="XST_2BIT_REGISTER" value="2"/>
         <item dataType="int" stringID="XST_4BIT_REGISTER" value="1"/>
         <item dataType="int" stringID="XST_8BIT_REGISTER" value="3"/>
@@ -97,8 +97,8 @@
     <section stringID="XST_ADVANCED_HDL_SYNTHESIS_REPORT">
       <item dataType="int" stringID="XST_FSMS" value="1"/>
       <item dataType="int" stringID="XST_ADDERSSUBTRACTORS" value="1"></item>
-      <item dataType="int" stringID="XST_REGISTERS" value="6">
-        <item dataType="int" stringID="XST_FLIPFLOPS" value="6"/>
+      <item dataType="int" stringID="XST_REGISTERS" value="7">
+        <item dataType="int" stringID="XST_FLIPFLOPS" value="7"/>
       </item>
       <item dataType="int" stringID="XST_COMPARATORS" value="3"></item>
     </section>
@@ -119,17 +119,17 @@
         <item stringID="XST_IOS" value="116"/>
       </section>
       <section stringID="XST_CELL_USAGE">
-        <item dataType="int" stringID="XST_BELS" value="552">
-          <item dataType="int" stringID="XST_AND2" value="156"/>
-          <item dataType="int" stringID="XST_AND3" value="13"/>
+        <item dataType="int" stringID="XST_BELS" value="630">
+          <item dataType="int" stringID="XST_AND2" value="196"/>
+          <item dataType="int" stringID="XST_AND3" value="14"/>
           <item dataType="int" stringID="XST_AND4" value="1"/>
           <item dataType="int" stringID="XST_GND" value="1"/>
-          <item dataType="int" stringID="XST_INV" value="203"/>
-          <item dataType="int" stringID="XST_OR2" value="130"/>
+          <item dataType="int" stringID="XST_INV" value="213"/>
+          <item dataType="int" stringID="XST_OR2" value="159"/>
           <item dataType="int" stringID="XST_XOR2" value="26"/>
         </item>
-        <item dataType="int" stringID="XST_FLIPFLOPSLATCHES" value="55">
-          <item dataType="int" stringID="XST_FD" value="14"/>
+        <item dataType="int" stringID="XST_FLIPFLOPSLATCHES" value="56">
+          <item dataType="int" stringID="XST_FD" value="15"/>
           <item dataType="int" stringID="XST_FDC" value="4"/>
           <item dataType="int" stringID="XST_FDCE" value="37"/>
         </item>

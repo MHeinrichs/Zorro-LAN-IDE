@@ -119,6 +119,7 @@ architecture Behavioral of LAN_IDE_CP is
 	signal LAN_WRL_S: std_logic;
 	signal CP_RD_S: std_logic;
 	signal CP_WE_S: std_logic;
+	signal CP_WE_QUIRK: std_logic;
 	
 	signal LAN_CS_RST: std_logic;
 	signal LAN_WR_RST: std_logic;
@@ -264,9 +265,16 @@ begin
 				CP_RD_S		<= '1';
 				CP_WE_S		<= '1';
 			end if;				
+			CP_WE_QUIRK <= CP_WE_S;
 		end if;
 	end process cp_rw_gen;
 
+	cp_quirk_gen: process (AMIGA_CLK)
+	begin
+		if rising_edge(AMIGA_CLK) then			
+--			CP_WE_QUIRK <= CP_WE_S;
+		end if;
+	end process cp_quirk_gen;
 
 	--ide signal generation
 	ide_rw_gen: process (AMIGA_CLK)
@@ -410,7 +418,7 @@ begin
 	LAN_RD	<= LAN_RD_S  when AS='0' and reset = '1' else '0';
 	LAN_CFG	<= "ZZZZ";
 	
-	CP_WE		<= CP_WE_S when AS='0' else '1';
+	CP_WE		<= CP_WE_S when AS='0' and CP_WE_QUIRK ='1' else '1';
 	CP_RD		<= CP_RD_S when AS='0' else '1';
 	CP_CS		<= not cp;
 
@@ -429,13 +437,17 @@ begin
 	
 	--signal assignment
 	D	<=	--RAM_D 						when RW='1' and TRANSFER_IN_PROGRES ='1' else
-			DQ								when RW='1' and (lan_adr ='1' or cp = '1') and AS='0' else
+			DQ								when RW='1' and lan_adr ='1' and AS='0' else
+			DQ(7 downto 0)&DQ(7 downto 0)	when RW='1' and cp = '1'     and AS='0' else
 			Dout1	& x"FFF" 			when RW='1' and autoconfig ='1' and AS='0' else
 			(others => 'Z');
 
 	DQ <=	LAN_D_CLR when (LAN_RST_SM = wait0 or LAN_RST_SM = clr or LAN_RST_SM = clr_commit) else
 			LAN_D_SET when (LAN_RST_SM = wait1 or LAN_RST_SM = set or LAN_RST_SM = set_commit) else
-			D 	when RW='0' and AS='0' and (lan_adr ='1' or cp = '1')
+			D 	when RW='0' and AS='0' and lan_adr ='1' else
+			D 	when RW='0' and AS='0' and cp = '1' and LDS='0' and UDS='0' else
+			D( 7 downto 0) & D( 7 downto 0)	when RW='0' and AS='0' and cp = '1' and LDS='0' and UDS='1' else
+			D(15 downto 8) & D(15 downto 8)	when RW='0' and AS='0' and cp = '1' and LDS='1' and UDS='0'
 			else (others => 'Z');
 								
 	IDE_W <=	IDE_W_S when AS='0' else '1';
