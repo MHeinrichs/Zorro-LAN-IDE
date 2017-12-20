@@ -1,0 +1,247 @@
+#sc:c/smake
+#
+#####################################################################
+#
+#  $VER: smakefile 0.8 (09-Jan-2017)
+#   Henryk Richter
+#
+#  based on Magplip build file
+#####################################################################
+#
+DEVICE_DATE = 18.12.2017
+DEVICE_VERSION  = 0
+DEVICE_REVISION = 1
+
+# see below for EXTRAOBJ, disable for plipbox, enable for sdnet/enc624j6net
+HWSRCDIR = enc624j6net
+DEVICE_NAME = enc624j6net
+DEFS = DEFINE PROTO_ENC624NET=1
+
+#####################################################################
+#
+# I keep various include trees, so for this project I directly reference
+# the SAS/C installation for include paths
+# The ASM stuff assumes the library offsets in "lvo/*", change if
+# desired
+#
+LIBS        = LIB sc:LIB/amiga.lib LIB sc:lib/sc.lib LIB sc:lib/debug.lib
+CINCLUDES   = INCDIR="sc:include" INCDIR="sc:netinclude" INCDIR="$(HWSRCDIR)"
+#ASMINCLUDES = INCDIR="INCLUDE:" $(CINCLUDES) 
+ASMINCLUDES = -Isc:include -I$(HWSRCDIR)
+CPUSUFFIX   = 020 # 020 030 040 060 (note: asm sources use 020+ code in some places) 
+CPUCCOPT    = CPU=68$(CPUSUFFIX)
+CP          = C:Copy
+MV          = C:Rename
+RM          = C:Delete >NIL:
+LD          = sc:c/slink
+CC          = sc:c/sc
+AS          = vasmm68k_mot 
+MAKE        = sc:c/smake
+ECHO        = Echo
+SUFFIX      = $(PRSUFFIX)$(CPUSUFFIX)
+#
+#####################################################################
+
+#####################################################################
+#
+# naming
+#
+DEVICE_DIR  = build
+BASENAME    = $(DEVICE_NAME)
+NAME        = $(DEVICE_NAME).device
+TESTNAME    = enc624j6test
+
+#
+#####################################################################
+
+
+#####################################################################
+#
+# assembler/compiler flags
+#
+# this applies to normal and optimized compilation:
+#
+STDFLAGS    = $(CINCLUDES) NOMULTIPLEINCLUDES ERRREXX COMMENTNEST NOSTKCHK NOCHKABORT\
+	      SMALLCODE SMALLDATA VERBOSE NOICONS STRICT ANSI $(DEFS)
+#
+# this applies only to normal compilation:
+#
+NORMCFLAGS  = $(STDFLAGS)
+#
+# this applies only to optimized compilation:
+#
+OPTCFLAGS   = $(STDFLAGS) $(CPUCCOPT) PARAMETERS=REGISTERS OPT OPTTIME OPTINLINE\
+	      OPTSCHEDULE STRINGMERGE STRUCTUREEQUIVALENCE
+#
+# this applies to assembler compilation
+#
+#AFLAGS      = CPU=68020 VERBOSE DEFINE $(PROTOCOL)PLIP=1
+AFLAGS = -Fhunk -devpac -m68020 -quiet
+#
+#####################################################################
+
+#####################################################################
+#
+# linkage flags
+#
+#LDFLAGS    = NOICONS SC MAP bla.map $(LIBS) TO
+LDFLAGS     = NOICONS SC  $(LIBS) TO
+OPTLDFLAGS  = NOICONS SC SD ND $(LIBS) TO
+#
+#####################################################################
+
+#####################################################################
+#
+# the object files
+#
+# these are extra files for ENC624J6Net, disable for plipbox build
+EXTRAOBJ=$(HWSRCDIR)/enc624j6l.o $(HWSRCDIR)/intervaltimer.o
+
+EXTRAOBJOPT=$(HWSRCDIR)/enc624j6l.o $(HWSRCDIR)/intervaltimer.o
+
+# these are for Plipbox build
+#EXTRAOBJ=$(HWSRCDIR)/hwpar.o 
+#EXTRAOBJOPT=$(HWSRCDIR)/hwpar.o
+#
+# device support files
+NORMOBJ=rt.o device.no server.no track.no $(HWSRCDIR)/hw.no $(EXTRAOBJ)
+OPTOBJ=rt.o device.opt$(CPUSUFFIX) server.opt$(CPUSUFFIX) track.opt$(CPUSUFFIX) \
+       $(HWSRCDIR)/hw.opt$(CPUSUFFIX) $(EXTRAOBJOPT)
+#
+# Auto-generated includes
+DEVINFO_INC=dev_info.i
+DEVINFO_HINC=dev_info.h
+BUILDDEPS=libsize.auto.i $(DEVINFO_INC) $(DEVINFO_HINC)
+#
+#
+#####################################################################
+
+#####################################################################
+#
+# rules
+#
+# compile a file normally
+#
+.c.no: $(BUILDDEPS)
+   $(CC) $(NORMCFLAGS) OBJECTNAME $@ $*.c
+
+#
+# compile a file optimizing
+#
+.c.opt$(SUFFIX): $(BUILDDEPS)
+   $(CC) $(OPTCFLAGS) OBJECTNAME $@ $*.c
+#
+# assemble a file
+#
+#.asm.o: $(BUILDDEPS)
+#   $(AS) $(AFLAGS) OBJECTNAME $@ $*.asm
+.asm.o: $(BUILDDEPS)
+   $(AS) $(AFLAGS) $(ASMINCLUDES) -o $@ $*.asm
+.s.o: $(BUILDDEPS)
+   $(AS) $(AFLAGS) $(ASMINCLUDES) -o $@ $*.asm
+#
+#####################################################################
+
+#####################################################################
+#
+# targets
+#
+help:
+	-@Echo "Usage:"
+	-@Echo "To make an unoptimized version"
+	-@Echo "   $(MAKE) all"
+	-@Echo "To make an optimized version"
+	-@Echo "   $(MAKE) all_opt"
+	-@Echo "To %remove all intermediate files"
+	-@Echo "   %$(MAKE) clean"
+
+all: $(DEVICE_DIR)/$(NAME) 
+# $(TESTNAME)
+all_opt: $(DEVICE_DIR)/$(NAME).$(CPUSUFFIX)
+
+clean_norm:
+	-@$(RM) *.o
+	-@$(RM) *.no
+	-@$(RM) $(DEVICE_DIR)/$(NAME)
+	-@$(RM) $(HWSRCDIR)/*.no
+	-@$(RM) $(HWSRCDIR)/*.o
+
+clean_opt:
+	-@$(RM) *.o
+	-@$(RM) *.opt* $(HWSRCDIR)/*.opt*
+	-@$(RM) $(HWSRCDIR)/*.o $(EXTRAOBJOPT)
+	-@$(RM) $(DEVICE_DIR)/$(NAME).$(CPUSUFFIX)
+
+clean: clean_norm clean_opt
+	-@$(RM) $(DEVINFO_HINC) $(DEVINFO_INC) $(EXTRAOBJ) libsize.auto.i libsize.exe
+
+$(DEVICE_DIR)/$(NAME).$(CPUSUFFIX): $(OPTOBJ) $(BUILDDEPS)
+   $(LD) $(OPTOBJ) $(OPTLDFLAGS) $@
+
+$(DEVICE_DIR)/$(NAME): $(NORMOBJ)
+   $(LD) $(NORMOBJ) $(LDFLAGS) $@
+
+$(TESTNAME) : $(NORMOBJ) sdnettest.no
+   $(LD) sc:lib/c.o sdnettest.no $(NORMOBJ) LIB sc:lib/scnb.lib $(LDFLAGS) $@
+
+#
+# libsize.auto.i is used in rt.asm, this is an extra step (needing an AmigaOS
+# environment) but ensures that the hwbase and plipbase sizes are "current"
+#
+libsize.auto.i : libsize.exe
+	-@libsize.exe >$@
+
+libsize.exe : libsize.c global.h $(HWSRCDIR)/hwbase.h
+	-@$(CC) $(NORMCFLAGS) OBJECTNAME t:libsize.o libsize.c
+	-@$(LD) sc:lib/c.o t:libsize.o LIB sc:lib/scnb.lib $(LDFLAGS) $@
+	-@$(RM) t:libsize.o
+
+# --- dev_info.i ---
+$(DEVINFO_INC): smakefile
+	@Echo "DEVICE_NAME  MACRO" > $(DEVINFO_INC)
+	@Echo "  dc.b '$(DEVICE_NAME)'" >> $(DEVINFO_INC)
+	@Echo "  ENDM" >> $(DEVINFO_INC)
+	@Echo "DEVICE_DATE  MACRO" >> $(DEVINFO_INC)
+	@Echo "  dc.b '$(DEVICE_DATE)'" >> $(DEVINFO_INC)
+	@Echo "  ENDM" >> $(DEVINFO_INC)
+	@Echo "DEVICE_VER  MACRO" >> $(DEVINFO_INC)
+	@Echo "  dc.b '$(DEVICE_VERSION).$(DEVICE_REVISION)'" >> $(DEVINFO_INC)
+	@Echo "  ENDM" >> $(DEVINFO_INC)
+	@Echo "DEVICE_VERSION equ $(DEVICE_VERSION)" >> $(DEVINFO_INC)
+	@Echo "DEVICE_REVISION equ $(DEVICE_REVISION)" >> $(DEVINFO_INC)
+
+# --- dev_info.h ---
+$(DEVINFO_HINC): smakefile
+	-@Echo "\#ifndef _DEV_INFO_H" > $(DEVINFO_HINC)
+	-@Echo "\#define _DEV_INFO_H" >> $(DEVINFO_HINC)
+	-@Echo "\#define DEVICE_NAME " NOLINE >> $(DEVINFO_HINC)
+	-@Echo >> $(DEVINFO_HINC) !" NOLINE FIRST=2 
+	-@Echo NOLINE "$(DEVICE_NAME)"  >> $(DEVINFO_HINC)
+	-@Echo >> $(DEVINFO_HINC) !" FIRST=2 
+	-@Echo "\#define DEVICE_DATE " NOLINE >> $(DEVINFO_HINC)
+	-@Echo >> $(DEVINFO_HINC) !" NOLINE FIRST=2 
+	-@Echo NOLINE "$(DEVICE_DATE)"  >> $(DEVINFO_HINC)
+	-@Echo >> $(DEVINFO_HINC) !" FIRST=2 
+	-@Echo "\#define DEVICE_VER " NOLINE >> $(DEVINFO_HINC)
+	-@Echo >> $(DEVINFO_HINC) !" NOLINE FIRST=2 
+	-@Echo NOLINE "$(DEVICE_VERSION).$(DEVICE_REVISION)"  >> $(DEVINFO_HINC)
+	-@Echo >> $(DEVINFO_HINC) !" FIRST=2 
+	-@Echo "\#define DEVICE_VERSION $(DEVICE_VERSION)" >> $(DEVINFO_HINC)
+	-@Echo "\#define DEVICE_REVISION $(DEVICE_REVISION)" >> $(DEVINFO_HINC)
+	-@Echo "\#endif" >> $(DEVINFO_HINC)
+
+
+#
+#####################################################################
+
+#####################################################################
+#
+# various dependencies (most from Magplip, unmodified so far)
+#
+rt.o: rt.asm $(DEVINFO_HINC) $(DEVINFO_INC) libsize.auto.i
+$(PROTOCOL)device.opt$(SUFFIX) device.no: device.c global.h 
+$(PROTOCOL)server.opt$(SUFFIX) server.no: server.c global.h
+$(PROTOCOL)track.opt$(SUFFIX) track.no: track.c global.h
+#
+#####################################################################
+
