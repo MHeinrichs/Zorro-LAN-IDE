@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<document OS="nt64" product="ISE" version="14.6">
+<document OS="nt64" product="ISE" version="14.7">
 
   <!--The data in this file is primarily intended for consumption by Xilinx tools.
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="Xst" timeStamp="Fri Jan 27 23:27:07 2017">
+  <application stringID="Xst" timeStamp="Thu Dec 21 21:40:59 2017">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
         <column stringID="value"/>
         <row stringID="row" value="0">
           <item stringID="variable" value="Path"/>
-          <item stringID="value" value="C:\Xilinx\14.6\ISE_DS\ISE\\lib\nt64;C:\Xilinx\14.6\ISE_DS\ISE\\bin\nt64;C:\Xilinx\14.6\ISE_DS\ISE\bin\nt64;C:\Xilinx\14.6\ISE_DS\ISE\lib\nt64;C:\Xilinx\14.6\ISE_DS\ISE\..\..\..\DocNav;C:\Xilinx\14.6\ISE_DS\PlanAhead\bin;C:\Xilinx\14.6\ISE_DS\EDK\bin\nt64;C:\Xilinx\14.6\ISE_DS\EDK\lib\nt64;C:\Xilinx\14.6\ISE_DS\EDK\gnu\microblaze\nt\bin;C:\Xilinx\14.6\ISE_DS\EDK\gnu\powerpc-eabi\nt\bin;C:\Xilinx\14.6\ISE_DS\EDK\gnuwin\bin;C:\Xilinx\14.6\ISE_DS\EDK\gnu\arm\nt\bin;C:\Xilinx\14.6\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_be\bin;C:\Xilinx\14.6\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_le\bin;C:\Xilinx\14.6\ISE_DS\common\bin\nt64;C:\Xilinx\14.6\ISE_DS\common\lib\nt64;E:\ispLEVER_Classic2_0\ispcpld\bin;E:\ispLEVER_Classic2_0\ispFPGA\bin\nt;E:\ispLEVER_Classic2_0\active-hdl\BIN;C:\ProgramData\Oracle\Java\javapath;C:\SynaptiCAD\bin\win32;C:\Program Files\Java\jre7\bin;C\Windows\System32;C:\Program Files (x86)\WinAVR\bin;C:\Program Files (x86)\WinAVR\utils\bin;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\SSH Communications Security\SSH Secure Shell;C:\Program Files (x86)\UltraEdit;C:\ispLever\ispcpld\bin;C:\ispLever\ispFPGA\bin\nt;C:\ispLever\active-hdl\BIN;C:\Program Files\WinRAR;C:\SynaptiCAD\bin;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;%PATH;C:\Program Files (x86)\IDM Computer Solutions\UltraEdit\;C:\Program Files (x86)\UltraEdit\;C:\Program Files\Java\jdk1.7.0_02\bin;C:\Users\Matze\AppData\Local\Microsoft\WindowsApps"/>
+          <item stringID="value" value="C:\Xilinx\14.7\ISE_DS\ISE\\lib\nt64;C:\Xilinx\14.7\ISE_DS\ISE\\bin\nt64;C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64;C:\Xilinx\14.7\ISE_DS\ISE\lib\nt64;C:\Xilinx\14.7\ISE_DS\ISE\..\..\..\DocNav;C:\Xilinx\14.7\ISE_DS\PlanAhead\bin;C:\Xilinx\14.7\ISE_DS\EDK\bin\nt64;C:\Xilinx\14.7\ISE_DS\EDK\lib\nt64;C:\Xilinx\14.7\ISE_DS\EDK\gnu\microblaze\nt\bin;C:\Xilinx\14.7\ISE_DS\EDK\gnu\powerpc-eabi\nt\bin;C:\Xilinx\14.7\ISE_DS\EDK\gnuwin\bin;C:\Xilinx\14.7\ISE_DS\EDK\gnu\arm\nt\bin;C:\Xilinx\14.7\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_be\bin;C:\Xilinx\14.7\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_le\bin;C:\Xilinx\14.7\ISE_DS\common\bin\nt64;C:\Xilinx\14.7\ISE_DS\common\lib\nt64;E:\ispLEVER_Classic2_0\ispcpld\bin;E:\ispLEVER_Classic2_0\ispFPGA\bin\nt;E:\ispLEVER_Classic2_0\active-hdl\BIN;C:\ProgramData\Oracle\Java\javapath;C:\SynaptiCAD\bin\win32;C:\Program Files\Java\jre7\bin;C\Windows\System32;C:\Program Files (x86)\WinAVR\bin;C:\Program Files (x86)\WinAVR\utils\bin;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\SSH Communications Security\SSH Secure Shell;C:\Program Files (x86)\UltraEdit;c:\Xilinx\14.6\ISE_DS\ISE\bin\nt64;C:\ispLever\ispcpld\bin;C:\ispLever\ispFPGA\bin\nt;C:\ispLever\active-hdl\BIN;C:\Program Files\WinRAR;C:\SynaptiCAD\bin;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;%PATH;C:\Program Files (x86)\IDM Computer Solutions\UltraEdit\;C:\Program Files (x86)\UltraEdit\;C:\Program Files\Java\jdk1.7.0_02\bin;C:\Users\Matze\AppData\Local\Microsoft\WindowsApps"/>
         </row>
         <row stringID="row" value="1">
           <item stringID="variable" value="PATHEXT"/>
@@ -20,19 +20,19 @@
         </row>
         <row stringID="row" value="2">
           <item stringID="variable" value="XILINX"/>
-          <item stringID="value" value="C:\Xilinx\14.6\ISE_DS\ISE\"/>
+          <item stringID="value" value="C:\Xilinx\14.7\ISE_DS\ISE\"/>
         </row>
         <row stringID="row" value="3">
           <item stringID="variable" value="XILINX_DSP"/>
-          <item stringID="value" value="C:\Xilinx\14.6\ISE_DS\ISE"/>
+          <item stringID="value" value="C:\Xilinx\14.7\ISE_DS\ISE"/>
         </row>
         <row stringID="row" value="4">
           <item stringID="variable" value="XILINX_EDK"/>
-          <item stringID="value" value="C:\Xilinx\14.6\ISE_DS\EDK"/>
+          <item stringID="value" value="C:\Xilinx\14.7\ISE_DS\EDK"/>
         </row>
         <row stringID="row" value="5">
           <item stringID="variable" value="XILINX_PLANAHEAD"/>
-          <item stringID="value" value="C:\Xilinx\14.6\ISE_DS\PlanAhead"/>
+          <item stringID="value" value="C:\Xilinx\14.7\ISE_DS\PlanAhead"/>
         </row>
       </table>
       <item stringID="User_EnvOs" value="OS Information">
@@ -80,8 +80,8 @@
     </section>
     <section stringID="XST_HDL_SYNTHESIS_REPORT">
       <item dataType="int" stringID="XST_ADDERSSUBTRACTORS" value="1"></item>
-      <item dataType="int" stringID="XST_REGISTERS" value="27">
-        <item dataType="int" stringID="XST_1BIT_REGISTER" value="21"/>
+      <item dataType="int" stringID="XST_REGISTERS" value="28">
+        <item dataType="int" stringID="XST_1BIT_REGISTER" value="22"/>
         <item dataType="int" stringID="XST_2BIT_REGISTER" value="2"/>
         <item dataType="int" stringID="XST_4BIT_REGISTER" value="1"/>
         <item dataType="int" stringID="XST_8BIT_REGISTER" value="3"/>
@@ -97,8 +97,8 @@
     <section stringID="XST_ADVANCED_HDL_SYNTHESIS_REPORT">
       <item dataType="int" stringID="XST_FSMS" value="1"/>
       <item dataType="int" stringID="XST_ADDERSSUBTRACTORS" value="1"></item>
-      <item dataType="int" stringID="XST_REGISTERS" value="7">
-        <item dataType="int" stringID="XST_FLIPFLOPS" value="7"/>
+      <item dataType="int" stringID="XST_REGISTERS" value="8">
+        <item dataType="int" stringID="XST_FLIPFLOPS" value="8"/>
       </item>
       <item dataType="int" stringID="XST_COMPARATORS" value="3"></item>
     </section>
@@ -119,18 +119,18 @@
         <item stringID="XST_IOS" value="116"/>
       </section>
       <section stringID="XST_CELL_USAGE">
-        <item dataType="int" stringID="XST_BELS" value="630">
-          <item dataType="int" stringID="XST_AND2" value="196"/>
-          <item dataType="int" stringID="XST_AND3" value="14"/>
+        <item dataType="int" stringID="XST_BELS" value="700">
+          <item dataType="int" stringID="XST_AND2" value="242"/>
+          <item dataType="int" stringID="XST_AND3" value="17"/>
           <item dataType="int" stringID="XST_AND4" value="1"/>
           <item dataType="int" stringID="XST_GND" value="1"/>
-          <item dataType="int" stringID="XST_INV" value="213"/>
-          <item dataType="int" stringID="XST_OR2" value="159"/>
+          <item dataType="int" stringID="XST_INV" value="223"/>
+          <item dataType="int" stringID="XST_OR2" value="168"/>
           <item dataType="int" stringID="XST_XOR2" value="26"/>
         </item>
-        <item dataType="int" stringID="XST_FLIPFLOPSLATCHES" value="56">
+        <item dataType="int" stringID="XST_FLIPFLOPSLATCHES" value="57">
           <item dataType="int" stringID="XST_FD" value="15"/>
-          <item dataType="int" stringID="XST_FDC" value="4"/>
+          <item dataType="int" stringID="XST_FDC" value="5"/>
           <item dataType="int" stringID="XST_FDCE" value="37"/>
         </item>
         <item dataType="int" stringID="XST_IO_BUFFERS" value="111">

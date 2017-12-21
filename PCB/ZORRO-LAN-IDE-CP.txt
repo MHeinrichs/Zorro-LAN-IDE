@@ -1,27 +1,26 @@
-Stückliste exportiert aus C:/Users/Matze/Amiga/Hardwarehacks/Zorro-LAN-IDE/ZORRO-LAN-IDE-CP.sch am 10.11.2016 21:56:08
+Stückliste exportiert aus C:/Users/Matze/Amiga/Hardwarehacks/Zorro-LAN-IDE/PCB/ZORRO-LAN-IDE-CP.sch am 02.11.2017 09:59:33
 
-Qty Value                       Device                      Package           Parts                             Description                                                   MF MPN OC_FARNELL OC_NEWARK
-1                               4R-NCAY16                   CAY16             RN1                               Array Chip Resistor                                                  unknown    unknown  
-4                               C-EUC0603K                  C0603K            C9, C10, C11, C12                 CAPACITOR, European symbol                                                               
-4                               JP1E                        JP1               AUTOBOOT_OFF, IDE_ACT, LEDA, LEDB JUMPER                                                                                   
-1                               ML10L                       ML10L             SV2                               HARTING                                                              unknown    unknown  
-1                               ML40                        ML40              IDE                               HARTING                                                              unknown    unknown  
-1                               PINHD-1X02_2.54-S           1X02-S            JP1                               PIN HEADER                                                                               
-1                               SJ                          SJ                SJ1                               SMD solder JUMPER                                                                        
-1                               SJ2W                        SJ_2              INT6/INT2                         SMD solder JUMPER                                                                        
-1   100k                        R-EU_R0603                  R0603             R4                                RESISTOR, European symbol                                                                
-5   100n                        C-EUC0603K                  C0603K            C14, C15, C16, C17, C22           CAPACITOR, European symbol                                                               
-1   100nF                       C-EUC0805K                  C0805K            C4                                CAPACITOR, European symbol                                                               
-4   10u                         C-EUC0805K                  C0805K            C2, C20, C21, C23                 CAPACITOR, European symbol                                                               
-1   1K                          R-EU_R0805                  R0805             R10                               RESISTOR, European symbol                                                                
-3   330                         R-EU_R0603                  R0603             R1, R6, R7                        RESISTOR, European symbol                                                                
-5   4.7k                        R-EU_R0603                  R0603             R2, R3, R5, R8, R9                RESISTOR, European symbol                                                                
-1   47uF                        C-EUC1206K                  C1206K            C5                                CAPACITOR, European symbol                                                               
-1   500mA                       R-EU_R2512                  R2512             F1                                RESISTOR, European symbol                                                                
-3   74HCT245PW                  74HCT245PW                  TSSOP20           IC3, IC4, IC5                     Octal BUS TRANSCEIVER, 3-state                                                           
-1   A1200-CLOCKPORT             A1200-CLOCKPORT             CP-2X11-2.00      CN2                                                                                                                        
-1   AM29F010J-SOCKET            AM29F010J-SOCKET            PLCC-32-SMT-TT    IC8                               1-Megabit FLASH MEMORY                                                                   
-1   LD117AS33TR                 LD117AS33TR                 SOT223            IC7                               Low drop fixed and adjustable positive voltage regulators 1 A                            
-1   OLIMEX_ENC                  OLIMEX_ENC                  OLIMEX-ENC624J600 IC1                                                                                                                        
-1   XC95288XL-TQ144             XC95288XL-TQ144             TQFP144           IC2                                                                                                                        
-1   ZORROII_EDGE_ROUND_CONTACTS ZORROII_EDGE_ROUND_CONTACTS LKONT_50_R        CN1                                                                                                                        
+Qty Value                       Device                      Package           Parts                                      Description                                                   MF MPN OC_FARNELL OC_NEWARK
+1                               4R-NCAY16                   CAY16             RN1                                        Array Chip Resistor                                                  unknown    unknown  
+4                               JP1E                        JP1               AUTOBOOT_OFF, IDE_ACT, LEDA, LEDB          JUMPER                                                                                   
+1                               ML10L                       ML10L             SV2                                        HARTING                                                              unknown    unknown  
+1                               ML40                        ML40              IDE                                        HARTING                                                              unknown    unknown  
+1                               PINHD-1X02_2.54-S           1X02-S            JP1                                        PIN HEADER                                                                               
+1                               SJ                          SJ                SJ1                                        SMD solder JUMPER                                                                        
+1                               SJ2W                        SJ_2              INT6/INT2                                  SMD solder JUMPER                                                                        
+1   100k                        R-EU_R0603                  R0603             R4                                         RESISTOR, European symbol                                                                
+9   100n                        C-EUC0603K                  C0603K            C9, C10, C11, C12, C14, C15, C16, C17, C22 CAPACITOR, European symbol                                                               
+1   100nF                       C-EUC0805K                  C0805K            C4                                         CAPACITOR, European symbol                                                               
+4   10u                         C-EUC0805K                  C0805K            C2, C20, C21, C23                          CAPACITOR, European symbol                                                               
+1   1K                          R-EU_R0805                  R0805             R10                                        RESISTOR, European symbol                                                                
+3   330                         R-EU_R0603                  R0603             R1, R6, R7                                 RESISTOR, European symbol                                                                
+5   4.7k                        R-EU_R0603                  R0603             R2, R3, R5, R8, R9                         RESISTOR, European symbol                                                                
+1   47uF                        C-EUC1206K                  C1206K            C5                                         CAPACITOR, European symbol                                                               
+1   500mA                       R-EU_R2512                  R2512             F1                                         RESISTOR, European symbol                                                                
+3   74HCT245PW                  74HCT245PW                  TSSOP20           IC3, IC4, IC5                              Octal BUS TRANSCEIVER, 3-state                                                           
+1   A1200-CLOCKPORT             A1200-CLOCKPORT             CP-2X11-2.00      CN2                                                                                                                                 
+1   AM29F010J-SOCKET            AM29F010J-SOCKET            PLCC-32-SMT-TT    IC8                                        1-Megabit FLASH MEMORY                                                                   
+1   LD117AS33TR                 LD117AS33TR                 SOT223            IC7                                        Low drop fixed and adjustable positive voltage regulators 1 A                            
+1   OLIMEX_ENC                  OLIMEX_ENC                  OLIMEX-ENC624J600 IC1                                                                                                                                 
+1   XC95288XL-TQ144             XC95288XL-TQ144             TQFP144           IC2                                                                                                                                 
+1   ZORROII_EDGE_ROUND_CONTACTS ZORROII_EDGE_ROUND_CONTACTS LKONT_50_R        CN1                                                                                                                                 

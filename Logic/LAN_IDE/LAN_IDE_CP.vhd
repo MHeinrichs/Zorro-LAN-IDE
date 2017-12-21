@@ -95,6 +95,7 @@ architecture Behavioral of LAN_IDE_CP is
 	SIGNAL ide: STD_LOGIC;
 	SIGNAL autoconfig: STD_LOGIC;
 	SIGNAL lan_adr: STD_LOGIC;
+	SIGNAL lan_adr_sw: STD_LOGIC;
 	SIGNAL cp: STD_LOGIC;
 	signal Dout1:STD_LOGIC_VECTOR(3 downto 0);
 	signal AUTO_CONFIG_DONE:STD_LOGIC_VECTOR(1 downto 0);
@@ -195,33 +196,26 @@ begin
 			autoconfig 	<= '0';
 			ide 			<= '0';
 			lan_adr 		<= '0';
+			lan_adr_sw  <= '0';
 			cp  			<= '0';
 		elsif(falling_edge(AS))then		
+			--default values
+			autoconfig 	<= '0';
+			ide 			<= '0';
+			lan_adr 		<= '0';
+			lan_adr_sw  <= '0';
+			cp  			<= '0';
 			if(A(23 downto 16) = x"E8" and AUTO_CONFIG_DONE < "11" and CFIN='0')then
 				autoconfig 	<= '1';
-				lan_adr 		<= '0';
-				cp 			<= '0';
-				ide 			<= '0';
-			elsif(A(23 downto 16) = LAN_BASEADR and SHUT_UP(0)='0' )then					
-				autoconfig 	<= '0';
+			elsif(A(23 downto 16) = LAN_BASEADR and SHUT_UP(0)='0' )then	
+				if(A(14 downto 13)="11")then
+					lan_adr_sw  <= '1';
+				end if;
 				lan_adr 		<= '1';
-				cp  			<= '0';
-				ide 			<= '0';
 			elsif(A(23 downto 16) =  CP_BASEADR and SHUT_UP(1)='0')then					
-				autoconfig 	<= '0';
-				lan_adr 		<= '0';
 				cp  			<= '1';
-				ide 			<= '0';
 			elsif(A(23 downto 16) = IDE_BASEADR and SHUT_UP(2)='0')then					
-				autoconfig 	<= '0';
-				lan_adr 		<= '0';
-				cp  			<= '0';
 				ide 			<= '1';
-			else
-				autoconfig 	<= '0';
-				lan_adr 		<= '0';
-				cp  			<= '0';
-				ide 			<= '0';
 			end if;		
 		end if;				
 	end process ADDRESS_DECODE;
@@ -425,7 +419,7 @@ begin
 	--the lanport is shifted by one adress line but I forgot to adopt the clockport address!
 	A_LAN(13 downto 6)<=	LAN_A_CLRREG(13 downto 6) when (LAN_RST_SM = wait0 or LAN_RST_SM = clr or LAN_RST_SM = clr_commit) else
 								LAN_A_SETREG(13 downto 6) when (LAN_RST_SM = wait1 or LAN_RST_SM = set or LAN_RST_SM = set_commit) else
-								 A(14 downto 7);
+								 (A(14)&A(12)&A(13)&A(11 downto 7)); --swap A12/13 for the stupid enj-Chip
 	A_LAN(5 downto 2) <=		LAN_A_CLRREG(5 downto 2) when (LAN_RST_SM = wait0 or LAN_RST_SM = clr or LAN_RST_SM = clr_commit) else
 									LAN_A_SETREG(5 downto 2) when (LAN_RST_SM = wait1 or LAN_RST_SM = set or LAN_RST_SM = set_commit) else
 									A(5 downto 2) when cp='1' else A(6 downto 3); --mux the clock-port adresses!
@@ -437,14 +431,16 @@ begin
 	
 	--signal assignment
 	D	<=	--RAM_D 						when RW='1' and TRANSFER_IN_PROGRES ='1' else
-			DQ								when RW='1' and lan_adr ='1' and AS='0' else
-			DQ(7 downto 0)&DQ(7 downto 0)	when RW='1' and cp = '1'     and AS='0' else
+			DQ								when RW='1' and lan_adr ='1' and lan_adr_sw ='0' and AS='0' else
+			DQ(7 downto 0)&DQ(15 downto 8) when RW='1' and lan_adr ='1' and lan_adr_sw ='1' and AS='0' else
+			DQ(7 downto 0)&DQ(7 downto 0)	 when RW='1' and cp = '1'     and AS='0' else
 			Dout1	& x"FFF" 			when RW='1' and autoconfig ='1' and AS='0' else
 			(others => 'Z');
 
 	DQ <=	LAN_D_CLR when (LAN_RST_SM = wait0 or LAN_RST_SM = clr or LAN_RST_SM = clr_commit) else
 			LAN_D_SET when (LAN_RST_SM = wait1 or LAN_RST_SM = set or LAN_RST_SM = set_commit) else
-			D 	when RW='0' and AS='0' and lan_adr ='1' else
+			D 	when RW='0' and AS='0' and lan_adr ='1' and lan_adr_sw ='0' else
+			D( 7 downto 0) & D(15 downto 8)	when RW='0' and AS='0' and lan_adr ='1' and lan_adr_sw ='1' else
 			D 	when RW='0' and AS='0' and cp = '1' and LDS='0' and UDS='0' else
 			D( 7 downto 0) & D( 7 downto 0)	when RW='0' and AS='0' and cp = '1' and LDS='0' and UDS='1' else
 			D(15 downto 8) & D(15 downto 8)	when RW='0' and AS='0' and cp = '1' and LDS='1' and UDS='0'
