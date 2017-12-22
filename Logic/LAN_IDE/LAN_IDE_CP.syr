@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.29 secs
+Total CPU time to Xst completion: 0.12 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.29 secs
+Total CPU time to Xst completion: 0.12 secs
  
 --> Reading design: LAN_IDE_CP.prj
 
@@ -136,7 +136,7 @@ WARNING:Xst - You have specified state <nop> as a recovery-only state for the sa
     Found 1-bit xor2 for signal <AMIGA_CLK$xor0000> created at line 141.
     Found 2-bit register for signal <AUTO_CONFIG_DONE>.
     Found 2-bit register for signal <AUTO_CONFIG_DONE_CYCLE>.
-    Found 2-bit adder for signal <AUTO_CONFIG_DONE_CYCLE$share0000> created at line 321.
+    Found 2-bit adder for signal <AUTO_CONFIG_DONE_CYCLE$share0000> created at line 312.
     Found 1-bit register for signal <autoconfig>.
     Found 1-bit register for signal <cp>.
     Found 8-bit comparator equal for signal <cp$cmp_eq0001> created at line 209.
@@ -147,7 +147,7 @@ WARNING:Xst - You have specified state <nop> as a recovery-only state for the sa
     Found 1-bit register for signal <CP_WE_QUIRK>.
     Found 1-bit register for signal <CP_WE_S>.
     Found 4-bit register for signal <Dout1>.
-    Found 3-bit comparator less for signal <Dout1$cmp_lt0000> created at line 323.
+    Found 3-bit comparator less for signal <Dout1$cmp_lt0000> created at line 314.
     Found 1-bit register for signal <DS_D>.
     Found 1-bit register for signal <ide>.
     Found 8-bit comparator equal for signal <ide$cmp_eq0000> created at line 216.
@@ -168,7 +168,7 @@ WARNING:Xst - You have specified state <nop> as a recovery-only state for the sa
     Found 3-bit register for signal <SHUT_UP>.
     Summary:
 	inferred   1 Finite State Machine(s).
-	inferred   8 D-type flip-flop(s).
+	inferred  15 D-type flip-flop(s).
 	inferred   1 Adder/Subtractor(s).
 	inferred   5 Comparator(s).
 	inferred   1 Xor(s).
@@ -225,8 +225,8 @@ Macro Statistics
 # FSMs                                                 : 1
 # Adders/Subtractors                                   : 1
  2-bit adder                                           : 1
-# Registers                                            : 8
- Flip-Flops                                            : 8
+# Registers                                            : 15
+ Flip-Flops                                            : 15
 # Comparators                                          : 3
  8-bit comparator equal                                : 3
 
@@ -271,20 +271,22 @@ Design Statistics
 # IOs                              : 116
 
 Cell Usage :
-# BELS                             : 700
-#      AND2                        : 242
-#      AND3                        : 17
+# BELS                             : 639
+#      AND2                        : 222
+#      AND3                        : 15
 #      AND4                        : 1
 #      GND                         : 1
-#      INV                         : 223
-#      OR2                         : 168
-#      OR3                         : 20
-#      OR4                         : 2
+#      INV                         : 205
+#      OR2                         : 150
+#      OR3                         : 18
+#      OR4                         : 1
 #      XOR2                        : 26
 # FlipFlops/Latches                : 57
-#      FD                          : 15
+#      FD                          : 11
 #      FDC                         : 5
-#      FDCE                        : 37
+#      FDCE                        : 6
+#      FDP                         : 3
+#      FDPE                        : 32
 # IO Buffers                       : 111
 #      IBUF                        : 37
 #      IOBUFE                      : 32
@@ -293,12 +295,12 @@ Cell Usage :
 =========================================================================
 
 
-Total REAL time to Xst completion: 10.00 secs
-Total CPU time to Xst completion: 10.06 secs
+Total REAL time to Xst completion: 7.00 secs
+Total CPU time to Xst completion: 7.88 secs
  
 --> 
 
-Total memory usage is 310436 kilobytes
+Total memory usage is 309900 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    8 (   0 filtered)

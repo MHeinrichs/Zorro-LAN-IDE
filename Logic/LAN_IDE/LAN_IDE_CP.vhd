@@ -236,14 +236,15 @@ begin
 	lan_rw_gen: process (AMIGA_CLK)
 	begin
 		if falling_edge(AMIGA_CLK) then			
+			--default values
+			LAN_RD_S		<= '0';
+			LAN_WRH_S	<= '0';
+			LAN_WRL_S	<= '0';
+
 			if(lan_adr='1' and DS='0' and A(15)='0')then
 				LAN_RD_S		<= RW;
 				LAN_WRH_S   <= not UDS and not RW;
 				LAN_WRL_S   <= not LDS and not RW;
-			else
-				LAN_RD_S		<= '0';
-				LAN_WRH_S	<= '0';
-				LAN_WRL_S	<= '0';
 			end if;				
 		end if;
 	end process lan_rw_gen;
@@ -252,49 +253,39 @@ begin
 	cp_rw_gen: process (AMIGA_CLK)
 	begin
 		if falling_edge(AMIGA_CLK) then			
-			if(cp = '1' and DS='0' and reset ='1')then --datastrobe instead of AS!
+			--default values
+			CP_RD_S		<= '1';
+			CP_WE_S		<= '1';
+			if(cp = '1' and DS='0')then --datastrobe instead of AS!
 				CP_RD_S		<= not RW;
 				CP_WE_S		<= RW;
-			else
-				CP_RD_S		<= '1';
-				CP_WE_S		<= '1';
 			end if;				
 			CP_WE_QUIRK <= CP_WE_S;
 		end if;
 	end process cp_rw_gen;
 
-	cp_quirk_gen: process (AMIGA_CLK)
-	begin
-		if rising_edge(AMIGA_CLK) then			
---			CP_WE_QUIRK <= CP_WE_S;
-		end if;
-	end process cp_quirk_gen;
-
 	--ide signal generation
-	ide_rw_gen: process (AMIGA_CLK)
+	ide_rw_gen: process (reset,AMIGA_CLK)
 	begin
-		if falling_edge(AMIGA_CLK) then			
-			if	(reset = '0') then
-				IDE_ENABLE 	<= '1';
-				IDE_R_S		<= '1';
-				IDE_W_S		<= '1';
-				ROM_OE_S		<= '1';
-			elsif(ide='1' and AS='0')then
+		if	(reset = '0') then
+			IDE_ENABLE 	<= '1';
+			IDE_R_S		<= '1';
+			IDE_W_S		<= '1';
+			ROM_OE_S		<= '1';
+		elsif falling_edge(AMIGA_CLK) then			
+			--default values
+			IDE_R_S		<= '1';
+			IDE_W_S		<= '1';
+			ROM_OE_S		<= '1';					
+			if(ide='1' and AS='0')then
 				if(RW='0')then
 					--the write goes to the hdd!
 					IDE_ENABLE  <= '0'; -- enable IDE on first read
 					IDE_W_S		<= '0';	
-					IDE_R_S		<= '1';
-					ROM_OE_S		<=	'1';
 				else
-					IDE_W_S		<= '1';						
 					IDE_R_S		<= IDE_ENABLE; --read from IDE instead from ROM
 					ROM_OE_S		<=	not IDE_ENABLE;						
 				end if;	
-			else
-				IDE_R_S		<= '1';
-				IDE_W_S		<= '1';
-				ROM_OE_S		<= '1';					
 			end if;				
 		end if;
 	end process ide_rw_gen;
@@ -303,19 +294,19 @@ begin
 	--autoconfig	
 	autoconfig_proc: process (reset, AMIGA_CLK)
 	begin
-		if falling_edge(AMIGA_CLK) then -- no reset, so wait for rising edge of the clock		
+		if	reset = '0' then
+			-- reset active ...
+			AUTO_CONFIG_DONE_CYCLE	<="00";
+			Dout1<="1111";
+			--Dout2<="1111";
+			SHUT_UP	<="111";
+			IDE_BASEADR<=x"FF";
+			LAN_BASEADR<=x"FF";
+			CP_BASEADR<=x"FF";
+			AUTO_CONFIG_DONE	<="00";
+		elsif falling_edge(AMIGA_CLK) then -- no reset, so wait for rising edge of the clock		
 			DS_D <= DS;
-			if	reset = '0' then
-				-- reset active ...
-				AUTO_CONFIG_DONE_CYCLE	<="00";
-				Dout1<="1111";
-				--Dout2<="1111";
-				SHUT_UP	<="111";
-				IDE_BASEADR<=x"FF";
-				LAN_BASEADR<=x"FF";
-				CP_BASEADR<=x"FF";
-				AUTO_CONFIG_DONE	<="00";
-			elsif(AS='1')then
+			if(AS='1')then
 				AUTO_CONFIG_DONE <= AUTO_CONFIG_DONE_CYCLE;
 			elsif(autoconfig= '1' and DS='0') then
 				case A(6 downto 1) is
@@ -323,7 +314,7 @@ begin
 						if(AUTO_CONFIG_DONE < 2)then
 							Dout1 <= 	"1100" ; --ZII, No-System-Memory, no ROM
 						else
-							Dout1 <= 	"110"&not(AUTOBOOT_OFF) ; --ZII, no System-Memory, (perhaps)ROM
+							Dout1 <= 	"1101" ; --ZII, no System-Memory, (perhaps)ROM
 						end if;
 					when "000001"	=> Dout1 <=	"0001" ; --one Card, 64KB =001
 					when "000010"	=> 
@@ -452,12 +443,13 @@ begin
 	IDE_CS(1)<= not(A(13));
 	IDE_A(2 downto 0)	<= A(11 downto 9);
 	ROM_B	<= "00";
-	ROM_OE	<= ROM_OE_S when AS='0' else '1';				
+	ROM_OE	<= ROM_OE_S when AS='0' and AUTOBOOT_OFF = '0' else '1';				
 
 --	INT_OUT <= 'Z';
 	INT_OUT <= '0' when 
-							(LAN_INT = '0' and LAN_INT_ENABLE ='1') or 
-							CP_IRQ = '0' else 'Z';
+							(LAN_INT = '0' and LAN_INT_ENABLE ='1')
+							or CP_IRQ = '0' 
+							else 'Z';
 	
 	OWN 	<= 'Z';--'0' when AS='0' and (autoconfig  = '1' or ide = '1' or lan_adr = '1' or cp = '1') else 'Z';
 	SLAVE <= '0' when AS='0' and (autoconfig  = '1' or ide = '1' or lan_adr = '1' or cp = '1') else '1';	
