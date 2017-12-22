@@ -118,6 +118,8 @@ architecture Behavioral of LAN_IDE_CP is
 	signal LAN_RD_S: std_logic;
 	signal LAN_WRH_S: std_logic;
 	signal LAN_WRL_S: std_logic;
+	signal LAN_IRQ_D0: std_logic;
+	signal LAN_IRQ_OUT: std_logic;
 	signal CP_RD_S: std_logic;
 	signal CP_WE_S: std_logic;
 	signal CP_WE_QUIRK: std_logic;
@@ -225,7 +227,18 @@ begin
 	begin
 		if(reset ='0') then
 			LAN_INT_ENABLE <='0';
+			LAN_IRQ_D0 <='1';
+			LAN_IRQ_OUT <='1';
 		elsif falling_edge(AMIGA_CLK) then
+			LAN_IRQ_D0 <= LAN_INT;
+			if(LAN_INT ='0' and LAN_IRQ_D0 ='1') then
+				LAN_IRQ_OUT <='0';
+			elsif(LAN_INT ='1' or LAN_INT_ENABLE = '0')then
+				LAN_IRQ_OUT <='1';
+			elsif(lan_adr = '1' and DS ='0' and RW='0' and A(15)='1') then 
+				LAN_IRQ_OUT		<= D(14); --controll lan irq
+			end if;
+
 			if(lan_adr = '1' and DS ='0' and RW='0' and A(15)='1') then --enable if a write to A15 occured
 				LAN_INT_ENABLE <= D(15);
 			end if;
@@ -447,7 +460,7 @@ begin
 
 --	INT_OUT <= 'Z';
 	INT_OUT <= '0' when 
-							(LAN_INT = '0' and LAN_INT_ENABLE ='1')
+							(LAN_IRQ_OUT = '0' and LAN_INT_ENABLE = '1')
 							or CP_IRQ = '0' 
 							else 'Z';
 	
