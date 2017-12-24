@@ -90,8 +90,8 @@
 #define  BOARD hwb->hwb_boards[0]
 
 /* interrupt (choice here is INTB_EXTER or INTB_PORTS, depending on solder blob */
-/*#define  HW_INTSOURCE INTB_EXTER*/
-#define  HW_INTSOURCE INTB_PORTS
+#define  HW_INTSOURCE INTB_EXTER
+/*#define  HW_INTSOURCE INTB_PORTS*/
 
 #endif
 

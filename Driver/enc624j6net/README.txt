@@ -5,7 +5,13 @@ SANA-II Driver for Matze/Scrat ZII IDE LAN CP card
 author: Henryk Richter <henryk.richter@gmx.net>
 
 
+Release Notes:
+--------------
 
+- goes along with 21 December 2017 CPLD build, where interrupts are extended
+- older CPLD builds will lock up Amiga at first interrupt
+- provisions for swapped address lines 12/13 are in the code
+- board requires Int6 to be soldered (NOT Int2)
 
 Installation:
 -------------
@@ -25,6 +31,8 @@ as argument will then activate the driver for RoadShow.
 
 Technical notes:
 ----------------
+
+(IMPORTANT: not _yet_ true for current CPLD build)
 
 Matze's card does selective byte swapping for different areas of the chip within
 the CPLD. This step enables Big Endian reads/writes to the hardware registers. Since

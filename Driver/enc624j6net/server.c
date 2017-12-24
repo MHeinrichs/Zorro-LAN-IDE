@@ -704,6 +704,11 @@ PRIVATE REGARGS BOOL read_frame(struct IOSana2Req *req, struct HWFrame *frame)
          {
             d4(("** wmask is 0x%08lx\n", wmask));
 
+            /* send packets if any */
+            d2(("*+ do_write\n"));
+            dowritereqs(pb);
+            d2(("*- do_write\n"));
+
             /* if no recv is pending then wait for incoming signals */
             if (!hw_recv_pending(pb)) {
                d2(("**> wait\n"));
@@ -719,11 +724,7 @@ PRIVATE REGARGS BOOL read_frame(struct IOSana2Req *req, struct HWFrame *frame)
                d2(("*- do_read\n"));
             }
             
-            /* send packets if any */
-            d2(("*+ do_write\n"));
-            dowritereqs(pb);
-            d2(("*- do_write\n"));
-            
+          
             /* handle SANA-II send requests */
             if (recv & portsigmask)
             {

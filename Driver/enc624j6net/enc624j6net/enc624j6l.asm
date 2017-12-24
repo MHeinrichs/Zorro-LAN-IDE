@@ -34,6 +34,7 @@ DEBUG	EQU	1
 _OPT_BUFFER_SWAP	EQU	1	;perform byte swap on buffer ops (1) or assume native endian (0)
 _OPT_REG_SWAP		EQU	0	;perform byte swap on register ops (1) or assume native endian (0)
 _OPT_ADR_QUIRK		EQU	1	;address lines 12/13 are swapped (1) or linear addressing (0)
+_OPT_FLOWCONTROL	EQU	1	;perform flow control on RX (1) or not (0)
 
 ;
 ; options for buffer memory configuration, please reserve some space for private variables
@@ -56,12 +57,15 @@ PNextPacket	EQU	PSTART_INIT	;2 Bytes - private "next packet" pointer for RX
 PNextTX		EQU	PSTART_INIT+2	;2 Bytes - private "next packet" pointer for TX (init as 0)
 PSigBit		EQU	PSTART_INIT+4	;2 Bytes interrupt bit
 PSigTask	EQU	PSTART_INIT+6	;4 Bytes signaled task
-Punused		EQU	PSTART_INIT+10	;
+PLinkChange	EQU	PSTART_INIT+10	;2 Bytes Link Change (Bit0 used right now)
+Punused		EQU	PSTART_INIT+12	;
 
 ;------------- TX: double buffering --------------------------------
 PSwapTX		EQU	$600		;swap between two TX buffers (one active, one activated after last TX done)
 ;
 ;
+
+
 	ifne	DEBUG
 ;
 ; these are only for the debug code
@@ -715,6 +719,41 @@ CLOCK_DEF_SET	EQU	CLOCK_33_SET
 ;\1 register offset (without CLEAR offset)
 ;\2 address register of board I/O base
 ;\3 register with clear mask
+	ifne	_OPT_REG_SWAP
+
+CLRREG	macro	
+	rol.w	#8,\3
+	move.w	\3,\1+CLR_OFFSET(\2)
+	rol.w	#8,\3
+	endm
+;\1 register offset (without SET offset)
+;\2 address register of board I/O base
+;\3 register with set mask
+SETREG	macro
+	rol.w	#8,\3
+	move.w	\3,\1+SET_OFFSET(\2)
+	rol.w	#8,\3
+	endm
+;\1 register offset (e.g. ESTAT)
+;\2 address register of board I/O base (e.g. a0)
+;\3 destination register to be written (e.g. d0)
+READREG	macro
+	rol.w	#8,\3
+	move.w	\1(\2),\3
+	rol.w	#8,\3
+	endm
+;\1 register offset (e.g. ESTAT)
+;\2 address register of board I/O base (e.g. a0)
+;\3 soure register copied to HW register (e.g. d0)
+WRITEREG macro
+	rol.w	#8,\3
+	move.w	\3,\1(\2)
+	rol.w	#8,\3
+	endm
+
+
+	else
+
 CLRREG	macro	
 	move.w	\3,\1+CLR_OFFSET(\2)
 	endm
@@ -736,6 +775,8 @@ READREG	macro
 WRITEREG macro
 	move.w	\3,\1(\2)
 	endm
+
+	endc
 
 	;read with address shuffling or direct from SRAM (affects $2000-$5000)
 	ifne	_OPT_ADR_QUIRK
@@ -775,6 +816,10 @@ WRAPINDEX macro
 ; | Test/Debug code                                                           |
 ; |                                                                           |
 ; -----------------------------------------------------------------------------
+;
+;  DEBUG CODE: main function that checks the board, sends a couple of ICMP frames and
+;              receives frames until LMOUSE pressed
+;
 	ifne 	DEBUG
 ExecBase                 EQU    4  ; Exec.Base()
 OpenLibrary              EQU -552  ; D0:Base=OpenLibrary(A1:libName,D0:version)
@@ -876,9 +921,9 @@ opendos:
 	beq	.noframe		;nothing received
 
 	;debug: disable recv
-	;move.l	_boardbase(pc),a0
-	;moveq	#ECON1_RXEN,d0
-	;CLRREG	ECON1,a0,d0
+	move.l	_boardbase(pc),a0
+	moveq	#ECON1_RXEN,d0
+	CLRREG	ECON1,a0,d0
 
 	move.l	_boardbase(pc),a0
 	lea	readframe,a1
@@ -1152,7 +1197,7 @@ _enc624j6l_Init:
 
 	bsr	_enc624j6l_CheckBoard	;preserves all regs
 	tst.l	d0			;board reset unsuccessful ?
-	ble.s	.err			;-> bail out
+	ble.w	.err			;-> bail out
 .goon:
 	;-------------- configure clockout ----------------------
 	moveq	#ECON1_RXEN,d0		;no RX, my dear (yet)
@@ -1179,6 +1224,19 @@ _enc624j6l_Init:
 	WRITEREG ERXFCON,a0,d0 ;set filter TODO: pattern matching stuff
 	move	#RXSTOP_INIT&$fffe,d0
 	WRITEREG ERXTAIL,a0,d0 ;tail pointer in buffer = rx-2, wraparound
+
+	ifne	_OPT_FLOWCONTROL
+	 move	#(128<<8)|(32),d0	;128*96=12288 high water mark, 32*96=3072 low water mark
+	 WRITEREG ERXWM,a0,d0
+	 moveq	#MACON1_RXPAUS,d0
+	 SETREG	MACON1,a0,d0
+	 move	#ECON2_AUTOFC,d0
+	 SETREG	ECON2,a0,d0
+	else
+	 move	#ECON2_AUTOFC,d0
+	 CLRREG	ECON2,a0,d0		;disable automatic flow control
+	endc
+
 
 	;--------------- TX configuration -----------------------
 	; no padding, no proprietary header
@@ -1254,8 +1312,11 @@ _enc624j6l_SetOnline:
 
 	moveq	#ECON1_RXEN,d0
 	SETREG	ECON1,a0,d0
-	
+
 	moveq	#1,d0
+	WRITEREG PLinkChange,a0,d0
+	
+	;moveq	#1,d0	;already set, see above
 .err
 	rts
 
@@ -1321,8 +1382,13 @@ _enc624j6l_EnableInterrupt:
 	WRITEREG	PSigTask,a0,d0   ;upper two bytes
 
 	; enable interrupt for incoming packet
-	move	#EIR_PKTIF,d0
-	SETREG	EIR,a0,d0
+	moveq	#-1,d0			;magic trick: the board enables Interrupts
+	lea	$4000(a0),a0
+	move.w	d0,($4000,a0)
+	lea	-$4000(a0),a0
+
+	move	#EIE_PKTIE|EIE_INTIE,d0
+	SETREG	EIE,a0,d0
 
 	moveq	#1,d0
 .rts
@@ -1337,9 +1403,6 @@ _enc624j6l_EnableInterrupt:
 ; Disable Hardware Interrupt
 ;
 ; In: A0 - Board base address
-;     A1 - Signal Task - task to receive signal
-;     D0 - Signal Bit  - the interrupt will send a signal to the given task (BIT, NOT SIGNAL MASK!!)
-;     D1 - Interrupt mask (pass 0 for now)
 ;
 ; Out:
 ;  D0 <= 0 - failure
@@ -1351,9 +1414,16 @@ _enc624j6l_DisableInterrupt:
 	move.l	a0,d0
 	beq.s	.err
 
+	moveq	#0,d0			;magic trick: the board enables Interrupts
+	lea	$4000(a0),a0
+	move.w	d0,($4002.l,a0)
+	lea	-$4000(a0),a0
+	
+	;WRITEREG $8000,a0,d0		;only with this "sesame"
+
     ;disables all interrupts 
-	move	#EIR_CRYPTEN|EIR_MODEXIF|EIR_HASHIF|EIR_AESIF|EIR_LINKIF|EIR_PRDYIF|EIR_PKTIF|EIR_DMAIF|EIR_TXIF|EIR_TXABTIF|EIR_RXABTIF|EIR_PCFULIF,d0
-	CLRREG	EIR,a0,d0
+	move	#EIE_INTIE|EIE_PKTIE|EIE_LINKIE|EIE_AESIE|EIE_MODEXIE|EIE_HASHIE|EIE_PRDYIE|EIE_DMAIE|EIE_TXIE|EIE_TXABTIE|EIE_RXABTIE|EIE_PCFULIE,d0
+	CLRREG	EIE,a0,d0
 
 	moveq		#0,d0
 	WRITEREG	PSigTask+2,a0,d0 ;lower two bytes
@@ -1383,6 +1453,11 @@ _enc624j6l_IntServer:
 	and		d1,d0
 	beq.s	.rts				;exit quickly when no packet pending
 	;CLRREG	EIR,a1,d1			;clear interrupt bit
+
+	move	#$C000,d0			;disable board interrupt until /INT from ENC toggles
+	lea	$4000(a1),a1			;D0: Bit15 = overall board int enable, Bit14 = ignore int until toggle (1)
+	move.w	d0,($4000,a1)
+	lea	-$4000(a1),a1
 	
 	READREG	PSigTask,a1,d0     ;upper two bytes
 	swap	d0	;
@@ -1664,21 +1739,40 @@ _enc624j6l_TransmitFrame:
 	;---------------- parameter check -------------------------------------
 
 	move.l	a0,d1		;no base PTR
-	beq.s	.err		;exit
+	beq.w	.err		;exit
+
+	READREG PLinkChange,a0,d1
+	tst	d1
+	beq	.linkup
+	; link up and configured
+
+	READREG ESTAT,a0,d1	;Bit 10 is FULL DUPLEX (ESTAT_PHYDPX)
+	bfextu	d1{21:1},d1	;get Bit 10 to Bit 0  (MACON2_FULDPX)
+	READREG	MACON2,a0,d2
+	bclr	#0,d2		;clear FDX bit
+	or.l	d1,d2		;set if active
+	WRITEREG MACON2,a0,d2
+
+	moveq	#$12,d1		;half duplex $12
+	btst	#0,d2
+	beq.s	.nofdx
+	moveq	#$15,d1		;full duplex $15
+.nofdx:
+	WRITEREG MABBIPG,a0,d1
+
+	moveq	 #0,d1
+	WRITEREG PLinkChange,a0,d1
+.linkup:
 
 	move.l	a1,d1		;no send frame ?
-	beq.s	.err		;exit
+	beq.w	.err		;exit
 
 	move.w	d0,d4		;still need length later
-	addq	#1,d0		;round up
-	asr.w	#1,d0		;size/2 = words
+	addq	#7,d0		;round up
+	asr.w	#3,d0		;size/8 = words
 	subq.w	#1,d0		;dbf...
-	blt.s	.err		;size<2 ? bail out
+	blt.w	.err		;size<2 ? bail out
 
-	moveq	#MACON2_FULDPX,d1
-	SETREG	MACON2,a0,d1
-	;moveq	#$15,d1
-	;WRITEREG MABBIPG,a0,d1
 
 	;------ double-buffered frame copy to send buffer ---------------------
 	READREG PNextTX,a0,d2	;"last written, maybe still pending frame"
@@ -1687,13 +1781,28 @@ _enc624j6l_TransmitFrame:
 	WRITEREG PNextTX,a0,d2	;remember pointer (d2 also for ETXST later)
 
 	lea	(a0,d2.w),a2	;write pointer for frame
+	swap	d4
+	move.w	#8,d4
 .txcopy:
-	move	(a1)+,d1	;get word
+	move.l	(a1)+,d1
+	move.l	(a1)+,d3
+
 	ifne	_OPT_BUFFER_SWAP
-	 rol.w	#8,d1		;swap buffer to Big Endian (if necessary)
+	 ; byte swap in 16 Bit words
+	 rol.w	d4,d1
+	 rol.w	d4,d3
+	 swap	d1
+	 swap	d3
+	 rol.w	d4,d1
+	 rol.w	d4,d3
+	 swap	d1
+	 swap	d3
 	endc
-	move	d1,(a2)+	;save to SRAM
+	move.l	d1,(a2)+	;save to SRAM
+	move.l	d3,(a2)+	;save to SRAM
+
 	dbf	d0,.txcopy
+	swap	d4
 
 	;---------------- wait on last frame ----------------------------------
 	moveq	#100,d3
