@@ -11,6 +11,9 @@
 <msg type="info" file="Cpld" num="0" delta="new" >Inferring BUFG constraint for signal &apos;<arg fmt="%s" index="1">CLK_EXT</arg>&apos; based upon the LOC constraint &apos;<arg fmt="%s" index="2">P30</arg>&apos;. It is recommended that you declare this BUFG explicitedly in your design. Note that for certain device families the output of a BUFG constraint can not drive a gated clock, and the BUFG constraint will be ignored.
 </msg>
 
+<msg type="info" file="Cpld" num="0" delta="new" >Inferring BUFG constraint for signal &apos;<arg fmt="%s" index="1">DQ&lt;5&gt;</arg>&apos; based upon the LOC constraint &apos;<arg fmt="%s" index="2">P38</arg>&apos;. It is recommended that you declare this BUFG explicitedly in your design. Note that for certain device families the output of a BUFG constraint can not drive a gated clock, and the BUFG constraint will be ignored.
+</msg>
+
 <msg type="warning" file="Cpld" num="1007" delta="old" >Removing unused input(s) &apos;<arg fmt="%s" index="1">DS0</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
 </msg>
 
@@ -26,7 +29,7 @@
 <msg type="warning" file="Cpld" num="1007" delta="old" >Removing unused input(s) &apos;<arg fmt="%s" index="1">Z3</arg>&apos;.  The input(s) are unused after optimization. Please verify functionality via simulation.
 </msg>
 
-<msg type="warning" file="Cpld" num="896" delta="new" >Unable to map all desired signals into function block, FB<arg fmt="%d" index="1">10</arg>, because too many function block product terms are required. Buffering output signal <arg fmt="%s" index="2">DQ&lt;8&gt;</arg> to allow all signals assigned to this function block to be placed.
+<msg type="warning" file="Cpld" num="1239" delta="new" >The global <arg fmt="%s" index="1">clock</arg> designation (BUFG) on signal &apos;<arg fmt="%s" index="2">N66</arg>&apos; is ignored. Most likely the signal is gated and therefore cannot be used as a global control signal.
 </msg>
 
 </messages>

@@ -210,9 +210,9 @@ begin
 			if(A(23 downto 16) = x"E8" and AUTO_CONFIG_DONE < "11" and CFIN='0')then
 				autoconfig 	<= '1';
 			elsif(A(23 downto 16) = LAN_BASEADR and SHUT_UP(0)='0' )then	
-				if(A(14 downto 13)="11")then
-					lan_adr_sw  <= '1';
-				end if;
+				--if(A(14 downto 13)="11")then
+				--	lan_adr_sw  <= '1';
+				--end if;
 				lan_adr 		<= '1';
 			elsif(A(23 downto 16) =  CP_BASEADR and SHUT_UP(1)='0')then					
 				cp  			<= '1';
@@ -423,7 +423,8 @@ begin
 	--the lanport is shifted by one adress line but I forgot to adopt the clockport address!
 	A_LAN(13 downto 6)<=	LAN_A_CLRREG(13 downto 6) when (LAN_RST_SM = wait0 or LAN_RST_SM = clr or LAN_RST_SM = clr_commit) else
 								LAN_A_SETREG(13 downto 6) when (LAN_RST_SM = wait1 or LAN_RST_SM = set or LAN_RST_SM = set_commit) else
-								 (A(14)&A(12)&A(13)&A(11 downto 7)); --swap A12/13 for the stupid enj-Chip
+								 --(A(14)&A(12)&A(13)&A(11 downto 7)); --swap A12/13 for the enj-Chip
+								 A(14 downto 7); 
 	A_LAN(5 downto 2) <=		LAN_A_CLRREG(5 downto 2) when (LAN_RST_SM = wait0 or LAN_RST_SM = clr or LAN_RST_SM = clr_commit) else
 									LAN_A_SETREG(5 downto 2) when (LAN_RST_SM = wait1 or LAN_RST_SM = set or LAN_RST_SM = set_commit) else
 									A(5 downto 2) when cp='1' else A(6 downto 3); --mux the clock-port adresses!
