@@ -421,19 +421,16 @@ GLOBAL REGARGS BOOL hw_send_frame(struct PLIPBase *pb, struct HWFrame *frame)
 }
 
 
-GLOBAL REGARGS BOOL hw_recv_pending(struct PLIPBase *pb)
+GLOBAL REGARGS LONG hw_recv_pending(struct PLIPBase *pb)
 {
 #ifdef PROTO_ENC624NET
    struct HWBase *hwb = &pb->pb_HWBase;
-   int num = enc624j6l_HaveRecv( BOARD );
+   LONG num = enc624j6l_HaveRecv( BOARD );
 #else
    u08 num;
    num = enc28j60_has_recv();
 #endif
-   if( num > 0 )
-   	return	TRUE;
-   else
-   	return FALSE;
+   return (LONG)num;
 }
 
 /* important: don't call this without enc28j60_has_recv() > 0 check */
@@ -446,13 +443,10 @@ GLOBAL REGARGS BOOL hw_recv_frame(struct PLIPBase *pb, struct HWFrame *frame)
    struct HWBase *hwb = &pb->pb_HWBase;
 
    len = enc624j6l_RecvFrame( BOARD, ptr+sizeof(USHORT), 1518 );
-
    frame->hwf_Size = len;
 
    if( len > 0 )
    	rc = TRUE;
-   else
-    frame->hwf_Size = 0;
 #else
    BOOL rc = FALSE;
    u08 *ptr = (u08*)frame;

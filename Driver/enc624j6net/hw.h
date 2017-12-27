@@ -50,7 +50,7 @@ GLOBAL REGARGS BOOL hw_send_frame(struct PLIPBase *pb, struct HWFrame *frame);
 GLOBAL REGARGS BOOL hw_send_magic_pkt(struct PLIPBase *pb, USHORT magic);
 
 GLOBAL REGARGS ULONG hw_recv_sigmask(struct PLIPBase *pb);
-GLOBAL REGARGS BOOL hw_recv_pending(struct PLIPBase *pb);
+GLOBAL REGARGS LONG  hw_recv_pending(struct PLIPBase *pb);
 GLOBAL REGARGS BOOL hw_recv_frame(struct PLIPBase *pb, struct HWFrame *frame);
 
 GLOBAL REGARGS void hw_config_init(struct PLIPBase *pb);

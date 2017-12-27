@@ -29,12 +29,12 @@
 DEBUG	EQU	1
 ;
 
-; FIXME: needs verification
-; also: either swap buffer or registers/pointers etc.
+;------------------ options, some depend on hardware (CPLD) configuration -------------------------
 _OPT_BUFFER_SWAP	EQU	1	;perform byte swap on buffer ops (1) or assume native endian (0)
 _OPT_REG_SWAP		EQU	0	;perform byte swap on register ops (1) or assume native endian (0)
 _OPT_ADR_QUIRK		EQU	1	;address lines 12/13 are swapped (1) or linear addressing (0)
 _OPT_FLOWCONTROL	EQU	1	;perform flow control on RX (1) or not (0)
+_OPT_RECV		EQU	1	;faster recv (1) or generic (0)
 
 ;
 ; options for buffer memory configuration, please reserve some space for private variables
@@ -1662,6 +1662,34 @@ _enc624j6l_RecvFrame:		;
 	;a1:   dest pointer
 	move.l	a1,a3
 
+	ifne	_OPT_RECV
+		move	d7,d1			;start
+		move	#$7000,d2		;mask
+		add	d0,d1			;start+bytes
+		and	d2,d1			;keep only multiples of $1000
+		and	d7,d2			;keep only multiples of $1000
+		cmp	d1,d2
+		bne.s	.nooptrecv		;sadly, we cannot use faster routine atm
+
+	ifne	_OPT_ADR_QUIRK
+		eor.w	#$6000,d7
+	endc
+		lea	(a0,d7.w),a2		;read pointer
+		move	d0,d1			;byte count
+		lsr	#1,d1			;converted to word count
+		bcs.s	.opt_read		;read 1 byte more if impair byte count
+		subq	#1,d1			;words - 1
+.opt_read:
+		move	(a2)+,d2		;get current word
+		ifne	_OPT_BUFFER_SWAP
+		 rol.w	#8,d2			;swap buffer to Big Endian
+		endc
+		move	d2,(a1)+
+		dbf	d1,.opt_read
+		bra.s	.end_read
+.nooptrecv:
+	endc	;_OPT_RECV
+
 	;generic loop: check for position overflows with each word
 	move	d0,d1			;byte count
 	lsr	#1,d1			;converted to word count
@@ -1678,6 +1706,7 @@ _enc624j6l_RecvFrame:		;
 	move	d2,(a1)+
 	dbf	d1,.generic_read
 
+.end_read:
 	;frame copied, now advance HW pointer
 	READREG PNextPacket,a0,d1	;write pointer for next packet
 	cmp	#RXSTART_INIT,d1

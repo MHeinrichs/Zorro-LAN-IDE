@@ -102,8 +102,8 @@ struct PLIPBase
    UBYTE                       pb_Unit;         /* unit of 1st OpenDevice() */
    UBYTE                       pb_pad1; /* make the following long alligned */
    BPTR                        pb_SegList;               /* pointer to code */
-   struct Library          *   pb_VampireBase;
-   struct Library		   *   pb_ExpansionBase;
+   struct Library          *   pb_VampireBase;	     /* used for sdnet only */
+   struct Library	   *   pb_ExpansionBase;
    struct Library          *   pb_UtilityBase;
    struct Library          *   pb_DOSBase;
    struct Library          *   pb_SysBase;

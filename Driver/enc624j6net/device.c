@@ -255,7 +255,7 @@ PRIVATE APTR pb_AllocExpansion( ULONG portid, BASEPTR )
    struct BufferManagement *bm;
    LONG rv = 0; /* get rid of warning with opt build */
 
-   d(("entered\n"));
+   d(("entered for unit %ld\n",unit));
 
    /* Make sure our open remains single-threaded. */
    ObtainSemaphore(&pb->pb_Lock);
@@ -304,6 +304,7 @@ PRIVATE APTR pb_AllocExpansion( ULONG portid, BASEPTR )
 		if( !cfg )
 			break;
 		pb->pb_HWBase.hwb_boards[i] = cfg->cd_BoardAddr;
+	   d(("board at = %ld\n",(ULONG)pb->pb_HWBase.hwb_boards[i] ));
 	}
 	pb->pb_HWBase.hwb_boards[i] = (0);
    }
@@ -383,10 +384,10 @@ PRIVATE APTR pb_AllocExpansion( ULONG portid, BASEPTR )
 	    }
 #else /* PROTO_SDNET */
             unsigned char addr[6] = { 0x1a,0x11,0xaf,0xa0,0x47,0x11 };
-#endif /* PROTO_SDNET */
-#endif /* PROTO_ENC624NET */
             memcpy(pb->pb_CfgAddr, addr, HW_ADDRFIELDSIZE);
             memcpy(pb->pb_DefAddr, addr, HW_ADDRFIELDSIZE);
+#endif /* PROTO_SDNET */
+#endif /* PROTO_ENC624NET */
          }
 
          /*
@@ -438,7 +439,7 @@ PRIVATE APTR pb_AllocExpansion( ULONG portid, BASEPTR )
                {
                   d(("starting server"));
                   if (pb->pb_Server = CreateNewProcTags(NP_Entry, ServerTask, NP_Name,
-                                                                  NP_Priority, 9, SERVERTASKNAME, TAG_DONE))
+                                                                  NP_Priority, 59, SERVERTASKNAME, TAG_DONE))
                   {
                      ss.ss_Error = 1;
                      ss.ss_PLIPBase = pb;
@@ -670,12 +671,15 @@ PRIVATE APTR pb_AllocExpansion( ULONG portid, BASEPTR )
    switch(ios2->ios2_Req.io_Command)
    {
       case CMD_READ:
+/*
          if (pb->pb_Flags & PLIPF_OFFLINE)
          {
             ios2->ios2_Req.io_Error = S2ERR_OUTOFSERVICE;
             ios2->ios2_WireError = S2WERR_UNIT_OFFLINE;
          }
-         else if (ios2->ios2_BufferManagement == NULL)
+         else 
+*/        
+         if (ios2->ios2_BufferManagement == NULL)
          {
             ios2->ios2_Req.io_Error = S2ERR_BAD_ARGUMENT;
             ios2->ios2_WireError = S2WERR_BUFF_ERROR;
@@ -684,7 +688,7 @@ PRIVATE APTR pb_AllocExpansion( ULONG portid, BASEPTR )
          {
             ios2->ios2_Req.io_Flags &= ~SANA2IOF_QUICK;
             ObtainSemaphore(&pb->pb_ReadListSem);
-            AddTail((struct List*)&pb->pb_ReadList, (struct Node*)ios2);
+            AddHead((struct List*)&pb->pb_ReadList, (struct Node*)ios2);
             ReleaseSemaphore(&pb->pb_ReadListSem);
             ios2 = NULL;
          }
@@ -806,7 +810,7 @@ PRIVATE APTR pb_AllocExpansion( ULONG portid, BASEPTR )
       case S2_GETTYPESTATS:
          if (!gettrackrec(pb, ios2->ios2_PacketType, (struct Sana2PacketTypeStats *)ios2->ios2_StatData))
          {
-            ios2->ios2_Req.io_Error = S2ERR_BAD_STATE;
+            ios2->ios2_Req.io_Error = S2ERR_NO_ERROR; /*S2ERR_BAD_STATE;*/
             ios2->ios2_WireError = S2WERR_NOT_TRACKED;
          }
       break;
