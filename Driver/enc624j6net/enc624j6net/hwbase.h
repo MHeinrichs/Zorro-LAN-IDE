@@ -39,9 +39,11 @@ struct HWBase
 
    /* config options */
    ULONG                       hwb_timervalue;    /* timer speed */
-   ULONG                       hwb_fullduplex;    /* full duplex */
+   UBYTE                       hwb_fullduplex;    /* full duplex */
+   UBYTE                       hwb_flowcontrol;   /* flow control enable (1/0) */
+   UBYTE                       hwb_multicast;	  /* multicast enable */
+   UBYTE                       hwb_free_unused1;
    ULONG                       hwb_spispeed;      /* SPI speed   */
-   ULONG                       hwb_multicast;     /* multicast enable */
 };
 
 #define HWB_RECV_PENDING           0
@@ -57,8 +59,8 @@ struct HWBase
 
 /* ----- config ----- */
 
-#define CONFIGFILE "ENV:SANA2/sdnet.config"
-#define TEMPLATE "TIMER/K/N,FULLDUPLEX/S,SPISPEED/K/N,MULTICAST/S"
+#define CONFIGFILE "ENV:SANA2/enc624j6net.config"
+#define TEMPLATE "TIMER/K/N,FULLDUPLEX/S,SPISPEED/K/N,MULTICAST/S,FLOWCONTROL/S"
 
 /* structure to be filled by ReadArgs template */ 
 struct TemplateConfig
@@ -68,6 +70,7 @@ struct TemplateConfig
    ULONG fullduplex;
    ULONG *spispeed;
    ULONG multicast;
+   ULONG flowcontrol;
 };
 
 #endif

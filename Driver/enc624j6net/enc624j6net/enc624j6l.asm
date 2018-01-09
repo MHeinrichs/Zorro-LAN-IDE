@@ -30,10 +30,10 @@ DEBUG	EQU	1
 ;
 
 ;------------------ options, some depend on hardware (CPLD) configuration -------------------------
-_OPT_BUFFER_SWAP	EQU	1	;perform byte swap on buffer ops (1) or assume native endian (0)
+_OPT_BUFFER_SWAP	EQU	0	;perform byte swap on buffer ops (1) or assume native endian (0)
 _OPT_REG_SWAP		EQU	0	;perform byte swap on register ops (1) or assume native endian (0)
 _OPT_ADR_QUIRK		EQU	1	;address lines 12/13 are swapped (1) or linear addressing (0)
-_OPT_FLOWCONTROL	EQU	1	;perform flow control on RX (1) or not (0)
+_OPT_FLOWCONTROL	EQU	0	;perform flow control on RX (1) or not (0)
 _OPT_RECV		EQU	1	;faster recv (1) or generic (0)
 
 ;
@@ -64,6 +64,15 @@ Punused		EQU	PSTART_INIT+12	;
 PSwapTX		EQU	$600		;swap between two TX buffers (one active, one activated after last TX done)
 ;
 ;
+
+;------------- driver init flags -----------------------------------
+PIO_INIT_FULL_DUPLEX    EQU	1
+PIO_INIT_LOOP_BACK      EQU	2
+PIO_INIT_BROAD_CAST     EQU	4
+PIO_INIT_FLOW_CONTROL   EQU	8
+PIO_INIT_MULTI_CAST     EQU	16
+PIO_INIT_PROMISC        EQU	32
+
 
 
 	ifne	DEBUG
@@ -1179,6 +1188,7 @@ _enc624j6l_SetMAC:			;set user defined MAC address
 ; testing with low turnaround time.
 ;
 ; In: A0 - Board base address
+;     D1 - flags
 ;
 ; Out:
 ;  D0 <= 0 - failure
@@ -1205,9 +1215,9 @@ _enc624j6l_Init:
 
 	;33.333Mhz clock out frequency (see defines above)
 	move.w	#CLOCK_DEF_CLR,d0	;clr mask
-	move.w	#CLOCK_DEF_SET,d1	;set mask
 	CLRREG	ECON2,a0,d0
-	SETREG	ECON2,a0,d1
+	move.w	#CLOCK_DEF_SET,d0	;set mask
+	SETREG	ECON2,a0,d0
 
 	; disable crypto engine and all interrupts
 	move	#EIR_CRYPTEN|EIR_MODEXIF|EIR_HASHIF|EIR_AESIF|EIR_LINKIF|EIR_PRDYIF|EIR_PKTIF|EIR_DMAIF|EIR_TXIF|EIR_TXABTIF|EIR_RXABTIF|EIR_PCFULIF,d0
@@ -1225,17 +1235,24 @@ _enc624j6l_Init:
 	move	#RXSTOP_INIT&$fffe,d0
 	WRITEREG ERXTAIL,a0,d0 ;tail pointer in buffer = rx-2, wraparound
 
-	ifne	_OPT_FLOWCONTROL
+;	ifne	_OPT_FLOWCONTROL
+	moveq	#PIO_INIT_FLOW_CONTROL,d0
+	and		d1,d0
+	beq.s	.init_noflow
+
 	 move	#(128<<8)|(32),d0	;128*96=12288 high water mark, 32*96=3072 low water mark
 	 WRITEREG ERXWM,a0,d0
 	 moveq	#MACON1_RXPAUS,d0
 	 SETREG	MACON1,a0,d0
 	 move	#ECON2_AUTOFC,d0
 	 SETREG	ECON2,a0,d0
-	else
+	 bra.s	.init_flowdone
+;	else
+.init_noflow:
 	 move	#ECON2_AUTOFC,d0
 	 CLRREG	ECON2,a0,d0		;disable automatic flow control
-	endc
+.init_flowdone:
+;	endc
 
 
 	;--------------- TX configuration -----------------------
@@ -1595,7 +1612,12 @@ _enc624j6l_RecvFrame:		;
 	READREG PNextPacket,a0,d7	;get user read pointer from private space
 	;lea	(a0,d7.w),a2		;read ptr for next packet address
 	;READREG 0,a2,d0		;next packet pointer
+
 	READSRAM a0,d7,d0		;move (a0,d7.w),d0
+	ifeq	_OPT_BUFFER_SWAP
+	 rol.w	#8,d0			;swap pointer to Big Endian
+	endc
+
 	;verify next packet pointer, re-initialize recv if this is invalid
 	cmp	#RXSTOP_INIT,d0		;bad pointer (<0 or >end of memory)
 	bhi.w	.recv_err
@@ -1629,6 +1651,9 @@ _enc624j6l_RecvFrame:		;
 	;lea	(a0,d7.w),a2		;read ptr for first control word
 	;READREG 0,a2,d0		;last control word = length (byte count)
 	READSRAM a0,d7,d0		;move (a0,d7.w),d0
+	ifeq	_OPT_BUFFER_SWAP
+	 rol.w	#8,d0			;swap pointer to Big Endian
+	endc
 
 	and.w	#$f800,d0		;verify (should be all zeros in upper 9 bits)
 	bne	.recv_err		;receive buffer is wrong -> re-initialize
@@ -1638,6 +1663,9 @@ _enc624j6l_RecvFrame:		;
 	;lea	(a0,d7.w),a2		;new read pointer for length
 	;READREG 0,a2,d0		;last control word = length (byte count)
 	READSRAM a0,d7,d0		;move (a0,d7.w),d0
+	ifeq	_OPT_BUFFER_SWAP
+	 rol.w	#8,d0			;swap pointer to Big Endian
+	endc
 
 	ifne	1
 	;D1 is the distance to the next frame = stored length + recv vevtor
@@ -1676,15 +1704,20 @@ _enc624j6l_RecvFrame:		;
 	endc
 		lea	(a0,d7.w),a2		;read pointer
 		move	d0,d1			;byte count
-		lsr	#1,d1			;converted to word count
+		lsr	#2,d1			;converted to dword count
 		bcs.s	.opt_read		;read 1 byte more if impair byte count
 		subq	#1,d1			;words - 1
 .opt_read:
-		move	(a2)+,d2		;get current word
-		ifne	_OPT_BUFFER_SWAP
+	ifne	_OPT_BUFFER_SWAP
+		move.w	(a2)+,d2		;get current word
 		 rol.w	#8,d2			;swap buffer to Big Endian
-		endc
-		move	d2,(a1)+
+		move.w	d2,(a1)+
+		move.w	(a2)+,d2		;get current word
+		 rol.w	#8,d2			;swap buffer to Big Endian
+		move.w	d2,(a1)+
+	else
+		move.l	(a2)+,(a1)+
+	endc
 		dbf	d1,.opt_read
 		bra.s	.end_read
 .nooptrecv:

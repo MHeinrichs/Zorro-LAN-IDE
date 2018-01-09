@@ -79,6 +79,15 @@
 #include "enc624j6l.h"	/* for MAC retrieval */
 #endif
 
+#ifdef DIRECT_WRITE
+typedef enum { AW_OK, AW_BUFFER_ERROR, AW_ERROR } AW_RESULT;
+PUBLIC REGARGS VOID DoEvent(BASEPTR, long event);
+PUBLIC REGARGS AW_RESULT write_frame(BASEPTR, struct IOSana2Req *ios2);
+#ifndef __HW_H
+#include "hw.h"
+#endif
+#endif
+
 #define INVALID_SDNET_UNIT 0x33 /* used by both sdnet and encnet */
 
 /*E*/
@@ -723,9 +732,55 @@ PRIVATE APTR pb_AllocExpansion( ULONG portid, BASEPTR )
             ios2->ios2_Req.io_Flags &= ~SANA2IOF_QUICK;
             ios2->ios2_Req.io_Error = 0;
             ObtainSemaphore(&pb->pb_WriteListSem);
+#ifdef DIRECT_WRITE
+			{
+			   AW_RESULT code;
+			   struct IOSana2Req *currentwrite = (struct IOSana2Req*)ios2;
+			   
+			   code = write_frame(pb, ios2);
+                  if (code == AW_BUFFER_ERROR)  /* BufferManagement callback error */
+                  {
+                     d(("buffer error\n"));
+                     DoEvent(pb, S2EVENT_ERROR | S2EVENT_BUFF | S2EVENT_SOFTWARE);
+                     pb->pb_SpecialStats[S2SS_TXERRORS].Count++;
+                     d(("pb->pb_SpecialStats[S2SS_TXERRORS].Count = %ld\n",pb->pb_SpecialStats[S2SS_TXERRORS].Count));
+                     currentwrite->ios2_Req.io_Error = S2ERR_SOFTWARE;
+                     currentwrite->ios2_WireError = S2WERR_BUFF_ERROR;
+                     Remove((struct Node*)currentwrite);
+                     DevTermIO(pb, currentwrite);
+                  }
+                  else if (code == AW_ERROR)
+                  {
+                     /*
+                     ** this is a real line error, upper levels (e.g. Internet TCP) have
+                     ** to care for reliability!
+                     */
+                     d(("error while transmitting packet\n"));
+                     DoEvent(pb, S2EVENT_ERROR | S2EVENT_TX | S2EVENT_HARDWARE);
+                     pb->pb_SpecialStats[S2SS_TXERRORS].Count++;
+                     d(("pb->pb_SpecialStats[S2SS_TXERRORS].Count = %ld\n",pb->pb_SpecialStats[S2SS_TXERRORS].Count));
+                     currentwrite->ios2_Req.io_Error = S2ERR_TX_FAILURE;
+                     currentwrite->ios2_WireError = S2WERR_GENERIC_ERROR;
+                     Remove((struct Node*)currentwrite);
+                     DevTermIO(pb, currentwrite);
+                  }
+                  else /*if (code == AW_OK)*/                             /* well done! */
+                  {
+                     d(("packet transmitted successfully\n"));
+                     pb->pb_DevStats.PacketsSent++;
+                     dotracktype(pb, (ULONG) pb->pb_Frame->hwf_Type, 1, 0, currentwrite->ios2_DataLength, 0, 0);
+                     currentwrite->ios2_Req.io_Error = S2ERR_NO_ERROR;
+                     currentwrite->ios2_WireError = S2WERR_GENERIC_ERROR;
+                     Remove((struct Node*)currentwrite);
+                     DevTermIO(pb, currentwrite);
+                  }
+			}
+            ReleaseSemaphore(&pb->pb_WriteListSem);
+#else
             AddTail((struct List*)&pb->pb_WriteList, (struct Node*)ios2);
             ReleaseSemaphore(&pb->pb_WriteListSem);
             Signal((struct Task*)pb->pb_Server, SIGBREAKF_CTRL_F);
+#endif
             ios2 = NULL;
          }
       break;

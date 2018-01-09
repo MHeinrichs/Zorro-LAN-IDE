@@ -90,8 +90,8 @@
 #define  BOARD hwb->hwb_boards[0]
 
 /* interrupt (choice here is INTB_EXTER or INTB_PORTS, depending on solder blob */
-#define  HW_INTSOURCE INTB_EXTER
-/*#define  HW_INTSOURCE INTB_PORTS*/
+/*#define  HW_INTSOURCE INTB_EXTER */ /* Int 6 */
+#define  HW_INTSOURCE INTB_PORTS /* Int 2 */
 
 #endif
 
@@ -193,6 +193,7 @@ GLOBAL REGARGS void hw_config_init(struct PLIPBase *pb)
   hwb->hwb_fullduplex = 0;
   hwb->hwb_spispeed   = 1; /* optimistic default */
   hwb->hwb_multicast  = 0;
+  hwb->hwb_flowcontrol= 0; /* no flow control by default */
 }
 
 
@@ -215,6 +216,10 @@ GLOBAL REGARGS void hw_config_update(struct PLIPBase *pb, struct TemplateConfig 
   if( args->multicast )
   {
   	hwb->hwb_multicast = 1;
+  }
+  if( args->flowcontrol )
+  {
+  	hwb->hwb_flowcontrol = 1;
   }
 }
 
@@ -354,13 +359,14 @@ GLOBAL REGARGS BOOL hw_attach(struct PLIPBase *pb)
    
    flags = PIO_INIT_BROAD_CAST;
    if( hwb->hwb_multicast )
-   	flags |= PIO_INIT_MULTI_CAST;
-  
+	   flags |= PIO_INIT_MULTI_CAST;
    if( hwb->hwb_fullduplex )
-       flags |= PIO_INIT_FULL_DUPLEX;
+	   flags |= PIO_INIT_FULL_DUPLEX;
+   if( hwb->hwb_flowcontrol )
+	   flags |= PIO_INIT_FLOW_CONTROL;
 #ifdef PROTO_ENC624NET
    if( enc624j6l_Init( BOARD, (unsigned long)flags ) <= 0 )
-   	rc = FALSE; /* ERROR IN CASE OF DEVICE NOT FOUND */
+	   rc = FALSE; /* ERROR IN CASE OF DEVICE NOT FOUND */
 #else
    if( enc28j60_init( pb->pb_CfgAddr, flags ) != PIO_OK )
    	rc = FALSE;	/* ERROR IN CASE OF DEVICE NOT FOUND */

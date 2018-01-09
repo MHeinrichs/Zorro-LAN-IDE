@@ -15,7 +15,10 @@ DEVICE_REVISION = 1
 # see below for EXTRAOBJ, disable for plipbox, enable for sdnet/enc624j6net
 HWSRCDIR = enc624j6net
 DEVICE_NAME = enc624j6net
-DEFS = DEFINE PROTO_ENC624NET=1
+DEFS = DEFINE PROTO_ENC624NET=1 
+
+# quick hack/test to write directly - didn't work out for me
+#DEFINE DIRECT_WRITE=1
 
 #####################################################################
 #

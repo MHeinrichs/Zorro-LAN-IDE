@@ -65,12 +65,12 @@ PUBLIC VOID SAVEDS ServerTask(void);
 /*E*/
 /*F*/ /* private */
 PRIVATE struct PLIPBase *startup(void);
-PRIVATE REGARGS VOID DoEvent(BASEPTR, long event);
+PUBLIC REGARGS VOID DoEvent(BASEPTR, long event);
 PRIVATE VOID readargs(BASEPTR);
 PRIVATE BOOL init(BASEPTR);
 PRIVATE REGARGS BOOL goonline(BASEPTR);
 PRIVATE REGARGS VOID gooffline(BASEPTR);
-PRIVATE REGARGS AW_RESULT write_frame(BASEPTR, struct IOSana2Req *ios2);
+PUBLIC REGARGS AW_RESULT write_frame(BASEPTR, struct IOSana2Req *ios2);
 PRIVATE REGARGS VOID dowritereqs(BASEPTR);
 PRIVATE REGARGS VOID doreadreqs(BASEPTR);
 PRIVATE REGARGS VOID dos2reqs(BASEPTR);
@@ -161,7 +161,7 @@ PRIVATE REGARGS VOID dos2reqs(BASEPTR);
    /*
    ** SANA-2 Event management
    */
-/*F*/ PRIVATE REGARGS VOID DoEvent(BASEPTR, long event)
+/*F*/ PUBLIC REGARGS VOID DoEvent(BASEPTR, long event)
 {
    struct IOSana2Req *ior, *ior2;
 
@@ -187,7 +187,7 @@ PRIVATE REGARGS VOID dos2reqs(BASEPTR);
    /*
    ** writing packets
    */
-/*F*/ PRIVATE REGARGS AW_RESULT write_frame(BASEPTR, struct IOSana2Req *ios2)
+/*F*/ PUBLIC REGARGS AW_RESULT write_frame(BASEPTR, struct IOSana2Req *ios2)
 {
    AW_RESULT rc;
    struct HWFrame *frame = pb->pb_Frame;
