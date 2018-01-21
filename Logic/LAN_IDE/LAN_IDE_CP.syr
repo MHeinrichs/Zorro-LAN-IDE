@@ -3,14 +3,14 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.49 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.19 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.49 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.19 secs
  
 --> Reading design: LAN_IDE_CP.prj
 
@@ -76,20 +76,19 @@ wysiwyg                            : NO
 *                          HDL Compilation                              *
 =========================================================================
 Compiling vhdl file "C:/Users/Matze/Amiga/Hardwarehacks/Zorro-LAN-IDE/Logic/LAN_IDE/LAN_IDE_CP.vhd" in Library work.
-Entity <lan_ide_cp> compiled.
-Entity <lan_ide_cp> (Architecture <behavioral>) compiled.
+Entity <LAN_IDE_CP> compiled.
+Entity <LAN_IDE_CP> (Architecture <Behavioral>) compiled.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
 =========================================================================
-Analyzing hierarchy for entity <LAN_IDE_CP> in library <work> (architecture <behavioral>).
+Analyzing hierarchy for entity <LAN_IDE_CP> in library <work> (architecture <Behavioral>).
 
 
 =========================================================================
 *                            HDL Analysis                               *
 =========================================================================
-Analyzing Entity <LAN_IDE_CP> in library <work> (Architecture <behavioral>).
-INFO:Xst:2679 - Register <lan_adr_sw> in unit <LAN_IDE_CP> has a constant value of 0 during circuit operation. The register is replaced by logic.
+Analyzing Entity <LAN_IDE_CP> in library <work> (Architecture <Behavioral>).
 Entity <LAN_IDE_CP> analyzed. Unit <LAN_IDE_CP> generated.
 
 
@@ -157,6 +156,8 @@ WARNING:Xst - You have specified state <nop> as a recovery-only state for the sa
     Found 1-bit register for signal <IDE_R_S>.
     Found 1-bit register for signal <IDE_W_S>.
     Found 1-bit register for signal <lan_adr>.
+    Found 1-bit register for signal <lan_adr_sw>.
+    Found 2-bit comparator less for signal <lan_adr_sw$cmp_lt0000> created at line 213.
     Found 8-bit register for signal <LAN_BASEADR>.
     Found 1-bit register for signal <LAN_CS_RST>.
     Found 1-bit register for signal <LAN_INT_ENABLE>.
@@ -170,9 +171,9 @@ WARNING:Xst - You have specified state <nop> as a recovery-only state for the sa
     Found 3-bit register for signal <SHUT_UP>.
     Summary:
 	inferred   1 Finite State Machine(s).
-	inferred  16 D-type flip-flop(s).
+	inferred  17 D-type flip-flop(s).
 	inferred   1 Adder/Subtractor(s).
-	inferred   5 Comparator(s).
+	inferred   6 Comparator(s).
 	inferred   1 Xor(s).
 	inferred  42 Tristate(s).
 Unit <LAN_IDE_CP> synthesized.
@@ -184,13 +185,13 @@ HDL Synthesis Report
 Macro Statistics
 # Adders/Subtractors                                   : 1
  2-bit adder                                           : 1
-# Registers                                            : 29
- 1-bit register                                        : 23
+# Registers                                            : 30
+ 1-bit register                                        : 24
  2-bit register                                        : 2
  4-bit register                                        : 1
  8-bit register                                        : 3
-# Comparators                                          : 5
- 2-bit comparator less                                 : 1
+# Comparators                                          : 6
+ 2-bit comparator less                                 : 2
  3-bit comparator less                                 : 1
  8-bit comparator equal                                : 3
 # Tristates                                            : 12
@@ -227,8 +228,8 @@ Macro Statistics
 # FSMs                                                 : 1
 # Adders/Subtractors                                   : 1
  2-bit adder                                           : 1
-# Registers                                            : 16
- Flip-Flops                                            : 16
+# Registers                                            : 17
+ Flip-Flops                                            : 17
 # Comparators                                          : 3
  8-bit comparator equal                                : 3
 
@@ -273,19 +274,19 @@ Design Statistics
 # IOs                              : 116
 
 Cell Usage :
-# BELS                             : 601
-#      AND2                        : 190
+# BELS                             : 651
+#      AND2                        : 222
 #      AND3                        : 15
 #      AND4                        : 2
 #      GND                         : 1
-#      INV                         : 208
-#      OR2                         : 139
-#      OR3                         : 19
+#      INV                         : 213
+#      OR2                         : 153
+#      OR3                         : 18
 #      OR4                         : 1
 #      XOR2                        : 26
-# FlipFlops/Latches                : 58
+# FlipFlops/Latches                : 59
 #      FD                          : 11
-#      FDC                         : 4
+#      FDC                         : 5
 #      FDCE                        : 6
 #      FDP                         : 4
 #      FDPE                        : 33
@@ -297,14 +298,14 @@ Cell Usage :
 =========================================================================
 
 
-Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 8.51 secs
+Total REAL time to Xst completion: 9.00 secs
+Total CPU time to Xst completion: 8.36 secs
  
 --> 
 
-Total memory usage is 309948 kilobytes
+Total memory usage is 340392 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    8 (   0 filtered)
-Number of infos    :    2 (   0 filtered)
+Number of infos    :    1 (   0 filtered)
 

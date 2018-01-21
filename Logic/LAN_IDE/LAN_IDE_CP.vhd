@@ -210,9 +210,9 @@ begin
 			if(A(23 downto 16) = x"E8" and AUTO_CONFIG_DONE < "11" and CFIN='0')then
 				autoconfig 	<= '1';
 			elsif(A(23 downto 16) = LAN_BASEADR and SHUT_UP(0)='0' )then	
-				--if(A(14 downto 13)="11")then
-				--	lan_adr_sw  <= '1';
-				--end if;
+				if(A(14 downto 13)<"11")then
+					lan_adr_sw  <= '1';
+				end if;
 				lan_adr 		<= '1';
 			elsif(A(23 downto 16) =  CP_BASEADR and SHUT_UP(1)='0')then					
 				cp  			<= '1';
