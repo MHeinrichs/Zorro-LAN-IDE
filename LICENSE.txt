@@ -1,3 +1,1 @@
-All sources published under Creative Commons License 3.0
-
-CC-BY-SA
+All sources published under GNU GENERAL PUBLIC LICENSE V2.0
