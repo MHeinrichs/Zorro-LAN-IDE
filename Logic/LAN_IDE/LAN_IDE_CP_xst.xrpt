@@ -5,7 +5,7 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="Xst" timeStamp="Sun Jan 21 23:53:40 2018">
+  <application stringID="Xst" timeStamp="Wed Jan 24 21:02:35 2018">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
@@ -119,13 +119,13 @@
         <item stringID="XST_IOS" value="116"/>
       </section>
       <section stringID="XST_CELL_USAGE">
-        <item dataType="int" stringID="XST_BELS" value="651">
-          <item dataType="int" stringID="XST_AND2" value="222"/>
-          <item dataType="int" stringID="XST_AND3" value="15"/>
+        <item dataType="int" stringID="XST_BELS" value="658">
+          <item dataType="int" stringID="XST_AND2" value="224"/>
+          <item dataType="int" stringID="XST_AND3" value="16"/>
           <item dataType="int" stringID="XST_AND4" value="2"/>
           <item dataType="int" stringID="XST_GND" value="1"/>
           <item dataType="int" stringID="XST_INV" value="213"/>
-          <item dataType="int" stringID="XST_OR2" value="153"/>
+          <item dataType="int" stringID="XST_OR2" value="158"/>
           <item dataType="int" stringID="XST_XOR2" value="26"/>
         </item>
         <item dataType="int" stringID="XST_FLIPFLOPSLATCHES" value="59">

@@ -388,15 +388,15 @@ begin
 							if(AUTO_CONFIG_DONE = 0)then
 								LAN_BASEADR(7 downto 0)	<= D(15 downto 8); --Base adress
 								SHUT_UP(0)					<='0'; --enable board
-								AUTO_CONFIG_DONE_CYCLE	<= AUTO_CONFIG_DONE_CYCLE+1; --done here
+								AUTO_CONFIG_DONE_CYCLE	<= "01"; --done here
 							elsif(AUTO_CONFIG_DONE = 1)then									
 								CP_BASEADR(7 downto 0)	<= D(15 downto 8); --Base adress
 								SHUT_UP(1)					<= '0'; --enable board
-								AUTO_CONFIG_DONE_CYCLE	<= AUTO_CONFIG_DONE_CYCLE+1; --done here
+								AUTO_CONFIG_DONE_CYCLE	<= '1' & AUTOBOOT_OFF; --done here, if Autoboot = 1 skip ide part!
 							elsif(AUTO_CONFIG_DONE = 2)then
 								IDE_BASEADR(7 downto 0)	<= D(15 downto 8); --Base adress
 								SHUT_UP(2) 					<= '0'; --enable board
-								AUTO_CONFIG_DONE_CYCLE	<= AUTO_CONFIG_DONE_CYCLE+1; --done here
+								AUTO_CONFIG_DONE_CYCLE	<= "11"; --done here
 							end if;
 						end if;
 					when "100110"	=>

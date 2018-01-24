@@ -3,14 +3,14 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.19 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.13 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.19 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.13 secs
  
 --> Reading design: LAN_IDE_CP.prj
 
@@ -76,19 +76,19 @@ wysiwyg                            : NO
 *                          HDL Compilation                              *
 =========================================================================
 Compiling vhdl file "C:/Users/Matze/Amiga/Hardwarehacks/Zorro-LAN-IDE/Logic/LAN_IDE/LAN_IDE_CP.vhd" in Library work.
-Entity <LAN_IDE_CP> compiled.
-Entity <LAN_IDE_CP> (Architecture <Behavioral>) compiled.
+Entity <lan_ide_cp> compiled.
+Entity <lan_ide_cp> (Architecture <behavioral>) compiled.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
 =========================================================================
-Analyzing hierarchy for entity <LAN_IDE_CP> in library <work> (architecture <Behavioral>).
+Analyzing hierarchy for entity <LAN_IDE_CP> in library <work> (architecture <behavioral>).
 
 
 =========================================================================
 *                            HDL Analysis                               *
 =========================================================================
-Analyzing Entity <LAN_IDE_CP> in library <work> (Architecture <Behavioral>).
+Analyzing Entity <LAN_IDE_CP> in library <work> (Architecture <behavioral>).
 Entity <LAN_IDE_CP> analyzed. Unit <LAN_IDE_CP> generated.
 
 
@@ -136,7 +136,7 @@ WARNING:Xst - You have specified state <nop> as a recovery-only state for the sa
     Found 1-bit xor2 for signal <AMIGA_CLK$xor0000> created at line 143.
     Found 2-bit register for signal <AUTO_CONFIG_DONE>.
     Found 2-bit register for signal <AUTO_CONFIG_DONE_CYCLE>.
-    Found 2-bit adder for signal <AUTO_CONFIG_DONE_CYCLE$share0000> created at line 325.
+    Found 2-bit adder for signal <AUTO_CONFIG_DONE_CYCLE$addsub0000> created at line 405.
     Found 1-bit register for signal <autoconfig>.
     Found 1-bit register for signal <cp>.
     Found 8-bit comparator equal for signal <cp$cmp_eq0001> created at line 211.
@@ -274,14 +274,14 @@ Design Statistics
 # IOs                              : 116
 
 Cell Usage :
-# BELS                             : 651
-#      AND2                        : 222
-#      AND3                        : 15
+# BELS                             : 658
+#      AND2                        : 224
+#      AND3                        : 16
 #      AND4                        : 2
 #      GND                         : 1
 #      INV                         : 213
-#      OR2                         : 153
-#      OR3                         : 18
+#      OR2                         : 158
+#      OR3                         : 17
 #      OR4                         : 1
 #      XOR2                        : 26
 # FlipFlops/Latches                : 59
@@ -298,12 +298,12 @@ Cell Usage :
 =========================================================================
 
 
-Total REAL time to Xst completion: 9.00 secs
-Total CPU time to Xst completion: 8.36 secs
+Total REAL time to Xst completion: 8.00 secs
+Total CPU time to Xst completion: 8.48 secs
  
 --> 
 
-Total memory usage is 340392 kilobytes
+Total memory usage is 340344 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    8 (   0 filtered)
