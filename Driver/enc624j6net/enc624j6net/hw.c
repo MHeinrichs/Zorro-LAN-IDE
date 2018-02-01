@@ -439,6 +439,22 @@ GLOBAL REGARGS LONG hw_recv_pending(struct PLIPBase *pb)
    return (LONG)num;
 }
 
+GLOBAL REGARGS void hw_enable_global_int(struct PLIPBase *pb){
+#ifdef PROTO_ENC624NET
+   struct HWBase *hwb = &pb->pb_HWBase;
+   enc624j6l_EnableGlobalInterrupt( BOARD );
+#endif
+}
+
+GLOBAL REGARGS void hw_disable_global_int(struct PLIPBase *pb){
+#ifdef PROTO_ENC624NET
+   struct HWBase *hwb = &pb->pb_HWBase;
+   enc624j6l_DisableGlobalInterrupt( BOARD );
+#endif
+}
+
+
+
 /* important: don't call this without enc28j60_has_recv() > 0 check */
 GLOBAL REGARGS BOOL hw_recv_frame(struct PLIPBase *pb, struct HWFrame *frame)
 {

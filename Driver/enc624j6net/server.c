@@ -52,6 +52,7 @@ typedef enum { AW_OK, AW_BUFFER_ERROR, AW_ERROR } AW_RESULT;
    ** definitions
    */
 #define SINGLE_RW	1
+#define MAX_READ_PACKAGE	128
 
 
 /*E*/
@@ -350,7 +351,7 @@ PRIVATE REGARGS BOOL read_frame(struct IOSana2Req *req, struct HWFrame *frame)
 /*F*/ PRIVATE REGARGS VOID doreadreqs(BASEPTR)
 {
    LONG datasize;
-   struct IOSana2Req *got;
+   struct IOSana2Req *got, *got2;
    ULONG pkttyp = 0; /* just to avoid warning with opt build, irrelevant otherwise */
    BOOL rv;
    struct HWFrame *frame = pb->pb_Frame;
@@ -387,12 +388,12 @@ PRIVATE REGARGS BOOL read_frame(struct IOSana2Req *req, struct HWFrame *frame)
       d(("packet %08lx, size %ld received\n",pkttyp,datasize));
 
       ObtainSemaphore(&pb->pb_ReadListSem);
-
-         /* traverse the list of read-requests */
-      for(got = (struct IOSana2Req *)pb->pb_ReadList.lh_Head;
-          got->ios2_Req.io_Message.mn_Node.ln_Succ;
-          got = (struct IOSana2Req *)got->ios2_Req.io_Message.mn_Node.ln_Succ )
-      {
+         
+       /* traverse the list of read-requests */
+      for(got = (struct IOSana2Req *) pb->pb_ReadList.lh_Head;
+       got2 = (struct IOSana2Req *) got->ios2_Req.io_Message.mn_Node.ln_Succ;
+       got = got2 )
+       {
             /* check if this one requests for the new packet we got */
          if (got->ios2_PacketType == pkttyp )
          {
@@ -685,7 +686,7 @@ PRIVATE REGARGS BOOL read_frame(struct IOSana2Req *req, struct HWFrame *frame)
          ULONG recv=0, portsigmask, recvsigmask, wmask,specialmask;
          LONG  haverec;
          BOOL running;
-		 struct IOSana2Req *wr;
+         struct IOSana2Req *wr;
 
          /* Ok, we are fine and will tell this mother personally :-) */
          pb->pb_Startup->ss_Error = 0;
@@ -708,33 +709,40 @@ PRIVATE REGARGS BOOL read_frame(struct IOSana2Req *req, struct HWFrame *frame)
 
             /* send packets if any */
             d2(("*+ do_write\n"));
-			wr = (struct IOSana2Req *)pb->pb_WriteList.lh_Head;
+			      wr = (struct IOSana2Req *)pb->pb_WriteList.lh_Head;
             if( wr->ios2_Req.io_Message.mn_Node.ln_Succ )
             {
 	            dowritereqs(pb);
-	        }
+	          }
             d2(("*- do_write\n"));
 
             /* if no recv is pending then wait for incoming signals */
-		    haverec = hw_recv_pending(pb);
-	        if( !haverec )
-    	    {
+		        haverec = hw_recv_pending(pb);
+		        recv = 0;
+	          if( !haverec )
+    	      {
         	       d2(("**> wait\n"));
+        	       hw_enable_global_int(pb);
         	       recv = Wait(wmask);
             	   d2(("**> wait: got 0x%08lx\n", recv));
             	   haverec = hw_recv_pending(pb);
             }
+						hw_disable_global_int(pb);
+						
+						/*allow only a certain number of packets to be serverd per interrupt*/
+						if(haverec>MAX_READ_PACKAGE)
+							haverec = MAX_READ_PACKAGE;
 
             /* accept pending receive and start reading */
-            if( haverec )
+            while( haverec-- )
             {
                d2(("*+ do_read\n"));
                doreadreqs(pb);
                d2(("*- do_read\n"));
             }
 
-		    if( recv & specialmask )
-		    {
+		        if( recv & specialmask )
+		        {
             	/* handle SANA-II send requests */
             	if (recv & portsigmask)
             	{
@@ -748,8 +756,8 @@ PRIVATE REGARGS BOOL read_frame(struct IOSana2Req *req, struct HWFrame *frame)
         	       d(("received break signal\n"));
         	       running = FALSE;
         	    }
-        	}
-         }
+        	  }
+         } /*main loop of server task*/
       }
       else
          d(("init() failed\n"));
@@ -757,9 +765,9 @@ PRIVATE REGARGS BOOL read_frame(struct IOSana2Req *req, struct HWFrame *frame)
       d(("--- server exit main loop ---\n"));
       cleanup(pb);
 
-            /* Exec will enable it's scheduler after we're dead. */
+      /* Exec will enable it's scheduler after we're dead. */
       Forbid();
-            /* signal mother we're done */
+      /* signal mother we're done */
       if (pb->pb_ServerStoppedSigMask)
          Signal(pb->pb_Task, pb->pb_ServerStoppedSigMask);
       pb->pb_Flags |= PLIPF_SERVERSTOPPED;

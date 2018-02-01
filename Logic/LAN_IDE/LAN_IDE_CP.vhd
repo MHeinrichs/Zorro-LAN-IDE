@@ -467,7 +467,7 @@ begin
 	
 	OWN 	<= 'Z';--'0' when AS='0' and (autoconfig  = '1' or ide = '1' or lan_adr = '1' or cp = '1') else 'Z';
 	SLAVE <= '0' when AS='0' and (autoconfig  = '1' or ide = '1' or lan_adr = '1' or cp = '1') else '1';	
-	CFOUT <= '0' when AUTO_CONFIG_DONE=3 else 'Z';
+	CFOUT <= '0' when AUTO_CONFIG_DONE=3 else '1';
 	
 --	OVR <= 'Z';
 	OVR <= '0' when ide='1' and AS='0' else 'Z';

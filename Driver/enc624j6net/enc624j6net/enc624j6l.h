@@ -237,6 +237,25 @@ ASM SAVEDS int enc624j6l_EnableInterrupt( ASMR(a0) void *board        ASMREG(a0)
 */
 ASM SAVEDS int enc624j6l_DisableInterrupt( ASMR(a0) void *board        ASMREG(a0) );
 
+/*
+  Purpose: enable global HW interrupt flag on the LAN-Chip 
+
+  input:   board      - mmapped board base address
+
+
+  notes:    
+*/
+ASM SAVEDS void enc624j6l_EnableGlobalInterrupt( ASMR(a0) void *board        ASMREG(a0) );
+
+
+/*
+  Purpose: disable global HW interrupt flag on the LAN-Chip 
+
+  input:   board      - mmapped board base address
+
+  notes:    
+*/
+ASM SAVEDS void enc624j6l_DisableGlobalInterrupt( ASMR(a0) void *board        ASMREG(a0) );
 
 /*
   Purpose: interrupt service routine ( after EnableInterrupt() )

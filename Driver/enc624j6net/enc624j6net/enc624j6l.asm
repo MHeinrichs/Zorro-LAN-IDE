@@ -113,6 +113,8 @@ ENC_BOARDID		EQU	123	;ZII-IDE-LAN-CP
 	XDEF	_enc624j6l_IntServer
 	XDEF	_enc624j6l_EnableInterrupt
 	XDEF	_enc624j6l_DisableInterrupt
+	XDEF	_enc624j6l_EnableGlobalInterrupt
+	XDEF	_enc624j6l_DisableGlobalInterrupt
 
 	;
 	; System includes
@@ -1413,6 +1415,45 @@ _enc624j6l_EnableInterrupt:
 .err:
 	moveq	#0,d0
 	bra.s	.rts
+
+;---------------------------------------------------------------------------------------
+;
+; Enable Global Hardware Interrupt
+;
+; In: A0 - Board base address
+;
+; Out:
+;  D0 <= 0 - failure
+;        1 - OK
+;
+; Notes: assumes that init() was called before
+; 
+_enc624j6l_EnableGlobalInterrupt:
+	move	#EIE_INTIE,d0
+	SETREG	EIE,a0,d0
+	moveq	#1,d0
+.rts
+	rts
+
+;---------------------------------------------------------------------------------------
+;
+; Disable Global Hardware Interrupt
+;
+; In: A0 - Board base address
+;
+; Out:
+;  D0 <= 0 - failure
+;        1 - OK
+;
+; Notes: assumes that init() was called before
+; 
+_enc624j6l_DisableGlobalInterrupt:
+	move	#EIE_INTIE,d0
+	CLRREG	EIE,a0,d0
+	moveq	#1,d0
+.rts
+	rts
+
 
 
 ;---------------------------------------------------------------------------------------

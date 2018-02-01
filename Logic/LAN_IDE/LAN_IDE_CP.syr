@@ -3,14 +3,14 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.13 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.19 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.13 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.19 secs
  
 --> Reading design: LAN_IDE_CP.prj
 
@@ -127,7 +127,6 @@ WARNING:Xst - You have specified state <nop> as a recovery-only state for the sa
     Found 16-bit tristate buffer for signal <D>.
     Found 16-bit tristate buffer for signal <DQ>.
     Found 1-bit tristate buffer for signal <OWN>.
-    Found 1-bit tristate buffer for signal <CFOUT>.
     Found 1-bit tristate buffer for signal <OVR>.
     Found 1-bit tristate buffer for signal <MTACK>.
     Found 1-bit tristate buffer for signal <DTACK>.
@@ -175,7 +174,7 @@ WARNING:Xst - You have specified state <nop> as a recovery-only state for the sa
 	inferred   1 Adder/Subtractor(s).
 	inferred   6 Comparator(s).
 	inferred   1 Xor(s).
-	inferred  42 Tristate(s).
+	inferred  41 Tristate(s).
 Unit <LAN_IDE_CP> synthesized.
 
 
@@ -194,8 +193,8 @@ Macro Statistics
  2-bit comparator less                                 : 2
  3-bit comparator less                                 : 1
  8-bit comparator equal                                : 3
-# Tristates                                            : 12
- 1-bit tristate buffer                                 : 10
+# Tristates                                            : 11
+ 1-bit tristate buffer                                 : 9
  16-bit tristate buffer                                : 2
 # Xors                                                 : 1
  1-bit xor2                                            : 1
@@ -274,12 +273,12 @@ Design Statistics
 # IOs                              : 116
 
 Cell Usage :
-# BELS                             : 658
+# BELS                             : 659
 #      AND2                        : 224
 #      AND3                        : 16
 #      AND4                        : 2
 #      GND                         : 1
-#      INV                         : 213
+#      INV                         : 214
 #      OR2                         : 158
 #      OR3                         : 17
 #      OR4                         : 1
@@ -293,17 +292,17 @@ Cell Usage :
 # IO Buffers                       : 111
 #      IBUF                        : 37
 #      IOBUFE                      : 32
-#      OBUF                        : 32
-#      OBUFE                       : 10
+#      OBUF                        : 33
+#      OBUFE                       : 9
 =========================================================================
 
 
-Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 8.48 secs
+Total REAL time to Xst completion: 9.00 secs
+Total CPU time to Xst completion: 8.40 secs
  
 --> 
 
-Total memory usage is 340344 kilobytes
+Total memory usage is 340316 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    8 (   0 filtered)

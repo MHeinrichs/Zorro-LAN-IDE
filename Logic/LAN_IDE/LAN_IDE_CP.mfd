@@ -2,7 +2,7 @@ MDF Database:  version 1.0
 MDF_INFO | LAN_IDE_CP | XC95288XL-10-TQ144
 MACROCELL | 11 | 16 | AUTO_CONFIG_DONE<1>
 ATTRIBUTES | 8528736 | 0
-OUTPUTMC | 48 | 0 | 17 | 3 | 17 | 3 | 15 | 2 | 17 | 13 | 16 | 13 | 15 | 13 | 12 | 2 | 16 | 2 | 15 | 10 | 17 | 6 | 8 | 0 | 0 | 6 | 15 | 6 | 6 | 3 | 14 | 2 | 14 | 13 | 11 | 13 | 9 | 10 | 15 | 2 | 12 | 2 | 11 | 10 | 14 | 10 | 12 | 2 | 10 | 13 | 8 | 13 | 7 | 10 | 10 | 2 | 9 | 2 | 8 | 10 | 9 | 5 | 0 | 12 | 15 | 12 | 1 | 5 | 13 | 6 | 1 | 10 | 8 | 10 | 7 | 13 | 10 | 3 | 16 | 12 | 14 | 0 | 2 | 0 | 16 | 3 | 1 | 4 | 4 | 6 | 0 | 13 | 1 | 13 | 2 | 13 | 14
+OUTPUTMC | 48 | 0 | 16 | 3 | 17 | 3 | 15 | 2 | 17 | 13 | 16 | 13 | 15 | 13 | 12 | 2 | 16 | 2 | 15 | 10 | 17 | 13 | 0 | 12 | 14 | 6 | 15 | 6 | 6 | 3 | 14 | 2 | 14 | 13 | 11 | 13 | 9 | 10 | 15 | 2 | 12 | 2 | 11 | 10 | 14 | 10 | 12 | 2 | 10 | 13 | 8 | 13 | 7 | 10 | 10 | 2 | 9 | 2 | 8 | 10 | 9 | 5 | 0 | 12 | 15 | 12 | 1 | 5 | 13 | 6 | 1 | 10 | 8 | 10 | 7 | 13 | 10 | 3 | 16 | 0 | 1 | 0 | 2 | 3 | 1 | 4 | 4 | 6 | 0 | 6 | 8 | 13 | 1 | 13 | 2 | 13 | 14
 INPUTS | 3 | AUTO_CONFIG_DONE_CYCLE<1>  | SHUT_UP<2>/SHUT_UP<2>_CLKF  | AS
 INPUTMC | 2 | 3 | 17 | 11 | 13
 INPUTP | 1 | 152
@@ -15,7 +15,7 @@ GLOBALS | 1 | 4 | RESET
 
 MACROCELL | 11 | 17 | AUTO_CONFIG_DONE<0>
 ATTRIBUTES | 8528736 | 0
-OUTPUTMC | 45 | 3 | 0 | 3 | 17 | 3 | 15 | 2 | 17 | 13 | 16 | 13 | 15 | 13 | 12 | 2 | 16 | 2 | 15 | 10 | 17 | 6 | 0 | 0 | 0 | 6 | 15 | 3 | 14 | 2 | 14 | 13 | 11 | 13 | 9 | 10 | 15 | 2 | 12 | 2 | 11 | 10 | 14 | 10 | 12 | 2 | 10 | 13 | 8 | 13 | 7 | 10 | 10 | 2 | 9 | 2 | 8 | 10 | 9 | 5 | 0 | 12 | 15 | 12 | 1 | 5 | 13 | 6 | 1 | 10 | 8 | 10 | 7 | 13 | 10 | 3 | 16 | 12 | 14 | 0 | 17 | 3 | 1 | 4 | 4 | 13 | 1 | 13 | 2 | 13 | 14
+OUTPUTMC | 44 | 3 | 0 | 3 | 17 | 3 | 15 | 2 | 17 | 13 | 16 | 13 | 15 | 13 | 12 | 2 | 16 | 2 | 15 | 10 | 17 | 6 | 0 | 12 | 14 | 6 | 15 | 3 | 14 | 2 | 14 | 13 | 11 | 13 | 9 | 10 | 15 | 2 | 12 | 2 | 11 | 10 | 14 | 10 | 12 | 2 | 10 | 13 | 8 | 13 | 7 | 10 | 10 | 2 | 9 | 2 | 8 | 10 | 9 | 5 | 0 | 12 | 15 | 12 | 1 | 5 | 13 | 6 | 1 | 10 | 8 | 10 | 7 | 13 | 10 | 3 | 16 | 0 | 1 | 0 | 2 | 3 | 1 | 4 | 4 | 13 | 2 | 13 | 14
 INPUTS | 3 | AUTO_CONFIG_DONE_CYCLE<0>  | SHUT_UP<2>/SHUT_UP<2>_CLKF  | AS
 INPUTMC | 2 | 3 | 0 | 11 | 13
 INPUTP | 1 | 152
@@ -192,8 +192,8 @@ EQ | 17 |
 	!A<5> & !A<1> & A<6> & !A<4> & A<3> & !A<2>;
    CP_BASEADR<2>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
    !CP_BASEADR<2>.AP = RESET;	// GSR
-    CP_BASEADR<2>.EXP  =  !AS & !AUTO_CONFIG_DONE<1> & !UDS & autoconfig & 
-	!A<5> & !A<1> & !A<6> & !A<3> & A<2>
+    CP_BASEADR<2>.EXP  =  !AS & !AUTO_CONFIG_DONE<1> & !AUTO_CONFIG_DONE<0> & 
+	!LDS & autoconfig & !A<6> & !A<4> & !A<3> & A<2>
 GLOBALS | 1 | 1 | RESET
 
 MACROCELL | 13 | 15 | CP_BASEADR<3>
@@ -319,106 +319,106 @@ GLOBALS | 1 | 1 | RESET
 
 MACROCELL | 13 | 0 | Dout1<0>
 ATTRIBUTES | 8524576 | 0
-OUTPUTMC | 2 | 13 | 0 | 4 | 16
-INPUTS | 13 | AS  | Dout1<0>  | autoconfig  | UDS  | LDS  | A<5>  | A<6>  | A<4>  | A<3>  | A<2>  | EXP65_.EXP  | EXP66_.EXP  | SHUT_UP<2>/SHUT_UP<2>_CLKF
-INPUTMC | 5 | 13 | 0 | 12 | 15 | 13 | 1 | 13 | 17 | 11 | 13
-INPUTP | 8 | 152 | 155 | 157 | 91 | 98 | 97 | 99 | 101
+OUTPUTMC | 3 | 13 | 0 | 4 | 16 | 13 | 17
+INPUTS | 14 | AS  | AUTO_CONFIG_DONE<1>  | LDS  | autoconfig  | A<5>  | A<1>  | A<6>  | A<4>  | A<3>  | UDS  | Dout1<0>  | EXP65_.EXP  | EXP66_.EXP  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 6 | 11 | 16 | 12 | 15 | 13 | 0 | 13 | 1 | 13 | 17 | 11 | 13
+INPUTP | 8 | 152 | 157 | 91 | 107 | 98 | 97 | 99 | 155
 IMPORTS | 2 | 13 | 1 | 13 | 17
 EQ | 41 | 
    !Dout1<0>.D = AS & !Dout1<0>
 	# !Dout1<0> & !autoconfig
-	# !Dout1<0> & UDS & LDS
-	# !AS & !LDS & autoconfig & !A<5> & A<6> & !A<4> & 
-	!A<3> & !A<2>
+	# !AS & !AUTO_CONFIG_DONE<1> & !UDS & autoconfig & 
+	!A<5> & !A<1> & !A<6> & !A<4> & !A<3>
+	# !AS & !AUTO_CONFIG_DONE<1> & !LDS & autoconfig & 
+	!A<5> & !A<1> & !A<6> & !A<4> & !A<3>
 ;Imported pterms FB14_2
 	# !AS & !UDS & autoconfig & A<5> & !A<6> & !A<4> & 
 	!A<3> & A<2>
 	# !AS & !UDS & autoconfig & !A<5> & A<1> & !A<6> & 
 	A<4> & A<3>
-	# !AS & !AUTO_CONFIG_DONE<1> & !AUTO_CONFIG_DONE<0> & 
-	!LDS & autoconfig & !A<6> & !A<4> & !A<3> & A<2>
-	# !AS & !AUTO_CONFIG_DONE<1> & !LDS & autoconfig & 
-	!A<5> & !A<1> & !A<6> & !A<4> & !A<3>
+	# !AS & !UDS & autoconfig & !A<5> & A<6> & !A<4> & 
+	!A<3> & !A<2>
+	# !AS & !UDS & autoconfig & !A<5> & !A<6> & A<4> & 
+	A<3> & !A<2>
 	# !AS & !AUTO_CONFIG_DONE<1> & !LDS & autoconfig & 
 	!A<5> & !A<1> & !A<6> & !A<3> & A<2>
 ;Imported pterms FB14_3
 	# !AS & !AUTO_CONFIG_DONE<1> & !AUTO_CONFIG_DONE<0> & 
 	!UDS & autoconfig & !A<6> & !A<4> & !A<3> & A<2>
 	# !AS & !AUTO_CONFIG_DONE<1> & !UDS & autoconfig & 
-	!A<5> & !A<1> & !A<6> & !A<4> & !A<3>
+	!A<5> & !A<1> & !A<6> & !A<3> & A<2>
 	# !AS & AUTO_CONFIG_DONE<1> & !AUTO_CONFIG_DONE<0> & 
 	!UDS & autoconfig & A<5> & A<1> & !A<6> & !A<4> & A<2>
 	# !AS & AUTO_CONFIG_DONE<1> & !AUTO_CONFIG_DONE<0> & 
 	!LDS & autoconfig & A<5> & A<1> & !A<6> & !A<4> & A<2>
 ;Imported pterms FB14_18
-	# !AS & !UDS & autoconfig & !A<5> & A<6> & !A<4> & 
-	!A<3> & !A<2>
-	# !AS & !UDS & autoconfig & !A<5> & !A<6> & A<4> & 
-	A<3> & !A<2>
+	# !Dout1<0> & UDS & LDS
 	# !AS & !LDS & autoconfig & A<5> & !A<6> & !A<4> & 
 	!A<3> & A<2>
 	# !AS & !LDS & autoconfig & !A<5> & A<1> & !A<6> & 
 	A<4> & A<3>
+	# !AS & !LDS & autoconfig & !A<5> & A<6> & !A<4> & 
+	!A<3> & !A<2>
 	# !AS & !LDS & autoconfig & !A<5> & !A<6> & A<4> & 
 	A<3> & !A<2>
 ;Imported pterms FB14_17
-	# !AS & !AUTO_CONFIG_DONE<1> & !UDS & autoconfig & 
-	!A<5> & !A<1> & !A<6> & !A<3> & A<2>;
+	# !AS & !AUTO_CONFIG_DONE<1> & !AUTO_CONFIG_DONE<0> & 
+	!LDS & autoconfig & !A<6> & !A<4> & !A<3> & A<2>;
    Dout1<0>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
    !Dout1<0>.AP = RESET;	// GSR
 GLOBALS | 1 | 1 | RESET
 
 MACROCELL | 0 | 0 | Dout1<1>
 ATTRIBUTES | 8524576 | 0
-OUTPUTMC | 2 | 6 | 2 | 0 | 17
-INPUTS | 15 | AS  | AUTO_CONFIG_DONE<1>  | LDS  | autoconfig  | A<1>  | A<6>  | A<4>  | A<3>  | A<2>  | AUTO_CONFIG_DONE<0>  | A<5>  | UDS  | EXP23_.EXP  | SHUT_UP<2>/SHUT_UP<2>_CLKF  | EXP25_.EXP
-INPUTMC | 6 | 11 | 16 | 12 | 15 | 11 | 17 | 0 | 1 | 11 | 13 | 0 | 17
-INPUTP | 9 | 152 | 157 | 107 | 98 | 97 | 99 | 101 | 91 | 155
+OUTPUTMC | 2 | 0 | 0 | 6 | 2
+INPUTS | 12 | AS  | Dout1<1>  | autoconfig  | UDS  | LDS  | A<5>  | A<4>  | A<3>  | A<2>  | EXP23_.EXP  | EXP25_.EXP  | SHUT_UP<2>/SHUT_UP<2>_CLKF
+INPUTMC | 5 | 0 | 0 | 12 | 15 | 0 | 1 | 0 | 17 | 11 | 13
+INPUTP | 7 | 152 | 155 | 157 | 91 | 97 | 99 | 101
 IMPORTS | 2 | 0 | 1 | 0 | 17
 EQ | 45 | 
-   !Dout1<1>.D = !AS & !AUTO_CONFIG_DONE<1> & !AUTO_CONFIG_DONE<0> & 
-	!LDS & autoconfig & !A<5> & !A<6> & !A<4> & !A<3>
-	# !AS & !AUTO_CONFIG_DONE<1> & !UDS & autoconfig & 
-	!A<1> & !A<6> & !A<4> & !A<3> & A<2>
-	# !AS & !AUTO_CONFIG_DONE<1> & !LDS & autoconfig & 
-	!A<1> & !A<6> & !A<4> & !A<3> & A<2>
-	# !AS & !LDS & autoconfig & A<5> & !A<1> & !A<6> & 
-	!A<4> & !A<3> & A<2>
-;Imported pterms FB1_2
-	# !AS & !UDS & autoconfig & !A<5> & !A<4> & !A<3> & 
-	!A<2>
+   !Dout1<1>.D = AS & !Dout1<1>
+	# !Dout1<1> & !autoconfig
+	# !Dout1<1> & UDS & LDS
 	# !AS & !LDS & autoconfig & !A<5> & !A<4> & !A<3> & 
 	!A<2>
+;Imported pterms FB1_2
+	# !AS & AUTO_CONFIG_DONE<1> & !LDS & autoconfig & 
+	!A<5> & A<1> & !A<6> & !A<4> & !A<3>
+	# !AS & AUTO_CONFIG_DONE<1> & !LDS & autoconfig & 
+	!A<5> & !A<1> & !A<6> & A<4> & A<2>
+	# !AS & !AUTO_CONFIG_DONE<1> & !LDS & autoconfig & 
+	!A<1> & !A<6> & !A<4> & !A<3> & A<2>
+	# !AS & !AUTO_CONFIG_DONE<0> & !LDS & autoconfig & 
+	!A<5> & A<1> & !A<6> & !A<4> & !A<3>
+	# !AS & !LDS & autoconfig & A<5> & !A<1> & !A<6> & 
+	!A<4> & !A<3> & A<2>
+;Imported pterms FB1_3
+	# !AS & AUTO_CONFIG_DONE<1> & !UDS & autoconfig & 
+	!A<5> & A<1> & !A<6> & !A<4> & !A<3>
+	# !AS & !AUTO_CONFIG_DONE<1> & !UDS & autoconfig & 
+	!A<5> & A<1> & !A<6> & !A<3> & !A<2>
+	# !AS & !AUTO_CONFIG_DONE<1> & !UDS & autoconfig & 
+	!A<1> & !A<6> & !A<4> & !A<3> & A<2>
+	# !AS & !AUTO_CONFIG_DONE<0> & !UDS & autoconfig & 
+	!A<5> & A<1> & !A<6> & !A<4> & !A<3>
+	# !AS & !UDS & autoconfig & A<5> & !A<1> & !A<6> & 
+	!A<4> & !A<3> & A<2>
+;Imported pterms FB1_18
+	# !AS & !UDS & autoconfig & !A<5> & !A<4> & !A<3> & 
+	!A<2>
+	# !AS & !UDS & autoconfig & !A<5> & !A<1> & !A<6> & 
+	A<4> & A<3>
 	# !AS & !UDS & autoconfig & !A<5> & !A<6> & A<4> & 
 	A<3> & A<2>
 	# !AS & !LDS & autoconfig & !A<5> & !A<1> & !A<6> & 
 	A<4> & A<3>
 	# !AS & !LDS & autoconfig & !A<5> & !A<6> & A<4> & 
 	A<3> & A<2>
-;Imported pterms FB1_3
-	# !AS & AUTO_CONFIG_DONE<1> & !UDS & autoconfig & 
-	!A<5> & A<1> & !A<6> & !A<4> & !A<3>
+;Imported pterms FB1_17
 	# !AS & AUTO_CONFIG_DONE<1> & !UDS & autoconfig & 
 	!A<5> & !A<1> & !A<6> & A<4> & A<2>
-	# !AS & AUTO_CONFIG_DONE<1> & !LDS & autoconfig & 
-	!A<5> & A<1> & !A<6> & !A<4> & !A<3>
-	# !AS & !AUTO_CONFIG_DONE<1> & !UDS & autoconfig & 
-	!A<5> & A<1> & !A<6> & !A<3> & !A<2>
 	# !AS & !AUTO_CONFIG_DONE<1> & !LDS & autoconfig & 
-	!A<5> & A<1> & !A<6> & !A<3> & !A<2>
-;Imported pterms FB1_18
-	# AS & !Dout1<1>
-	# !Dout1<1> & !autoconfig
-	# !Dout1<1> & UDS & LDS
-	# !AS & !AUTO_CONFIG_DONE<1> & !AUTO_CONFIG_DONE<0> & 
-	!UDS & autoconfig & !A<5> & !A<6> & !A<4> & !A<3>
-	# !AS & !UDS & autoconfig & A<5> & !A<1> & !A<6> & 
-	!A<4> & !A<3> & A<2>
-;Imported pterms FB1_17
-	# !AS & !UDS & autoconfig & !A<5> & !A<1> & !A<6> & 
-	A<4> & A<3>
-	# !AS & AUTO_CONFIG_DONE<1> & !LDS & autoconfig & 
-	!A<5> & !A<1> & !A<6> & A<4> & A<2>;
+	!A<5> & A<1> & !A<6> & !A<3> & !A<2>;
    Dout1<1>.CLK = SHUT_UP<2>/SHUT_UP<2>_CLKF;
    !Dout1<1>.AP = RESET;	// GSR
 GLOBALS | 1 | 1 | RESET
@@ -2210,16 +2210,16 @@ EQ | 1 |
 MACROCELL | 0 | 16 | IDE_R_OBUF
 ATTRIBUTES | 264962 | 0
 OUTPUTMC | 1 | 0 | 17
-INPUTS | 12 | AS  | IDE_R_S  | UDS  | autoconfig  | A<5>  | A<1>  | A<6>  | A<4>  | A<3>  | AUTO_CONFIG_DONE<1>  | LDS  | A<2>
-INPUTMC | 3 | 7 | 12 | 12 | 15 | 11 | 16
-INPUTP | 9 | 152 | 155 | 91 | 107 | 98 | 97 | 99 | 157 | 101
+INPUTS | 12 | AS  | IDE_R_S  | AUTO_CONFIG_DONE<1>  | UDS  | autoconfig  | A<5>  | A<1>  | A<6>  | A<4>  | A<2>  | LDS  | A<3>
+INPUTMC | 3 | 7 | 12 | 11 | 16 | 12 | 15
+INPUTP | 9 | 152 | 155 | 91 | 107 | 98 | 97 | 101 | 157 | 99
 EXPORTS | 1 | 0 | 17
 EQ | 5 | 
    !IDE_R = !AS & !IDE_R_S;
-    IDE_R_OBUF.EXP  =  !AS & !UDS & autoconfig & !A<5> & !A<1> & !A<6> & 
-	A<4> & A<3>
-	# !AS & AUTO_CONFIG_DONE<1> & !LDS & autoconfig & 
+    IDE_R_OBUF.EXP  =  !AS & AUTO_CONFIG_DONE<1> & !UDS & autoconfig & 
 	!A<5> & !A<1> & !A<6> & A<4> & A<2>
+	# !AS & !AUTO_CONFIG_DONE<1> & !LDS & autoconfig & 
+	!A<5> & A<1> & !A<6> & !A<3> & !A<2>
 
 MACROCELL | 2 | 1 | IDE_W_OBUF
 ATTRIBUTES | 264962 | 0
@@ -2291,14 +2291,6 @@ INPUTP | 2 | 152 | 263
 EQ | 1 | 
    LAN_RD = !AS & RESET & LAN_RD_S;
 
-MACROCELL | 13 | 10 | ROM_B_0_OBUF$BUF10
-ATTRIBUTES | 265986 | 0
-INPUTS | 2 | AUTO_CONFIG_DONE<1>  | AUTO_CONFIG_DONE<0>
-INPUTMC | 2 | 11 | 16 | 11 | 17
-EQ | 2 | 
-   CFOUT = Gnd;
-   CFOUT.OE = AUTO_CONFIG_DONE<1> & AUTO_CONFIG_DONE<0>;
-
 MACROCELL | 13 | 2 | ROM_B_0_OBUF$BUF2
 ATTRIBUTES | 265986 | 0
 OUTPUTMC | 1 | 13 | 1
@@ -2312,7 +2304,7 @@ EQ | 10 |
     ROM_B_0_OBUF$BUF2.EXP  =  !AS & !AUTO_CONFIG_DONE<1> & !AUTO_CONFIG_DONE<0> & 
 	!UDS & autoconfig & !A<6> & !A<4> & !A<3> & A<2>
 	# !AS & !AUTO_CONFIG_DONE<1> & !UDS & autoconfig & 
-	!A<5> & !A<1> & !A<6> & !A<4> & !A<3>
+	!A<5> & !A<1> & !A<6> & !A<3> & A<2>
 	# !AS & AUTO_CONFIG_DONE<1> & !AUTO_CONFIG_DONE<0> & 
 	!UDS & autoconfig & A<5> & A<1> & !A<6> & !A<4> & A<2>
 	# !AS & AUTO_CONFIG_DONE<1> & !AUTO_CONFIG_DONE<0> & 
@@ -2334,6 +2326,13 @@ INPUTP | 2 | 152 | 61
 EQ | 2 | 
    DTACK = Gnd;
    DTACK.OE = !AS & ide & IDE_WAIT;
+
+MACROCELL | 13 | 10 | CFOUT_OBUF
+ATTRIBUTES | 264962 | 0
+INPUTS | 2 | AUTO_CONFIG_DONE<1>  | AUTO_CONFIG_DONE<0>
+INPUTMC | 2 | 11 | 16 | 11 | 17
+EQ | 1 | 
+   !CFOUT = AUTO_CONFIG_DONE<1> & AUTO_CONFIG_DONE<0>;
 
 MACROCELL | 4 | 1 | CP_CS_OBUF
 ATTRIBUTES | 8782758 | 0
@@ -2622,74 +2621,77 @@ EQ | 4 |
 MACROCELL | 0 | 1 | EXP23_
 ATTRIBUTES | 2048 | 0
 OUTPUTMC | 1 | 0 | 0
-INPUTS | 11 | AS  | UDS  | autoconfig  | A<5>  | A<4>  | A<3>  | A<2>  | LDS  | A<6>  | A<1>  | EXP24_.EXP
-INPUTMC | 2 | 12 | 15 | 0 | 2
-INPUTP | 9 | 152 | 155 | 91 | 97 | 99 | 101 | 157 | 98 | 107
+INPUTS | 12 | AS  | AUTO_CONFIG_DONE<1>  | LDS  | autoconfig  | A<5>  | A<1>  | A<6>  | A<4>  | A<3>  | A<2>  | AUTO_CONFIG_DONE<0>  | EXP24_.EXP
+INPUTMC | 4 | 11 | 16 | 12 | 15 | 11 | 17 | 0 | 2
+INPUTP | 8 | 152 | 157 | 91 | 107 | 98 | 97 | 99 | 101
 EXPORTS | 1 | 0 | 0
 IMPORTS | 1 | 0 | 2
 EQ | 21 | 
-       EXP23_.EXP  =  !AS & !UDS & autoconfig & !A<5> & !A<4> & !A<3> & 
+       EXP23_.EXP  =  !AS & AUTO_CONFIG_DONE<1> & !LDS & autoconfig & 
+	!A<5> & A<1> & !A<6> & !A<4> & !A<3>
+	# !AS & AUTO_CONFIG_DONE<1> & !LDS & autoconfig & 
+	!A<5> & !A<1> & !A<6> & A<4> & A<2>
+	# !AS & !AUTO_CONFIG_DONE<1> & !LDS & autoconfig & 
+	!A<1> & !A<6> & !A<4> & !A<3> & A<2>
+	# !AS & !AUTO_CONFIG_DONE<0> & !LDS & autoconfig & 
+	!A<5> & A<1> & !A<6> & !A<4> & !A<3>
+	# !AS & !LDS & autoconfig & A<5> & !A<1> & !A<6> & 
+	!A<4> & !A<3> & A<2>
+;Imported pterms FB1_3
+	# !AS & AUTO_CONFIG_DONE<1> & !UDS & autoconfig & 
+	!A<5> & A<1> & !A<6> & !A<4> & !A<3>
+	# !AS & !AUTO_CONFIG_DONE<1> & !UDS & autoconfig & 
+	!A<5> & A<1> & !A<6> & !A<3> & !A<2>
+	# !AS & !AUTO_CONFIG_DONE<1> & !UDS & autoconfig & 
+	!A<1> & !A<6> & !A<4> & !A<3> & A<2>
+	# !AS & !AUTO_CONFIG_DONE<0> & !UDS & autoconfig & 
+	!A<5> & A<1> & !A<6> & !A<4> & !A<3>
+	# !AS & !UDS & autoconfig & A<5> & !A<1> & !A<6> & 
+	!A<4> & !A<3> & A<2>
+
+MACROCELL | 0 | 2 | EXP24_
+ATTRIBUTES | 2048 | 0
+OUTPUTMC | 1 | 0 | 1
+INPUTS | 11 | AS  | AUTO_CONFIG_DONE<1>  | UDS  | autoconfig  | A<5>  | A<1>  | A<6>  | A<4>  | A<3>  | A<2>  | AUTO_CONFIG_DONE<0>
+INPUTMC | 3 | 11 | 16 | 12 | 15 | 11 | 17
+INPUTP | 8 | 152 | 155 | 91 | 107 | 98 | 97 | 99 | 101
+EXPORTS | 1 | 0 | 1
+EQ | 10 | 
+       EXP24_.EXP  =  !AS & AUTO_CONFIG_DONE<1> & !UDS & autoconfig & 
+	!A<5> & A<1> & !A<6> & !A<4> & !A<3>
+	# !AS & !AUTO_CONFIG_DONE<1> & !UDS & autoconfig & 
+	!A<5> & A<1> & !A<6> & !A<3> & !A<2>
+	# !AS & !AUTO_CONFIG_DONE<1> & !UDS & autoconfig & 
+	!A<1> & !A<6> & !A<4> & !A<3> & A<2>
+	# !AS & !AUTO_CONFIG_DONE<0> & !UDS & autoconfig & 
+	!A<5> & A<1> & !A<6> & !A<4> & !A<3>
+	# !AS & !UDS & autoconfig & A<5> & !A<1> & !A<6> & 
+	!A<4> & !A<3> & A<2>
+
+MACROCELL | 0 | 17 | EXP25_
+ATTRIBUTES | 2048 | 0
+OUTPUTMC | 1 | 0 | 0
+INPUTS | 11 | AS  | UDS  | autoconfig  | A<5>  | A<4>  | A<3>  | A<2>  | A<1>  | A<6>  | LDS  | IDE_R_OBUF.EXP
+INPUTMC | 2 | 12 | 15 | 0 | 16
+INPUTP | 9 | 152 | 155 | 91 | 97 | 99 | 101 | 107 | 98 | 157
+EXPORTS | 1 | 0 | 0
+IMPORTS | 1 | 0 | 16
+EQ | 15 | 
+       EXP25_.EXP  =  !AS & !UDS & autoconfig & !A<5> & !A<4> & !A<3> & 
 	!A<2>
-	# !AS & !LDS & autoconfig & !A<5> & !A<4> & !A<3> & 
-	!A<2>
+	# !AS & !UDS & autoconfig & !A<5> & !A<1> & !A<6> & 
+	A<4> & A<3>
 	# !AS & !UDS & autoconfig & !A<5> & !A<6> & A<4> & 
 	A<3> & A<2>
 	# !AS & !LDS & autoconfig & !A<5> & !A<1> & !A<6> & 
 	A<4> & A<3>
 	# !AS & !LDS & autoconfig & !A<5> & !A<6> & A<4> & 
 	A<3> & A<2>
-;Imported pterms FB1_3
-	# !AS & AUTO_CONFIG_DONE<1> & !UDS & autoconfig & 
-	!A<5> & A<1> & !A<6> & !A<4> & !A<3>
-	# !AS & AUTO_CONFIG_DONE<1> & !UDS & autoconfig & 
-	!A<5> & !A<1> & !A<6> & A<4> & A<2>
-	# !AS & AUTO_CONFIG_DONE<1> & !LDS & autoconfig & 
-	!A<5> & A<1> & !A<6> & !A<4> & !A<3>
-	# !AS & !AUTO_CONFIG_DONE<1> & !UDS & autoconfig & 
-	!A<5> & A<1> & !A<6> & !A<3> & !A<2>
-	# !AS & !AUTO_CONFIG_DONE<1> & !LDS & autoconfig & 
-	!A<5> & A<1> & !A<6> & !A<3> & !A<2>
-
-MACROCELL | 0 | 2 | EXP24_
-ATTRIBUTES | 2048 | 0
-OUTPUTMC | 1 | 0 | 1
-INPUTS | 11 | AS  | AUTO_CONFIG_DONE<1>  | UDS  | autoconfig  | A<5>  | A<1>  | A<6>  | A<4>  | A<3>  | A<2>  | LDS
-INPUTMC | 2 | 11 | 16 | 12 | 15
-INPUTP | 9 | 152 | 155 | 91 | 107 | 98 | 97 | 99 | 101 | 157
-EXPORTS | 1 | 0 | 1
-EQ | 10 | 
-       EXP24_.EXP  =  !AS & AUTO_CONFIG_DONE<1> & !UDS & autoconfig & 
-	!A<5> & A<1> & !A<6> & !A<4> & !A<3>
-	# !AS & AUTO_CONFIG_DONE<1> & !UDS & autoconfig & 
-	!A<5> & !A<1> & !A<6> & A<4> & A<2>
-	# !AS & AUTO_CONFIG_DONE<1> & !LDS & autoconfig & 
-	!A<5> & A<1> & !A<6> & !A<4> & !A<3>
-	# !AS & !AUTO_CONFIG_DONE<1> & !UDS & autoconfig & 
-	!A<5> & A<1> & !A<6> & !A<3> & !A<2>
-	# !AS & !AUTO_CONFIG_DONE<1> & !LDS & autoconfig & 
-	!A<5> & A<1> & !A<6> & !A<3> & !A<2>
-
-MACROCELL | 0 | 17 | EXP25_
-ATTRIBUTES | 2048 | 0
-OUTPUTMC | 1 | 0 | 0
-INPUTS | 14 | AS  | Dout1<1>  | autoconfig  | UDS  | LDS  | AUTO_CONFIG_DONE<1>  | AUTO_CONFIG_DONE<0>  | A<5>  | A<6>  | A<4>  | A<3>  | A<1>  | A<2>  | IDE_R_OBUF.EXP
-INPUTMC | 5 | 0 | 0 | 12 | 15 | 11 | 16 | 11 | 17 | 0 | 16
-INPUTP | 9 | 152 | 155 | 157 | 91 | 98 | 97 | 99 | 107 | 101
-EXPORTS | 1 | 0 | 0
-IMPORTS | 1 | 0 | 16
-EQ | 12 | 
-       EXP25_.EXP  =  AS & !Dout1<1>
-	# !Dout1<1> & !autoconfig
-	# !Dout1<1> & UDS & LDS
-	# !AS & !AUTO_CONFIG_DONE<1> & !AUTO_CONFIG_DONE<0> & 
-	!UDS & autoconfig & !A<5> & !A<6> & !A<4> & !A<3>
-	# !AS & !UDS & autoconfig & A<5> & !A<1> & !A<6> & 
-	!A<4> & !A<3> & A<2>
 ;Imported pterms FB1_17
-	# !AS & !UDS & autoconfig & !A<5> & !A<1> & !A<6> & 
-	A<4> & A<3>
-	# !AS & AUTO_CONFIG_DONE<1> & !LDS & autoconfig & 
+	# !AS & AUTO_CONFIG_DONE<1> & !UDS & autoconfig & 
 	!A<5> & !A<1> & !A<6> & A<4> & A<2>
+	# !AS & !AUTO_CONFIG_DONE<1> & !LDS & autoconfig & 
+	!A<5> & A<1> & !A<6> & !A<3> & !A<2>
 
 MACROCELL | 3 | 2 | EXP26_
 ATTRIBUTES | 2048 | 0
@@ -3399,8 +3401,8 @@ EQ | 19 |
 MACROCELL | 13 | 1 | EXP65_
 ATTRIBUTES | 2048 | 0
 OUTPUTMC | 1 | 13 | 0
-INPUTS | 13 | AS  | UDS  | autoconfig  | A<5>  | A<6>  | A<4>  | A<3>  | A<2>  | A<1>  | AUTO_CONFIG_DONE<1>  | AUTO_CONFIG_DONE<0>  | LDS  | ROM_B_0_OBUF$BUF2.EXP
-INPUTMC | 4 | 12 | 15 | 11 | 16 | 11 | 17 | 13 | 2
+INPUTS | 12 | AS  | UDS  | autoconfig  | A<5>  | A<6>  | A<4>  | A<3>  | A<2>  | A<1>  | AUTO_CONFIG_DONE<1>  | LDS  | ROM_B_0_OBUF$BUF2.EXP
+INPUTMC | 3 | 12 | 15 | 11 | 16 | 13 | 2
 INPUTP | 9 | 152 | 155 | 91 | 98 | 97 | 99 | 101 | 107 | 157
 EXPORTS | 1 | 13 | 0
 IMPORTS | 1 | 13 | 2
@@ -3409,17 +3411,17 @@ EQ | 19 |
 	!A<3> & A<2>
 	# !AS & !UDS & autoconfig & !A<5> & A<1> & !A<6> & 
 	A<4> & A<3>
-	# !AS & !AUTO_CONFIG_DONE<1> & !AUTO_CONFIG_DONE<0> & 
-	!LDS & autoconfig & !A<6> & !A<4> & !A<3> & A<2>
-	# !AS & !AUTO_CONFIG_DONE<1> & !LDS & autoconfig & 
-	!A<5> & !A<1> & !A<6> & !A<4> & !A<3>
+	# !AS & !UDS & autoconfig & !A<5> & A<6> & !A<4> & 
+	!A<3> & !A<2>
+	# !AS & !UDS & autoconfig & !A<5> & !A<6> & A<4> & 
+	A<3> & !A<2>
 	# !AS & !AUTO_CONFIG_DONE<1> & !LDS & autoconfig & 
 	!A<5> & !A<1> & !A<6> & !A<3> & A<2>
 ;Imported pterms FB14_3
 	# !AS & !AUTO_CONFIG_DONE<1> & !AUTO_CONFIG_DONE<0> & 
 	!UDS & autoconfig & !A<6> & !A<4> & !A<3> & A<2>
 	# !AS & !AUTO_CONFIG_DONE<1> & !UDS & autoconfig & 
-	!A<5> & !A<1> & !A<6> & !A<4> & !A<3>
+	!A<5> & !A<1> & !A<6> & !A<3> & A<2>
 	# !AS & AUTO_CONFIG_DONE<1> & !AUTO_CONFIG_DONE<0> & 
 	!UDS & autoconfig & A<5> & A<1> & !A<6> & !A<4> & A<2>
 	# !AS & AUTO_CONFIG_DONE<1> & !AUTO_CONFIG_DONE<0> & 
@@ -3428,25 +3430,24 @@ EQ | 19 |
 MACROCELL | 13 | 17 | EXP66_
 ATTRIBUTES | 2048 | 0
 OUTPUTMC | 1 | 13 | 0
-INPUTS | 11 | AS  | UDS  | autoconfig  | A<5>  | A<6>  | A<4>  | A<3>  | A<2>  | LDS  | A<1>  | CP_BASEADR<2>.EXP
-INPUTMC | 2 | 12 | 15 | 13 | 16
-INPUTP | 9 | 152 | 155 | 91 | 98 | 97 | 99 | 101 | 157 | 107
+INPUTS | 12 | Dout1<0>  | UDS  | LDS  | AS  | autoconfig  | A<5>  | A<6>  | A<4>  | A<3>  | A<2>  | A<1>  | CP_BASEADR<2>.EXP
+INPUTMC | 3 | 13 | 0 | 12 | 15 | 13 | 16
+INPUTP | 9 | 155 | 157 | 152 | 91 | 98 | 97 | 99 | 101 | 107
 EXPORTS | 1 | 13 | 0
 IMPORTS | 1 | 13 | 16
-EQ | 13 | 
-       EXP66_.EXP  =  !AS & !UDS & autoconfig & !A<5> & A<6> & !A<4> & 
-	!A<3> & !A<2>
-	# !AS & !UDS & autoconfig & !A<5> & !A<6> & A<4> & 
-	A<3> & !A<2>
+EQ | 12 | 
+       EXP66_.EXP  =  !Dout1<0> & UDS & LDS
 	# !AS & !LDS & autoconfig & A<5> & !A<6> & !A<4> & 
 	!A<3> & A<2>
 	# !AS & !LDS & autoconfig & !A<5> & A<1> & !A<6> & 
 	A<4> & A<3>
+	# !AS & !LDS & autoconfig & !A<5> & A<6> & !A<4> & 
+	!A<3> & !A<2>
 	# !AS & !LDS & autoconfig & !A<5> & !A<6> & A<4> & 
 	A<3> & !A<2>
 ;Imported pterms FB14_17
-	# !AS & !AUTO_CONFIG_DONE<1> & !UDS & autoconfig & 
-	!A<5> & !A<1> & !A<6> & !A<3> & A<2>
+	# !AS & !AUTO_CONFIG_DONE<1> & !AUTO_CONFIG_DONE<0> & 
+	!LDS & autoconfig & !A<6> & !A<4> & !A<3> & A<2>
 
 MACROCELL | 14 | 0 | EXP67_
 ATTRIBUTES | 2048 | 0
@@ -3534,15 +3535,15 @@ EQ | 5 |
 
 PIN | AS | 64 | 0 | N/A | 152 | 124 | 11 | 16 | 11 | 17 | 3 | 0 | 3 | 17 | 3 | 15 | 2 | 17 | 13 | 16 | 13 | 15 | 13 | 12 | 2 | 16 | 2 | 15 | 10 | 17 | 13 | 0 | 0 | 0 | 6 | 17 | 6 | 7 | 3 | 14 | 2 | 14 | 13 | 11 | 13 | 9 | 10 | 15 | 2 | 12 | 2 | 11 | 10 | 14 | 10 | 12 | 2 | 10 | 13 | 8 | 13 | 7 | 10 | 10 | 2 | 9 | 2 | 8 | 10 | 9 | 9 | 16 | 11 | 9 | 11 | 11 | 3 | 1 | 4 | 13 | 4 | 14 | 4 | 16 | 6 | 2 | 6 | 4 | 6 | 11 | 1 | 14 | 4 | 9 | 1 | 11 | 0 | 5 | 0 | 4 | 1 | 9 | 1 | 13 | 1 | 16 | 4 | 11 | 9 | 2 | 7 | 1 | 11 | 7 | 7 | 2 | 11 | 4 | 9 | 0 | 9 | 5 | 9 | 4 | 9 | 9 | 9 | 7 | 9 | 11 | 9 | 10 | 1 | 17 | 5 | 11 | 12 | 15 | 12 | 17 | 5 | 16 | 7 | 14 | 6 | 1 | 10 | 8 | 10 | 7 | 7 | 12 | 7 | 17 | 7 | 3 | 11 | 12 | 10 | 16 | 0 | 16 | 2 | 1 | 7 | 4 | 12 | 13 | 4 | 4 | 7 | 9 | 13 | 2 | 14 | 11 | 4 | 1 | 13 | 13 | 1 | 15 | 1 | 12 | 0 | 1 | 0 | 2 | 0 | 17 | 1 | 0 | 3 | 2 | 3 | 16 | 4 | 15 | 4 | 17 | 6 | 0 | 6 | 3 | 6 | 5 | 6 | 6 | 6 | 8 | 6 | 9 | 6 | 10 | 6 | 12 | 6 | 15 | 6 | 16 | 7 | 0 | 9 | 1 | 9 | 3 | 9 | 6 | 9 | 8 | 9 | 12 | 9 | 13 | 9 | 14 | 9 | 15 | 9 | 17 | 11 | 5 | 11 | 6 | 11 | 8 | 12 | 2 | 13 | 1 | 13 | 14 | 13 | 17
 PIN | RESET | 65600 | 0 | N/A | 263 | 52 | 7 | 15 | 7 | 6 | 7 | 5 | 7 | 8 | 11 | 12 | 7 | 11 | 7 | 7 | 7 | 4 | 12 | 13 | 7 | 9 | 7 | 17 | 11 | 16 | 11 | 17 | 3 | 0 | 3 | 17 | 7 | 16 | 3 | 15 | 2 | 17 | 13 | 16 | 13 | 15 | 13 | 12 | 2 | 16 | 2 | 15 | 10 | 17 | 13 | 0 | 0 | 0 | 6 | 17 | 6 | 7 | 3 | 14 | 2 | 14 | 13 | 11 | 13 | 9 | 10 | 15 | 2 | 12 | 2 | 11 | 10 | 14 | 10 | 12 | 2 | 10 | 13 | 8 | 13 | 7 | 10 | 10 | 2 | 9 | 2 | 8 | 10 | 9 | 7 | 13 | 7 | 14 | 7 | 10 | 6 | 1 | 10 | 8 | 10 | 7 | 7 | 12 | 7 | 3
-PIN | A<2> | 64 | 0 | N/A | 101 | 50 | 3 | 0 | 3 | 17 | 3 | 15 | 2 | 17 | 13 | 16 | 13 | 15 | 13 | 12 | 2 | 16 | 2 | 15 | 10 | 17 | 13 | 0 | 0 | 0 | 6 | 17 | 6 | 7 | 3 | 14 | 2 | 14 | 13 | 11 | 13 | 9 | 10 | 15 | 2 | 12 | 2 | 11 | 10 | 14 | 10 | 12 | 2 | 10 | 13 | 8 | 13 | 7 | 10 | 10 | 2 | 9 | 2 | 8 | 10 | 9 | 6 | 1 | 10 | 8 | 10 | 7 | 3 | 4 | 3 | 11 | 0 | 1 | 0 | 2 | 0 | 16 | 0 | 17 | 3 | 16 | 6 | 0 | 6 | 6 | 6 | 8 | 6 | 9 | 6 | 15 | 6 | 16 | 13 | 1 | 13 | 2 | 13 | 14 | 13 | 17
+PIN | A<2> | 64 | 0 | N/A | 101 | 49 | 3 | 0 | 3 | 17 | 3 | 15 | 2 | 17 | 13 | 16 | 13 | 15 | 13 | 12 | 2 | 16 | 2 | 15 | 10 | 17 | 6 | 16 | 0 | 0 | 6 | 17 | 6 | 7 | 3 | 14 | 2 | 14 | 13 | 11 | 13 | 9 | 10 | 15 | 2 | 12 | 2 | 11 | 10 | 14 | 10 | 12 | 2 | 10 | 13 | 8 | 13 | 7 | 10 | 10 | 2 | 9 | 2 | 8 | 10 | 9 | 6 | 1 | 10 | 8 | 10 | 7 | 3 | 4 | 3 | 11 | 0 | 1 | 0 | 2 | 0 | 16 | 0 | 17 | 3 | 16 | 6 | 0 | 6 | 6 | 6 | 8 | 6 | 9 | 6 | 15 | 13 | 1 | 13 | 2 | 13 | 14 | 13 | 17
 PIN | A<4> | 64 | 0 | N/A | 97 | 50 | 3 | 0 | 3 | 17 | 3 | 15 | 2 | 17 | 13 | 16 | 13 | 15 | 13 | 12 | 2 | 16 | 2 | 15 | 10 | 17 | 13 | 0 | 0 | 0 | 6 | 17 | 6 | 6 | 3 | 14 | 2 | 14 | 13 | 11 | 13 | 9 | 10 | 15 | 2 | 12 | 2 | 11 | 10 | 14 | 10 | 12 | 2 | 10 | 13 | 8 | 13 | 7 | 10 | 10 | 2 | 9 | 2 | 8 | 10 | 9 | 6 | 1 | 10 | 8 | 10 | 7 | 1 | 1 | 3 | 7 | 0 | 1 | 0 | 2 | 0 | 16 | 0 | 17 | 3 | 1 | 3 | 16 | 6 | 0 | 6 | 8 | 6 | 9 | 6 | 15 | 6 | 16 | 13 | 1 | 13 | 2 | 13 | 14 | 13 | 17
 PIN | A<5> | 64 | 0 | N/A | 91 | 51 | 3 | 0 | 3 | 17 | 3 | 15 | 2 | 17 | 13 | 16 | 13 | 15 | 13 | 12 | 2 | 16 | 2 | 15 | 10 | 17 | 13 | 0 | 0 | 0 | 6 | 17 | 6 | 7 | 3 | 14 | 2 | 14 | 13 | 11 | 13 | 9 | 10 | 15 | 2 | 12 | 2 | 11 | 10 | 14 | 10 | 12 | 2 | 10 | 13 | 8 | 13 | 7 | 10 | 10 | 2 | 9 | 2 | 8 | 10 | 9 | 6 | 1 | 10 | 8 | 10 | 7 | 1 | 1 | 3 | 13 | 0 | 1 | 0 | 2 | 0 | 16 | 0 | 17 | 3 | 1 | 3 | 16 | 6 | 0 | 6 | 6 | 6 | 8 | 6 | 9 | 6 | 15 | 6 | 16 | 13 | 1 | 13 | 2 | 13 | 14 | 13 | 17
 PIN | RW | 64 | 0 | N/A | 158 | 97 | 3 | 0 | 3 | 17 | 7 | 16 | 3 | 15 | 2 | 17 | 13 | 16 | 13 | 15 | 13 | 12 | 2 | 16 | 2 | 15 | 10 | 17 | 3 | 14 | 2 | 14 | 13 | 11 | 13 | 9 | 10 | 15 | 2 | 12 | 2 | 11 | 10 | 14 | 10 | 12 | 2 | 10 | 13 | 8 | 13 | 7 | 10 | 10 | 2 | 9 | 2 | 8 | 10 | 9 | 7 | 13 | 9 | 16 | 11 | 9 | 11 | 11 | 3 | 1 | 4 | 13 | 4 | 14 | 4 | 16 | 6 | 2 | 6 | 4 | 6 | 11 | 1 | 14 | 4 | 9 | 1 | 11 | 0 | 5 | 0 | 4 | 1 | 9 | 1 | 13 | 1 | 16 | 4 | 11 | 9 | 2 | 7 | 1 | 11 | 7 | 7 | 2 | 11 | 4 | 9 | 0 | 9 | 5 | 9 | 3 | 9 | 9 | 9 | 7 | 9 | 8 | 9 | 10 | 1 | 17 | 7 | 14 | 6 | 1 | 10 | 8 | 10 | 7 | 7 | 12 | 7 | 17 | 7 | 3 | 1 | 8 | 1 | 10 | 1 | 6 | 1 | 3 | 1 | 0 | 1 | 15 | 1 | 12 | 3 | 2 | 3 | 16 | 4 | 15 | 4 | 17 | 6 | 3 | 6 | 5 | 6 | 10 | 6 | 12 | 7 | 0 | 9 | 1 | 9 | 4 | 9 | 6 | 9 | 11 | 9 | 12 | 9 | 13 | 9 | 14 | 9 | 15 | 9 | 17 | 11 | 5 | 11 | 6 | 11 | 8 | 11 | 12 | 13 | 14
-PIN | A<1> | 64 | 0 | N/A | 107 | 49 | 3 | 0 | 3 | 17 | 3 | 15 | 2 | 17 | 13 | 16 | 13 | 15 | 13 | 12 | 2 | 16 | 2 | 15 | 10 | 17 | 6 | 16 | 0 | 0 | 6 | 17 | 6 | 7 | 3 | 14 | 2 | 14 | 13 | 11 | 13 | 9 | 10 | 15 | 2 | 12 | 2 | 11 | 10 | 14 | 10 | 12 | 2 | 10 | 13 | 8 | 13 | 7 | 10 | 10 | 2 | 9 | 2 | 8 | 10 | 9 | 6 | 1 | 10 | 8 | 10 | 7 | 3 | 5 | 0 | 1 | 0 | 2 | 0 | 16 | 0 | 17 | 3 | 1 | 3 | 16 | 6 | 0 | 6 | 6 | 6 | 8 | 6 | 9 | 6 | 15 | 13 | 1 | 13 | 2 | 13 | 14 | 13 | 17
+PIN | A<1> | 64 | 0 | N/A | 107 | 49 | 3 | 0 | 3 | 17 | 3 | 15 | 2 | 17 | 13 | 16 | 13 | 15 | 13 | 12 | 2 | 16 | 2 | 15 | 10 | 17 | 13 | 0 | 3 | 5 | 6 | 17 | 6 | 7 | 3 | 14 | 2 | 14 | 13 | 11 | 13 | 9 | 10 | 15 | 2 | 12 | 2 | 11 | 10 | 14 | 10 | 12 | 2 | 10 | 13 | 8 | 13 | 7 | 10 | 10 | 2 | 9 | 2 | 8 | 10 | 9 | 6 | 1 | 10 | 8 | 10 | 7 | 0 | 1 | 0 | 2 | 0 | 16 | 0 | 17 | 3 | 1 | 3 | 16 | 6 | 0 | 6 | 6 | 6 | 8 | 6 | 9 | 6 | 15 | 6 | 16 | 13 | 1 | 13 | 2 | 13 | 14 | 13 | 17
 PIN | A<3> | 64 | 0 | N/A | 99 | 51 | 3 | 0 | 3 | 17 | 3 | 15 | 2 | 17 | 13 | 16 | 13 | 15 | 13 | 12 | 2 | 16 | 2 | 15 | 10 | 17 | 13 | 0 | 0 | 0 | 6 | 17 | 6 | 7 | 3 | 14 | 2 | 14 | 13 | 11 | 13 | 9 | 10 | 15 | 2 | 12 | 2 | 11 | 10 | 14 | 10 | 12 | 2 | 10 | 13 | 8 | 13 | 7 | 10 | 10 | 2 | 9 | 2 | 8 | 10 | 9 | 6 | 1 | 10 | 8 | 10 | 7 | 3 | 11 | 3 | 7 | 0 | 1 | 0 | 2 | 0 | 16 | 0 | 17 | 3 | 1 | 3 | 16 | 6 | 0 | 6 | 6 | 6 | 8 | 6 | 9 | 6 | 15 | 6 | 16 | 13 | 1 | 13 | 2 | 13 | 14 | 13 | 17
-PIN | A<6> | 64 | 0 | N/A | 98 | 49 | 3 | 0 | 3 | 17 | 3 | 15 | 2 | 17 | 13 | 16 | 13 | 15 | 13 | 12 | 2 | 16 | 2 | 15 | 10 | 17 | 13 | 0 | 0 | 0 | 6 | 16 | 6 | 7 | 3 | 14 | 2 | 14 | 13 | 11 | 13 | 9 | 10 | 15 | 2 | 12 | 2 | 11 | 10 | 14 | 10 | 12 | 2 | 10 | 13 | 8 | 13 | 7 | 10 | 10 | 2 | 9 | 2 | 8 | 10 | 9 | 6 | 1 | 10 | 8 | 10 | 7 | 3 | 13 | 0 | 1 | 0 | 2 | 0 | 16 | 0 | 17 | 3 | 1 | 3 | 16 | 6 | 0 | 6 | 6 | 6 | 8 | 6 | 9 | 6 | 15 | 13 | 1 | 13 | 2 | 13 | 14 | 13 | 17
-PIN | LDS | 64 | 0 | N/A | 157 | 80 | 3 | 0 | 3 | 17 | 7 | 16 | 3 | 15 | 2 | 17 | 13 | 16 | 13 | 15 | 13 | 12 | 2 | 16 | 2 | 15 | 10 | 17 | 13 | 0 | 0 | 0 | 6 | 17 | 6 | 7 | 3 | 14 | 2 | 14 | 13 | 11 | 13 | 9 | 10 | 15 | 2 | 12 | 2 | 11 | 10 | 14 | 10 | 12 | 2 | 10 | 13 | 8 | 13 | 7 | 10 | 10 | 2 | 9 | 2 | 8 | 10 | 9 | 7 | 13 | 9 | 15 | 11 | 8 | 11 | 10 | 9 | 1 | 7 | 0 | 11 | 6 | 7 | 2 | 11 | 4 | 9 | 0 | 9 | 4 | 9 | 3 | 9 | 8 | 9 | 6 | 7 | 14 | 9 | 2 | 1 | 16 | 7 | 15 | 6 | 1 | 10 | 8 | 10 | 7 | 1 | 8 | 1 | 10 | 1 | 6 | 1 | 0 | 1 | 15 | 0 | 1 | 0 | 2 | 0 | 16 | 0 | 17 | 3 | 1 | 3 | 16 | 6 | 0 | 6 | 6 | 6 | 8 | 6 | 15 | 6 | 16 | 7 | 3 | 9 | 11 | 9 | 12 | 9 | 13 | 9 | 14 | 9 | 17 | 11 | 5 | 11 | 7 | 11 | 12 | 13 | 1 | 13 | 2 | 13 | 17
-PIN | UDS | 64 | 0 | N/A | 155 | 72 | 3 | 0 | 3 | 17 | 7 | 16 | 3 | 15 | 2 | 17 | 13 | 16 | 13 | 15 | 13 | 12 | 2 | 16 | 2 | 15 | 10 | 17 | 13 | 0 | 0 | 0 | 6 | 17 | 6 | 7 | 3 | 14 | 2 | 14 | 13 | 11 | 13 | 9 | 10 | 15 | 2 | 12 | 2 | 11 | 10 | 14 | 10 | 12 | 2 | 10 | 13 | 8 | 13 | 7 | 10 | 10 | 2 | 9 | 2 | 8 | 10 | 9 | 7 | 13 | 9 | 15 | 11 | 8 | 11 | 10 | 7 | 0 | 11 | 6 | 7 | 1 | 11 | 3 | 1 | 16 | 7 | 15 | 6 | 1 | 10 | 8 | 10 | 7 | 1 | 8 | 1 | 10 | 1 | 6 | 1 | 3 | 1 | 15 | 0 | 1 | 0 | 2 | 0 | 16 | 0 | 17 | 1 | 0 | 3 | 1 | 3 | 16 | 6 | 0 | 6 | 6 | 6 | 8 | 6 | 9 | 6 | 15 | 6 | 16 | 7 | 3 | 7 | 14 | 9 | 14 | 11 | 5 | 11 | 7 | 11 | 12 | 13 | 1 | 13 | 2 | 13 | 14 | 13 | 17
+PIN | A<6> | 64 | 0 | N/A | 98 | 48 | 3 | 0 | 3 | 17 | 3 | 15 | 2 | 17 | 13 | 16 | 13 | 15 | 13 | 12 | 2 | 16 | 2 | 15 | 10 | 17 | 13 | 0 | 3 | 13 | 6 | 16 | 6 | 7 | 3 | 14 | 2 | 14 | 13 | 11 | 13 | 9 | 10 | 15 | 2 | 12 | 2 | 11 | 10 | 14 | 10 | 12 | 2 | 10 | 13 | 8 | 13 | 7 | 10 | 10 | 2 | 9 | 2 | 8 | 10 | 9 | 6 | 1 | 10 | 8 | 10 | 7 | 0 | 1 | 0 | 2 | 0 | 16 | 0 | 17 | 3 | 1 | 3 | 16 | 6 | 0 | 6 | 6 | 6 | 8 | 6 | 9 | 6 | 15 | 13 | 1 | 13 | 2 | 13 | 14 | 13 | 17
+PIN | LDS | 64 | 0 | N/A | 157 | 79 | 3 | 0 | 3 | 17 | 7 | 16 | 3 | 15 | 2 | 17 | 13 | 16 | 13 | 15 | 13 | 12 | 2 | 16 | 2 | 15 | 10 | 17 | 13 | 0 | 0 | 0 | 6 | 17 | 6 | 7 | 3 | 14 | 2 | 14 | 13 | 11 | 13 | 9 | 10 | 15 | 2 | 12 | 2 | 11 | 10 | 14 | 10 | 12 | 2 | 10 | 13 | 8 | 13 | 7 | 10 | 10 | 2 | 9 | 2 | 8 | 10 | 9 | 7 | 13 | 9 | 15 | 11 | 8 | 11 | 10 | 9 | 1 | 7 | 0 | 11 | 6 | 7 | 2 | 11 | 4 | 9 | 0 | 9 | 4 | 9 | 3 | 9 | 8 | 9 | 6 | 7 | 14 | 9 | 2 | 1 | 16 | 7 | 15 | 6 | 1 | 10 | 8 | 10 | 7 | 1 | 8 | 1 | 10 | 1 | 6 | 1 | 0 | 1 | 15 | 0 | 1 | 0 | 16 | 0 | 17 | 3 | 1 | 3 | 16 | 6 | 0 | 6 | 6 | 6 | 8 | 6 | 15 | 6 | 16 | 7 | 3 | 9 | 11 | 9 | 12 | 9 | 13 | 9 | 14 | 9 | 17 | 11 | 5 | 11 | 7 | 11 | 12 | 13 | 1 | 13 | 2 | 13 | 17
+PIN | UDS | 64 | 0 | N/A | 155 | 71 | 3 | 0 | 3 | 17 | 7 | 16 | 3 | 15 | 2 | 17 | 13 | 16 | 13 | 15 | 13 | 12 | 2 | 16 | 2 | 15 | 10 | 17 | 13 | 0 | 0 | 0 | 6 | 17 | 6 | 7 | 3 | 14 | 2 | 14 | 13 | 11 | 13 | 9 | 10 | 15 | 2 | 12 | 2 | 11 | 10 | 14 | 10 | 12 | 2 | 10 | 13 | 8 | 13 | 7 | 10 | 10 | 2 | 9 | 2 | 8 | 10 | 9 | 7 | 13 | 9 | 15 | 11 | 8 | 11 | 10 | 7 | 0 | 11 | 6 | 7 | 1 | 11 | 3 | 1 | 16 | 7 | 15 | 6 | 1 | 10 | 8 | 10 | 7 | 1 | 8 | 1 | 10 | 1 | 6 | 1 | 3 | 1 | 15 | 0 | 2 | 0 | 16 | 0 | 17 | 1 | 0 | 3 | 1 | 3 | 16 | 6 | 0 | 6 | 6 | 6 | 8 | 6 | 9 | 6 | 15 | 6 | 16 | 7 | 3 | 7 | 14 | 9 | 14 | 11 | 5 | 11 | 7 | 11 | 12 | 13 | 1 | 13 | 2 | 13 | 14 | 13 | 17
 PIN | AUTOBOOT_OFF | 64 | 0 | N/A | 142 | 3 | 4 | 4 | 3 | 1 | 3 | 17
 PIN | A<15> | 64 | 0 | N/A | 139 | 6 | 7 | 16 | 7 | 13 | 1 | 6 | 1 | 3 | 1 | 0 | 7 | 14
 PIN | LAN_INT | 64 | 0 | N/A | 201 | 3 | 7 | 13 | 7 | 10 | 7 | 14
@@ -3592,10 +3593,10 @@ PIN | LAN_WRL | 536871040 | 0 | N/A | 145
 PIN | ROM_OE | 536871040 | 0 | N/A | 65
 PIN | A_LAN<3> | 536871040 | 0 | N/A | 8
 PIN | LAN_RD | 536871040 | 0 | N/A | 242
-PIN | CFOUT | 536871040 | 0 | N/A | 191
 PIN | OVR | 536871040 | 0 | N/A | 185
 PIN | INT_OUT | 536871040 | 0 | N/A | 60
 PIN | DTACK | 536871040 | 0 | N/A | 160
+PIN | CFOUT | 536871040 | 0 | N/A | 191
 PIN | CP_CS | 536871040 | 0 | N/A | 63
 PIN | IDE_A<0> | 536871040 | 0 | N/A | 43
 PIN | IDE_A<1> | 536871040 | 0 | N/A | 45

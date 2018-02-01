@@ -56,5 +56,7 @@ GLOBAL REGARGS BOOL hw_recv_frame(struct PLIPBase *pb, struct HWFrame *frame);
 GLOBAL REGARGS void hw_config_init(struct PLIPBase *pb);
 GLOBAL REGARGS void hw_config_update(struct PLIPBase *pb, struct TemplateConfig *cfg);
 GLOBAL REGARGS void hw_config_dump(struct PLIPBase *pb);
+GLOBAL REGARGS void hw_enable_global_int(struct PLIPBase *pb);
+GLOBAL REGARGS void hw_disable_global_int(struct PLIPBase *pb);
 
 #endif
