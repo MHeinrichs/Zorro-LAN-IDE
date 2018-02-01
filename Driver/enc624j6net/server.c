@@ -351,7 +351,7 @@ PRIVATE REGARGS BOOL read_frame(struct IOSana2Req *req, struct HWFrame *frame)
 /*F*/ PRIVATE REGARGS VOID doreadreqs(BASEPTR)
 {
    LONG datasize;
-   struct IOSana2Req *got, *got2;
+   struct IOSana2Req *got;
    ULONG pkttyp = 0; /* just to avoid warning with opt build, irrelevant otherwise */
    BOOL rv;
    struct HWFrame *frame = pb->pb_Frame;
@@ -389,11 +389,11 @@ PRIVATE REGARGS BOOL read_frame(struct IOSana2Req *req, struct HWFrame *frame)
 
       ObtainSemaphore(&pb->pb_ReadListSem);
          
-       /* traverse the list of read-requests */
-      for(got = (struct IOSana2Req *) pb->pb_ReadList.lh_Head;
-       got2 = (struct IOSana2Req *) got->ios2_Req.io_Message.mn_Node.ln_Succ;
-       got = got2 )
-       {
+      /* traverse the list of read-requests */
+      for(got = (struct IOSana2Req *)pb->pb_ReadList.lh_Head;
+          got->ios2_Req.io_Message.mn_Node.ln_Succ;
+          got = (struct IOSana2Req *)got->ios2_Req.io_Message.mn_Node.ln_Succ )
+      {
             /* check if this one requests for the new packet we got */
          if (got->ios2_PacketType == pkttyp )
          {
