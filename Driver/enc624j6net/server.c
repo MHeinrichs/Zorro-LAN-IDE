@@ -345,117 +345,125 @@ PRIVATE REGARGS BOOL read_frame(struct IOSana2Req *req, struct HWFrame *frame)
    return ok;
 }
 
-   /*
-   ** reading packets
-   */
+/*
+** reading packets
+*/
 /*F*/ PRIVATE REGARGS VOID doreadreqs(BASEPTR)
 {
-   LONG datasize;
-   struct IOSana2Req *got;
-   ULONG pkttyp = 0; /* just to avoid warning with opt build, irrelevant otherwise */
-   BOOL rv;
-   struct HWFrame *frame = pb->pb_Frame;
+	LONG datasize,haverec;
+	struct IOSana2Req *got;
+	ULONG pkttyp = 0; /* just to avoid warning with opt build, irrelevant otherwise */
+	BOOL rv;
+	struct HWFrame *frame = pb->pb_Frame;
 
-   d8(("+hw_recv\n"));
-   rv = hw_recv_frame(pb, frame);
-   d8(("-hw_recv\n"));
-   if (rv)
-   {
-      pb->pb_DevStats.PacketsReceived++;
+	haverec = hw_recv_pending(pb);
+	/*allow only a certain number of packets to be serverd per interrupt*/
 
-      pkttyp = frame->hwf_Type;
+	if(haverec>MAX_READ_PACKAGE){
+		haverec = MAX_READ_PACKAGE;
+	}
+	while(haverec--){
+		d8(("+hw_recv\n"));
+		rv = hw_recv_frame(pb, frame);
+		d8(("-hw_recv\n"));
+		if (rv)
+		{
+			BOOL ok;
+			pb->pb_DevStats.PacketsReceived++;
+
+			pkttyp = frame->hwf_Type;
 
 #if 0
-      /* perform internal loop back of magic packets of type 0xfffd */
-      if(pkttyp == HW_MAGIC_LOOPBACK) {
-         d(("loop back packet (size %ld)\n",frame->hwf_Size));
-         hw_send_frame(pb, frame);
-         return;
-      }
+			/* perform internal loop back of magic packets of type 0xfffd */
+			if(pkttyp == HW_MAGIC_LOOPBACK) {
+				d(("loop back packet (size %ld)\n",frame->hwf_Size));
+				hw_send_frame(pb, frame);
+				return;
+			}
 
-      /* plipbox requests online magic (again) */
-      if(pkttyp == HW_MAGIC_ONLINE) {
-         d(("request online magic"));
-         hw_send_magic_pkt(pb, HW_MAGIC_ONLINE);
-         return;
-      }
+			/* plipbox requests online magic (again) */
+			if(pkttyp == HW_MAGIC_ONLINE) {
+				d(("request online magic"));
+				hw_send_magic_pkt(pb, HW_MAGIC_ONLINE);
+				return;
+			}
 #endif
+			datasize = frame->hwf_Size - HW_ETH_HDR_SIZE;
 
-      datasize = frame->hwf_Size - HW_ETH_HDR_SIZE;
+			dotracktype(pb, pkttyp, 0, 1, 0, datasize, 0);
 
-      dotracktype(pb, pkttyp, 0, 1, 0, datasize, 0);
+			d(("packet %08lx, size %ld received\n",pkttyp,datasize));
 
-      d(("packet %08lx, size %ld received\n",pkttyp,datasize));
+			ok = FALSE;
+			ObtainSemaphore(&pb->pb_ReadListSem);
 
-      ObtainSemaphore(&pb->pb_ReadListSem);
-         
-      /* traverse the list of read-requests */
-      for(got = (struct IOSana2Req *)pb->pb_ReadList.lh_Head;
-          got->ios2_Req.io_Message.mn_Node.ln_Succ;
-          got = (struct IOSana2Req *)got->ios2_Req.io_Message.mn_Node.ln_Succ )
-      {
-            /* check if this one requests for the new packet we got */
-         if (got->ios2_PacketType == pkttyp )
-         {
-            BOOL ok;
-            
-            Remove((struct Node*)got);
+			/* traverse the list of read-requests */
+			for(got = (struct IOSana2Req *)pb->pb_ReadList.lh_Head;
+			got->ios2_Req.io_Message.mn_Node.ln_Succ;
+			got = (struct IOSana2Req *)got->ios2_Req.io_Message.mn_Node.ln_Succ )
+			{
+				/* check if this one requests for the new packet we got */
+				if (got->ios2_PacketType == pkttyp )
+				{
+					Remove((struct Node*)got);
+					ok=TRUE; /* mark, that we found the package and quit list traversing */
+					break;
+				}
+			}
 
-            /* deliver packet */
-            ok = read_frame(got, frame);
-            if(!ok) {
-               DoEvent(pb, S2EVENT_ERROR | S2EVENT_BUFF | S2EVENT_SOFTWARE);
-            }
+			ReleaseSemaphore(&pb->pb_ReadListSem);
 
-            d(("packet received, satisfying S2Request\n"));
-            DevTermIO(pb, got);
-            got = NULL;
-            break;
-         }
-      }
+			if(ok){
+				/* deliver packet */
+				ok = read_frame(got, frame);
+				if(!ok) {
+					DoEvent(pb, S2EVENT_ERROR | S2EVENT_BUFF | S2EVENT_SOFTWARE);
+				}
 
-      ReleaseSemaphore(&pb->pb_ReadListSem);
-   }
-   else
-   {
-      d(("Error receiving (%ld. len=%ld)\n", rv, frame->hwf_Size));
-      /* something went wrong during receipt */
-      DoEvent(pb, S2EVENT_HARDWARE | S2EVENT_ERROR | S2EVENT_RX);
-      got = NULL;
-      pb->pb_DevStats.BadData++;
-   }
+				d(("packet received, satisfying S2Request\n"));
+				DevTermIO(pb, got);
+				got = NULL; /* delete the request to indicate that we served it*/
+			}
+			else {
+				/* If no one wanted this packet explicitely, there is one chance
+				** left: somebody waiting for orphaned packets. If this fails, too,
+				** we will drop it.
+				*/
+				d(("unknown packet\n"));
 
-      /* If no one wanted this packet explicitely, there is one chance
-      ** left: somebody waiting for orphaned packets. If this fails, too,
-      ** we will drop it.
-      */
-   if (got)
-   {
-      d(("unknown packet\n"));
+				pb->pb_DevStats.UnknownTypesReceived++;
 
-      pb->pb_DevStats.UnknownTypesReceived++;
-      
-      ObtainSemaphore(&pb->pb_ReadOrphanListSem);
-      got = (struct IOSana2Req *)RemHead((struct List*)&pb->pb_ReadOrphanList);
-      ReleaseSemaphore(&pb->pb_ReadOrphanListSem);
+				ObtainSemaphore(&pb->pb_ReadOrphanListSem);
+				got = (struct IOSana2Req *)RemHead((struct List*)&pb->pb_ReadOrphanList);
+				ReleaseSemaphore(&pb->pb_ReadOrphanListSem);
 
-      if (got)
-      {
-         BOOL ok = read_frame(got, frame);
-         if(!ok) {
-            DoEvent(pb, S2EVENT_ERROR | S2EVENT_BUFF | S2EVENT_SOFTWARE);
-         }
+				if (got)
+				{
+					ok = read_frame(got, frame);
+					if(!ok) {
+						DoEvent(pb, S2EVENT_ERROR | S2EVENT_BUFF | S2EVENT_SOFTWARE);
+					}
 
-         d(("orphan read\n"));
+					d(("orphan read\n"));
 
-         DevTermIO(pb, got);
-      }
-      else
-      {
-         dotracktype(pb, pkttyp, 0, 0, 0, 0, 1);
-         d(("packet thrown away...\n"));
-      }
-   }
+					DevTermIO(pb, got);
+				}
+				else
+				{
+					dotracktype(pb, pkttyp, 0, 0, 0, 0, 1);
+					d(("packet thrown away...\n"));
+				}
+			}
+		}
+		else
+		{
+			d(("Error receiving (%ld. len=%ld)\n", rv, frame->hwf_Size));
+			/* something went wrong during receipt */
+			DoEvent(pb, S2EVENT_HARDWARE | S2EVENT_ERROR | S2EVENT_RX);
+			got = NULL;
+			pb->pb_DevStats.BadData++;
+		}
+	}
 }
 /*E*/
 
@@ -728,13 +736,9 @@ PRIVATE REGARGS BOOL read_frame(struct IOSana2Req *req, struct HWFrame *frame)
             	   haverec = hw_recv_pending(pb);
             }
 						hw_disable_global_int(pb);
-						
-						/*allow only a certain number of packets to be serverd per interrupt*/
-						if(haverec>MAX_READ_PACKAGE)
-							haverec = MAX_READ_PACKAGE;
 
             /* accept pending receive and start reading */
-            while( haverec-- )
+            if( haverec>0 )
             {
                d2(("*+ do_read\n"));
                doreadreqs(pb);

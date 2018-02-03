@@ -32,7 +32,7 @@ DEBUG	EQU	1
 ;------------------ options, some depend on hardware (CPLD) configuration -------------------------
 _OPT_BUFFER_SWAP	EQU	0	;perform byte swap on buffer ops (1) or assume native endian (0)
 _OPT_REG_SWAP		EQU	0	;perform byte swap on register ops (1) or assume native endian (0)
-_OPT_ADR_QUIRK		EQU	1	;address lines 12/13 are swapped (1) or linear addressing (0)
+_OPT_ADR_QUIRK		EQU	0	;address lines 12/13 are swapped (1) or linear addressing (0)
 _OPT_FLOWCONTROL	EQU	0	;perform flow control on RX (1) or not (0)
 _OPT_RECV		EQU	1	;faster recv (1) or generic (0)
 
@@ -802,6 +802,22 @@ READSRAM macro
 	else
 READSRAM macro
 	move.w	(\1,\2),\3
+	endm
+	endc
+
+	;read with address shuffling or direct from SRAM (affects $2000-$5000)
+	ifne	_OPT_ADR_QUIRK
+;\1 = address register
+;\2 = data register, offset
+;\3 = destination
+READSRAM_LONG macro
+	eor.w	#$6000,\2
+	move.l	(\1,\2.w),\3
+	eor.w	#$6000,\2
+	endm
+	else
+READSRAM_LONG macro
+	move.l	(\1,\2),\3
 	endm
 	endc
 
@@ -1732,13 +1748,11 @@ _enc624j6l_RecvFrame:		;
 	move.l	a1,a3
 
 	ifne	_OPT_RECV
-		move	d7,d1			;start
-		move	#$7000,d2		;mask
-		add	d0,d1			;start+bytes
-		and	d2,d1			;keep only multiples of $1000
-		and	d7,d2			;keep only multiples of $1000
-		cmp	d1,d2
-		bne.s	.nooptrecv		;sadly, we cannot use faster routine atm
+		move.l	d7,d1			;start
+		and.l	#$FFFF,d1		;keep only lower adderess
+		add.l	d0,d1			  ;start+bytes
+		cmp.l	#RXSTOP_INIT,d1
+		bgt.s	.nooptrecv		;sadly, we cannot use faster routine atm, because we have a wrap around in the SRAM buffer
 
 	ifne	_OPT_ADR_QUIRK
 		eor.w	#$6000,d7
@@ -1766,18 +1780,18 @@ _enc624j6l_RecvFrame:		;
 
 	;generic loop: check for position overflows with each word
 	move	d0,d1			;byte count
-	lsr	#1,d1			;converted to word count
+	lsr	#2,d1			;converted to dword count
 	bcs.s	.generic_read		;read 1 byte more if impair byte count
 	subq	#1,d1			;words - 1
 .generic_read:
-	READSRAM a0,d7,d2		;get current word
-	;move	(a0,d7.w),d2		;get current word
-	addq	#2,d7			;increment position
+	READSRAM_LONG a0,d7,d2		;get current dword
+	;move.l	(a0,d7.w),d2		;get current dword
+	addq	#4,d7			;increment position
 	ifne	_OPT_BUFFER_SWAP
 	 rol.w	#8,d2			;swap buffer to Big Endian
 	endc
 	WRAPINDEX d7			;wrap D7 if beyond buffer
-	move	d2,(a1)+
+	move.l	d2,(a1)+
 	dbf	d1,.generic_read
 
 .end_read:
