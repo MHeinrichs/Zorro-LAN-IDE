@@ -1,6 +1,14 @@
-////////////////////////////////////////////////////
-// ENC424J600/624J600 register addresses		  //
-////////////////////////////////////////////////////
+; ------------------------------------------------------------------------------
+; | Lowlevel Access to memory mapped ENC624J600 in PSP mode                    |
+; | Henryk Richter <henryk.richter@gmx.net>                                    |
+; ------------------------------------------------------------------------------
+; register definition section
+
+; set/clr register offsets
+SET_OFFSET	EQU	$0100
+CLR_OFFSET	EQU	$0180
+
+; Register definitions
 
 ; SPI Bank 0 registers --------
 ETXST		EQU    $7E00
@@ -47,7 +55,7 @@ EUDANDH		EQU    $7E19
 ESTAT		EQU    $7E1A
 ESTATL		EQU    $7E1A
 ESTATH		EQU    $7E1B
-EIR			EQU    $7E1C
+EIR		EQU    $7E1C
 EIRL		EQU    $7E1C
 EIRH		EQU    $7E1D
 ECON1		EQU    $7E1E
@@ -146,7 +154,7 @@ ECON2H		EQU    $7E6F
 ERXWM		EQU    $7E70
 ERXWML		EQU    $7E70
 ERXWMH		EQU    $7E71
-EIE			EQU    $7E72
+EIE		EQU    $7E72
 EIEL		EQU    $7E72
 EIEH		EQU    $7E73
 EIDLED		EQU    $7E74
@@ -180,7 +188,6 @@ EUDARDPTH	EQU    $7E8F
 EUDAWRPT	EQU    $7E90
 EUDAWRPTL	EQU    $7E90
 EUDAWRPTH	EQU    $7E91
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; ENC424J600/624J600 register bits
@@ -280,24 +287,24 @@ MACON1_r9		EQU    (1<<9)
 MACON1_r8		EQU    (1<<8)
 MACON1_LOOPBK	EQU    (1<<4)
 MACON1_r3		EQU    (1<<3)
-#define	MACON1_RXPAUS	EQU    (1<<2)
-#define	MACON1_PASSALL	EQU    (1<<1)
+MACON1_RXPAUS	EQU    (1<<2)
+MACON1_PASSALL	EQU    (1<<1)
 MACON1_r0		EQU    (1)
 
 ; MACON2 bits ---------
-#define	MACON2_DEFER	EQU    (1<<14)
-#define	MACON2_BPEN		EQU    (1<<13)
-#define	MACON2_NOBKOFF	EQU    (1<<12)
+MACON2_DEFER	EQU    (1<<14)
+MACON2_BPEN		EQU    (1<<13)
+MACON2_NOBKOFF	EQU    (1<<12)
 MACON2_r9		EQU    (1<<9)
 MACON2_r8		EQU    (1<<8)
-#define	MACON2_PADCFG2	EQU    (1<<7)
-#define	MACON2_PADCFG1	EQU    (1<<6)
-#define	MACON2_PADCFG0	EQU    (1<<5)
-#define	MACON2_TXCRCEN	EQU    (1<<4)
-#define	MACON2_PHDREN	EQU    (1<<3)
-#define	MACON2_HFRMEN	EQU    (1<<2)
+MACON2_PADCFG2	EQU    (1<<7)
+MACON2_PADCFG1	EQU    (1<<6)
+MACON2_PADCFG0	EQU    (1<<5)
+MACON2_TXCRCEN	EQU    (1<<4)
+MACON2_PHDREN	EQU    (1<<3)
+MACON2_HFRMEN	EQU    (1<<2)
 MACON2_r1		EQU    (1<<1)
-#define	MACON2_FULDPX	EQU    (1)
+MACON2_FULDPX	EQU    (1)
 
 ; MABBIPG bits --------
 MABBIPG_BBIPG6  EQU    (1<<6)
@@ -337,8 +344,8 @@ MACLCON_MAXRET1	EQU    (1<<1)
 MACLCON_MAXRET0	EQU    (1)
 
 ; MICMD bits ----------
-#define	MICMD_MIISCAN	EQU    (1<<1)
-#define	MICMD_MIIRD		EQU    (1)
+MICMD_MIISCAN	EQU    (1<<1)
+MICMD_MIIRD		EQU    (1)
 
 ; MIREGADR bits -------
 MIREGADR_r12	EQU    (1<<12)
@@ -354,9 +361,9 @@ MIREGADR_PHREG0	EQU    (1)
 
 ; MISTAT bits ---------
 MISTAT_r3		EQU    (1<<3)
-#define	MISTAT_NVALID	EQU    (1<<2)
-#define	MISTAT_SCAN		EQU    (1<<1)
-#define	MISTAT_BUSY		EQU    (1)
+MISTAT_NVALID	EQU    (1<<2)
+MISTAT_SCAN		EQU    (1<<1)
+MISTAT_BUSY		EQU    (1)
 
 ; ECON2 bits ----------
 ECON2_ETHEN		EQU    (1<<15)
@@ -573,3 +580,23 @@ PHSTAT3_SPDDPX1	EQU    (1<<3)
 PHSTAT3_SPDDPX0	EQU    (1<<2)
 PHSTAT3_r1		EQU    (1<<1)
 PHSTAT3_r0		EQU    (1)
+
+;------------------------------ internal defaults ----------------------------------
+;33.333Mhz clock out frequency
+CLOCK_33_CLR	EQU	(ECON2_COCON3|ECON2_COCON2|ECON2_COCON1)	;clr mask
+CLOCK_33_SET	EQU	(ECON2_COCON0)					;set mask
+;25 MHz
+CLOCK_25_CLR	EQU	(ECON2_COCON3|ECON2_COCON2|ECON2_COCON0)	;clr mask
+CLOCK_25_SET	EQU	(ECON2_COCON1)					;set mask
+;20 MHz
+CLOCK_20_CLR	EQU	(ECON2_COCON3|ECON2_COCON2)			;clr mask
+CLOCK_20_SET	EQU	(ECON2_COCON1|ECON2_COCON0)			;set mask
+;16 MHz
+CLOCK_16_CLR	EQU	(ECON2_COCON3|ECON2_COCON0|ECON2_COCON1)	;clr mask
+CLOCK_16_SET	EQU	(ECON2_COCON2)					;set mask
+;4 MHz (after reset)
+CLOCK_4_CLR	EQU	(ECON2_COCON2)					;clr mask
+CLOCK_4_SET	EQU	(ECON2_COCON3|ECON2_COCON0|ECON2_COCON1)	;set mask
+
+CLOCK_DEF_CLR	EQU	CLOCK_33_CLR
+CLOCK_DEF_SET	EQU	CLOCK_33_SET
