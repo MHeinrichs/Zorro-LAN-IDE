@@ -813,10 +813,13 @@ _enc624j6l_IntServer:
 	beq.s	.rts				;exit quickly when no packet pending
 	;CLRREG	EIR,a1,d1			;clear interrupt bit
 
-	move	#$C000,d0			;disable board interrupt until /INT from ENC toggles
-	lea	$4000(a1),a1			;D0: Bit15 = overall board int enable, Bit14 = ignore int until toggle (1)
-	move.w	d0,($4000,a1)
-	lea	-$4000(a1),a1
+	;move	#$C000,d0			;disable board interrupt until /INT from ENC toggles
+	;lea	$4000(a1),a1			;D0: Bit15 = overall board int enable, Bit14 = ignore int until toggle (1)
+	;move.w	d0,($4000,a1)
+	;lea	-$4000(a1),a1
+	
+	move	#EIE_INTIE,D0 ;disable board interrupt until someone enables it again
+	CLRREG	EIE,A1,d0
 	
 	READREG	PSigTask,a1,d0     ;upper two bytes
 	swap	d0	;
@@ -1034,7 +1037,7 @@ _enc624j6l_RecvFrame:		;
 
 	ifne	_OPT_RECV
 		move.l	d7,d1			;start
-		and.l	#$FFFF,d1		;keep only lower adderess
+		and.l	#$FFFF,d1		;keep only lower address
 		add.l	d0,d1			  ;start+bytes
 		cmp.l	#RXSTOP_INIT,d1
 		bgt.s	.nooptrecv		;sadly, we cannot use faster routine atm, because we have a wrap around in the SRAM buffer
@@ -1049,12 +1052,12 @@ _enc624j6l_RecvFrame:		;
 		subq	#1,d1			;words - 1
 .opt_read:
 	ifne	_OPT_BUFFER_SWAP
-		move.w	(a2)+,d2		;get current word
-		 rol.w	#8,d2			;swap buffer to Big Endian
-		move.w	d2,(a1)+
-		move.w	(a2)+,d2		;get current word
-		 rol.w	#8,d2			;swap buffer to Big Endian
-		move.w	d2,(a1)+
+		move.l	(a2)+,d2		;get current word
+		rol.w	#8,d2			;swap buffer to Big Endian
+		swap D2
+		rol.w	#8,d2			;swap buffer to Big Endian
+		swap D2
+		move.l	d2,(a1)+
 	else
 		move.l	(a2)+,(a1)+
 	endc
@@ -1063,7 +1066,7 @@ _enc624j6l_RecvFrame:		;
 .nooptrecv:
 	endc	;_OPT_RECV
 
-	;generic loop: check for position overflows with each word
+	;generic loop: check for position overflows with each dword
 	move	d0,d1			;byte count
 	lsr	#2,d1			;converted to dword count
 	bcs.s	.generic_read		;read 1 byte more if impair byte count
@@ -1071,12 +1074,15 @@ _enc624j6l_RecvFrame:		;
 .generic_read:
 	READSRAM_LONG a0,d7,d2		;get current dword
 	;move.l	(a0,d7.w),d2		;get current dword
-	addq	#4,d7			;increment position
 	ifne	_OPT_BUFFER_SWAP
 	 rol.w	#8,d2			;swap buffer to Big Endian
+	 SWAP D2
+	 rol.w	#8,d2			;swap buffer to Big Endian
+   SWAP D2
 	endc
+	move.l	d2,(a1)+	; store currend dword
+	addq	#4,d7			;increment position
 	WRAPINDEX d7			;wrap D7 if beyond buffer
-	move.l	d2,(a1)+
 	dbf	d1,.generic_read
 
 .end_read:
@@ -1186,10 +1192,9 @@ _enc624j6l_TransmitFrame:
 	swap	d4
 	move.w	#8,d4
 .txcopy:
-	move.l	(a1)+,d1
-	move.l	(a1)+,d3
-
 	ifne	_OPT_BUFFER_SWAP
+	 move.l	(a1)+,d1
+	 move.l	(a1)+,d3
 	 ; byte swap in 16 Bit words
 	 rol.w	d4,d1
 	 rol.w	d4,d3
@@ -1199,9 +1204,12 @@ _enc624j6l_TransmitFrame:
 	 rol.w	d4,d3
 	 swap	d1
 	 swap	d3
+	 move.l	d1,(a2)+	;save to SRAM
+ 	 move.l	d3,(a2)+	;save to SRAM
+ 	else
+	 move.l	(a1)+,(a2)+	;save to SRAM
+	 move.l	(a1)+,(a2)+	;save to SRAM 	
 	endc
-	move.l	d1,(a2)+	;save to SRAM
-	move.l	d3,(a2)+	;save to SRAM
 
 	dbf	d0,.txcopy
 	swap	d4
