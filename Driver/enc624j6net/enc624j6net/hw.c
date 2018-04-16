@@ -241,6 +241,7 @@ GLOBAL REGARGS void hw_config_dump(struct PLIPBase *pb)
 GLOBAL REGARGS BOOL hw_init(struct PLIPBase *pb)
 {
    struct HWBase *hwb = &pb->pb_HWBase;
+   /*ULONG tst;*/
    
    BOOL rc = FALSE;
    
@@ -253,10 +254,13 @@ GLOBAL REGARGS BOOL hw_init(struct PLIPBase *pb)
 
    hwb->hwb_Interrupt.is_Data = (0);	/* prepare interrupt */
    hwb->hwb_Interrupt.is_Code = (0);
+   /*tst = AllocSignal(-1);*/
+   /* interesting: we get CTRL-F by default. Indidentally the same signal used for the write queue */
    if ((hwb->hwb_IntSig = AllocSignal(-1)) != -1)
    {
       hwb->hwb_IntSigMask = 1L << hwb->hwb_IntSig;
       d2(("int sigmask=%08lx\n",hwb->hwb_IntSigMask));
+      /*FreeSignal(tst);*/
 
       if ((hwb->hwb_TimeoutPort = CreateMsgPort()))
       {

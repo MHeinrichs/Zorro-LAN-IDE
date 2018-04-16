@@ -8,9 +8,9 @@
 #  based on Magplip build file
 #####################################################################
 #
-DEVICE_DATE = 18.12.2017
+DEVICE_DATE = 16.04.2018
 DEVICE_VERSION  = 0
-DEVICE_REVISION = 1
+DEVICE_REVISION = 2
 
 # see below for EXTRAOBJ, disable for plipbox, enable for sdnet/enc624j6net
 HWSRCDIR = enc624j6net

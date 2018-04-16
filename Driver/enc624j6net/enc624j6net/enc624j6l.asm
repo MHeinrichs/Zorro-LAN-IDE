@@ -1,3 +1,4 @@
+;APS00000000000000000000000000000000000000000000000000000000000000000000000000000000
 ; ------------------------------------------------------------------------------
 ; | Lowlevel Access to memory mapped ENC624J600 in PSP mode                    |
 ; | Henryk Richter <henryk.richter@gmx.net>                                    |
@@ -18,6 +19,7 @@
 ; - _enc624j6l_RXReset -> won't recover from totally unresponsive chip (but exits gracefully)
 ; - RXSTART_INIT = $0c00 -> currently $2000 due to location bug
 
+	incdir	Temp:Amiga/src/Zorro-LAN-IDE.git/Driver/enc624j6net/
 	include "enc624j6net/registers.i"
 	include "enc624j6net/macros.i"
 
@@ -809,7 +811,7 @@ _enc624j6l_IntServer:
 
 	moveq	#EIR_PKTIF,d1
 	READREG	EIR,a1,d0			;get interrupt status reg
-	and		d1,d0
+	and	d1,d0
 	beq.s	.rts				;exit quickly when no packet pending
 	;CLRREG	EIR,a1,d1			;clear interrupt bit
 
@@ -821,17 +823,17 @@ _enc624j6l_IntServer:
 	move	#EIE_INTIE,D0 ;disable board interrupt until someone enables it again
 	CLRREG	EIE,A1,d0
 	
-	READREG	PSigTask,a1,d0     ;upper two bytes
+	READREG	PSigTask,a1,d0		;upper two bytes
 	swap	d0	;
-	READREG	PSigTask+2,a1,d0   ;lower two bytes
-	tst.l	d0					; no task ?
+	READREG	PSigTask+2,a1,d0	;lower two bytes
+	tst.l	d0			; no task ?
 	beq.s	.rts
-	move.l	d0,a0				; signaled task
+	move.l	d0,a0			; signaled task
 
 	moveq	#0,d0
-	READREG		PSigBit,a1,d1	;get signal bit
-	bset	d1,d0				;signal mask
-	move.l	a0,a1				;task
+	READREG	PSigBit,a1,d1		;get signal bit
+	bset	d1,d0			;signal mask
+	move.l	a0,a1			;task
 
 	move.l	4.w,a6
 	jsr		_LVOSignal(a6)
@@ -1018,10 +1020,12 @@ _enc624j6l_RecvFrame:		;
 	move	d1,d0			;
 
 	else
+
 	cmp	#2,d0
 	blt	.recv_err		;can't be: SRC MAC 6 DST MAC 6 LEN/TYPE 2 CRC 4 (discounting variable data)
 	cmp	#MAX_FRAMELEN,d0
 	bgt	.recv_err
+	
 	endc
 
 	subq	#4,d0			;subtract CRC length
@@ -1037,19 +1041,20 @@ _enc624j6l_RecvFrame:		;
 
 	ifne	_OPT_RECV
 		move.l	d7,d1			;start
-		and.l	#$FFFF,d1		;keep only lower address
-		add.l	d0,d1			  ;start+bytes
-		cmp.l	#RXSTOP_INIT,d1
+		;and.l	#$FFFF,d1		;keep only lower address
+		add.w	d0,d1			;start+bytes
+		bvs.s	.nooptrecv		;what? beyond 16 Bit ? -> we really should consider this an error, really :-)
+		cmp.w	#RXSTOP_INIT,d1		;
 		bgt.s	.nooptrecv		;sadly, we cannot use faster routine atm, because we have a wrap around in the SRAM buffer
 
 	ifne	_OPT_ADR_QUIRK
 		eor.w	#$6000,d7
 	endc
 		lea	(a0,d7.w),a2		;read pointer
-		move	d0,d1			;byte count
-		lsr	#2,d1			;converted to dword count
-		bcs.s	.opt_read		;read 1 byte more if impair byte count
-		subq	#1,d1			;words - 1
+		moveq	#3,d1			;round bytes up
+		add	d0,d1			;byte count + 3
+		lsr	#2,d1			;converted to dword count = ceil(bytes/4)
+		subq	#1,d1			;longwords - 1
 .opt_read:
 	ifne	_OPT_BUFFER_SWAP
 		move.l	(a2)+,d2		;get current word
@@ -1066,22 +1071,25 @@ _enc624j6l_RecvFrame:		;
 .nooptrecv:
 	endc	;_OPT_RECV
 
-	;generic loop: check for position overflows with each dword
+	;generic loop: check for position overflows with each word
+	;
+	;CAUTION: DWORD loop doesn`t apply here since buffer is organized
+	;         in multiples of two bytes, same for frame lengths and
+	;         possible wraparounds
+	;
+	moveq	#1,d2			;mask for lower bit
 	move	d0,d1			;byte count
-	lsr	#2,d1			;converted to dword count
-	bcs.s	.generic_read		;read 1 byte more if impair byte count
+	lsr	#1,d1			;converted to word count
+	and.l	d0,d2			;if lower bits are set ->
+	bne.s	.generic_read		;read 1 word more if impair byte/word count
 	subq	#1,d1			;words - 1
 .generic_read:
-	READSRAM_LONG a0,d7,d2		;get current dword
-	;move.l	(a0,d7.w),d2		;get current dword
+	move.w	(a0,d7.w),d2		;get current word
 	ifne	_OPT_BUFFER_SWAP
 	 rol.w	#8,d2			;swap buffer to Big Endian
-	 SWAP D2
-	 rol.w	#8,d2			;swap buffer to Big Endian
-   SWAP D2
 	endc
-	move.l	d2,(a1)+	; store currend dword
-	addq	#4,d7			;increment position
+	move.w	d2,(a1)+		; store currend word
+	addq	#2,d7			;increment position
 	WRAPINDEX d7			;wrap D7 if beyond buffer
 	dbf	d1,.generic_read
 

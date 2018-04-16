@@ -356,7 +356,9 @@ PRIVATE REGARGS BOOL read_frame(struct IOSana2Req *req, struct HWFrame *frame)
    BOOL rv,ok;
    struct HWFrame *frame = pb->pb_Frame;
 	 
-	 while(hw_recv_pending(pb)){
+/*	while(hw_recv_pending(pb)){*/
+	while(1){
+/*	if(1){ */
 	   d8(("+hw_recv\n"));
 	   rv = hw_recv_frame(pb, frame);
 	   d8(("-hw_recv\n"));
@@ -443,11 +445,15 @@ PRIVATE REGARGS BOOL read_frame(struct IOSana2Req *req, struct HWFrame *frame)
 	   }
 	   else
 	   {
+#if 1
+		break;
+#else
 	      d(("Error receiving (%ld. len=%ld)\n", rv, frame->hwf_Size));
 	      /* something went wrong during receipt */
 	      DoEvent(pb, S2EVENT_HARDWARE | S2EVENT_ERROR | S2EVENT_RX);
 	      got = NULL;
 	      pb->pb_DevStats.BadData++;
+#endif
 	   }
 	}
 }
@@ -695,56 +701,55 @@ PRIVATE REGARGS BOOL read_frame(struct IOSana2Req *req, struct HWFrame *frame)
       
          wmask = SIGBREAKF_CTRL_F | SIGBREAKF_CTRL_C | portsigmask | recvsigmask;
 
-         /* main loop of server task */
-         d(("--- server main loop: %08lx ---\n", wmask));
-         for(running=TRUE;running;)
-         {
+	 /* main loop of server task */
+	 d(("--- server main loop: %08lx ---\n", wmask));
+	 for(running=TRUE;running;)
+	 {
             d4(("** wmask is 0x%08lx\n", wmask));
 
             /* send packets if any */
             d2(("*+ do_write\n"));
-			      wr = (struct IOSana2Req *)pb->pb_WriteList.lh_Head;
+	    wr = (struct IOSana2Req *)pb->pb_WriteList.lh_Head;
             if( wr->ios2_Req.io_Message.mn_Node.ln_Succ )
             {
 	            dowritereqs(pb);
-	          }
+	    }
             d2(("*- do_write\n"));
 
-            /* if no recv is pending then wait for incoming signals */
-		        haverec = hw_recv_pending(pb);
-		        recv = 0;
-	          if( !haverec )
-    	      {
-        	       d2(("**> wait\n"));
-        	       hw_enable_global_int(pb);
-        	       recv = Wait(wmask);
-            	   d2(("**> wait: got 0x%08lx\n", recv));
-            }
-						/*hw_disable_global_int(pb);*/
-					
+	    /* if no recv is pending then wait for incoming signals */
+	    haverec = hw_recv_pending(pb);
+	    recv = 0;
+	    if( !haverec )
+	    {
+	       d2(("**> wait\n"));
+	       hw_enable_global_int(pb);
+	       recv = Wait(wmask);
+	       d2(("**> wait: got 0x%08lx\n", recv));
+	       /*haverec = hw_recv_pending(pb);*/
+	    }
+	    
             /* accept pending receive and start reading */
-            d2(("*+ do_read\n"));
-            doreadreqs(pb);
-            d2(("*- do_read\n"));
+	    d2(("*+ do_read\n"));
+	    doreadreqs(pb);
+	    d2(("*- do_read\n"));
 
-
-		        if( recv & specialmask )
-		        {
-            	/* handle SANA-II send requests */
-            	if (recv & portsigmask)
-            	{
-            	   d(("SANA-II request(s)\n"));
-            	   dos2reqs(pb);
-            	   recv &= ~portsigmask;
-            	}
-	            /* stop server task */
-    	        if (recv & SIGBREAKF_CTRL_C)
-    	        {
-        	       d(("received break signal\n"));
-        	       running = FALSE;
-        	    }
-        	  }
-         } /*main loop of server task*/
+	    if( recv & specialmask )
+	    {
+	        /* handle SANA-II send requests */
+	        if (recv & portsigmask)
+	        {
+	            d(("SANA-II request(s)\n"));
+	            dos2reqs(pb);
+	            recv &= ~portsigmask;
+	        }
+	        /* stop server task */
+	        if (recv & SIGBREAKF_CTRL_C)
+	        {
+	            d(("received break signal\n"));
+	            running = FALSE;
+	        }
+	    }
+	} /*main loop of server task*/
       }
       else
          d(("init() failed\n"));
