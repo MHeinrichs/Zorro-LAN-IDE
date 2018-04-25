@@ -185,6 +185,8 @@ PRIVATE REGARGS VOID dos2reqs(BASEPTR);
 }
 /*E*/
 
+/* moved this function out to hw.c for the ENC624 variant */
+#ifndef ENC624_OPT
    /*
    ** writing packets
    */
@@ -230,6 +232,8 @@ PRIVATE REGARGS VOID dos2reqs(BASEPTR);
    return rc;
 }
 /*E*/
+#endif /* ENC624_OPT */
+ 
 /*F*/ PRIVATE REGARGS VOID dowritereqs(BASEPTR)
 {
    struct IOSana2Req *currentwrite, *nextwrite;
@@ -237,9 +241,15 @@ PRIVATE REGARGS VOID dos2reqs(BASEPTR);
 
    ObtainSemaphore(&pb->pb_WriteListSem);
 
+#if 0
+   /* test only */
+   currentwrite = (struct IOSana2Req *)pb->pb_WriteList.lh_Head;
+   if( currentwrite->ios2_Req.io_Message.mn_Node.ln_Succ )
+#else
    for(currentwrite = (struct IOSana2Req *)pb->pb_WriteList.lh_Head;
        nextwrite = (struct IOSana2Req *) currentwrite->ios2_Req.io_Message.mn_Node.ln_Succ;
        currentwrite = nextwrite )
+#endif
    {
       code = write_frame(pb, currentwrite);
 
@@ -352,11 +362,11 @@ PRIVATE REGARGS BOOL read_frame(struct IOSana2Req *req, struct HWFrame *frame)
 {
    LONG datasize;
    struct IOSana2Req *got;
-   ULONG pkttyp = 0; /* just to avoid warning with opt build, irrelevant otherwise */
+   ULONG pkttyp;
    BOOL rv,ok;
    struct HWFrame *frame = pb->pb_Frame;
 	 
-/*	while(hw_recv_pending(pb)){*/
+/*	while(hw_recv_pending(pb)){ */
 	while(1){
 /*	if(1){ */
 	   d8(("+hw_recv\n"));
@@ -368,7 +378,7 @@ PRIVATE REGARGS BOOL read_frame(struct IOSana2Req *req, struct HWFrame *frame)
 	
 	      pkttyp = frame->hwf_Type;
 	
-	#if 0
+#if 0
 	      /* perform internal loop back of magic packets of type 0xfffd */
 	      if(pkttyp == HW_MAGIC_LOOPBACK) {
 	         d(("loop back packet (size %ld)\n",frame->hwf_Size));
@@ -382,7 +392,7 @@ PRIVATE REGARGS BOOL read_frame(struct IOSana2Req *req, struct HWFrame *frame)
 	         hw_send_magic_pkt(pb, HW_MAGIC_ONLINE);
 	         return;
 	      }
-	#endif
+#endif
 	
 	      datasize = frame->hwf_Size - HW_ETH_HDR_SIZE;
 	
@@ -441,7 +451,7 @@ PRIVATE REGARGS BOOL read_frame(struct IOSana2Req *req, struct HWFrame *frame)
 		    	dotracktype(pb, pkttyp, 0, 0, 0, 0, 1);
 		      d(("packet thrown away...\n"));
 	      }
-		    got = NULL;
+		/* got = NULL; */
 	   }
 	   else
 	   {
@@ -458,6 +468,7 @@ PRIVATE REGARGS BOOL read_frame(struct IOSana2Req *req, struct HWFrame *frame)
 	}
 }
 /*E*/
+
 
    /*
    ** 2nd level device command dispatcher (~SANA2IOF_QUICK)
@@ -476,12 +487,6 @@ PRIVATE REGARGS BOOL read_frame(struct IOSana2Req *req, struct HWFrame *frame)
    */
    while(ios2 = (struct IOSana2Req *)GetMsg(pb->pb_ServerPort))
    {
-      if (hw_recv_pending(pb))
-      {
-         d(("incoming data!"));
-         break;
-      }
-
       d(("sana2req %ld from serverport\n", ios2->ios2_Req.io_Command));
 
       switch (ios2->ios2_Req.io_Command)
@@ -683,7 +688,7 @@ PRIVATE REGARGS BOOL read_frame(struct IOSana2Req *req, struct HWFrame *frame)
 
       if (init(pb))
       {
-         ULONG recv=0, portsigmask, recvsigmask, wmask,specialmask;
+         ULONG recv, portsigmask, recvsigmask, wmask,specialmask;
          LONG  haverec;
          BOOL running;
          struct IOSana2Req *wr;
@@ -719,10 +724,14 @@ PRIVATE REGARGS BOOL read_frame(struct IOSana2Req *req, struct HWFrame *frame)
 	    /* if no recv is pending then wait for incoming signals */
 	    haverec = hw_recv_pending(pb);
 	    recv = 0;
-	    if( !haverec )
+	    if( !haverec ) /* if( (!haverec) && (!wr->ios2_Req.io_Message.mn_Node.ln_Succ) ) */
 	    {
 	       d2(("**> wait\n"));
 	       hw_enable_global_int(pb);
+	       
+	       /* we've got some spare time here: check for link change condition */
+	       hw_check_link_change(pb);
+
 	       recv = Wait(wmask);
 	       d2(("**> wait: got 0x%08lx\n", recv));
 	       /*haverec = hw_recv_pending(pb);*/

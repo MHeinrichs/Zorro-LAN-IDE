@@ -37,13 +37,20 @@ struct HWBase
 
    struct  IVT_TimerStruct     hwb_ivtimer; /* Timer interval handling (via Interrupt) */
 
+#ifdef ENC624_OPT
+   USHORT                      hwb_txdbuf;  /* TX double buffering location (0x0/0x600) */
+   USHORT                      hwb_unused_free_for_future;
+#endif
+
    /* config options */
    ULONG                       hwb_timervalue;    /* timer speed */
    UBYTE                       hwb_fullduplex;    /* full duplex */
    UBYTE                       hwb_flowcontrol;   /* flow control enable (1/0) */
    UBYTE                       hwb_multicast;	  /* multicast enable */
    UBYTE                       hwb_free_unused1;
+#ifndef PROTO_ENC624NET
    ULONG                       hwb_spispeed;      /* SPI speed   */
+#endif
 };
 
 #define HWB_RECV_PENDING           0
@@ -60,8 +67,21 @@ struct HWBase
 /* ----- config ----- */
 
 #define CONFIGFILE "ENV:SANA2/enc624j6net.config"
-#define TEMPLATE "TIMER/K/N,FULLDUPLEX/S,SPISPEED/K/N,MULTICAST/S,FLOWCONTROL/S"
+#ifdef PROTO_ENC624NET
+#define TEMPLATE "TIMER/K/N,FULLDUPLEX/S,MULTICAST/S,FLOWCONTROL/S"
+/* structure to be filled by ReadArgs template */ 
+struct TemplateConfig
+{
+   struct CommonConfig common;
+   ULONG *timervalue;
+   ULONG fullduplex;
+   ULONG multicast;
+   ULONG flowcontrol;
+};
 
+#else /* PROTO_ENC624NET */
+
+#define TEMPLATE "TIMER/K/N,FULLDUPLEX/S,SPISPEED/K/N,MULTICAST/S"
 /* structure to be filled by ReadArgs template */ 
 struct TemplateConfig
 {
@@ -72,5 +92,6 @@ struct TemplateConfig
    ULONG multicast;
    ULONG flowcontrol;
 };
+#endif /* PROTO_ENC624NET */
 
 #endif

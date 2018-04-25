@@ -46,7 +46,17 @@ PRIVATE struct TrackRec *findtracktype(BASEPTR, ULONG type);
                                                       tr = (struct TrackRec *) tr->tr_Link.mln_Succ)
    {
       if( tr->tr_PacketType == type )
-         return( tr );
+      {
+#if 0
+        /* simple MTF for PacketType search */
+      	if( (struct Node*)tr != pb->pb_TrackList.lh_Head )
+      	{
+      	 Remove( (struct Node*)tr );
+      	 AddHead( (struct List*)&pb->pb_TrackList, (struct Node*)tr );
+      	}
+#endif      	
+        return( tr );
+      }
    }
 
    return( NULL );

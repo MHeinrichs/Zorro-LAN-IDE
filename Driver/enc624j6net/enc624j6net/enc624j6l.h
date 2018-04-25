@@ -40,6 +40,37 @@
 /* control ids */
 #define PIO_CONTROL_FLOW        0
 
+/*--                                                                             --*/
+/*------------- <DANGER! APPLY CHANGES IN HERE ALSO TO enc624j6l.asm !!> ----------*/
+/*--                                                                             --*/
+/* buffers and locations */
+#define PSTART_INIT 0x0BF0	/*  16 Bytes private storage for driver */
+#define PSTOP_INIT  0x0BFF	/*  (see below for definitions) */
+
+#define RXSTART_INIT     0x2000  /*  start of RX buffer, room for 14 packets */
+#define RXSTOP_INIT      0x5fff  /*  end of RX buffer */
+                    
+#define TXSTART_INIT     0x0000  /*  start of TX buffer, room for 2 packets */
+#define TXSTOP_INIT      0x0BEF  /*  end of TX buffer (1536+1520 bytes) */
+                            
+/* max frame length which the conroller will accept:
+   (note: maximum ethernet frame length would be 1518 w/o 802.1Q) */
+#define MAX_FRAMELEN     1518        
+
+/* ------------ driver private storage ------------------------------ */
+#define PNextPacket PSTART_INIT	/* 2 Bytes - private "next packet" pointer for RX */
+#define PNextTX	 PSTART_INIT+2	/* 2 Bytes - private "next packet" pointer for TX (init as 0) */
+#define PSigBit	 PSTART_INIT+4	/* 2 Bytes interrupt bit */
+#define PSigTask PSTART_INIT+6	/* 4 Bytes signaled task */
+#define PLinkChange PSTART_INIT+10	/* 2 Bytes Link Change (Bit0 used right now) */
+#define Punused	 PSTART_INIT+12	/*  */
+
+/* ------------- TX: double buffering -------------------------------- */
+#define PSwapTX	 0x600		/* swap between two TX buffers (one active, one activated after last TX done) */
+/*--                                                                             --*/
+/*------------- </DANGER! APPLY CHANGES IN HERE ALSO TO enc624j6l.asm !!> ---------*/
+/*--                                                                             --*/
+
 
 
 /*
@@ -267,6 +298,21 @@ ASM SAVEDS void enc624j6l_DisableGlobalInterrupt( ASMR(a0) void *board        AS
   output:  -  
 */
 ASM SAVEDS void enc624j6l_IntServer( void );
+
+/*
+  Purpose: check for link change events
+
+  input:   board  - mmapped board base address
+
+  output:  <0  - error
+             0 - ok, no link change handled
+            >0 - ok, link change handled
+
+  notes:   
+           
+*/
+ASM SAVEDS int enc624j6l_CheckLinkChange( ASMR(a0) void *board ASMREG(a0) );
+
 
 
 #endif /* _INC_ENC624J6L_H */

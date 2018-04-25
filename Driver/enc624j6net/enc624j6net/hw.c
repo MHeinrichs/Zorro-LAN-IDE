@@ -82,9 +82,10 @@
 #endif
 #ifdef PROTO_ENC624NET
 #include "enc624j6l.h"
+#include "registers.h"
 
 /* 10000 without HW interrupt 100000 with HW interrupt */
-#define  HW_INTERVALDEF 50000L
+#define  HW_INTERVALDEF 100000L
 
 /* this is a BIG TODO! Make plipbox source multi-board aware */
 #define  BOARD hwb->hwb_boards[0]
@@ -92,6 +93,14 @@
 /* interrupt (choice here is INTB_EXTER or INTB_PORTS, depending on solder blob */
 /*#define  HW_INTSOURCE INTB_EXTER */ /* Int 6 */
 #define  HW_INTSOURCE INTB_PORTS /* Int 2 */
+
+/* write_frame, see server.c, too. .oO(move this into .h) */
+typedef enum { AW_OK, AW_BUFFER_ERROR, AW_ERROR } AW_RESULT;
+
+#define READREG(_x_,_off_)      *( (volatile USHORT*)( (volatile UBYTE*)(_x_) + (_off_)) )
+#define WRITEREG(_x_,_off_,_y_) *( (volatile USHORT*)( (volatile UBYTE*)(_x_) + (_off_)) )    = (_y_);
+#define SETREG(_x_,_off_,_y_)   *( (volatile USHORT*)( (volatile UBYTE*)(_x_) + (_off_) + SET_OFFSET )) = (_y_);
+#define CLRREG(_x_,_off_,_y_)   *( (volatile USHORT*)( (volatile UBYTE*)(_x_) + (_off_) + CLR_OFFSET )) = (_y_);
 
 #endif
 
@@ -144,6 +153,110 @@ PRIVATE void startInt(struct PLIPBase *pb, struct HWBase *hwb, APTR board )
 }
 #endif
 
+/* write_frame moved from server.c to here, because it directly interfaces with
+   network module in this driver, active only when ENC624_OPT is given on compiler
+   command line */
+#ifdef ENC624_OPT
+   /*
+   ** write frames direcly to HW
+   * CAUTION: don't mix up with hw_send_frame() / enc624j6l_TransmitFrame -- 
+   *          the double buffered write location is not shared right now
+   * 
+   * logic in here
+   *  - swap buffer
+   *  - write into buffer
+   *  - wait for previous frame to finish (most likely there is no waiting time)
+   *  - issue HW TX command
+   *
+   */
+/*F*/ GLOBAL REGARGS AW_RESULT write_frame(BASEPTR, struct IOSana2Req *ios2)
+{
+   AW_RESULT rc;
+   struct HWBase *hwb = &pb->pb_HWBase;
+
+   struct BufferManagement *bm;
+   ULONG tl,totsize;
+   unsigned short *s_wrptr,*s_tmp1;
+   UBYTE *b_hwio_ptr = BOARD; /* somewhere $e80000 and beyond */
+
+   /* Note Link Change check moved to main loop */
+
+   d(("owrite: type %08lx, size %ld\n",ios2->ios2_PacketType,
+                                       ios2->ios2_DataLength));
+
+   hwb->hwb_txdbuf = (hwb->hwb_txdbuf & PSwapTX) ^ PSwapTX; /* swap buffers (+sanity check by "&") */
+   s_wrptr = (USHORT*)(b_hwio_ptr + hwb->hwb_txdbuf);         /* next write location (byte->short)   */
+
+   if(!(ios2->ios2_Req.io_Flags & SANA2IOF_RAW)) 
+   {  /* structured SANAII Request, not a valid Ethernet Frame (yet) */
+      /* Q: What about a length field and SNAP ? -> relevant here? */
+
+      /* write Ethernet header by hand: DMAC,SMAC,TYPE */
+      s_tmp1 = (USHORT*)ios2->ios2_DstAddr;
+      *s_wrptr++ = *s_tmp1++; *s_wrptr++ = *s_tmp1++; *s_wrptr++ = *s_tmp1; /* copy 6 bytes */
+
+      s_tmp1 = (USHORT*)pb->pb_CfgAddr;
+      *s_wrptr++ = *s_tmp1++; *s_wrptr++ = *s_tmp1++; *s_wrptr++ = *s_tmp1; /* copy 6 bytes */
+
+      *s_wrptr++ = (USHORT)ios2->ios2_PacketType; /* copy 2 bytes TYPE field */
+
+      totsize = HW_ETH_HDR_SIZE + ios2->ios2_DataLength; /* 14; */
+   }
+   else
+   {  /* RAW, pre-formatted Ethernet frame (sans CRC32) */
+      totsize = ios2->ios2_DataLength; /* */
+   }
+
+   /* copy frame to HW without a step in between (i.e. directly to mmapped card) */
+   bm = (struct BufferManagement *)ios2->ios2_BufferManagement;
+
+   if( (*bm->bm_CopyFromBuffer)(s_wrptr, ios2->ios2_Data, ios2->ios2_DataLength) )
+   { 
+      /* buffer delivered to HW, now trigger actual TX */
+      /* waste time should the last frame still be in TX (unlikely) */
+      /* 100 MBit/s frame time is max. 0.12 ms (without inter-frame spacing) */
+      tl=0;
+      while( READREG(b_hwio_ptr,ECON1) & ECON1_TXRTS ) 
+      { 
+         if( ++tl > 100000 ) /* this read cylces through ZII/ZIII and still not finished ? */
+         {
+                CLRREG( b_hwio_ptr, ECON1, ECON1_TXRTS ); /* give up, cancel last transmission */
+                break;
+         }
+      }
+
+      /*------ set new frame parameters ----------- */
+      WRITEREG( b_hwio_ptr, ETXST, hwb->hwb_txdbuf ); /* write location */
+      WRITEREG( b_hwio_ptr, ETXLEN,totsize );         /* frame TX length (-CRC) */
+      SETREG(   b_hwio_ptr, ECON1, ECON1_TXRTS );     /* trigger TX */
+
+      rc = AW_OK;
+   }
+   else
+   {
+      /* meh: What's so hard about copying some bytes ? */
+      rc = AW_BUFFER_ERROR;
+   }
+
+   return rc;
+}
+#endif
+
+   /*
+   ** check for link change
+   * - call ASM file for that task
+   * - the relevant flag is set by the interrupt handler and in that case,
+   *   a number of registers is reconfigured accordingly
+   *
+   */
+/*F*/ GLOBAL REGARGS void hw_check_link_change( BASEPTR )
+{
+   struct HWBase *hwb = &pb->pb_HWBase;
+
+   enc624j6l_CheckLinkChange(BOARD); /* somewhere $e80000 and beyond */
+}
+
+
 /* 
   magic: HW_MAGIC_OFFLINE, HW_MAGIC_ONLINE
   return TRUE/FALSE
@@ -191,7 +304,9 @@ GLOBAL REGARGS void hw_config_init(struct PLIPBase *pb)
 
   hwb->hwb_timervalue = HW_INTERVALDEF;
   hwb->hwb_fullduplex = 0;
+#ifndef PROTO_ENC624NET  
   hwb->hwb_spispeed   = 1; /* optimistic default */
+#endif
   hwb->hwb_multicast  = 0;
   hwb->hwb_flowcontrol= 0; /* no flow control by default */
 }
@@ -205,10 +320,12 @@ GLOBAL REGARGS void hw_config_update(struct PLIPBase *pb, struct TemplateConfig 
   {
 	hwb->hwb_timervalue = BOUNDS(*args->timervalue, HW_INTERVALMIN, HW_INTERVALMAX );
   }
+#ifndef PROTO_ENC624NET
   if( args->spispeed )
   {
 	hwb->hwb_spispeed = BOUNDS(*args->spispeed, 1, 20 );
   }
+#endif
   if( args->fullduplex )
   {
 	hwb->hwb_fullduplex = 1;
@@ -468,7 +585,7 @@ GLOBAL REGARGS BOOL hw_recv_frame(struct PLIPBase *pb, struct HWFrame *frame)
    unsigned char *ptr = (unsigned char*)frame;
    struct HWBase *hwb = &pb->pb_HWBase;
 
-   len = enc624j6l_RecvFrame( BOARD, ptr+sizeof(USHORT), 1518 );
+   len = enc624j6l_RecvFrame( BOARD, ptr+sizeof(USHORT), 1522 );
    frame->hwf_Size = len;
 
    if( len > 0 )

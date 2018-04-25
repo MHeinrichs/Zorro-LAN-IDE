@@ -448,7 +448,7 @@ PRIVATE APTR pb_AllocExpansion( ULONG portid, BASEPTR )
                {
                   d(("starting server"));
                   if (pb->pb_Server = CreateNewProcTags(NP_Entry, ServerTask, NP_Name,
-                                                                  NP_Priority, 59, SERVERTASKNAME, TAG_DONE))
+                                                                  SERVERTASKNAME, NP_Priority, 5, TAG_DONE))
                   {
                      ss.ss_Error = 1;
                      ss.ss_PLIPBase = pb;
@@ -630,6 +630,16 @@ PRIVATE APTR pb_AllocExpansion( ULONG portid, BASEPTR )
    /*
    ** initiate io command (1st level dispatcher)
    */
+#if 1
+/* got so tired of the SAS/C "inlining notice", made a macro instead */
+#define DevForwardIO( _BP_ , _REQ_ ) \
+{\
+ struct IOSana2Req *_rq_ = (struct IOSana2Req*)_REQ_;\
+ _rq_->ios2_Req.io_Flags &= ~SANA2IOF_QUICK;\
+ PutMsg( (_BP_)->pb_ServerPort, (struct Message*)_rq_);\
+}
+
+#else
 /*F*/ static INLINE VOID DevForwardIO(BASEPTR, struct IOSana2Req *ios2)
 {
    d(("forwarding request %ld\n", ios2->ios2_Req.io_Command));
@@ -639,6 +649,9 @@ PRIVATE APTR pb_AllocExpansion( ULONG portid, BASEPTR )
    PutMsg(pb->pb_ServerPort, (struct Message*)ios2);
 }
 /*E*/
+#endif
+
+
 /*F*/ PUBLIC VOID DevTermIO(BASEPTR, struct IOSana2Req *ios2)
 {
    d(("cmd = %ld, error = %ld, wireerror = %ld\n", ios2->ios2_Req.io_Command, ios2->ios2_Req.io_Error,ios2->ios2_WireError));

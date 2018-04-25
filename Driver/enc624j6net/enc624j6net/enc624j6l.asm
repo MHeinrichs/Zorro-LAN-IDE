@@ -1,4 +1,3 @@
-;APS00000000000000000000000000000000000000000000000000000000000000000000000000000000
 ; ------------------------------------------------------------------------------
 ; | Lowlevel Access to memory mapped ENC624J600 in PSP mode                    |
 ; | Henryk Richter <henryk.richter@gmx.net>                                    |
@@ -27,6 +26,7 @@
 DEBUG	EQU	0
 ;
 
+;------------- <DANGER! APPLY CHANGES HERE ALSO TO enc624j6l.h !!> ------------
 ;
 ; options for buffer memory configuration, please reserve some space for private variables
 ;
@@ -48,7 +48,7 @@ PNextPacket	EQU	PSTART_INIT	;2 Bytes - private "next packet" pointer for RX
 PNextTX		EQU	PSTART_INIT+2	;2 Bytes - private "next packet" pointer for TX (init as 0)
 PSigBit		EQU	PSTART_INIT+4	;2 Bytes interrupt bit
 PSigTask	EQU	PSTART_INIT+6	;4 Bytes signaled task
-PLinkChange	EQU	PSTART_INIT+10	;2 Bytes Link Change (Bit0 used right now)
+PLinkChange	EQU	PSTART_INIT+10	;2 Bytes Link Change (copy of PHYDPX,PHYLNK bits)
 Punused		EQU	PSTART_INIT+12	;
 
 ;------------- TX: double buffering --------------------------------
@@ -64,6 +64,7 @@ PIO_INIT_FLOW_CONTROL   EQU	8
 PIO_INIT_MULTI_CAST     EQU	16
 PIO_INIT_PROMISC        EQU	32
 
+;------------- </DANGER! APPLY CHANGES HERE ALSO TO enc624j6l.h !!> -----------
 
 
 	ifne	DEBUG
@@ -95,6 +96,7 @@ ENC_BOARDID		EQU	123	;ZII-IDE-LAN-CP
     ;online/offline
 	XDEF	_enc624j6l_SetOffline
 	XDEF	_enc624j6l_SetOnline
+	XDEF	_enc624j6l_CheckLinkChange
 
 	;transmit/receive functions
 	XDEF	_enc624j6l_HaveRecv		;
@@ -251,6 +253,14 @@ opendos:
 
 error:
 	rts
+
+regtests:
+	READREG	ESTAT,a0,d0
+	READREG	ECON1,a0,d1
+	READREG MACON2,a0,d2
+	READREG MABBIPG,a0,d3
+	rts
+	
 
 DosLibrary:		dc.b "dos.library",0
 ExpansionLibrary:	dc.b "expansion.library",0
@@ -535,14 +545,22 @@ _enc624j6l_Init:
 
 	;Multicast,Broadcast,Unicast(self),MagicPacket,correct CRC,filter runts
 	;"not me" Unicast == |ERXFCON_NOTMEEN
+	moveq	#PIO_INIT_MULTI_CAST,d0
+	and	d1,d0
+	beq.s	.no_multicast
 	move	#ERXFCON_MCEN|ERXFCON_BCEN|ERXFCON_UCEN|ERXFCON_MPEN|ERXFCON_CRCEN|ERXFCON_RUNTEN,d0
+	bra.s	.setfilter
+.no_multicast
+	move	#ERXFCON_BCEN|ERXFCON_UCEN|ERXFCON_MPEN|ERXFCON_CRCEN|ERXFCON_RUNTEN,d0
+.setfilter
 	WRITEREG ERXFCON,a0,d0 ;set filter TODO: pattern matching stuff
+
 	move	#RXSTOP_INIT&$fffe,d0
 	WRITEREG ERXTAIL,a0,d0 ;tail pointer in buffer = rx-2, wraparound
 
 ;	ifne	_OPT_FLOWCONTROL
 	moveq	#PIO_INIT_FLOW_CONTROL,d0
-	and		d1,d0
+	and	d1,d0
 	beq.s	.init_noflow
 
 	 move	#(128<<8)|(32),d0	;128*96=12288 high water mark, 32*96=3072 low water mark
@@ -565,7 +583,7 @@ _enc624j6l_Init:
 	move	#MACON2_PADCFG2|MACON2_PADCFG1|MACON2_PADCFG0|MACON2_PHDREN,d0
 	CLRREG	MACON2,a0,d0
 	; add CRC by ENC Chip
-	move	#MACON2_PADCFG1|MACON2_PADCFG0|MACON2_TXCRCEN,d0
+	move	#MACON2_PADCFG2|MACON2_PADCFG0|MACON2_TXCRCEN,d0 ;
 	SETREG	MACON2,a0,d0
 	
 	move	#MAX_FRAMELEN,d0
@@ -573,6 +591,8 @@ _enc624j6l_Init:
 	moveq	#0,d0
 	WRITEREG PNextTX,a0,d0	;private pointer, "last written, maybe still pending frame"
 
+	moveq	#0,d0
+	WRITEREG PLinkChange,a0,d0	;no detected/acknowledged link right now, i.e. LNK and DPX bits = 0
 
 	;--------------- DONE: enable reception -----------------
 	moveq	#ECON1_RXEN,d0
@@ -635,8 +655,8 @@ _enc624j6l_SetOnline:
 	moveq	#ECON1_RXEN,d0
 	SETREG	ECON1,a0,d0
 
-	moveq	#1,d0
-	WRITEREG PLinkChange,a0,d0
+	moveq	#0,d0
+	WRITEREG PLinkChange,a0,d0	;no detected/acknowledged link right now, i.e. LNK and DPX bits = 0
 	
 	;moveq	#1,d0	;already set, see above
 .err
@@ -841,6 +861,83 @@ _enc624j6l_IntServer:
 .rts
 	moveq	#0,d0		;set Z flag
 	rts
+
+
+;---------------------------------------------------------------------------------------
+;
+; check for link change events
+;
+; In:  A0 = board base address
+;
+; Out: D0  <0 error
+;          =0 ok, no link change handled
+;          >0 ok, link change handled
+;
+; Notes: assumes that init() was called before
+; 
+_enc624j6l_CheckLinkChange:
+	move.l	a0,d0
+	beq.s	.rts
+
+	; link change events are captured with Interrupts and stored
+	; in the (custom) PLinkChange location (per board) by init and
+	; the int server (0 -> no link change, !=0 -> link change)
+	READREG PLinkChange,a0,d0		;last known status of LNK and DPX
+	READREG	ESTAT,a0,d1
+	and	#ESTAT_PHYLNK|ESTAT_PHYDPX,d1	;
+	eor.w	d1,d0				;compare
+	beq	.nochg
+
+	WRITEREG PLinkChange,a0,d1		;remember last parsed settings
+
+	;check for link down before setting registers
+	;also be aware of shutting down FDX mode
+	;
+	move	#ESTAT_PHYLNK,d0
+	and	d1,d0
+	bne.s	.linkup
+
+	;
+	; offline
+	;
+	; D1 = ESTAT & (ESTAT_PHYDPX|ESTAT_PHYLNK)
+	;
+
+	moveq	#MACON2_FULDPX,d0
+	CLRREG	MACON2,a0,d0	;clear fullduplex bit when offline
+	moveq	#$12,d0
+	WRITEREG MABBIPG,a0,d0	;half duplex when offline
+
+	bra.s	.endchg
+.linkup:
+	;
+	; online
+	;
+	; D1 = ESTAT & (ESTAT_PHYDPX|ESTAT_PHYLNK)
+	;
+
+	; link up and configured
+	bfextu	d1{21:1},d1	;get Bit 10 to Bit 0  (ESTAT_PHYDPX -> MACON2_FULDPX)
+	READREG	MACON2,a0,d0
+	bclr	#0,d0		;clear FDX bit
+	or.l	d1,d0		;set if active
+	WRITEREG MACON2,a0,d0
+
+	moveq	#$12,d1		;half duplex $12
+	btst	#0,d0
+	beq.s	.nofdx
+	moveq	#$15,d1		;full duplex $15
+.nofdx:
+	WRITEREG MABBIPG,a0,d1
+
+.endchg:
+	moveq	#1,d0
+	bra.s	.rts
+.nochg:
+	moveq	#0,d0
+.rts:
+	rts
+
 
 ;---------------------------------------------------------------------------------------
 ;
@@ -1157,28 +1254,18 @@ _enc624j6l_TransmitFrame:
 	move.l	a0,d1		;no base PTR
 	beq.w	.err		;exit
 
-	READREG PLinkChange,a0,d1
-	tst	d1
-	beq	.linkup
-	; link up and configured
+		; this check moved to server.c -> hw.c -> enc624j6l_CheckLinkChange()
+		; instead of checking with every TX frame, do it before going to sleep
+	ifne	_OPT_CHECKLINK_TX
 
-	READREG ESTAT,a0,d1	;Bit 10 is FULL DUPLEX (ESTAT_PHYDPX)
-	bfextu	d1{21:1},d1	;get Bit 10 to Bit 0  (MACON2_FULDPX)
-	READREG	MACON2,a0,d2
-	bclr	#0,d2		;clear FDX bit
-	or.l	d1,d2		;set if active
-	WRITEREG MACON2,a0,d2
+		READREG PLinkChange,a0,d1		;last known status of LNK and DPX
+		READREG	ESTAT,a0,d2			;
+		and	#ESTAT_PHYLNK|ESTAT_PHYDPX,d2	;
+		eor.w	d2,d1				;compare
+		bne.s	.linkchg			;jump to parameter adjust
+.linkchgdone:						;.linkchg returns here with another branch
 
-	moveq	#$12,d1		;half duplex $12
-	btst	#0,d2
-	beq.s	.nofdx
-	moveq	#$15,d1		;full duplex $15
-.nofdx:
-	WRITEREG MABBIPG,a0,d1
-
-	moveq	 #0,d1
-	WRITEREG PLinkChange,a0,d1
-.linkup:
+	endc
 
 	move.l	a1,d1		;no send frame ?
 	beq.w	.err		;exit
@@ -1223,17 +1310,17 @@ _enc624j6l_TransmitFrame:
 	swap	d4
 
 	;---------------- wait on last frame ----------------------------------
-	moveq	#100,d3
+	move	#200,d3
 .txwait:
 	READREG	ECON1,a0,d1
 	and.w	#ECON1_TXRTS,d1
 	beq.s	.txrdy
 	;100 MBit/s frame time is max. 0.12 ms (without inter-frame spacing)
 
-	;wait 50 us via CIA
-	moveq	#50,d0
+	;wait 20 us via CIA
+	moveq	#120,d0
 	bsr	_enc624j6l_UMinDelay
-	dbf	d3,.txwait		;approx. 5ms max. wait
+	dbf	d3,.txwait		;approx. 4ms max. wait
 
 	;hmpf. abort last transmission
 	move	#ECON1_TXRTS,d1		;
@@ -1252,6 +1339,15 @@ _enc624j6l_TransmitFrame:
 	movem.l	(sp)+,d2-d4/a2
 	rts
 
+	ifne	_OPT_CHECKLINK_TX
+		;branch here for link change events and adjust parameters in case
+.linkchg:
+		movem.l	d0-d1/a0-a1,-(sp)
+		bsr	_enc624j6l_CheckLinkChange
+		movem.l	(sp)+,d0-d1/a0-a1
+		bra.s	.linkchgdone
+
+	endc
 
 ;------------------------------------------------------------------------------------------------
 ;------------------------------------------------------------------------------------------------

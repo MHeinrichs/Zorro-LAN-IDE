@@ -10,14 +10,18 @@
 #
 DEVICE_DATE = 16.04.2018
 DEVICE_VERSION  = 0
-DEVICE_REVISION = 2
+DEVICE_REVISION = 3
 
 # see below for EXTRAOBJ, disable for plipbox, enable for sdnet/enc624j6net
 HWSRCDIR = enc624j6net
 DEVICE_NAME = enc624j6net
-DEFS = DEFINE PROTO_ENC624NET=1 
+DEFS = DEFINE PROTO_ENC624NET=1
 
-# quick hack/test to write directly - didn't work out for me
+# direct SANA-II to HW Write without intermediate buffer
+# don`t enable on current (Feb2018) CPLD, byte swap issue
+# JIC after 25-Apr-2018 will fix the byte swap on byte write
+#DEFINE ENC624_OPT=1 
+# quick hack/test to write directly - didn't work out well for me
 #DEFINE DIRECT_WRITE=1
 
 #####################################################################
@@ -133,6 +137,8 @@ BUILDDEPS=libsize.auto.i $(DEVINFO_INC) $(DEVINFO_HINC)
 #
 .c.opt$(SUFFIX): $(BUILDDEPS)
    $(CC) $(OPTCFLAGS) OBJECTNAME $@ $*.c
+   # DISASM $@.disas.s
+
 #
 # assemble a file
 #

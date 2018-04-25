@@ -10,6 +10,7 @@ _OPT_REG_SWAP		EQU	0	;perform byte swap on register ops (1) or assume native end
 _OPT_ADR_QUIRK		EQU	0	;address lines 12/13 are swapped (1) or linear addressing (0)
 _OPT_FLOWCONTROL	EQU	0	;perform flow control on RX (1) or not (0)
 _OPT_RECV		EQU	1	;faster recv (1) or generic (0)
+_OPT_CHECKLINK_TX	EQU	0	;check for link changes in TX (1) or expect from outside (0) -> see server.c
 
 ;\1 register offset (without CLEAR offset)
 ;\2 address register of board I/O base
@@ -32,6 +33,9 @@ SETREG	macro
 ;\1 register offset (e.g. ESTAT)
 ;\2 address register of board I/O base (e.g. a0)
 ;\3 destination register to be written (e.g. d0)
+;
+;important: when changing this, make sure the flags 
+;are set according to the return value
 READREG	macro
 	rol.w	#8,\3
 	move.w	\1(\2),\3
@@ -61,6 +65,9 @@ SETREG	macro
 ;\1 register offset (e.g. ESTAT)
 ;\2 address register of board I/O base (e.g. a0)
 ;\3 destination register to be written (e.g. d0)
+;
+;important: when changing this, make sure the flags 
+;are set according to the return value
 READREG	macro
 	move.w	\1(\2),\3
 	endm

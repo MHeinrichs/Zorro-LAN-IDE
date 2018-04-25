@@ -58,5 +58,7 @@ GLOBAL REGARGS void hw_config_update(struct PLIPBase *pb, struct TemplateConfig 
 GLOBAL REGARGS void hw_config_dump(struct PLIPBase *pb);
 GLOBAL REGARGS void hw_enable_global_int(struct PLIPBase *pb);
 GLOBAL REGARGS void hw_disable_global_int(struct PLIPBase *pb);
+GLOBAL REGARGS void hw_check_link_change(struct PLIPBase *pb);
+
 
 #endif
