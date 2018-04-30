@@ -16,6 +16,8 @@
 -- Revision 0.01 - File Created
 -- Additional Comments: 
 --
+-- directory cleanup hint:
+--  svn status|grep ^M|sed "s/^M [\t ]*//"|xargs rm
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -92,6 +94,7 @@ architecture Behavioral of LAN_IDE_CP is
 	);
 
 	SIGNAL LAN_RST_SM: lan_reset :=nop;
+	SIGNAL lancp: STD_LOGIC; -- LAN or ClockPort
 	SIGNAL ide: STD_LOGIC;
 	SIGNAL autoconfig: STD_LOGIC;
 	SIGNAL lan_adr: STD_LOGIC;
@@ -200,6 +203,7 @@ begin
 			lan_adr 		<= '0';
 			lan_adr_sw  <= '0';
 			cp  			<= '0';
+			lancp                   <= '0';
 		elsif(falling_edge(AS))then		
 			--default values
 			autoconfig 	<= '0';
@@ -207,6 +211,7 @@ begin
 			lan_adr 		<= '0';
 			lan_adr_sw  <= '0';
 			cp  			<= '0';
+			lancp                   <= '0';
 			if(A(23 downto 16) = x"E8" and AUTO_CONFIG_DONE < "11" and CFIN='0')then
 				autoconfig 	<= '1';
 			elsif(A(23 downto 16) = LAN_BASEADR and SHUT_UP(0)='0' )then	
@@ -214,8 +219,10 @@ begin
 					lan_adr_sw  <= '1';
 				end if;
 				lan_adr 		<= '1';
+				lancp                   <= '1';
 			elsif(A(23 downto 16) =  CP_BASEADR and SHUT_UP(1)='0')then					
 				cp  			<= '1';
+				lancp                   <= '1';
 			elsif(A(23 downto 16) = IDE_BASEADR and SHUT_UP(2)='0')then					
 				ide 			<= '1';
 			end if;		
@@ -256,8 +263,9 @@ begin
 
 			if(lan_adr='1' and DS='0' and A(15)='0')then
 				LAN_RD_S		<= RW;
-				LAN_WRH_S   <= not UDS and not RW;
-				LAN_WRL_S   <= not LDS and not RW;
+				-- swapped LDS/UDS here: ENC624 is little endian
+				LAN_WRH_S   <= not LDS and not RW;
+				LAN_WRL_S   <= not UDS and not RW;
 			end if;				
 		end if;
 	end process lan_rw_gen;
@@ -442,13 +450,13 @@ begin
 			Dout1	& x"FFF" 			when RW='1' and autoconfig ='1' and AS='0' else
 			(others => 'Z');
 
+	--defined lancp signal that matches both LAN and CP addresses
 	DQ <=	LAN_D_CLR when (LAN_RST_SM = wait0 or LAN_RST_SM = clr or LAN_RST_SM = clr_commit) else
 			LAN_D_SET when (LAN_RST_SM = wait1 or LAN_RST_SM = set or LAN_RST_SM = set_commit) else
-			D 	when RW='0' and AS='0' and lan_adr ='1' and lan_adr_sw ='0' else
+			D( 7 downto 0) & D( 7 downto 0)	when RW='0' and AS='0' and lancp = '1' and LDS='0' and UDS='1' else
+			D(15 downto 8) & D(15 downto 8)	when RW='0' and AS='0' and lancp = '1' and LDS='1' and UDS='0' else
 			D( 7 downto 0) & D(15 downto 8)	when RW='0' and AS='0' and lan_adr ='1' and lan_adr_sw ='1' else
-			D 	when RW='0' and AS='0' and cp = '1' and LDS='0' and UDS='0' else
-			D( 7 downto 0) & D( 7 downto 0)	when RW='0' and AS='0' and cp = '1' and LDS='0' and UDS='1' else
-			D(15 downto 8) & D(15 downto 8)	when RW='0' and AS='0' and cp = '1' and LDS='1' and UDS='0'
+			D 	when RW='0' and AS='0' and lancp ='1'
 			else (others => 'Z');
 								
 	IDE_W <=	IDE_W_S when AS='0' else '1';
