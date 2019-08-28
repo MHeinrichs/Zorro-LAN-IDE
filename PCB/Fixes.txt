@@ -1,5 +1,0 @@
-- ClockPort Interrupt Pullup 4.7k noetig, siehe Bilder/cp-fix.jpg
-- Olimex ENC624J600 Modul (war bei buggs notwendig, um PSP mode stabil zu erzwingen)
-  - Loetpads neben der Ethernet-Buchse verbinden (siehe R12, 3.3 k gegen GND)
-  - R11 Unterseite entfernen (war 33 kOhm gegen VCC, daher R4 auf dem ZII board wirkungslos)
-  - alternativ: R4 auf ZII-Board = 3.3-4.7k, Olimex/R11 trotzdem sicherheitshalber raus
